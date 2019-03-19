@@ -457,6 +457,9 @@ class Order extends BaseController
             $order_service -> createNewOutTradeNoReturnBalance($order_id);
             $new_out_trade_no = $order_service->getOrderNewOutTradeNo($order_id);
             $url = __URL(__URL__ . '/wap/pay/pay?out_trade_no=' . $new_out_trade_no);
+
+
+            
             header("Location: " . $url);
             exit();
         } else {

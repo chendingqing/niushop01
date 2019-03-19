@@ -312,7 +312,7 @@ class Config extends BaseService implements IConfig
                         'ali_seller' => '',
                         'ali_key' => ''
                     ),
-                    'is_use' => 0
+                    'is_use' => 1
                 );
             } else {
                 $info['value'] = json_decode($info['value'], true);
@@ -336,6 +336,7 @@ class Config extends BaseService implements IConfig
                 'instance_id' => $instance_id,
                 'key' => 'UNIONPAY'
             ], 'value,is_use');
+
             if (empty($info['value'])) {
                 $data = array(
                     'value' => array(
@@ -345,7 +346,7 @@ class Config extends BaseService implements IConfig
                         'log_path' => '',
                         'service_charge' => ''
                     ),
-                    'is_use' => 0
+                    'is_use' => 1
                 );
             } else {
                 $info['value'] = json_decode($info['value'], true);
@@ -467,6 +468,7 @@ class Config extends BaseService implements IConfig
             'instance_id' => $instanceid,
             'key' => $type
         ], 'value');
+
         if (empty($result['value'])) {
             $info = array();
             $info['is_use'] = $is_use;
@@ -1586,7 +1588,7 @@ class Config extends BaseService implements IConfig
             'instance_id' => $shop_id,
             'key' => array(
                 'in',
-                'WPAY,ALIPAY'
+                'WPAY,ALIPAY,UNIONPAY'
             )
         );
         $notify_list = $config_model->getQuery($condition, "*", "");
@@ -1601,7 +1603,14 @@ class Config extends BaseService implements IConfig
                         $notify_list[$i]["pay_name"] = "支付宝支付";
                         $notify_list[$i]["logo"] = "public/admin/images/pay.png";
                         $notify_list[$i]["desc"] = "该系统支持即时到账接口";
-                    }
+                    }else
+                        {
+                        ($notify_list[$i]["key"] == "UNIONPAY") ;
+                            $notify_list[$i]["pay_name"] = "银联支付";
+                            $notify_list[$i]["logo"] = "public/admin/images/unionpay.png";
+                            $notify_list[$i]["desc"] = "该系统支持即时到账接口";
+                        }
+
             }
             return $notify_list;
         } else {

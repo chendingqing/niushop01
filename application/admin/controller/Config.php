@@ -465,6 +465,8 @@ class Config extends BaseController
             $type = request()->post("type", '');
             $retval = $web_config->setWpayStatusConfig($this->instance_id, $is_use, $type);
             return AjaxReturn($retval);
+
+
         }
     }
 
@@ -2054,8 +2056,12 @@ class Config extends BaseController
     public function paymentConfig()
     {
         $config_service = new WebConfig();
+
         $shop_id = $this->instance_id;
+
+
         $pay_list = $config_service->getPayConfig($shop_id);
+//        halt($pay_list);
         $this->assign("pay_list", $pay_list);
         $child_menu_list = array(
             array(

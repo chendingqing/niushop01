@@ -174,7 +174,19 @@ $(document).ready(function(){
 								</div>
 								<div class="invalid"></div>
 							</div>
-							
+							<!--邮箱-->
+							<div class="form-group form-group-spe">
+								<label for="mobileregistermodel-email" class="input-left">
+									<span class="spark">*</span>
+									<span>{:lang('邮箱')}：</span>
+								</label>
+								<div class="form-control-box">
+									<input type="text" id="mobileregistermodel-email" class="form-control" name="email" placeholder="{:lang('请输入邮箱')}" />
+									<span id="email"></span>
+									<input type="hidden" value="{:lang('non_existent')}" id="isset_email"/>
+								</div>
+								<div class="invalid"></div>
+							</div>
 							<!-- 密码 -->
 							<div class="form-group form-group-spe">
 								<label for="emailregistermodel-password" class="input-left">

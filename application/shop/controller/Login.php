@@ -234,7 +234,9 @@ class Login extends Controller
                 return $retval;
             }
         }
+
         $res = $this->user->login($username, $password);
+        halt($res);
         if ($res == 1) {
             if (! empty($_SESSION['login_pre_url'])) {
                 $retval = [
@@ -550,8 +552,9 @@ class Login extends Controller
             // $email = rand($min, $max) . '@qq.com';
             // $mobile = rand($min, $max);
             $user_name = request()->post("username", '');
-            
-            $retval_id = $member->registerMember($user_name, $password, '', '', '', '', '', '', '');
+            $email= request()->post("email", '');
+
+            $retval_id = $member->registerMember($user_name, $password, $email, '', '', '', '', '', '');
             if ($retval_id > 0) {
                 // $this->success("注册成功", __URL__."/index");
                 // 注册成功送优惠券

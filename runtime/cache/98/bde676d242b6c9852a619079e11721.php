@@ -1,3 +1,0 @@
-<?php
-//000000000000s:482:"F:\ceshi\niushop\runtime\cache\3e\4efd567a168c747c163ac4e197b4a1.php,F:\ceshi\niushop\runtime\cache\85\999f949d52f5ff088852d07135eb84.php,F:\ceshi\niushop\runtime\cache\6b\a7c6c7fa4a7eda3aeaa0f0da3b57d0.php,F:\ceshi\niushop\runtime\cache\fd\9861aa67002f9fbfcf35bfc1d316d5.php,F:\ceshi\niushop\runtime\cache\b4\f0b7959640df7346517887dec6cdf8.php,F:\ceshi\niushop\runtime\cache\18\7235ba22ed7f556fd9c060a530c44b.php,F:\ceshi\niushop\runtime\cache\98\ed85244c76ba56292c617e7f8b1a00.php";
-?>

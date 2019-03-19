@@ -79,6 +79,8 @@ class UnifyPay extends BaseService implements IUnifyPay
             'ali_pay_config'   => $ali_pay,
             'union_pay_config' => $union_pay
         );
+
+
         return $data_config;
     }
     /**

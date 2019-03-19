@@ -122,7 +122,6 @@ class Pay extends Controller
             	}
             }
         }
-        
         $pay = new UnifyPay();
         $pay_config = $pay->getPayConfig();
         $this->assign("pay_config", $pay_config);
@@ -618,6 +617,7 @@ class Pay extends Controller
             $out_trade_no = request()->get("out_trade_no", 0); 
             // 支付信息
             $pay_value = $pay->getPayInfo($out_trade_no);
+
             $this->assign("pay_value", $pay_value);
             
             if (empty($out_trade_no) || !is_numeric($out_trade_no) || empty($pay_value)) {
