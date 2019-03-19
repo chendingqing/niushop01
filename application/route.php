@@ -21,6 +21,7 @@ if(strpos($root_url,$upload_url) !==false)
 //检测后台系统模块
      if(ADMIN_MODULE != 'admin')
     {
+
         Route::group(ADMIN_MODULE,function(){
             Route::rule(':controller/:action','admin/:controller/:action');
             Route::rule(':controller','admin/:controller/index');

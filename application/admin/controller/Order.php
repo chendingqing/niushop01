@@ -352,6 +352,7 @@ class Order extends BaseController
                     unset($operation_array[$k]);
                 }
             }
+
             $detail['operation'] = $operation_array;
         }
         $this->assign("order", $detail);
@@ -1917,6 +1918,160 @@ class Order extends BaseController
             $order_service = new OrderService();
             $res = $order_service -> received_payment($order_id);
             return AjaxReturn($res);
+        }
+    }
+
+
+    /**
+     * 信用卡订单
+     */
+    public function creditCardList()
+    {
+
+        // 获取物流公司
+        $express = new ExpressService();
+        $expressList = $express->expressCompanyQuery();
+        $this->assign('expressList', $expressList);
+
+        $action = Cache::get("orderAction");
+
+        if(empty($action)){
+            $action = array(
+                "orderAction" => $this->fetch($this->style . "Order/orderAction"),
+                "orderPrintAction" => $this->fetch($this->style . "Order/orderPrintAction"),
+                "orderRefundAction" => $this->fetch($this->style . "Order/orderRefundAction")
+            );
+            Cache::set("orderAction", $action);
+        }
+        if (request()->isAjax()) {
+
+            $page_index = request()->post('page_index', 1);
+            $page_size = request()->post('page_size', PAGESIZE);
+            $start_date = request()->post('start_date') == "" ? 0 : getTimeTurnTimeStamp(request()->post('start_date'));
+            $end_date = request()->post('end_date') == "" ? 0 : getTimeTurnTimeStamp(request()->post('end_date'));
+            $user_name = request()->post('user_name', '');
+            $order_no = request()->post('order_no', '');
+            $order_status = request()->post('order_status', '');
+            $receiver_mobile = request()->post('receiver_mobile', '')
+            ;
+            $payment_type = request()->post('payment_type', 3);
+            $shipping_type = request()->post('shipping_type', 0); //配送类型
+            $order_type = request()->post('order_type', '1,3');
+            $condition['order_type'] = array("in", $order_type); // 订单类型
+
+            $condition['is_deleted'] = 0; // 未删除订单
+            if ($start_date != 0 && $end_date != 0) {
+                $condition["create_time"] = [
+                    [
+                        ">",
+                        $start_date
+                    ],
+                    [
+                        "<",
+                        $end_date
+                    ]
+                ];
+            } elseif ($start_date != 0 && $end_date == 0) {
+                $condition["create_time"] = [
+                    [
+                        ">",
+                        $start_date
+                    ]
+                ];
+            } elseif ($start_date == 0 && $end_date != 0) {
+                $condition["create_time"] = [
+                    [
+                        "<",
+                        $end_date
+                    ]
+                ];
+            }
+            if ($order_status != '') {
+                // $order_status 1 待发货
+                if ($order_status == 1) {
+                    // 订单状态为待发货实际为已经支付未完成还未发货的订单
+                    $condition['shipping_status'] = 0; // 0 待发货
+                    //$condition['pay_status'] = 2; // 2 已支付
+                    $condition["order_status"] = [
+                        [
+                            "neq",
+                            4
+                        ],
+                        [
+                            "neq",
+                            5
+                        ],
+                        [
+                            "neq",
+                            0
+                        ]
+                    ];
+                    /*  $condition['order_status'] = array(
+                         'neq',
+                         4
+                     ); // 4 已完成
+                     $condition['order_status'] = array(
+                         'neq',
+                         5
+                     ); // 5 关闭订单 */
+                } else
+                    $condition['order_status'] = $order_status;
+            }
+            if (! empty($payment_type)) {
+                $condition['payment_type'] = $payment_type;
+            }
+            if (! empty($user_name)) {
+                $condition['receiver_name'] = $user_name;
+            }
+            if (! empty($order_no)) {
+                $condition['order_no'] = $order_no;
+            }
+            if (! empty($receiver_mobile)) {
+                $condition['receiver_mobile'] = $receiver_mobile;
+            }
+            if($shipping_type != 0){
+                $condition['shipping_type'] = $shipping_type;
+            }
+            $condition['shop_id'] = $this->instance_id;
+            $order_service = new OrderService();
+            $list = $order_service->getOrderList($page_index, $page_size, $condition, 'create_time desc');
+            $list['action'] = $action;
+
+            return $list;
+        } else {
+            $status = request()->get('status', '');
+            $this->assign("status", $status);
+            $all_status = OrderStatus::getOrderCommonStatus();
+            $child_menu_list = array();
+            $child_menu_list[] = array(
+                'url' => "Order/orderList",
+                'menu_name' => '全部',
+                "active" => $status == '' ? 1 : 0
+            );
+            foreach ($all_status as $k => $v) {
+                // 针对发货与提货状态名称进行特殊修改
+                /*
+                 * if($v['status_id'] == 1)
+                 * {
+                 * $status_name = '待发货/待提货';
+                 * }elseif($v['status_id'] == 3){
+                 * $status_name = '已收货/已提货';
+                 * }else{
+                 * $status_name = $v['status_name'];
+                 * }
+                 */
+                $child_menu_list[] = array(
+                    'url' => "order/orderlist?status=" . $v['status_id'],
+                    'menu_name' => $v['status_name'],
+                    "active" => $status == $v['status_id'] ? 1 : 0
+                );
+            }
+
+
+//            halt($child_menu_list);
+            $this->assign('child_menu_list', $child_menu_list);
+            $this->assign('order_type', '1,3');
+            return view($this->style . "Order/creditCardlList");
         }
     }
     

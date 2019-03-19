@@ -1331,6 +1331,19 @@ class OrderStatus extends BaseService
                 'type_name' => '到店支付'
             ),
             array(
+                'type_id' => '7',
+                'type_name' => '信用卡支付'
+            ),
+            array(
+                'type_id' => '8',
+                'type_name' => '微信线下支付'
+            ),
+            array(
+                'type_id' => '9',
+                'type_name' => '支付宝线下支付'
+            ),
+
+            array(
                 'type_id' => '10',
                 'type_name' => '线下支付'
             ),
@@ -1419,4 +1432,5 @@ class OrderStatus extends BaseService
         }
         return $type_name;
     }
-}
+
+ }

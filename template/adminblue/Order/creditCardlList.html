@@ -93,9 +93,9 @@
 								<option value="">全部</option>
 								<option value="1">微信</option>
 								<option value="2">支付宝</option>
-								<option value="3">信用卡</option>
-								<option value="5">微信线下支付</option>
-								<option value="6">支付宝线下支付</option>
+								<option value="7">信用卡</option>
+								<option value="8">微信线下支付</option>
+								<option value="9">支付宝线下支付</option>
 								<option value="10">线下支付</option>
 								<option value="4">货到付款</option>
 							</select>
@@ -202,17 +202,15 @@ function LoadingInfo(page_index) {
 			"order_status" : order_status,
 			"receiver_mobile" : receiver_mobile,
 			"order_status" : order_status,
-			"payment_type" : payment_type,
+			"payment_type" : 7,
 			"shipping_type" : shipping_type,
 			"order_type" : order_type
 		},
 		success : function(data) {
-			console.log(data);
 			if (data["data"].length > 0) {
 
 				$("#ajax-orderlist tbody").empty();
 				for (var i = 0; i < data["data"].length; i++) {
-
 					var html = '';
 					var out_trade_no = data["data"][i]["out_trade_no"];//交易号
 					var order_id = data["data"][i]["order_id"];//订单id
@@ -270,8 +268,7 @@ function LoadingInfo(page_index) {
 						html += '<div class="cell" style="display: inline-block;"><span>'+price+'元</span></div>';
 						html += '<div class="cell" style="display: inline-block;float:right;">'+num+'件</div>';
 					
-					//
-
+					//调价
 					if(data["data"][i]["order_item_list"][0]['adjust_money'] != 0){
 						var adjust_money = data["data"][i]["order_item_list"][0]["adjust_money"];//调教
 						html += '<div class="cell" style="display: inline-block;"><span>(调价：'+adjust_money+'元)</span></div>';
@@ -325,16 +322,6 @@ function LoadingInfo(page_index) {
 						html += '<a style="display:block;margin-bottom:5px;" href="'+__URL('ADMIN_MAIN/order/bargainOrderDetail?order_id='+order_id)+'">订单详情</a>';
 					}else{
 						html += '<a style="display:block;margin-bottom:5px;" href="'+__URL('ADMIN_MAIN/order/orderdetail?order_id='+order_id)+'">订单详情</a>';	
-					}
-					if(order_type == '7'){
-						html += '<a style="display:block;margin-bottom:5px;" href="'+__URL('ADMIN_MAIN/order/bargainOrderDetail?order_id='+order_id)+'">修改支付状态</a>';
-					}else{
-						html += '<a style="display:block;margin-bottom:5px;" href="'+__URL('ADMIN_MAIN/order/orderdetail?order_id='+order_id)+'">修改支付状态</a>';
-					}
-					if(order_type == '7'){
-						html += '<a style="display:block;margin-bottom:5px;" href="'+__URL('ADMIN_MAIN/order/bargainOrderDetail?order_id='+order_id)+'">修改发货状态</a>';
-					}else{
-						html += '<a style="display:block;margin-bottom:5px;" href="'+__URL('ADMIN_MAIN/order/orderdetail?order_id='+order_id)+'">修改发货状态</a>';
 					}
 
 					if(data["data"][i]["operation"] != ''){
