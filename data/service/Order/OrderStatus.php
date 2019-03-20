@@ -54,6 +54,11 @@ class OrderStatus extends BaseService
                         'no' => 'seller_memo',
                         'color' => '#666666',
                         'name' => '备注'
+                    ),
+                    '4' => array(
+                        'no' => 'update_pay_status',
+                        'color' => '#51A351',
+                        'name' => '修改支付状态'
                     )
                 ),
                 'member_operation' => array(
@@ -89,7 +94,19 @@ class OrderStatus extends BaseService
                         'no' => 'update_address',
                         'color' => '#51A351',
                         'name' => '修改地址'
+                    ) ,
+                    '3' => array(
+                        'no' => 'update_pay_status',
+                        'color' => '#51A351',
+                        'name' => '修改支付状态'
+                    ),
+                    '4' => array(
+                        'no' => 'update_delivery_status',
+                        'color' => '#51A351',
+                        'name' => '修改发货状态'
                     )
+
+
                 ),
                 'member_operation' => array()
             ),
@@ -112,7 +129,18 @@ class OrderStatus extends BaseService
                         'no' => 'getdelivery',
                         'name' => '确认收货',
                         'color' => '#FF6600'
+                    ),
+                    '3' => array(
+                        'no' => 'update_pay_status',
+                        'color' => '#51A351',
+                        'name' => '修改支付状态'
+                    ),
+                    '4' => array(
+                        'no' => 'update_delivery_status',
+                        'color' => '#51A351',
+                        'name' => '修改发货状态'
                     )
+
                 ),
                 
                 'member_operation' => array(
@@ -125,7 +153,8 @@ class OrderStatus extends BaseService
                         'no' => 'logistics',
                         'color' => '#cccccc',
                         'name' => '查看物流'
-                    )
+                    ),
+
                 )
             ),
             array(
@@ -142,6 +171,11 @@ class OrderStatus extends BaseService
                         'no' => 'logistics',
                         'color' => '#666666',
                         'name' => '查看物流'
+                    ),
+                    '2' => array(
+                        'no' => 'update_delivery_status',
+                        'color' => '#51A351',
+                        'name' => '修改发货状态'
                     )
                 ),
                 'member_operation' => array(
@@ -166,6 +200,11 @@ class OrderStatus extends BaseService
                         'no' => 'logistics',
                         'color' => '#666666',
                         'name' => '查看物流'
+                    ),
+                    '2' => array(
+                        'no' => 'update_delivery_status',
+                        'color' => '#51A351',
+                        'name' => '修改发货状态'
                     )
                 ),
                 'member_operation' => array(

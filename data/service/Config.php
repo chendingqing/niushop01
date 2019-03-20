@@ -2088,7 +2088,7 @@ class Config extends BaseService implements IConfig
             'key' => 'ORDER_AUTO_DELIVERY',
             'value' => $order_auto_delinery,
             'desc' => '订单多长时间自动完成',
-            'is_use' => 1
+            'is_use' => 0
         );
         $array[1] = array(
             'instance_id' => $this->instance_id,

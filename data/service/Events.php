@@ -96,13 +96,14 @@ class Events implements IEvents{
             }else{
                 return 1;
             }
-            $time = time()-$close_time*60;//订单自动关闭
-            $condition = array(
-                'order_status' => array('in','0'),
-                'create_time'  => array('LT', $time),
-                'payment_type' => array('neq', 6)
-            );
-            $order_list = $order_model->getQuery($condition, 'order_id', '');
+//            $time = time()-$close_time*60;//订单自动关闭
+//            $condition = array(
+//                'order_status' => array('in','0'),
+//                'create_time'  => array('LT', $time),
+//                'payment_type' => array('neq', 6)
+//            );
+//            $order_list = $order_model->getQuery($condition, 'order_id', '');
+            $time=time();
             $presell_order_condition = array(
                 'order_status' => array('in','6'),
                 'order_type' => 6,
