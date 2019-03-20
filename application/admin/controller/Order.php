@@ -968,7 +968,28 @@ class Order extends BaseController
         $res = $order_service->updatePaystatus($order_id, $payment_type);
         return $res;
     }
+    /**
+     * 查询发货状态
+     */
+    public function update_delivery_status()
+    {
+        $order_service = new OrderService();
+        $order_id = request()->post('order_id');
+        $res = $order_service->getPaystatus($order_id);
+        return $res;
+    }
 
+    /***更新发货状态
+     * @return bool
+     */
+    public function updateDeliveryStatus()
+    {
+        $order_service = new OrderService();
+        $order_id = request()->post('order_id');
+        $shipping_type = request()->post('shipping_type');
+        $res = $order_service->updateDeliveryStatus($order_id, $shipping_type);
+        return $res;
+    }
 
     /**
      * 获取省列表

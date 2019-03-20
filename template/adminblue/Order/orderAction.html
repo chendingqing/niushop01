@@ -321,15 +321,12 @@ textarea{width: 350px;}
 				<h3>修改发货方式</h3>
 			</div>
 			<div class="modal-body">
-				<select id="payment_type" name="payment_type" class="select-common middle">
+				<select id="shipping_status" name="shipping_status" class="select-common middle">
 					<option value="">全部</option>
-					<option value="1">微信</option>
-					<option value="2">支付宝</option>
-					<option value="3">信用卡</option>
-					<option value="5">微信线下支付</option>
-					<option value="6">支付宝线下支付</option>
-					<option value="10">线下支付</option>
-					<option value="4">货到付款</option>
+					<option value="0">待发货</option>
+					<option value="1">已发货</option>
+					<option value="2">已收货</option>
+					<option value="3">备货中</option>
 				</select>
 			</div>
 
@@ -480,8 +477,10 @@ function operation(operation_type, order_id){
 		location.href = __URL(ADMINMAIN+'/order/orderdetail?order_id='+order_id);
 	}else if(operation_type == 'update_express'){
 		updateExpress(order_id);//修改运单号
-	}else if(operation_type == 'update_pay_status'){
+	}else if(operation_type == 'update_pay_status') {
 		update_pay_status(order_id);//修改支付方式
+	}else if(operation_type == 'update_delivery_status'){
+		update_delivery_status(order_id);//修改发货状态
 	}else if(operation_type == 'update_address'){
 		update_address(order_id);//修改收货地址
 	}else if(operation_type == 'getdelivery'){
@@ -974,6 +973,8 @@ function update_address(order_id){
 }
 
 
+
+
 //查询修改支付方式的信息
 function update_pay_status(order_id) {
 	$.ajax({
@@ -1010,6 +1011,42 @@ function updatePayStatusSubmit() {
 			}
 		}
 	});
+}
+//获取发货状态
+function update_delivery_status(order_id) {
+	$.ajax({
+		type : 'post',
+		url : "{:__URL('ADMIN_MAIN/order/getDeliveryStatus')}",
+		data : { "order_id" : order_id },
+		success : function(data){
+			$("#shipping_status").val(data['shipping_status']);
+			$("#update_delivery_status").modal('show');
+			$("#update_delivery_status .modal-body table tbody tr").remove();
+			$("#update_delivery_status_id").val(order_id);
+		}
+	});
+}
+//提交修改发货状态
+function updateDeliveryStatusSubmit() {
+	var shipping_status = $("#shipping_status").val();
+	var order_id = $("#update_delivery_status_id").val();
+
+	$.ajax({
+		type : 'post',
+		url : "{:__URL('ADMIN_MAIN/order/updateDeliveryStatus')}",
+		data : {
+			"order_id" : order_id,
+			"shipping_status" : shipping_status,
+		},
+		success : function(data){
+			if (data > 0) {
+				showMessage('success', '修改发货方式成功',window.location.reload());
+			}else{
+				showMessage('error', '修改发货式失败');
+			}
+		}
+	});
+
 }
 
 //提交修改的收货地址

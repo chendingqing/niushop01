@@ -3798,5 +3798,32 @@ class Order extends BaseService implements IOrder
         ]);
         return $retval;
     }
+   
+    /**
+     * 查询发货状态
+     */
+    public function getDeliveryStatus($order_id)
+    {
+        $order=new NsOrderModel();
+        $res=$order->getInfo([ 'order_id' => $order_id],'order_id,shipping_type');
+        return $res;
+    }
+
+    /**
+     * 修改发货状态
+     */
+    public function updateDeliveryStatus($order_id,$shipping_type)
+    {
+        $order = new NsOrderModel();
+        $data = array(
+            'shipping_type' => $shipping_type,
+        );
+        $retval = $order->save($data, [
+            'order_id' => $order_id
+        ]);
+        return $retval;
+    }
+
+
 
 }
