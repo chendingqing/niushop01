@@ -58,7 +58,7 @@ class OrderStatus extends BaseService
                     '4' => array(
                         'no' => 'update_pay_status',
                         'color' => '#51A351',
-                        'name' => '修改支付状态'
+                        'name' => '修改支付方式'
                     )
                 ),
                 'member_operation' => array(
@@ -98,7 +98,7 @@ class OrderStatus extends BaseService
                     '3' => array(
                         'no' => 'update_pay_status',
                         'color' => '#51A351',
-                        'name' => '修改支付状态'
+                        'name' => '修改支付方式'
                     ),
                     '4' => array(
                         'no' => 'update_delivery_status',
@@ -133,7 +133,7 @@ class OrderStatus extends BaseService
                     '3' => array(
                         'no' => 'update_pay_status',
                         'color' => '#51A351',
-                        'name' => '修改支付状态'
+                        'name' => '修改支付方式'
                     ),
                     '4' => array(
                         'no' => 'update_delivery_status',

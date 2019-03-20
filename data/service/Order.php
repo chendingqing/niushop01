@@ -3774,4 +3774,29 @@ class Order extends BaseService implements IOrder
         $retval = $order->pickedUpAuditorConfirmPickup($order_id, $auditor_id,$buyer_name,$buyer_phone);
         return $retval;
     }
+    /**
+     * 查询支付方式
+     */
+
+    public function getPaystatus($order_id)
+    {
+    $order=new NsOrderModel();
+   $res=$order->getInfo([ 'order_id' => $order_id],'order_id,payment_type');
+   return $res;
+    }
+    /**
+     * 修改支付方式
+     */
+    public function updatePaystatus($order_id,$payment_type)
+    {
+        $order = new NsOrderModel();
+        $data = array(
+            'payment_type' => $payment_type,
+        );
+        $retval = $order->save($data, [
+            'order_id' => $order_id
+        ]);
+        return $retval;
+    }
+
 }

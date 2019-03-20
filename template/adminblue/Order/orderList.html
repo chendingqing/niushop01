@@ -91,11 +91,12 @@
 						<dd>
 							<select id="payment_type" class="select-common middle">
 								<option value="">全部</option>
+								<option value="0">在线支付</option>
 								<option value="1">微信</option>
 								<option value="2">支付宝</option>
-								<option value="3">信用卡</option>
-								<option value="5">微信线下支付</option>
-								<option value="6">支付宝线下支付</option>
+								<option value="7">信用卡支付</option>
+								<option value="8">微信线下支付</option>
+								<option value="9">支付宝线下支付</option>
 								<option value="10">线下支付</option>
 								<option value="4">货到付款</option>
 							</select>
@@ -154,6 +155,7 @@
 	</table>
 </div>
 
+
 <div id="orderAction"></div>
 
 {/block}
@@ -207,7 +209,6 @@ function LoadingInfo(page_index) {
 			"order_type" : order_type
 		},
 		success : function(data) {
-			console.log(data);
 			if (data["data"].length > 0) {
 
 				$("#ajax-orderlist tbody").empty();
@@ -326,7 +327,12 @@ function LoadingInfo(page_index) {
 					}else{
 						html += '<a style="display:block;margin-bottom:5px;" href="'+__URL('ADMIN_MAIN/order/orderdetail?order_id='+order_id)+'">订单详情</a>';	
 					}
-					if(order_type == '7'){
+					/*if(order_type == '7'){
+						html += '<a style="display:block;margin-bottom:5px;"onclick="operation(\'update_pay_status\',14)" >修改订单状态</a>';
+					}else{
+						html += '<a style="display:block;margin-bottom:5px;" onclick="operation(\'update_pay_status\',14)">修改订单状态</a>';
+					}*/
+				/*	if(order_type == '7'){
 						html += '<a style="display:block;margin-bottom:5px;" href="'+__URL('ADMIN_MAIN/order/bargainOrderDetail?order_id='+order_id)+'">修改支付状态</a>';
 					}else{
 						html += '<a style="display:block;margin-bottom:5px;" href="'+__URL('ADMIN_MAIN/order/orderdetail?order_id='+order_id)+'">修改支付状态</a>';
@@ -335,7 +341,7 @@ function LoadingInfo(page_index) {
 						html += '<a style="display:block;margin-bottom:5px;" href="'+__URL('ADMIN_MAIN/order/bargainOrderDetail?order_id='+order_id)+'">修改发货状态</a>';
 					}else{
 						html += '<a style="display:block;margin-bottom:5px;" href="'+__URL('ADMIN_MAIN/order/orderdetail?order_id='+order_id)+'">修改发货状态</a>';
-					}
+					}*/
 
 					if(data["data"][i]["operation"] != ''){
 						for(var m = 0; m < data["data"][i]["operation"].length; m++){
@@ -499,5 +505,6 @@ $(".more-search").on("click", function(e){
 $(".more-search-container").on("click", function(e){
     e.stopPropagation();
 });
+
 </script>
 {/block}

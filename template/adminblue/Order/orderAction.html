@@ -279,7 +279,70 @@ textarea{width: 350px;}
 	</div>
 </div>
 
+
+
+<!--修改支付方式模态-->
+<div class="modal hide fade" id="update_pay_status" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-left:-365px; width: 700px;">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3>修改支付方式</h3>
+			</div>
+			<div class="modal-body">
+					<select id="payment_type" name="payment_type" class="select-common middle">
+						<option value="">全部</option>
+						<option value="0">在线支付</option>
+						<option value="1">微信</option>
+						<option value="2">支付宝</option>
+						<option value="7">信用卡支付</option>
+						<option value="8">微信线下支付</option>
+						<option value="9">支付宝线下支付</option>
+						<option value="10">线下支付</option>
+						<option value="4">货到付款</option>
+					</select>
+			</div>
+
+			<div class="modal-footer">
+				<input type="hidden" id="update_pay_status_id" />
+				<button type="button" class="btn-common btn-big" onclick="updatePayStatusSubmit()">修改</button>
+				<button type="button" class="btn-common-white btn-big" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--修改发货状态-->
+<div class="modal hide fade" id="update_delivery_status" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-left:-365px; width: 700px;">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3>修改发货方式</h3>
+			</div>
+			<div class="modal-body">
+				<select id="payment_type" name="payment_type" class="select-common middle">
+					<option value="">全部</option>
+					<option value="1">微信</option>
+					<option value="2">支付宝</option>
+					<option value="3">信用卡</option>
+					<option value="5">微信线下支付</option>
+					<option value="6">支付宝线下支付</option>
+					<option value="10">线下支付</option>
+					<option value="4">货到付款</option>
+				</select>
+			</div>
+
+			<div class="modal-footer">
+				<input type="hidden" id="update_delivery_status_id" />
+				<button type="button" class="btn-common btn-big" onclick="">修改</button>
+				<button type="button" class="btn-common-white btn-big" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
 <!-- 模态框（Modal） -->
+
 <div class="modal fade hide" id="Memobox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:700px;left:45%;top:30%;">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -397,6 +460,7 @@ $(function() {
 });
 /*****订单相关操作函数开始*****/
 function operation(operation_type, order_id){
+
 	if(operation_type == 'pay'){
 		orderOffLinePay(order_id);//线下支付
 	}else if(operation_type == 'complete'){
@@ -416,6 +480,8 @@ function operation(operation_type, order_id){
 		location.href = __URL(ADMINMAIN+'/order/orderdetail?order_id='+order_id);
 	}else if(operation_type == 'update_express'){
 		updateExpress(order_id);//修改运单号
+	}else if(operation_type == 'update_pay_status'){
+		update_pay_status(order_id);//修改支付方式
 	}else if(operation_type == 'update_address'){
 		update_address(order_id);//修改收货地址
 	}else if(operation_type == 'getdelivery'){
@@ -903,6 +969,45 @@ function update_address(order_id){
 			$("#update_address").modal('show');
 			$("#update_address .modal-body table tbody tr").remove();
 			$("#update_address_id").val(order_id);
+		}
+	});
+}
+
+
+//查询修改支付方式的信息
+function update_pay_status(order_id) {
+	$.ajax({
+		type : 'post',
+		url : "{:__URL('ADMIN_MAIN/order/getOrderUpdatePayStatus')}",
+		data : { "order_id" : order_id },
+		success : function(data){
+
+			$("#payment_type").val(data['payment_type']);
+			$("#update_pay_status").modal('show');
+			$("#update_pay_status .modal-body table tbody tr").remove();
+			$("#update_pay_status_id").val(order_id);
+		}
+	});
+
+}
+//提交修改支付方式
+function updatePayStatusSubmit() {
+	var payment_type = $("#payment_type").val();
+	var order_id = $("#update_pay_status_id").val();
+
+	$.ajax({
+		type : 'post',
+		url : "{:__URL('ADMIN_MAIN/order/updatePaystatus')}",
+		data : {
+			"order_id" : order_id,
+			"payment_type" : payment_type,
+		},
+		success : function(data){
+			if (data > 0) {
+				showMessage('success', '修改支付方式成功',window.location.reload());
+			}else{
+				showMessage('error', '修改支付方式失败');
+			}
 		}
 	});
 }

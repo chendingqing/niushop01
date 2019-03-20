@@ -922,6 +922,7 @@ class Order extends BaseController
         return $res;
     }
 
+
     /**
      * 修改收货地址的信息
      *
@@ -945,6 +946,29 @@ class Order extends BaseController
         $res = $order_service->updateOrderReceiveDetail($order_id, $receiver_mobile, $receiver_province, $receiver_city, $receiver_district, $receiver_address, $receiver_zip, $receiver_name, $fixed_telephone);
         return $res;
     }
+    /**
+     * 获取修改支付方式的信息
+     * @return \data\service\unknown
+     */
+    public function getOrderUpdatePayStatus()
+    {
+        $order_service = new OrderService();
+        $order_id = request()->post('order_id');
+        $res = $order_service->getPaystatus($order_id);
+        return $res;
+    }
+    /**
+     * 更新支付方式
+     */
+    public function updatePaystatus()
+    {
+        $order_service = new OrderService();
+        $order_id = request()->post('order_id');
+        $payment_type = request()->post('payment_type');
+        $res = $order_service->updatePaystatus($order_id, $payment_type);
+        return $res;
+    }
+
 
     /**
      * 获取省列表
