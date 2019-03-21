@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:20:{s:35:"template/shop\blue\Index\index.html";i:1553151902;s:28:"template/shop\blue\base.html";i:1553151902;s:32:"template/shop\blue\urlModel.html";i:1553151902;s:43:"template/shop\blue\Index\controlHeadAd.html";i:1553151902;s:34:"template/shop\blue\controlTop.html";i:1553151902;s:41:"template/shop\blue\controlHeadSerach.html";i:1553151902;s:43:"template/shop\blue\controlHeadGoodType.html";i:1553151902;s:40:"template/shop\blue\controlCommonNav.html";i:1553151902;s:44:"template/shop\blue\Index\controlHeadNav.html";i:1553151902;s:49:"template/shop\blue\Index\controlHeadNavRight.html";i:1553151902;s:43:"template/shop\blue\controlRightSidebar.html";i:1553151902;s:45:"template/shop\blue\Index\controlIndexAdv.html";i:1553151902;s:56:"template/shop\blue\Index\controlLimitedTimeDiscount.html";i:1553151902;s:49:"template/shop\blue\Index\controlCommendBlock.html";i:1553151902;s:45:"template/shop\blue\Index\controlRecFloor.html";i:1553151902;s:51:"template/shop\blue\Index\controlFriendshipLink.html";i:1553151902;s:45:"template/shop\blue\controlBottomLinkHelp.html";i:1553151902;s:37:"template/shop\blue\controlBottom.html";i:1553151902;s:36:"template/shop\blue\controlLogin.html";i:1553151902;s:37:"template/shop\blue\baidu_js_push.html";i:1553151902;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:20:{s:35:"template/shop\blue\Index\index.html";i:1553151902;s:28:"template/shop\blue\base.html";i:1553151902;s:32:"template/shop\blue\urlModel.html";i:1553151902;s:43:"template/shop\blue\Index\controlHeadAd.html";i:1553151902;s:34:"template/shop\blue\controlTop.html";i:1553157362;s:41:"template/shop\blue\controlHeadSerach.html";i:1553151902;s:43:"template/shop\blue\controlHeadGoodType.html";i:1553151902;s:40:"template/shop\blue\controlCommonNav.html";i:1553151902;s:44:"template/shop\blue\Index\controlHeadNav.html";i:1553160225;s:49:"template/shop\blue\Index\controlHeadNavRight.html";i:1553161284;s:43:"template/shop\blue\controlRightSidebar.html";i:1553151902;s:45:"template/shop\blue\Index\controlIndexAdv.html";i:1553151902;s:56:"template/shop\blue\Index\controlLimitedTimeDiscount.html";i:1553151902;s:49:"template/shop\blue\Index\controlCommendBlock.html";i:1553151902;s:45:"template/shop\blue\Index\controlRecFloor.html";i:1553151902;s:51:"template/shop\blue\Index\controlFriendshipLink.html";i:1553151902;s:45:"template/shop\blue\controlBottomLinkHelp.html";i:1553151902;s:37:"template/shop\blue\controlBottom.html";i:1553151902;s:36:"template/shop\blue\controlLogin.html";i:1553151902;s:37:"template/shop\blue\baidu_js_push.html";i:1553151902;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -205,10 +205,22 @@ if($.cookie("1051_close")!=null){
 <style>
 #menu-login{text-align:center;}
 #menu-login .register{margin-right:10px;}
+.header-box{text-align: center;}
+.top-choose{display: inline-block;margin: 10px auto;}
+.top-choose select{min-width: 90px;}
+.top-choose select:first-of-type{margin-right: 20px;}
 </style>
 <div class="header-top">
 	<div class="header-box">
-		<font id="login-info" class="login-info"></font>
+		<font id="login-info" class="login-info">您好！欢迎访问我要买烟网</font>
+		<div class="top-choose">
+			<select name="" id="choosemoney">
+				<option value="1">人民币</option>
+			</select>
+			<select name="" id="chooselang">
+				<option value="1">中文</option>
+			</select>
+		</div>
 		<ul>
 <!-- 			<li><a class="menu-hd home" href="<?php echo __URL('SHOP_MAIN'); ?>" target="_top"><i></i><?php echo lang('shop_index'); ?></a></li> -->
 			<li class="menu-item">
@@ -231,16 +243,16 @@ if($.cookie("1051_close")!=null){
 				</div>
 			</li>
 			<!-- <li class="menu-item cartbox"><a class="menu-hd cart" href="<?php echo __URL('SHOP_MAIN/goods/cart'); ?>" target="_top"><i></i>&nbsp;<?php echo lang('goods_cart'); ?></a></li> -->
-			<li class="menu-item">
+			<!-- <li class="menu-item">
 				<div class="menu">
-					<a class="menu-hd we-chat" href="javascript:;" target="_top"><!-- <i></i> --><?php echo lang('attention_mall'); ?><b></b>
+					<a class="menu-hd we-chat" href="javascript:;" target="_top"><?php echo lang('attention_mall'); ?><b></b>
 					</a>
 					<div id="menu-5" class="menu-bd we-chat-qrcode">
 						<span class="menu-bd-mask"></span> <a target="_top"> <img src="<?php echo __IMG($web_info['web_qrcode']); ?>" alt="<?php echo lang('official_wechat'); ?>"></a>
 						<p class="font-14"><?php echo lang('concerned_official_wechat'); ?></p>
 					</div>
 				</div>
-			</li>
+			</li> -->
 <!-- 			<li class="menu-item"> -->
 <!-- 				<div class="menu"> -->
 <!-- 					<a href="<?php echo __URL('SHOP_MAIN/helpcenter/index'); ?>" class="menu-hd site-nav" target="_blank"> 商家支持 <b></b></a> -->
@@ -257,8 +269,11 @@ if($.cookie("1051_close")!=null){
 <!-- 					</div> -->
 <!-- 				</div> -->
 <!-- 			</li> -->
-			<li class="menu-item"><a  href="<?php echo __URL('APP_MAIN'); ?>" class="menu-hd wap-nav" ><!-- <i></i> --><?php echo lang('mobile_terminal'); ?></a></li>
-			<li class="menu-item"><a href="<?php echo __URL('SHOP_MAIN/helpcenter/index'); ?>" class="menu-hd site-nav" target="_blank"><?php echo lang('shop_help_center'); ?></a></li>
+			<li class="menu-item"><a  href="<?php echo __URL('SHOP_MAIN/member/goodscollectionlist'); ?>" class="menu-hd wap-nav" >收藏夹（0）</a></li>
+			<li class="menu-item"><a href="<?php echo __URL('SHOP_MAIN/helpcenter/index'); ?>" class="menu-hd site-nav" target="_blank">联系我们</a></li>
+			<!-- 手机端，帮助中心 -->
+			<!-- <li class="menu-item"><a  href="<?php echo __URL('APP_MAIN'); ?>" class="menu-hd wap-nav" ><i></i><?php echo lang('mobile_terminal'); ?></a></li>
+			<li class="menu-item"><a href="<?php echo __URL('SHOP_MAIN/helpcenter/index'); ?>" class="menu-hd site-nav" target="_blank"><?php echo lang('shop_help_center'); ?></a></li> -->
 		</ul>
 	</div>
 </div>
@@ -699,7 +714,7 @@ $('.NS-SEARCH-BOX-KEYWORD').bind('keypress', function (event) {
 		<?php if(is_array($list['adv_list']) || $list['adv_list'] instanceof \think\Collection || $list['adv_list'] instanceof \think\Paginator): if( count($list['adv_list'])==0 ) : echo "" ;else: foreach($list['adv_list'] as $k=>$vo): if($vo['adv_image'] == ''): ?>
 				<li style="display: list-item;background: url(__TEMP__/<?php echo $style; ?>/public/images/style_blue_banner.png) no-repeat center;background-size: auto"><a href="javascript:;" target="_blank">&nbsp;</a> </li>
 			<?php else: if($k == 0): ?>
-					<li style="display: list-item;background: url(<?php echo __IMG($vo['adv_image']); ?>) no-repeat center;background-color:<?php echo $vo['background']; ?>;background-size: auto"><a href="<?php echo __URL($vo['adv_url']); ?>" target="_blank" >&nbsp;</a> </li>
+					<li style="display: list-item;background: url(<?php echo __IMG($vo['adv_image']); ?>) no-repeat center;background-color:<?php echo $vo['background']; ?>;background-size: auto 100%;"><a href="<?php echo __URL($vo['adv_url']); ?>" target="_blank" >&nbsp;</a> </li>
 				<?php else: ?>
 					<li style="display: none;background: url(<?php echo __IMG($vo['adv_image']); ?>) no-repeat center;background-color:<?php echo $vo['background']; ?>;background-size: auto"><a href="<?php echo __URL($vo['adv_url']); ?>" target="_blank" >&nbsp;</a> </li>
 				<?php endif; endif; endforeach; endif; else: echo "" ;endif; ?>
@@ -718,47 +733,47 @@ $('.NS-SEARCH-BOX-KEYWORD').bind('keypress', function (event) {
 	2017年2月14日12:28:00
 -->
 <script type="text/javascript">
-$.ajax({
-	type:"post",
-	url:"<?php echo __URL('SHOP_MAIN/components/getlogininfo'); ?>",
-	success:function(data){
-		var login_info_html='';
-		if(data != null && data !=""){
-			if(data["user_info"]["nick_name"]!=null && data["user_info"]["nick_name"] != ""){
-				if(data["user_info"]["user_headimg"]==""){
-					login_info_html+='<div class="login_img"><img src="<?php echo __IMG($default_headimg); ?>" alt="<?php echo lang('default_avatar'); ?>" /></div>';
-				}else{
-					login_info_html+='<div class="login_img"><img src="<?php echo __IMG($default_headimg); ?>" data-original="'+__IMG(data["user_info"]["user_headimg"])+'" alt="<?php echo lang('default_avatar'); ?>" /></div>';
-				}
-				login_info_html+='<div class="login-message"><p class="message-title">Hi,<?php echo lang('i_am'); ?><a href="<?php echo __URL('SHOP_MAIN/member/index'); ?>" class="member_name" title="'+data["user_info"]["nick_name"]+'">'+data["user_info"]["nick_name"]+'</a></p><p class="message-operation"><a href="javascript:logout();" class="logout" ><?php echo lang('safe_exit'); ?></a></p></div>';
-			}
-		}else{
-			login_info_html += '<div class="login_img">';
-			login_info_html += '<img src="<?php echo __IMG($default_headimg); ?>" alt="<?php echo lang('default_avatar'); ?>" />';
-			login_info_html += '</div>';
-			login_info_html += '<div class="login-message">';
-			login_info_html += '<p class="message-title" data-temp="<?php echo $title; ?>">Hi,<?php echo lang('welcome_login'); ?></p>';
-			login_info_html += '<p class="message-operation">';
-			login_info_html += '<a href="javascript:;" class="login ajax-login" onclick="showLoginLayer();"><?php echo lang('login'); ?></a>';
-			login_info_html += '<a href="'+__URL('SHOP_MAIN/login/registerbox')+'" class="register"><?php echo lang('register'); ?></a>';
-			login_info_html += '</p></div>';
-		}
-		$('.right-login-message').html(login_info_html);
-	}
-});
+// $.ajax({
+// 	type:"post",
+// 	url:"<?php echo __URL('SHOP_MAIN/components/getlogininfo'); ?>",
+// 	success:function(data){
+// 		var login_info_html='';
+// 		if(data != null && data !=""){
+// 			if(data["user_info"]["nick_name"]!=null && data["user_info"]["nick_name"] != ""){
+// 				if(data["user_info"]["user_headimg"]==""){
+// 					login_info_html+='<div class="login_img"><img src="<?php echo __IMG($default_headimg); ?>" alt="<?php echo lang('default_avatar'); ?>" /></div>';
+// 				}else{
+// 					login_info_html+='<div class="login_img"><img src="<?php echo __IMG($default_headimg); ?>" data-original="'+__IMG(data["user_info"]["user_headimg"])+'" alt="<?php echo lang('default_avatar'); ?>" /></div>';
+// 				}
+// 				login_info_html+='<div class="login-message"><p class="message-title">Hi,<?php echo lang('i_am'); ?><a href="<?php echo __URL('SHOP_MAIN/member/index'); ?>" class="member_name" title="'+data["user_info"]["nick_name"]+'">'+data["user_info"]["nick_name"]+'</a></p><p class="message-operation"><a href="javascript:logout();" class="logout" ><?php echo lang('safe_exit'); ?></a></p></div>';
+// 			}
+// 		}else{
+// 			login_info_html += '<div class="login_img">';
+// 			login_info_html += '<img src="<?php echo __IMG($default_headimg); ?>" alt="<?php echo lang('default_avatar'); ?>" />';
+// 			login_info_html += '</div>';
+// 			login_info_html += '<div class="login-message">';
+// 			login_info_html += '<p class="message-title" data-temp="<?php echo $title; ?>">Hi,<?php echo lang('welcome_login'); ?></p>';
+// 			login_info_html += '<p class="message-operation">';
+// 			login_info_html += '<a href="javascript:;" class="login ajax-login" onclick="showLoginLayer();"><?php echo lang('login'); ?></a>';
+// 			login_info_html += '<a href="'+__URL('SHOP_MAIN/login/registerbox')+'" class="register"><?php echo lang('register'); ?></a>';
+// 			login_info_html += '</p></div>';
+// 		}
+// 		$('.right-login-message').html(login_info_html);
+// 	}
+// });
 </script>
 <div class="right-sidebar NS-TEMPLATE-NAV-CONTAINER">
 	<!-- 个人信息 -->
-	<div class="right-login-message">
+	<!-- <div class="right-login-message">
 		<div style="text-align:center;">
 			<img src="__TEMP__/<?php echo $style; ?>/public/images/load_login.gif"/>
 			<p style="margin-top:10px;"><?php echo lang('in_load'); ?></p>
 		</div>
-	</div>
+	</div> -->
 	
 
 	<!-- 公告 -->
-	<?php if(count($notice) != 0 || count($article_list) != 0): ?>
+	<!-- <?php if(count($notice) != 0 || count($article_list) != 0): ?>
 	<div class="noticeAndArticle">
 		<ul>
 			<?php if(count($notice) != 0 && count($article_list) != 0): ?>
@@ -787,7 +802,7 @@ $.ajax({
 			<?php endforeach; endif; else: echo "" ;endif; ?>
 			</ul>
 		</div>
-	<?php endif; ?>
+	<?php endif; ?> -->
 
 	<!-- banner右侧资讯_end -->
 <!-- 	<p class="right_title" style="display:none;"><span>&nbsp;</span>管理</p> -->
@@ -796,19 +811,19 @@ $.ajax({
 <!-- 	</div> -->
 </div>
 <script>
-	$(".noticeAndArticle ul li").mouseover(function(){
-		$(".noticeAndArticle ul li").removeClass("acrive");
-		$(this).addClass("acrive");
-		var type = $(this).attr('type');
-		if(type == "notice"){
-			$('[data-type="notice"]').show();
-			$('[data-type="article"]').hide();
-		}else if(type == "article"){
-			$('[data-type="article"]').show();
-			$('[data-type="notice"]').hide();
+	// $(".noticeAndArticle ul li").mouseover(function(){
+	// 	$(".noticeAndArticle ul li").removeClass("acrive");
+	// 	$(this).addClass("acrive");
+	// 	var type = $(this).attr('type');
+	// 	if(type == "notice"){
+	// 		$('[data-type="notice"]').show();
+	// 		$('[data-type="article"]').hide();
+	// 	}else if(type == "article"){
+	// 		$('[data-type="article"]').show();
+	// 		$('[data-type="notice"]').hide();
 
-		}
-	})
+	// 	}
+	// })
 </script>  <!--滚动图右侧公告-->
 	</div>
 </div>
