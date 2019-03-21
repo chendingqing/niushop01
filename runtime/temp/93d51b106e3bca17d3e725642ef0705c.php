@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:35:"template/shop\blue\Login\login.html";i:1553151902;s:32:"template/shop\blue\urlModel.html";i:1553151902;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,18 +6,18 @@
 	<meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="renderer" content="{$platform_shopname}" />
+	<meta name="renderer" content="<?php echo $platform_shopname; ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta name="keywords" content="{$seoconfig.seo_meta}" />
-	<meta name="description" content="{$seoconfig.seo_desc}"/>
-	<meta name="author" content="{$platform_shopname}" />
-	<title>{if condition="$title_before neq ''"}{$title_before}&nbsp;-&nbsp;{/if}{$title}{if condition="$seoconfig.seo_title neq ''"}-{$seoconfig.seo_title}{/if}</title>
-	<link rel="shortcut icon" type="image/x-icon" href="__TEMP__/{$style}/public/images/favicon.ico" media="screen"/>
-	<link href="__TEMP__/{$style}/public/css/member_login.css" rel="stylesheet" type="text/css"/>
-	<link type="text/css" rel="stylesheet" href="__TEMP__/{$style}/public/css/ns_default.css" />
+	<meta name="keywords" content="<?php echo $seoconfig['seo_meta']; ?>" />
+	<meta name="description" content="<?php echo $seoconfig['seo_desc']; ?>"/>
+	<meta name="author" content="<?php echo $platform_shopname; ?>" />
+	<title><?php if($title_before != ''): ?><?php echo $title_before; ?>&nbsp;-&nbsp;<?php endif; ?><?php echo $title; if($seoconfig['seo_title'] != ''): ?>-<?php echo $seoconfig['seo_title']; endif; ?></title>
+	<link rel="shortcut icon" type="image/x-icon" href="__TEMP__/<?php echo $style; ?>/public/images/favicon.ico" media="screen"/>
+	<link href="__TEMP__/<?php echo $style; ?>/public/css/member_login.css" rel="stylesheet" type="text/css"/>
+	<link type="text/css" rel="stylesheet" href="__TEMP__/<?php echo $style; ?>/public/css/ns_default.css" />
 	<script src="__STATIC__/js/jquery-1.8.1.min.js"></script>
 	<script src="__STATIC__/bootstrap/js/bootstrap.js"></script>
-	<link type="text/css" rel="stylesheet" href="__TEMP__/{$style}/public/css/login.css"/>
+	<link type="text/css" rel="stylesheet" href="__TEMP__/<?php echo $style; ?>/public/css/login.css"/>
 	<script src="__STATIC__/js/load_bottom.js" type="text/javascript"></script>
 	<!-- logo样式 -->
 	<link type="text/css" rel="stylesheet" href="__STATIC__/shop_css_logo/shop_logo.css" />
@@ -32,20 +33,69 @@
 	</style>
 </head>
 <body>
-{include file='shop/blue/urlModel'/}
+<input type="hidden" id="niushop_rewrite_model" value="<?php echo rewrite_model(); ?>">
+<input type="hidden" id="niushop_url_model" value="<?php echo url_model(); ?>">
+<script>
+function __URL(url)
+{
+    url = url.replace('SHOP_MAIN', '');
+    url = url.replace('APP_MAIN', 'wap');
+    if(url == ''|| url == null){
+        return 'SHOP_MAIN';
+    }else{
+        var str=url.substring(0, 1);
+        if(str=='/' || str=="\\"){
+            url=url.substring(1, url.length);
+        }
+        if($("#niushop_rewrite_model").val()==1 || $("#niushop_rewrite_model").val()==true){
+            return 'SHOP_MAIN/'+url;
+        }
+        var action_array = url.split('?');
+        //检测是否是pathinfo模式
+        url_model = $("#niushop_url_model").val();
+        if(url_model==1 || url_model==true)
+        {
+            var base_url = 'SHOP_MAIN/'+action_array[0];
+            var tag = '?';
+        }else{
+            var base_url = 'SHOP_MAIN?s=/'+ action_array[0];
+            var tag = '&';
+        }
+        if(action_array[1] != '' && action_array[1] != null){
+            return base_url + tag + action_array[1];
+        }else{
+        	 return base_url;
+        }
+    }
+}
+/**
+ * 处理图片路径
+ */
+function __IMG(img_path){
+	var path = "";
+	if(img_path != undefined && img_path != ""){
+		if(img_path.indexOf("http://") == -1 && img_path.indexOf("https://") == -1){
+			path = "__UPLOAD__\/"+img_path;
+		}else{
+			path = img_path;
+		}
+	}
+	return path;
+}
+</script>
 <div class="header_min" id="header"></div>
 <div class="user_head_bg">
 	<div class="user_head">
 		<div class="logobox" style="padding-top:20px;">
-			<a href="{:__URL('SHOP_MAIN')}" class="web-logo-a">
-				<img src="{:__IMG($web_info['logo'])}" border="0" class="weblogo">
+			<a href="<?php echo __URL('SHOP_MAIN'); ?>" class="web-logo-a">
+				<img src="<?php echo __IMG($web_info['logo']); ?>" border="0" class="weblogo">
 			</a>
 		</div>
 		<div class="reg">
 			<span style="float:right;">
-				<span>{:lang('no_account')}？</span>
-				<a href="{:__URL('SHOP_MAIN/login/registerbox')}" style="color:white; text-decoration: none;line-height: 40px;">
-					<span style="display:inline-block;color:#0689e1;line-height:43px;">{:lang('register_immediately')}</span>
+				<span><?php echo lang('no_account'); ?>？</span>
+				<a href="<?php echo __URL('SHOP_MAIN/login/registerbox'); ?>" style="color:white; text-decoration: none;line-height: 40px;">
+					<span style="display:inline-block;color:#0689e1;line-height:43px;"><?php echo lang('register_immediately'); ?></span>
 				</a>
 			</span>
 		</div>
@@ -55,98 +105,87 @@
 <div class="ban_box">
 	<div class="banner" >
 		<ul class="full-screen-slides" id="fullScreenSlides">
-			{niu:adv name="list" id="1103"}
-				{notempty name="list"}
-					{if $list['adv_list'][0]['adv_image'] ==''}
-						<li style="display: list-item;background: url(__TEMP__/{$style}/public/images/blue_login_banner.png) no-repeat center;background-size: auto;">
+			<?php $service = new data\service\Platform;$list = $service->getPlatformAdvPositionDetail("1103", "*");$list = json_encode($list);$list = json_decode($list, ture); if(!(empty($list) || (($list instanceof \think\Collection || $list instanceof \think\Paginator ) && $list->isEmpty()))): if($list['adv_list'][0]['adv_image'] ==''): ?>
+						<li style="display: list-item;background: url(__TEMP__/<?php echo $style; ?>/public/images/blue_login_banner.png) no-repeat center;background-size: auto">
 							<a href="javascript:;" target="_blank">&nbsp;</a>
 						</li>
-					{else/}
-						{foreach name="list['adv_list']" item="vo"}
-							{if $vo['adv_image'] != ''}
-								{if $k eq 0}
-									<li style="display: list-item;background: url({:__IMG($vo['adv_image'])}) no-repeat center;background-color:{$vo['background']};background-size: auto">
-										{notempty name="$vo['adv_url']"}
-											<a href="{:__URL($vo['adv_url'])}" target="_blank" >&nbsp;</a> 
-										{/notempty}
+					<?php else: if(is_array($list['adv_list']) || $list['adv_list'] instanceof \think\Collection || $list['adv_list'] instanceof \think\Paginator): if( count($list['adv_list'])==0 ) : echo "" ;else: foreach($list['adv_list'] as $key=>$vo): if($vo['adv_image'] != ''): if($k == 0): ?>
+									<li style="display: list-item;background: url(<?php echo __IMG($vo['adv_image']); ?>) no-repeat center;background-color:<?php echo $vo['background']; ?>;background-size: auto">
+										<?php if(!(empty($vo['adv_url']) || (($vo['adv_url'] instanceof \think\Collection || $vo['adv_url'] instanceof \think\Paginator ) && $vo['adv_url']->isEmpty()))): ?>
+											<a href="<?php echo __URL($vo['adv_url']); ?>" target="_blank" >&nbsp;</a> 
+										<?php endif; ?>
 									</li>
-								{else/}
-									<li style="display: none;background: url({:__IMG($vo['adv_image'])}) no-repeat center;background-color:{$vo['background']};background-size: auto">
-										{notempty name="$vo['adv_url']"}
-											<a href="{:__URL($vo['adv_url'])}" target="_blank" >&nbsp;</a> 
-										{/notempty}
+								<?php else: ?>
+									<li style="display: none;background: url(<?php echo __IMG($vo['adv_image']); ?>) no-repeat center;background-color:<?php echo $vo['background']; ?>;background-size: auto">
+										<?php if(!(empty($vo['adv_url']) || (($vo['adv_url'] instanceof \think\Collection || $vo['adv_url'] instanceof \think\Paginator ) && $vo['adv_url']->isEmpty()))): ?>
+											<a href="<?php echo __URL($vo['adv_url']); ?>" target="_blank" >&nbsp;</a> 
+										<?php endif; ?>
 									</li>
-								{/if}
-							{/if}
-						{/foreach}
-					{/if}
-				{/notempty}
-			{/niu:adv}
+								<?php endif; endif; endforeach; endif; else: echo "" ;endif; endif; endif; ?>
+			
 		</ul>
 	</div>
 	<div class="maind">
-		{niu:adv name="list" id="1103"}
-			{notempty name="list"}
+		<?php $service = new data\service\Platform;$list = $service->getPlatformAdvPositionDetail("1103", "*");$list = json_encode($list);$list = json_decode($list, ture); if(!(empty($list) || (($list instanceof \think\Collection || $list instanceof \think\Paginator ) && $list->isEmpty()))): ?>
 				<div class="login js-login" style="background: transparent">
-			{else/}
-				<div class="login js-login" style="background:url(__TEMP__/{$style}/public/images/blue_login_banner.png) no-repeat 0 30px;">
-			{/notempty}
-		{/niu:adv}
+			<?php else: ?>
+				<div class="login js-login" style="background:url(__TEMP__/<?php echo $style; ?>/public/images/blue_login_banner.png) no-repeat 0 30px;">
+			<?php endif; ?>
+		
 			<!--用户名密码 -->
 			<div class="mob j_mob_show" style="background:#fff;">
-<!-- 				{if condition="$Wchat_info['is_use'] eq 1"} -->
-<!-- 				<div class="righttab J_hoverbut J_mob" title="微信扫码{:lang('login')}"></div> -->
-<!-- 				{/if} -->
+<!-- 				<?php if($Wchat_info['is_use'] == 1): ?> -->
+<!-- 				<div class="righttab J_hoverbut J_mob" title="微信扫码<?php echo lang('login'); ?>"></div> -->
+<!-- 				<?php endif; ?> -->
 				<div class="tit">
-					<span class="switch_txt active">{$title}{:lang('user_login')}</span>
-					<div id="forAccountLogin" class="switch_account link_blue" data-index="0"><a href="javascript:;">{:lang('switch_account_login')}</a></div>
+					<span class="switch_txt active"><?php echo $title; ?><?php echo lang('user_login'); ?></span>
+					<div id="forAccountLogin" class="switch_account link_blue" data-index="0"><a href="javascript:;"><?php echo lang('switch_account_login'); ?></a></div>
 				</div>
 				<div class="type_box active">
 					<div class="err J_errbox" id="hint" style="display:none;"></div>
 					<div class="inputbox J_focus">
 						<div class="imgbg"></div>
-						<input type="text" class="input_login" name="txtName" id="txtName" placeholder="{:lang('cell_phone_number')}/{:lang('member_name')}/{:lang('mailbox')}" /> 
+						<input type="text" class="input_login" name="txtName" id="txtName" placeholder="<?php echo lang('cell_phone_number'); ?>/<?php echo lang('member_name'); ?>/<?php echo lang('mailbox'); ?>" /> 
 					</div>
 					<div class="inputbox J_focus">
 						<div class="imgbg pwd"></div>
-						<input type="password" class="input_login pwd J_loginword" name="txtPWD" id="txtPWD" placeholder="{:lang('please_input_password')}" />
+						<input type="password" class="input_login pwd J_loginword" name="txtPWD" id="txtPWD" placeholder="<?php echo lang('please_input_password'); ?>" />
 					</div>
 					
-					<div class="inputbox J_focus verification-code" {if condition="!$is_need_verification"}style="display:none;"{/if}>
+					<div class="inputbox J_focus verification-code" <?php if(!$is_need_verification): ?>style="display:none;"<?php endif; ?>>
 <!-- 						<div class="imgbg"></div> -->
-						<input type="text" id="vertification" class="input_login vertification" name="vertification" placeholder="{:lang('please_enter_verification_code')}" style="padding-left:15px;width:285px;" />
-						<img id="verify_img" src="{:__URL('SHOP_MAIN/captcha')}" alt="captcha" onclick="this.src='{:__URL('SHOP_MAIN/captcha?tag=1')}'+'&send='+Math.random()" />
+						<input type="text" id="vertification" class="input_login vertification" name="vertification" placeholder="<?php echo lang('please_enter_verification_code'); ?>" style="padding-left:15px;width:285px;" />
+						<img id="verify_img" src="<?php echo __URL('SHOP_MAIN/captcha'); ?>" alt="captcha" onclick="this.src='<?php echo __URL('SHOP_MAIN/captcha?tag=1'); ?>'+'&send='+Math.random()" />
 					</div>
 					
 					<div class="txtbox link_gray6">
-						<!-- <div class="td1"><label><input  class="J_expire" name="expire" checked="checked" type="checkbox" value="1">7天内自动{:lang('login')}</label></div> -->
-						<div class="td2" style="float: right;text-align: left;"><a href="{:__URL('SHOP_MAIN/login/findpasswd')}">{:lang('forgot_password')}?</a></div>
+						<!-- <div class="td1"><label><input  class="J_expire" name="expire" checked="checked" type="checkbox" value="1">7天内自动<?php echo lang('login'); ?></label></div> -->
+						<div class="td2" style="float: right;text-align: left;"><a href="<?php echo __URL('SHOP_MAIN/login/findpasswd'); ?>"><?php echo lang('forgot_password'); ?>?</a></div>
 					</div>
-					<div class="btnbox"><input class="btn_login J_hoverbut" type="button" id="btnLogin" onclick="btnlogin();" value="{:lang('login')}"></div>
+					<div class="btnbox"><input class="btn_login J_hoverbut" type="button" id="btnLogin" onclick="btnlogin();" value="<?php echo lang('login'); ?>"></div>
 					
-			 		{if condition="$qq_info['is_use'] neq 0 || $Wchat_info['is_use'] neq 0"}
+			 		<?php if($qq_info['is_use'] != 0 || $Wchat_info['is_use'] != 0): ?>
 					<div class="qqbox">
 						<div class="qtit">
-							<span class="qtit_left" style="">{:lang('use_cooperative_account')}</span>
+							<span class="qtit_left" style=""><?php echo lang('use_cooperative_account'); ?></span>
 							<div class="clear"></div>
 						</div>
 						<div class="appsparent" style="display: inline-block; float: right;margin-top: -55px;margin-right: 18px;">
 							<div class="apps">
-							{if condition="$qq_info['is_use'] eq 1"}<a class="ali qq" href="{:__URL('APP_MAIN/login/oauthlogin','type=QQLOGIN')}" title="{:lang('qq_account_login')}"></a>{/if}
-							{if condition="$Wchat_info['is_use'] eq 1"}<a class="ali taobao" href="{:__URL('APP_MAIN/login/oauthlogin','type=WCHAT')}"  title="{:lang('wechat_authorized_login')}"></a>{/if}
+							<?php if($qq_info['is_use'] == 1): ?><a class="ali qq" href="<?php echo __URL('APP_MAIN/login/oauthlogin','type=QQLOGIN'); ?>" title="<?php echo lang('qq_account_login'); ?>"></a><?php endif; if($Wchat_info['is_use'] == 1): ?><a class="ali taobao" href="<?php echo __URL('APP_MAIN/login/oauthlogin','type=WCHAT'); ?>"  title="<?php echo lang('wechat_authorized_login'); ?>"></a><?php endif; ?>
 							</div>
 						</div>
 						<div class="clear"></div>
 					</div>
-					{/if}
+					<?php endif; ?>
 				</div>
 			</div>
 			<!--二维码的 -->
 			<div class="qr_code J_qr_code_show">
-				<div class="righttab J_hoverbut J_qr_code" title="{:lang('account_password_login')}"></div>
-				<div class="tit">{:lang('wechat_scan_code_secure_login')}</div>
+				<div class="righttab J_hoverbut J_qr_code" title="<?php echo lang('account_password_login'); ?>"></div>
+				<div class="tit"><?php echo lang('wechat_scan_code_secure_login'); ?></div>
 				<div id="J_weixinQrCode" class="code"><img width="140" height="140" src="ADMIN_IMG/icon-code.png"></div>
-				<div class="txt" style="margin-left:60px;">{:lang('wechat_sweep')}</div>
+				<div class="txt" style="margin-left:60px;"><?php echo lang('wechat_sweep'); ?></div>
 			</div>
 		</div>
 	</div>
@@ -165,14 +204,14 @@
 </div>
 <div class="footer_min" id="footer">
 	<div class="links link_gray6">
-		<a target="_blank" href="{:__URL('SHOP_MAIN/index/index')}">{:lang('home')}</a>|
-		<a target="_blank" href="{:__URL('SHOP_MAIN/helpcenter/index','id=2')}">{:lang('common_problem')}</a>|
-		<a target="_blank" href="{:__URL('SHOP_MAIN/helpcenter/index','id=1')}">{:lang('shopping_process')}</a>|
-		<a target="_blank" href="{:__URL('SHOP_MAIN/helpcenter/index','id=9')}">{:lang('refund_description')}</a>|
-		<a target="_blank" href="http://www.5law.cn/">{:lang('legal_declaration')}</a>|
-		<a target="_blank" href="{:__URL('SHOP_MAIN/helpcenter/index','id=10')}">{:lang('refund_process')}</a>|
-		<a target="_blank" href="{:__URL('SHOP_MAIN/helpcenter/index','id=12')}">{:lang('merchants_settled')}</a>|
-		<a target="_blank" href="{:__URL('SHOP_MAIN/helpcenter/index','id=11')}">{:lang('refund_policy')}</a> 
+		<a target="_blank" href="<?php echo __URL('SHOP_MAIN/index/index'); ?>"><?php echo lang('home'); ?></a>|
+		<a target="_blank" href="<?php echo __URL('SHOP_MAIN/helpcenter/index','id=2'); ?>"><?php echo lang('common_problem'); ?></a>|
+		<a target="_blank" href="<?php echo __URL('SHOP_MAIN/helpcenter/index','id=1'); ?>"><?php echo lang('shopping_process'); ?></a>|
+		<a target="_blank" href="<?php echo __URL('SHOP_MAIN/helpcenter/index','id=9'); ?>"><?php echo lang('refund_description'); ?></a>|
+		<a target="_blank" href="http://www.5law.cn/"><?php echo lang('legal_declaration'); ?></a>|
+		<a target="_blank" href="<?php echo __URL('SHOP_MAIN/helpcenter/index','id=10'); ?>"><?php echo lang('refund_process'); ?></a>|
+		<a target="_blank" href="<?php echo __URL('SHOP_MAIN/helpcenter/index','id=12'); ?>"><?php echo lang('merchants_settled'); ?></a>|
+		<a target="_blank" href="<?php echo __URL('SHOP_MAIN/helpcenter/index','id=11'); ?>"><?php echo lang('refund_policy'); ?></a> 
 	</div>
 	<div class="txt" id="bottom_copyright">
 		<p>
@@ -193,8 +232,8 @@
 	<div class="icon"></div>
 	<div class="content"></div>
 </div>
-<script type="text/javascript" src="__TEMP__/{$style}/public/js/ns_components.js"></script>
-<script type="text/javascript" src="__TEMP__/{$style}/public/js/ns_index.js"></script>
+<script type="text/javascript" src="__TEMP__/<?php echo $style; ?>/public/js/ns_components.js"></script>
+<script type="text/javascript" src="__TEMP__/<?php echo $style; ?>/public/js/ns_index.js"></script>
 <script type="text/javascript">
 var global = {
 	h:$(window).height(),
@@ -271,7 +310,7 @@ $(function() {
 	} else if (Sys.safari) {
 		$("#explorer").text("Safari");
 	} else {
-		$("#explorer").text("{:lang('member_other')}");
+		$("#explorer").text("<?php echo lang('member_other'); ?>");
 	}
 });
 
@@ -326,27 +365,27 @@ function btnlogin() {
 	var userName = $.trim($('#txtName').val());
 	var password = $.trim($('#txtPWD').val());
 	var vertification = $.trim($('#vertification').val());
-	if(userName == "{:lang('enter_your_account_number')}" || userName == "" || userName == null || userName == undefined) {
+	if(userName == "<?php echo lang('enter_your_account_number'); ?>" || userName == "" || userName == null || userName == undefined) {
 		$("#hint").css("display", "block");
-		$("#hint").text("{:lang('enter_your_account_number')}");
+		$("#hint").text("<?php echo lang('enter_your_account_number'); ?>");
 		$("#txtName").focus();
 		return false;
 	}else if (password == "") {
 		$("#hint").css("display", "block");
-		$("#hint").text("{:lang('please_input_password')}");
+		$("#hint").text("<?php echo lang('please_input_password'); ?>");
 		$("#hidpwd").focus();
 		return false;
 	}
 	if(!$(".verification-code").is(":hidden")){
 		if(vertification == undefined || vertification == ""){
 			$("#hint").css("display", "block");
-			$("#hint").text("{:lang('please_enter_verification_code')}");
+			$("#hint").text("<?php echo lang('please_enter_verification_code'); ?>");
 			$("#vertification").focus();
 			return false;
 		}
 	}
 	// 后台验证
-	$.post("{:__URL('SHOP_MAIN/login/index')}", {
+	$.post("<?php echo __URL('SHOP_MAIN/login/index'); ?>", {
 		"username" : userName,
 		"password" : password,
 		"vertification" : vertification
@@ -358,10 +397,10 @@ function btnlogin() {
 		}else {
 			$("#hint").css("display", "block");
 			$("#hint").text(data['message']); //  用户名密码提示
-			var error_num = {$login_verify_code['error_num']};
+			var error_num = <?php echo $login_verify_code['error_num']; ?>;
 			if(error_num != 0 && data['error_num'] >= error_num){
 				$(".verification-code").show();
-				$("#verify_img").attr("src",'{:__URL('SHOP_MAIN/captcha?tag=1')}&send='+Math.random());
+				$("#verify_img").attr("src",'<?php echo __URL('SHOP_MAIN/captcha?tag=1'); ?>&send='+Math.random());
 			}
 		}
 	});
@@ -394,7 +433,7 @@ function AddFavorite(sURL, sTitle) {
 		try {
 			window.sidebar.addPanel(sTitle, sURL, "");
 		} catch (e) {
-			alert("{:lang('failed_collection')}");
+			alert("<?php echo lang('failed_collection'); ?>");
 		}
 	}
 }
@@ -407,7 +446,7 @@ function toDesktop(sUrl, sName) {
 		oUrlLink.TargetPath = sUrl;
 		oUrlLink.Save();
 	} catch (e) {
-		alert("{:lang('not_allowed_operation')}！");
+		alert("<?php echo lang('not_allowed_operation'); ?>！");
 	}
 }
 
