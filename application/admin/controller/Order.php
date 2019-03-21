@@ -986,8 +986,8 @@ class Order extends BaseController
     {
         $order_service = new OrderService();
         $order_id = request()->post('order_id');
-        $shipping_type = request()->post('shipping_type');
-        $res = $order_service->updateDeliveryStatus($order_id, $shipping_type);
+        $order_status = request()->post('order_status');
+        $res = $order_service->updateDeliveryStatus($order_id, $order_status);
         return $res;
     }
 

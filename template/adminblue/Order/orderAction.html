@@ -321,7 +321,7 @@ textarea{width: 350px;}
 				<h3>修改发货方式</h3>
 			</div>
 			<div class="modal-body">
-				<select id="shipping_status" name="shipping_status" class="select-common middle">
+				<select id="order_status" name="order_status" class="select-common middle">
 					<option value="">全部</option>
 					<option value="0">待发货</option>
 					<option value="1">已发货</option>
@@ -1019,7 +1019,7 @@ function update_delivery_status(order_id) {
 		url : "{:__URL('ADMIN_MAIN/order/getDeliveryStatus')}",
 		data : { "order_id" : order_id },
 		success : function(data){
-			$("#shipping_status").val(data['shipping_status']);
+			$("#shipping_status").val(data['order_status']);
 			$("#update_delivery_status").modal('show');
 			$("#update_delivery_status .modal-body table tbody tr").remove();
 			$("#update_delivery_status_id").val(order_id);
@@ -1028,7 +1028,7 @@ function update_delivery_status(order_id) {
 }
 //提交修改发货状态
 function updateDeliveryStatusSubmit() {
-	var shipping_status = $("#shipping_status").val();
+	var order_status = $("#order_status").val();
 	var order_id = $("#update_delivery_status_id").val();
 
 	$.ajax({
@@ -1036,7 +1036,7 @@ function updateDeliveryStatusSubmit() {
 		url : "{:__URL('ADMIN_MAIN/order/updateDeliveryStatus')}",
 		data : {
 			"order_id" : order_id,
-			"shipping_status" : shipping_status,
+			"order_status" : order_status,
 		},
 		success : function(data){
 			if (data > 0) {

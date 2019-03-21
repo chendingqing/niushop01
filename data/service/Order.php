@@ -3805,18 +3805,18 @@ class Order extends BaseService implements IOrder
     public function getDeliveryStatus($order_id)
     {
         $order=new NsOrderModel();
-        $res=$order->getInfo([ 'order_id' => $order_id],'order_id,shipping_type');
+        $res=$order->getInfo([ 'order_id' => $order_id],'order_id,order_status');
         return $res;
     }
 
     /**
      * 修改发货状态
      */
-    public function updateDeliveryStatus($order_id,$shipping_type)
+    public function updateDeliveryStatus($order_id,$order_status)
     {
         $order = new NsOrderModel();
         $data = array(
-            'shipping_type' => $shipping_type,
+            'shipping_type' => $order_status,
         );
         $retval = $order->save($data, [
             'order_id' => $order_id
