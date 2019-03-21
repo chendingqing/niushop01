@@ -1,0 +1,50 @@
+{extend name="wap/default_new/base" /}
+{block name="resources"}
+<link rel="stylesheet" type="text/css" href="__TEMP__/{$style}/public/css/member_address.css">
+{/block}
+{block name="goodsHead"}
+<section class="head">
+    <a class="head_back" href="javascript:window.history.go(-1)"><i class="icon-back"></i></a>
+    <div class="head-title">添加信用卡</div>
+</section>
+{/block}
+{block name="main"}
+<!--<input type="hidden" id="ref_url" value="{$pre_url}">
+<input type="hidden" value="{$flag}" id="hidden_flag"/>
+<input type="hidden" value="{$id}" id="hidden_id"/>
+<input type="hidden" value="{$bargain_id}" id="hidden_bargain_id"/>-->
+
+<form class="form-info" action="" method="post">
+
+
+    <div class="div-item">
+        <span>选择信用卡</span>
+        <select class="dropdownlists valid" id="CreditCardType" name="CreditCardType">
+            <option value="visa">Visa</option>
+            <option value="MasterCard">Master card</option>
+            <option value="Discover">Discover</option>
+            <option value="Amex">Amex</option>
+        </select>
+    </div>
+    <div class="div-item">
+        <span>持卡人姓名：</span> <input type="text" placeholder="持卡人姓名" id="creditName" name="userName"/>
+    </div>
+    <div class="div-item">
+        <span>卡号</span> <input type="text" placeholder="请输入卡号" id="CardNumber" name="CardNumber"/>
+    </div>
+    <div class="div-item">
+        <span>过期时间</span>
+        <input type="date" placeholder="" id="overdueTime" name="overdueTime"/>
+
+    </div>
+    <div class="div-item">
+        <span>安全码</span>
+        <input type="text" placeholder="安全码" id="CardCode" name="CardCode"/>
+    </div>
+</form>
+<button onclick="" class="btn-save">确认添加</button>
+{/block}
+{block name="bottom"}{/block}
+{block name="javascript"}
+<script src="__TEMP__/{$style}/public/js/address.js"></script>
+{/block}

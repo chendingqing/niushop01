@@ -112,9 +112,9 @@
 			var APPMAIN='APP_MAIN';
 			var STATIC = "__STATIC__";
 			var interval = null;
-			function countdown(){
+			/*function countdown(){
 				var date = new Date($("#create_time").val().replace(/\-/g, "\/"));//订单创建时间
-				var buy_close_time = parseFloat($("#buy_close_time").val())*60*1000;//订单关闭时间
+				//var buy_close_time = parseFloat($("#buy_close_time").val())*60*1000;//订单关闭时间
 				date.setDate(date.getDate()+1);
 				var date_now = new Date($.ajax({async: false}).getResponseHeader("Date"));//当前时间
 				var end_time = date.getTime()+buy_close_time; //结束时间毫秒数
@@ -138,12 +138,12 @@
 					}
 					$(".close-time").text(hour+":"+minute+":"+second);
 				}
-			}
+			}*/
 
 			$(function() {					
-				//设置时间倒计时
+			/*	//设置时间倒计时
 				countdown();
-				interval = setInterval("countdown()",1000);
+				interval = setInterval("countdown()",1000);*/
 
 				//如果有支付方式则默认选中第一个支付方式
 				if($(".pay-type-list li").length > 0){
@@ -170,7 +170,7 @@
 							break;
 						case "unionpay":
 							//跳转到银联卡
-							url = '{:__URL('APP_MAIN/pay/unionpay?no='.$pay_value['out_trade_no'])}';
+							url = '{:__URL('APP_MAIN/pay/credit')}';
 							break;
 						}
 						window.open(url);

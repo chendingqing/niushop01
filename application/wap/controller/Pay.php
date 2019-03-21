@@ -665,4 +665,12 @@ class Pay extends Controller
             }
         }
     }
+
+    /**
+     * 信用卡支付页面
+     */
+    public function credit()
+    {
+        return view($this->style . "Pay/credit");
+    }
 }

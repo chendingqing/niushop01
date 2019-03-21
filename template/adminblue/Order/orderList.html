@@ -327,27 +327,17 @@ function LoadingInfo(page_index) {
 					}else{
 						html += '<a style="display:block;margin-bottom:5px;" href="'+__URL('ADMIN_MAIN/order/orderdetail?order_id='+order_id)+'">订单详情</a>';	
 					}
-					/*if(order_type == '7'){
-						html += '<a style="display:block;margin-bottom:5px;"onclick="operation(\'update_pay_status\',14)" >修改订单状态</a>';
-					}else{
-						html += '<a style="display:block;margin-bottom:5px;" onclick="operation(\'update_pay_status\',14)">修改订单状态</a>';
-					}*/
-				/*	if(order_type == '7'){
-						html += '<a style="display:block;margin-bottom:5px;" href="'+__URL('ADMIN_MAIN/order/bargainOrderDetail?order_id='+order_id)+'">修改支付状态</a>';
-					}else{
-						html += '<a style="display:block;margin-bottom:5px;" href="'+__URL('ADMIN_MAIN/order/orderdetail?order_id='+order_id)+'">修改支付状态</a>';
-					}
-					if(order_type == '7'){
-						html += '<a style="display:block;margin-bottom:5px;" href="'+__URL('ADMIN_MAIN/order/bargainOrderDetail?order_id='+order_id)+'">修改发货状态</a>';
-					}else{
-						html += '<a style="display:block;margin-bottom:5px;" href="'+__URL('ADMIN_MAIN/order/orderdetail?order_id='+order_id)+'">修改发货状态</a>';
-					}*/
+
 
 					if(data["data"][i]["operation"] != ''){
 						for(var m = 0; m < data["data"][i]["operation"].length; m++){
 							if(data["data"][i]["operation"][m]['no'] == "seller_memo"){
 								html += '<a style="display:block;margin-bottom:5px;color:'+data["data"][i]["operation"][m]["color"]+'" href="javascript:operation(\''+data["data"][i]["operation"][m]['no']+'\','+data["data"][i]["order_id"]+')" >'+data["data"][i]["operation"][m]['name']+'</a>';
-							}else{
+							} else if(data["data"][i]["operation"][m]['no'] == "seller_memo"){
+
+							} else if(data["data"][i]["operation"][m]['no'] == "seller_memo"){
+
+							}else {
 								html += '<a style="display:block;margin-bottom:5px;color:'+data["data"][i]["operation"][m]["color"]+'" href="javascript:operation(\''+data["data"][i]["operation"][m]['no']+'\','+data["data"][i]["order_id"]+')" >'+data["data"][i]["operation"][m]['name']+'</a>';
 							}
 						}
