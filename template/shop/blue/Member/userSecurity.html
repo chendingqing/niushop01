@@ -28,7 +28,7 @@
 					<input type="button" value="{:lang('member_modify')}" onclick="location.href='{:__URL('SHOP_MAIN/member/usersecurity?atc=user_pwd')}'" class="main-btn common-btn" />
 				</div>
 			</div>
-
+			
 			 <!-- 邮箱 -->
 			<div class="mc">
 				{if condition="$member_detail['user_info']['user_email'] neq ''"}
@@ -50,12 +50,12 @@
 				<div class="fore2">
 					<span tyle="color: #ED5854;">{:lang('member_retrieve_password')}</span>
 				</div>
-				<div class="fore3">
+				<div class="fore3"> 
 					<a href="{:__URL('SHOP_MAIN/member/usersecurity?atc=user_email')}" class="btn btn-7">{:lang('member_mailbox_binding')}</a>
 				</div>
 				{/if}
 			</div>
-
+			
 			<!-- 手机 -->
 			<div class="mc">
 				{if condition="$member_detail['user_info']['user_tel'] neq ''"}
@@ -82,33 +82,6 @@
 				</div>
 				{/if}
 			</div>
-            <!--信用卡-->
-            <div class="mc">
-                {if condition="$member_detail['user_info']['card_number'] neq ''"}
-                <div class="fore1">
-                    <s class="fore1_3"></s>
-                    <strong>信用卡</strong>
-                </div>
-                <div class="fore2">
-                    <span class="ftx-03">信用卡已绑定，可以使用信用卡支付</span>
-                </div>
-                <div class="fore3">
-                    <input type="button" value="{:lang('member_modify')}" onclick="location.href='{:__URL('SHOP_MAIN/member/usersecurity?atc=user_credit')}'" class="main-btn common-btn" />
-                </div>
-                {else/}
-                <div class="fore1">
-                    <s class="fore1_1"></s>
-                    <strong>{:lang('信用卡支付')}</strong>
-                </div>
-                <div class="fore2">
-                    <span style="color: #ED5854;">{:lang('有利于信用卡支付')}</span>
-                </div>
-                <div class="fore3">
-                    <a href="{:__URL('SHOP_MAIN/member/usersecurity?atc=user_credit')}" class="btn btn-7">{:lang('绑定信用卡')}</a>
-                </div>
-                {/if}
-            </div>
-
 		</div>
 	</div>
 </div>
@@ -208,7 +181,7 @@ function modifyPwd(){
 		type: "post",
 		success: function (res) {
 			if (res['code']> 0) {
-				$('#user_pwd #find-box').html('<div class="find_box_end"><p> <i></i> {:lang('member_password_changes_succeeded')}！ </p><p class="on_go"> <a href="SHOP_MAIN/member/usersecurity" title="{:lang('member_instant_shopping')}" class="back">{:lang('member_return_account_security_center')}&gt;&gt;</a> </p></div>');
+				$('#user_pwd #find-box').html('<div class="find_box_end"><p> <i></i> {:lang('member_password_changes_succeeded')}！ </p><p class="on_go"> <a href="SHOP_MAIN/member/usersecurity" title="{:lang('member_instant_shopping')}" class="back">{:lang('member_return_account_security_center')}&gt;&gt;</a> </p></div>'); 
 				$('#user_pwd #sflex04 .normal').removeClass('doing');
 				$('#user_pwd #sflex04 .normal').removeClass('done');
 				$('#user_pwd #sflex04 .last').addClass('doing');
@@ -224,11 +197,11 @@ function modifyPwd(){
 {elseif condition="$atc eq 'user_mobile'"/}
 <!-- 手机号绑定 -->
 <div class="member-main" id="user_mobile">
-	<div class="box">
+	<div class="box"> 
 		<h5 title="{:lang('member_bind_mobile')}" class="user-title user-title-t usersecurityTitle"><span>{:lang('member_bind_mobile')}</span></h5>
 		<div class="blank"></div>
 		<div id="find_pw3">
-			<div class="find_con">
+			<div class="find_con"> 
 				<div id="sflex04" class="stepflex stepflex_te">
 					<dl class="normal doing">
 						<dt class="s-num">1</dt>
@@ -280,7 +253,7 @@ function bindingMobile(){
 	var mobile=$('#mobile').val();
 	var mobile_code=$('#mobile_code').val();
 	var vertification = $("#captcha").val();
-
+	
 	if(mobile==''){
 		$('#mobile').parent().children('.error').show();
 		return false;
@@ -316,7 +289,7 @@ function bindingMobile(){
 		{/if}
 	{/if}
 	$("#vertify").hide();
-
+	
 	if(mobile_code==''){
 		$('#mobile_code').parent().children('.error').show();
 		return false;
@@ -342,7 +315,7 @@ function bindingMobile(){
 {elseif condition="$atc eq 'user_email'"/}
 <!-- 邮箱绑定 -->
 <div class="member-main" id="user_email">
-	<div class="box">
+	<div class="box"> 
 		<h5 title="{:lang('member_mailbox_binding')}" class="user-title user-title-t usersecurityTitle"><span>{:lang('member_mailbox_binding')}</span></h5>
 		<div class="blank"></div>
 		<div id="find_pw3">
@@ -455,23 +428,17 @@ function bindingEmail(){
 	});
 }
 </script>
-
-
-
-
-
-<!--信用卡-->
-    {elseif condition="$atc eq 'user_credit'"/}
-<div class="member-main" id='user_credit'>
+{elseif condition="$atc eq 'user_pay_pwd'"/}
+<div class="member-main" id='user_pay_pwd'>
 	<div class="box">
-		<h5 title="{:lang('添加信用卡')}" class="user-title user-title-t"><span>{:lang('添加信用卡')}</span></h5>
+		<h5 title="{:lang('member_set_payment_password')}" class="user-title user-title-t"><span>{:lang('member_set_payment_password')}</span></h5>
 		<div class="blank"></div>
 		<div id="find_pw3">
 			<div class="find_con">
 				<div id="sflex04" class="stepflex stepflex_te">
 					<dl class="normal doing">
 						<dt class="s-num">1</dt>
-						<dd class="s-text">  {:lang('添加信用卡基本信息')}<s></s> <b></b> </dd>
+						<dd class="s-text">  {:lang('member_payment_password_settings')}<s></s> <b></b> </dd>
 					</dl>
 					<dl class="last">
 						<dt class="s-num">&nbsp;</dt>
@@ -481,40 +448,19 @@ function bindingEmail(){
 				<div id="find-box" class="uc_box">
 					<div id="error_container"></div>
 					<div class="item">
-						<label class="con_un">{:lang('信用卡类型')}:</label>
-						<select class="dropdownlists valid" id="CreditCardType" name="CreditCardType">
-							<option value="visa">Visa</option>
-							<option value="MasterCard">Master card</option>
-							<option value="Discover">Discover</option>
-							<option value="Amex">Amex</option>
-						</select>
+						<label class="con_un">{:lang('member_payment_password')}:</label>
+						<input name="paymentPassword" id="paymentPassword" type="password" tabindex="1" placeholder="{:lang('please_input_password')}" class="text" />
+						<span class="error">{:lang('member_must_not_be_empty')}!</span>
 					</div>
 					<div class="item">
-						<label class="con_un">{:lang('持卡人姓名')}:</label>
-						<input type="text" placeholder="持卡人姓名" id="creditName" name="CordName"/>
-						<span class="error">{:lang('持卡人姓名不能为空')}!</span>
+						<label class="con_un">{:lang('member_confirm_payment_password')}:</label>
+						<input name="againPaymentPassword" id="againPaymentPassword" type="password" tabindex="2" placeholder="{:lang('member_confirm_password_again')}" class="text" />
+						<span class="error">{:lang('member_must_not_be_empty')}!</span>
+						<span class="error">{:lang('member_password_inconsistent')}!</span>
 					</div>
-					<div class="item">
-						<label class="con_un">{:lang('信用卡卡号')}:</label>
-						<input type="text" placeholder="请输入卡号" id="CardNumber" name="CardNumber"/>
-						<span class="error">{:lang('信用卡卡号不能为空')}!</span>
-					</div>
-					<div class="item">
-						<label class="con_un">{:lang('过期时间')}:</label>
-						<input type="date" placeholder="" id="overdueTime" name="overdueTime"/>
-					</div>
-					<div class="item">
-						<label class="con_un">{:lang('安全码')}:</label>
-						<input type="text" placeholder="安全码" id="CardCode" name="CardCode"/>
-						<span class="error">{:lang('安全码不能为空')}!</span>
-					</div>
-
-
-
-
 					<div class="item">
 						<label class="con_un">&nbsp;</label>
-						<input type="button" id="btn_submit" name="btn_submit" class="main-btn common-btn" value="{:lang('member_submit')}" onclick="addCredit()"/>
+						<input type="button" id="btn_submit" name="btn_submit" class="main-btn common-btn" value="{:lang('member_submit')}" onclick="setPayPwd()"/>
 					</div>
 				</div>
 			</div>
@@ -522,50 +468,37 @@ function bindingEmail(){
 	</div>
 </div>
 <script>
-    // 信用卡
-function addCredit(){
-
-
-	var CreditCardType = $("#CreditCardType").val();
-	var creditName = $("#creditName").val();
-	var CardNumber = $("#CardNumber").val();
-	var overdueTime = $("#overdueTime").val();
-	var CardCode = $("#CardCode").val();
-
-
-	if(creditName == ""){
-
-
-		$("#creditName").next(".error").show();
-		console.log(33333);
+function setPayPwd(){
+	var paymentPassword = $("#paymentPassword").val();
+	var againPaymentPassword = $("#againPaymentPassword").val();
+	if(paymentPassword.length == 0){
+		$("#paymentPassword").next(".error").show();
 		return false;
+	}else{
+		$("#paymentPassword").next(".error").hide();
 	}
-	if(CardNumber == ''){
-		$("#CardNumber").next(".error").show();
+	if(againPaymentPassword.length == 0){
+		$("#againPaymentPassword").next(".error").show();
 		return false;
+	}else{
+		$("#againPaymentPassword").next(".error").hide();
 	}
-
-	if( CardCode == ''){
-		$("#CardCode").next(".error").show();
+	if(againPaymentPassword != paymentPassword){
+		$("#againPaymentPassword").next().next(".error").show();
 		return false;
+	}else{
+		$("#againPaymentPassword").next().next(".error").hide();
 	}
-
 	$.ajax({
 		type :"post",
-		url : "{:__URL('SHOP_MAIN/member/setCredit')}",
-		data : {
-			"credit_card_type" : CreditCardType,
-			"credit_name":creditName,
-			"card_number":CardNumber,
-			"overdue_time":overdueTime,
-			"card_code":CardCode,
-		},
+		url : "{:__URL('SHOP_MAIN/member/setuserpaymentpassword')}",
+		data : {"payment_password" : paymentPassword},
 		success : function(res){
 			if (res['code']> 0) {
-				$('#user_credit #find-box').html('<div class="find_box_end"><p> <i></i> {:lang('信用卡添加成功')}！ </p><p class="on_go"> <a href="SHOP_MAIN/member/usersecurity" title="{:lang('member_instant_shopping')}" class="back">{:lang('member_return_account_security_center')}&gt;&gt;</a> </p></div>');
-				$('#user_credit #sflex04 .normal').removeClass('doing');
-				$('#user_credit #sflex04 .normal').removeClass('done');
-				$('#user_credit #sflex04 .last').addClass('doing');
+				$('#user_pay_pwd #find-box').html('<div class="find_box_end"><p> <i></i> {:lang('member_password_settings_successful')}！ </p><p class="on_go"> <a href="SHOP_MAIN/member/usersecurity" title="{:lang('member_instant_shopping')}" class="back">{:lang('member_return_account_security_center')}&gt;&gt;</a> </p></div>'); 
+				$('#user_pay_pwd #sflex04 .normal').removeClass('doing');
+				$('#user_pay_pwd #sflex04 .normal').removeClass('done');
+				$('#user_pay_pwd #sflex04 .last').addClass('doing');
 			} else {
 				$.msg(res["message"]);
 			}
@@ -573,12 +506,9 @@ function addCredit(){
 	});
 }
 </script>
-
-
-
 {elseif condition="$atc eq 'up_user_pay_pwd'" /}
 <div class="member-main" id='up_user_pay_pwd'>
-	<div class="box">
+	<div class="box"> 
 		<h5 title="{:lang('member_change_payment_password')}" class="user-title user-title-t"><span>{:lang('member_change_payment_password')}</span></h5>
 		<div class="blank"></div>
 		<div id="find_pw3">
@@ -619,7 +549,7 @@ function addCredit(){
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> 
 </div>
 <script type="text/javascript">
 function modifyPayPwd(){
@@ -674,7 +604,7 @@ function updateEndTime() {
 			$('#sendOutCode').removeAttr('disabled',true);
 			return false;
 		}else{
-			$('#sendOutCode').val((Number(sendOutCode)-1)+"{:lang('second')}");
+			$('#sendOutCode').val((Number(sendOutCode)-1)+"{:lang('second')}");	
 		}
 		setTimeout("updateEndTime()", 1000);
 	}
@@ -695,7 +625,7 @@ $(function(){
 			}else{
 				$('#mobile').parent().children('.error').text('').hide();;
 			}
-
+			
 			//验证手机号格式是否正确
 			if(mobile.search(/^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/) == -1){
 				$('#mobile').parent().children('.error').text('{:lang('member_enter_correct_phone_format')}').show();
@@ -703,7 +633,7 @@ $(function(){
 			}else{
 				$('#mobile').parent().children('.error').text('').hide();;
 			}
-
+			
 			$.ajax({
 				url: __URL(SHOPMAIN+"/components/mobileverificationcode"),
 				data: {"mobile": mobile,"vertification":vertification },
@@ -728,7 +658,7 @@ $(function(){
 			}else{
 				$('#email').parent().children('.error').text('').hide();
 			}
-
+			
 			//验证邮箱格式是否正确
 			if(email.search(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/) == -1){
 				$('#email').parent().children('.error').text('{:lang('member_enter_correct_email_format')}').show();

@@ -39,11 +39,11 @@
 				</div>
 			{/if}
 			{if condition="$pay_config['union_pay_config']['is_use']==1"}
-				<div class="credit">
+				<div class="union-pay">
 					<img src="__TEMP__/{$style}/public/images/yinfu.png" class="ali-photo">
-					<span class="ali-item">信用卡支付</span>
+					<span class="ali-item">银联卡支付</span>
 					<span class="ali-desc">使用银联卡支付</span>
-					<span id="credit"><img src="__TEMP__/{$style}/public/images/hgou.png"></span>
+					<span id="unionpay"><img src="__TEMP__/{$style}/public/images/hgou.png"></span>
 				</div>
 			{/if}
 		{/if}
@@ -53,8 +53,7 @@
 		{elseif condition="$pay_config['ali_pay_config']['is_use']==1"}
 		<input type="hidden" id="pay_type" value="1"> 
 		{elseif condition="$pay_config['union_pay_config']['is_use']==1"}
-		<!--银联修改信用卡-->
-		<input type="hidden" id="pay_type" value="7">
+		<input type="hidden" id="pay_type" value="2"> 
 		{else}
 		<input type="hidden" id="pay_type" value="-1">
 		{/if}
@@ -89,9 +88,9 @@ function calculate() {
 	} else if (pay_type == 1) {
 		//支付宝支付
 		window.location.href = __URL("APP_MAIN/pay/alipay?no=" + out_trade_no);
-	}else if (pay_type == 7) {
+	}else if (pay_type == 2) {
 		//银联卡支付
-		window.location.href = __URL("APP_MAIN/pay/credit?no=" + out_trade_no);
+		window.location.href = __URL("APP_MAIN/pay/unionpay?no=" + out_trade_no);
 	}else if(pay_type == -1){
 		showBox("{:lang('choose_payment_method')}","warning");
 	}
@@ -114,9 +113,9 @@ $(".wchat-weixin").click(function() {
 	$("#unionpay").html("<img src='" + __IMG__ + "/hgou.png'>");
 })
 
-$(".credit").click(function() {
-	$("#pay_type").val(7);
-	$("#credit").html("<img src='" + __IMG__ + "/segou.png'>");
+$(".union-pay").click(function() {
+	$("#pay_type").val(2);
+	$("#unionpay").html("<img src='" + __IMG__ + "/segou.png'>");
 	$("#alipay").html("<img src='" + __IMG__ + "/hgou.png'>");
 	$("#wchatpay").html("<img src='" + __IMG__ + "/hgou.png'>");
 })

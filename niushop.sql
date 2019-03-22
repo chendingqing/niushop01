@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 宝塔
+ Source Server         : 本地
  Source Server Type    : MySQL
- Source Server Version : 50557
- Source Host           : 132.232.94.134:3306
+ Source Server Version : 50553
+ Source Host           : 127.0.0.1:3306
  Source Schema         : niushop
 
  Target Server Type    : MySQL
- Target Server Version : 50557
+ Target Server Version : 50553
  File Encoding         : 65001
 
- Date: 21/03/2019 15:07:08
+ Date: 18/03/2019 09:31:00
 */
 
 SET NAMES utf8mb4;
@@ -280,7 +280,7 @@ CREATE TABLE `ns_cart`  (
   `bl_id` mediumint(8) NOT NULL DEFAULT 0 COMMENT '组合套装ID',
   PRIMARY KEY (`cart_id`) USING BTREE,
   INDEX `member_id`(`buyer_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 AVG_ROW_LENGTH = 1170 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '购物车表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 AVG_ROW_LENGTH = 1170 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '购物车表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for ns_click_fabulous
@@ -687,14 +687,12 @@ CREATE TABLE `ns_goods`  (
   INDEX `UK_ns_goods_goods_attribute_id`(`goods_attribute_id`) USING BTREE,
   INDEX `UK_ns_goods_group_id_array`(`group_id_array`) USING BTREE,
   INDEX `UK_ns_goods_promotion_price`(`promotion_price`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 AVG_ROW_LENGTH = 16554 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商品表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 AVG_ROW_LENGTH = 16554 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商品表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of ns_goods
 -- ----------------------------
-INSERT INTO `ns_goods` VALUES (1, '红塔山', 0, 1, 1, 0, 0, 0, '0', 0, 0, 1, 0.00, 0.01, 0.01, 0.00, 0, 0, 0, 0, 1.00, 1, 995, 0, 45, 100, 14, 0, 0, 0, 0, 22, 234, 1, '利群', '利群', '<ul class=\"clearboth list-paddingleft-2\" style=\"padding: 0px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); clear: both; overflow: hidden; font-family: 微软雅黑; font-size: 14px; white-space: normal; background-color: rgb(255, 255, 255);\"><li><p><label style=\"width: 100px; display: inline-block; color: rgb(109, 109, 109);\">类型：</label>&nbsp;<span style=\"margin: 0px; padding: 0px;\">烤烟型&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><label style=\"font-family: sans-serif; font-size: 16px; width: 100px; display: inline-block; color: rgb(109, 109, 109);\">焦油量：</label><span style=\"font-family: sans-serif; font-size: 16px;\">&nbsp;</span><span style=\"font-family: sans-serif; font-size: 16px; margin: 0px; padding: 0px;\">10mg</span></p></li><li><p><label style=\"width: 100px; display: inline-block; color: rgb(109, 109, 109);\">烟气烟碱量：</label>&nbsp;<span style=\"margin: 0px; padding: 0px;\">1mg&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><label style=\"font-family: sans-serif; font-size: 16px; width: 100px; display: inline-block; color: rgb(109, 109, 109);\">一氧化碳量：</label><span style=\"font-family: sans-serif; font-size: 16px;\">&nbsp;</span><span style=\"font-family: sans-serif; font-size: 16px; margin: 0px; padding: 0px;\">10mg</span></p></li><li><p><label style=\"width: 100px; display: inline-block; color: rgb(109, 109, 109);\">烟长：</label>&nbsp;<span style=\"margin: 0px; padding: 0px;\">84mm&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><label style=\"font-family: sans-serif; font-size: 16px; width: 100px; display: inline-block; color: rgb(109, 109, 109);\">过滤嘴长：</label><span style=\"font-family: sans-serif; font-size: 16px;\">&nbsp;</span><span style=\"font-family: sans-serif; font-size: 16px; margin: 0px; padding: 0px;\">0mm</span></p></li><li><p><label style=\"width: 100px; display: inline-block; color: rgb(109, 109, 109);\">包装形式：</label>&nbsp;<span style=\"margin: 0px; padding: 0px;\">条盒硬盒&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><label style=\"font-family: sans-serif; font-size: 16px; width: 100px; display: inline-block; color: rgb(109, 109, 109);\">单盒(包)数：</label><span style=\"font-family: sans-serif; font-size: 16px;\">&nbsp;</span><span style=\"font-family: sans-serif; font-size: 16px; margin: 0px; padding: 0px;\">20支</span></p></li><li><p><label style=\"width: 100px; display: inline-block; color: rgb(109, 109, 109);\">包装主色调：</label>&nbsp;<span style=\"margin: 0px; padding: 0px;\">白色&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><label style=\"font-family: sans-serif; font-size: 16px; width: 100px; display: inline-block; color: rgb(109, 109, 109);\">包装副色调：</label><span style=\"font-family: sans-serif; font-size: 16px;\">&nbsp;</span><span style=\"font-family: sans-serif; font-size: 16px; margin: 0px; padding: 0px;\">红</span></p></li><li><p><label style=\"width: 100px; display: inline-block; color: rgb(109, 109, 109);\">销售形式：</label>&nbsp;<span style=\"margin: 0px; padding: 0px;\">国产内销&nbsp; &nbsp; &nbsp; &nbsp; </span><label style=\"font-family: sans-serif; font-size: 16px; width: 100px; display: inline-block; color: rgb(109, 109, 109);\">产品状态：</label><span style=\"font-family: sans-serif; font-size: 16px;\">&nbsp;</span><span style=\"font-family: sans-serif; font-size: 16px; margin: 0px; padding: 0px;\">已上市</span></p></li><li><p><label style=\"width: 100px; display: inline-block; color: rgb(109, 109, 109);\">单盒参考价：</label>&nbsp;<span style=\"margin: 0px; padding: 0px;\">￥15</span></p></li><li><p><label style=\"width: 100px; display: inline-block; color: rgb(109, 109, 109);\">条盒参考价：</label>&nbsp;<span style=\"margin: 0px; padding: 0px;\">￥150</span></p></li><li><p><label style=\"width: 100px; display: inline-block; color: rgb(109, 109, 109);\">推荐指数：</label>&nbsp;<span style=\"margin: 0px; padding: 0px;\">★★★</span></p></li></ul><p><br/></p>', 'upload/goods_qrcode/goods_qrcode_1.png', '', 1, 0, 0, 0, 0, 0, 1, 0, '1', '', NULL, NULL, 5, 0, '[]', 0.00, 0.00, 3, '', '', '', '', 0, 1552735592, 1552735592, 1553144795, 0, 0, 0, '0', '', '', '', 0, 0, 0, 0, 1, 0.00, '', 0);
-INSERT INTO `ns_goods` VALUES (2, '南京 红 硬', 0, 2, 2, 0, 0, 0, '0', 0, 0, 1, 0.01, 0.01, 0.01, 0.01, 0, 0, 0, 0, 1.00, 1, 1000, 0, 99999, 0, 999, 0, 0, 0, 55, 22, 234, 2, '南京', '南京', '<p>测试</p>', 'upload/goods_qrcode/goods_qrcode_2.png', '1231213313', 1, 0, 0, 0, 0, 0, 1, 0, '2', '', NULL, NULL, 0, 0, '[]', 0.00, 0.00, 3, '', '', '', '', 0, 1553131307, 1553131307, 0, 0, 0, 1551628800, '360', '', '', '', 0, 0, 0, 0, 1, 0.00, '', 0);
-INSERT INTO `ns_goods` VALUES (3, '利群 红', 0, 1, 1, 0, 0, 0, '0', 0, 0, 1, 0.01, 0.01, 0.01, 0.01, 0, 0, 0, 0, 1.00, 1, 999, 0, 102, 50, 101, 0, 0, 0, 99, 0, 0, 3, '', '', '<p>测试</p><p><br/></p>', 'upload/goods_qrcode/goods_qrcode_3.png', '', 1, 0, 0, 0, 0, 0, 1, 0, '3', '', NULL, NULL, 1, 0, '[]', 0.00, 0.00, 3, '', '', '', '', 0, 1553131607, 1553131607, 0, 0, 0, 0, '0', '', '', '', 0, 0, 0, 0, 1, 0.00, '', 0);
+INSERT INTO `ns_goods` VALUES (1, '利群', 0, 1, 1, 0, 0, 0, '0', 0, 0, 1, 0.00, 0.01, 0.01, 0.00, 0, 0, 0, 0, 1.00, 1, 998, 0, 16, 100, 4, 0, 0, 0, 0, 22, 234, 1, '利群', '利群', '<ul class=\"clearboth list-paddingleft-2\" style=\"padding: 0px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); clear: both; overflow: hidden; font-family: 微软雅黑; font-size: 14px; white-space: normal; background-color: rgb(255, 255, 255);\"><li><p><label style=\"width: 100px; display: inline-block; color: rgb(109, 109, 109);\">类型：</label>&nbsp;<span style=\"margin: 0px; padding: 0px;\">烤烟型&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><label style=\"font-family: sans-serif; font-size: 16px; width: 100px; display: inline-block; color: rgb(109, 109, 109);\">焦油量：</label><span style=\"font-family: sans-serif; font-size: 16px;\">&nbsp;</span><span style=\"font-family: sans-serif; font-size: 16px; margin: 0px; padding: 0px;\">10mg</span></p></li><li><p><label style=\"width: 100px; display: inline-block; color: rgb(109, 109, 109);\">烟气烟碱量：</label>&nbsp;<span style=\"margin: 0px; padding: 0px;\">1mg&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><label style=\"font-family: sans-serif; font-size: 16px; width: 100px; display: inline-block; color: rgb(109, 109, 109);\">一氧化碳量：</label><span style=\"font-family: sans-serif; font-size: 16px;\">&nbsp;</span><span style=\"font-family: sans-serif; font-size: 16px; margin: 0px; padding: 0px;\">10mg</span></p></li><li><p><label style=\"width: 100px; display: inline-block; color: rgb(109, 109, 109);\">烟长：</label>&nbsp;<span style=\"margin: 0px; padding: 0px;\">84mm&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><label style=\"font-family: sans-serif; font-size: 16px; width: 100px; display: inline-block; color: rgb(109, 109, 109);\">过滤嘴长：</label><span style=\"font-family: sans-serif; font-size: 16px;\">&nbsp;</span><span style=\"font-family: sans-serif; font-size: 16px; margin: 0px; padding: 0px;\">0mm</span></p></li><li><p><label style=\"width: 100px; display: inline-block; color: rgb(109, 109, 109);\">包装形式：</label>&nbsp;<span style=\"margin: 0px; padding: 0px;\">条盒硬盒&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><label style=\"font-family: sans-serif; font-size: 16px; width: 100px; display: inline-block; color: rgb(109, 109, 109);\">单盒(包)数：</label><span style=\"font-family: sans-serif; font-size: 16px;\">&nbsp;</span><span style=\"font-family: sans-serif; font-size: 16px; margin: 0px; padding: 0px;\">20支</span></p></li><li><p><label style=\"width: 100px; display: inline-block; color: rgb(109, 109, 109);\">包装主色调：</label>&nbsp;<span style=\"margin: 0px; padding: 0px;\">白色&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><label style=\"font-family: sans-serif; font-size: 16px; width: 100px; display: inline-block; color: rgb(109, 109, 109);\">包装副色调：</label><span style=\"font-family: sans-serif; font-size: 16px;\">&nbsp;</span><span style=\"font-family: sans-serif; font-size: 16px; margin: 0px; padding: 0px;\">红</span></p></li><li><p><label style=\"width: 100px; display: inline-block; color: rgb(109, 109, 109);\">销售形式：</label>&nbsp;<span style=\"margin: 0px; padding: 0px;\">国产内销&nbsp; &nbsp; &nbsp; &nbsp; </span><label style=\"font-family: sans-serif; font-size: 16px; width: 100px; display: inline-block; color: rgb(109, 109, 109);\">产品状态：</label><span style=\"font-family: sans-serif; font-size: 16px;\">&nbsp;</span><span style=\"font-family: sans-serif; font-size: 16px; margin: 0px; padding: 0px;\">已上市</span></p></li><li><p><label style=\"width: 100px; display: inline-block; color: rgb(109, 109, 109);\">单盒参考价：</label>&nbsp;<span style=\"margin: 0px; padding: 0px;\">￥15</span></p></li><li><p><label style=\"width: 100px; display: inline-block; color: rgb(109, 109, 109);\">条盒参考价：</label>&nbsp;<span style=\"margin: 0px; padding: 0px;\">￥150</span></p></li><li><p><label style=\"width: 100px; display: inline-block; color: rgb(109, 109, 109);\">推荐指数：</label>&nbsp;<span style=\"margin: 0px; padding: 0px;\">★★★</span></p></li></ul><p><br/></p>', 'upload/goods_qrcode/goods_qrcode_1.png', '', 1, 0, 0, 0, 0, 0, 1, 0, '1', '', NULL, NULL, 2, 0, '[]', 0.00, 0.00, 3, '', '', '', '', 0, 1552735592, 1552735592, 1552872207, 0, 0, 0, '0', '', '', '', 0, 0, 0, 0, 1, 0.00, '', 0);
 
 -- ----------------------------
 -- Table structure for ns_goods_attribute
@@ -779,15 +777,12 @@ CREATE TABLE `ns_goods_browse`  (
   `create_time` int(11) NOT NULL DEFAULT 0 COMMENT '浏览时间',
   `category_id` int(11) NOT NULL DEFAULT 0 COMMENT '分类id',
   PRIMARY KEY (`browse_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商品足迹表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商品足迹表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of ns_goods_browse
 -- ----------------------------
-INSERT INTO `ns_goods_browse` VALUES (23, 1, 3, 1552967755, 1);
-INSERT INTO `ns_goods_browse` VALUES (26, 1, 4, 1552977852, 1);
-INSERT INTO `ns_goods_browse` VALUES (33, 1, 1, 1553146862, 1);
-INSERT INTO `ns_goods_browse` VALUES (34, 3, 1, 1553148013, 1);
+INSERT INTO `ns_goods_browse` VALUES (11, 1, 1, 1552872382, 1);
 
 -- ----------------------------
 -- Table structure for ns_goods_category
@@ -809,13 +804,12 @@ CREATE TABLE `ns_goods_category`  (
   `pc_custom_template` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT 'pc端商品分类自定义模板',
   `wap_custom_template` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT 'wap端商品分类自定义模板',
   PRIMARY KEY (`category_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 AVG_ROW_LENGTH = 244 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商品分类表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 AVG_ROW_LENGTH = 244 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商品分类表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of ns_goods_category
 -- ----------------------------
 INSERT INTO `ns_goods_category` VALUES (1, '国烟', '国烟', 0, 1, 1, 0, '', '烟', '国产烟', 1, 'upload/goods_category/1552735469.jpeg', '', '');
-INSERT INTO `ns_goods_category` VALUES (2, '南京', '南京', 0, 1, 1, 0, '', '', '', 1, 'upload/goods_category/1553131116.jpeg', '', '');
 
 -- ----------------------------
 -- Table structure for ns_goods_category_block
@@ -838,13 +832,12 @@ CREATE TABLE `ns_goods_category_block`  (
   `short_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '分类简称',
   `goods_sort_type` int(11) NOT NULL DEFAULT 0 COMMENT '楼层商品排序方式 0默认按时间和排序号倒叙 1按发布时间排序 2按销量排序 3按排序号排序 4按人气排序',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 AVG_ROW_LENGTH = 8192 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商品分类楼层表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 AVG_ROW_LENGTH = 8192 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商品分类楼层表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of ns_goods_category_block
 -- ----------------------------
 INSERT INTO `ns_goods_category_block` VALUES (1, 0, '国烟', 1, '国烟', '#FFFFFF', 1, 0, 0, 0, '', 1552735499, 1552736082, '国烟', 0);
-INSERT INTO `ns_goods_category_block` VALUES (2, 0, '南京', 2, '南京', '#FFFFFF', 1, 0, 0, 0, '', 1553131120, 0, '南京', 0);
 
 -- ----------------------------
 -- Table structure for ns_goods_comment
@@ -1043,14 +1036,12 @@ CREATE TABLE `ns_goods_sku`  (
   `create_date` int(11) NULL DEFAULT 0 COMMENT '创建时间',
   `update_date` int(11) NULL DEFAULT 0 COMMENT '修改时间',
   PRIMARY KEY (`sku_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 AVG_ROW_LENGTH = 481 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商品skui规格价格库存信息表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 AVG_ROW_LENGTH = 481 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商品skui规格价格库存信息表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of ns_goods_sku
 -- ----------------------------
-INSERT INTO `ns_goods_sku` VALUES (8, 2, '', '', '', 0.01, 0.01, 0.01, 0.01, 1000, 0, '1231213313', '', 1553131307, 0);
-INSERT INTO `ns_goods_sku` VALUES (9, 3, '', '', '', 0.01, 0.01, 0.01, 0.01, 999, 0, '', '', 1553131607, 0);
-INSERT INTO `ns_goods_sku` VALUES (10, 1, '', '', '', 0.00, 0.01, 0.01, 0.00, 995, 0, '', '', 0, 1553144795);
+INSERT INTO `ns_goods_sku` VALUES (7, 1, '', '', '', 0.00, 0.01, 0.01, 0.00, 998, 0, '', '', 0, 1552872207);
 
 -- ----------------------------
 -- Table structure for ns_goods_sku_deleted
@@ -1161,9 +1152,6 @@ CREATE TABLE `ns_member`  (
 -- Records of ns_member
 -- ----------------------------
 INSERT INTO `ns_member` VALUES (1, 'admin', 47, '', 2018);
-INSERT INTO `ns_member` VALUES (2, 'root', 47, NULL, 1552961587);
-INSERT INTO `ns_member` VALUES (3, 'root', 47, NULL, 1552961979);
-INSERT INTO `ns_member` VALUES (4, '13715402', 47, NULL, 1552977842);
 
 -- ----------------------------
 -- Table structure for ns_member_account
@@ -1179,12 +1167,7 @@ CREATE TABLE `ns_member_account`  (
   `member_cunsum` decimal(10, 2) NOT NULL DEFAULT 0.00 COMMENT '会员消费',
   `member_sum_point` int(11) NOT NULL DEFAULT 0 COMMENT '会员累计积分',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 AVG_ROW_LENGTH = 3276 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '会员账户统计表' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of ns_member_account
--- ----------------------------
-INSERT INTO `ns_member_account` VALUES (1, 1, 0, 0, 0.00, 0, 0.06, 0);
+) ENGINE = InnoDB AUTO_INCREMENT = 1 AVG_ROW_LENGTH = 3276 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '会员账户统计表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for ns_member_account_records
@@ -1273,13 +1256,12 @@ CREATE TABLE `ns_member_express_address`  (
   `is_default` int(11) NOT NULL DEFAULT 0 COMMENT '默认收货地址',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `IDX_member_express_address_uid`(`uid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 AVG_ROW_LENGTH = 2340 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '会员收货地址管理' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 AVG_ROW_LENGTH = 2340 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '会员收货地址管理' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of ns_member_express_address
 -- ----------------------------
 INSERT INTO `ns_member_express_address` VALUES (1, 1, '陈定清', '13508303885', '', 22, 234, 2020, '大路街道大堂村6组60号', '', '', 1);
-INSERT INTO `ns_member_express_address` VALUES (2, 4, '1111', '13111111111', '111', 34, 345, 2869, '1111', '', '', 1);
 
 -- ----------------------------
 -- Table structure for ns_member_favorites
@@ -1514,7 +1496,7 @@ CREATE TABLE `ns_order`  (
   INDEX `UK_ns_order_order_no`(`order_no`) USING BTREE,
   INDEX `UK_ns_order_pay_status`(`pay_status`) USING BTREE,
   INDEX `UK_ns_order_status`(`order_status`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 AVG_ROW_LENGTH = 440 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '订单表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 AVG_ROW_LENGTH = 440 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '订单表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of ns_order
@@ -1522,19 +1504,7 @@ CREATE TABLE `ns_order`  (
 INSERT INTO `ns_order` VALUES (1, '2019031619370001', '155273627631471000', 1, 0, 1, '3', 1, 'admin', '127.0.0.1', '', '', '13508303885', 22, 234, 2020, '重庆市&nbsp;重庆市&nbsp;璧山县&nbsp;大路街道大堂村6组60号', '', '陈定清', 0, 'Niushop开源商城', 0, '', 0, 0.01, 0.01, 0, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0.01, 0.00, 0.00, 0, 0.00, 5, 0, 0, 0, 0, 0, 0.00, 1, 3, 0, 0, 0, 0, 1552736276, 0, 1, 2, 1, 0.00, '', '');
 INSERT INTO `ns_order` VALUES (2, '2019031619430001', '155273663567331000', 1, 0, 1, '3', 1, 'admin', '127.0.0.1', '', '', '13508303885', 22, 234, 2020, '重庆市&nbsp;重庆市&nbsp;璧山县&nbsp;大路街道大堂村6组60号', '', '陈定清', 0, 'Niushop开源商城', 0, '', 0, 0.01, 0.01, 0, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0.01, 0.00, 0.00, 0, 0.00, 5, 0, 0, 0, 0, 0, 0.00, 1, 3, 0, 0, 0, 0, 1552736636, 0, 1, 2, 1, 0.00, '', '');
 INSERT INTO `ns_order` VALUES (3, '2019031622390001', '155274716031501000', 1, 0, 1, '3', 1, 'admin', '127.0.0.1', '', '', '13508303885', 22, 234, 2020, '重庆市&nbsp;重庆市&nbsp;璧山县&nbsp;大路街道大堂村6组60号', '', '陈定清', 0, 'Niushop开源商城', 0, '', 0, 0.01, 0.01, 0, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0.01, 0.00, 0.00, 0, 0.00, 5, 0, 0, 0, 0, 0, 0.00, 1, 3, 0, 0, 0, 0, 1552747161, 0, 1, 2, 1, 0.00, '', '');
-INSERT INTO `ns_order` VALUES (4, '2019031809060001', '155287239127111000', 1, 0, 1, '3', 1, 'admin', '127.0.0.1', '', '', '13508303885', 22, 234, 2020, '重庆市&nbsp;重庆市&nbsp;璧山县&nbsp;大路街道大堂村6组60号', '', '陈定清', 0, 'Niushop开源商城', 0, '', 0, 0.01, 0.01, 0, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0.01, 0.00, 0.00, 0, 0.00, 5, 0, 0, 0, 0, 0, 0.00, 1, 3, 0, 0, 0, 0, 1552871189, 0, 1, 2, 1, 0.00, '', '');
-INSERT INTO `ns_order` VALUES (5, '2019031814250001', '155289053071721000', 1, 0, 1, '3', 1, 'admin', '125.84.93.137', '', '', '13508303885', 22, 234, 2020, '重庆市&nbsp;重庆市&nbsp;璧山县&nbsp;大路街道大堂村6组60号', '', '陈定清', 0, 'Niushop开源商城', 0, '', 0, 0.01, 0.02, 0, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.01, 0.02, 0.00, 0.00, 0, 0.00, 5, 0, 0, 0, 0, 0, 0.00, 1, 3, 0, 0, 0, 0, 1552890311, 0, 1, 2, 1, 0.00, '', '');
-INSERT INTO `ns_order` VALUES (6, '2019031816040001', '155290045234011000', 1, 0, 1, '3', 1, 'admin', '125.84.93.137', '', '', '13508303885', 22, 234, 2020, '重庆市&nbsp;重庆市&nbsp;璧山县&nbsp;大路街道大堂村6组60号', '', '陈定清', 0, 'Niushop开源商城', 0, '', 0, 0.01, 0.02, 0, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.01, 0.02, 0.00, 0.00, 0, 0.00, 5, 0, 0, 0, 0, 0, 0.00, 1, 3, 0, 0, 0, 0, 1552896257, 0, 1, 2, 1, 0.00, '', '');
-INSERT INTO `ns_order` VALUES (7, '2019031817150001', '155290193874641000', 1, 2, 0, '3', 1, 'admin', '125.84.93.137', '', '', '13508303885', 22, 234, 2020, '重庆市&nbsp;重庆市&nbsp;璧山县&nbsp;大路街道大堂村6组60号', '', '陈定清', 0, 'Niushop开源商城', 0, '', 0, 0.01, 0.02, 0, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.01, 0.02, 0.00, 0.00, 0, 0.00, 3, 2, 2, 0, 0, 0, 0.00, 1, 3, 1552901986, 0, 1553142572, 1553076502, 1552900546, 0, 0, 0, 0, 0.00, '', '');
-INSERT INTO `ns_order` VALUES (8, '2019031817530001', '155290280913711000', 1, 7, 0, '3', 1, 'admin', '125.84.93.137', '', '', '13508303885', 22, 234, 2020, '重庆市&nbsp;重庆市&nbsp;璧山县&nbsp;大路街道大堂村6组60号', '', '陈定清', 0, 'Niushop开源商城', 0, '', 0, 0.01, 0.02, 0, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.01, 0.02, 0.00, 0.00, 0, 0.00, 3, 2, 2, 0, 0, 0, 0.00, 1, 3, 1552903712, 0, 1553147992, 1553142778, 1552902810, 0, 0, 0, 0, 0.00, '', '');
-INSERT INTO `ns_order` VALUES (9, '2019031911570001', '155297102275401000', 1, 0, 1, '3', 1, 'admin', '125.84.93.137', '', '', '13508303885', 22, 234, 2020, '重庆市&nbsp;重庆市&nbsp;璧山县&nbsp;大路街道大堂村6组60号', '', '陈定清', 0, 'Niushop开源商城', 0, '', 0, 0.01, 0.02, 0, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.01, 0.02, 0.00, 0.00, 0, 0.00, 5, 0, 0, 0, 0, 0, 0.00, 1, 3, 0, 0, 0, 0, 1552967835, 0, 1, 2, 1, 0.00, '', '');
-INSERT INTO `ns_order` VALUES (10, '2019031913110001', '155297265330951000', 1, 0, 1, '3', 1, 'admin', '125.84.93.137', '', '', '13508303885', 22, 234, 2020, '重庆市&nbsp;重庆市&nbsp;璧山县&nbsp;大路街道大堂村6组60号', '', '陈定清', 0, 'Niushop开源商城', 0, '', 0, 0.01, 0.02, 0, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.01, 0.02, 0.00, 0.00, 0, 0.00, 5, 0, 0, 0, 0, 0, 0.00, 1, 3, 0, 0, 0, 0, 1552972293, 0, 1, 1, 0, 0.00, '', '');
-INSERT INTO `ns_order` VALUES (11, '2019031914450001', '155297791944641000', 1, 0, 1, '3', 4, '13715402', '125.84.94.255', '', '', '13111111111', 34, 345, 2869, '台湾省&nbsp;台湾省&nbsp;台北&nbsp;1111', '', '1111', 0, 'Niushop开源商城', 0, '', 0, 0.01, 0.02, 0, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.01, 0.02, 0.00, 0.00, 0, 0.00, 5, 0, 0, 0, 0, 0, 0.00, 1, 3, 0, 0, 0, 0, 1552977919, 0, 1, 1, 0, 0.00, '111', '');
-INSERT INTO `ns_order` VALUES (12, '2019032009390001', '155304685198831000', 1, 0, 1, '3', 1, 'admin', '125.84.94.255', '', '', '13508303885', 22, 234, 2020, '重庆市&nbsp;重庆市&nbsp;璧山县&nbsp;大路街道大堂村6组60号', '', '陈定清', 0, 'Niushop开源商城', 0, '', 0, 0.01, 0.02, 0, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.01, 0.02, 0.00, 0.00, 0, 0.00, 5, 0, 0, 0, 0, 0, 0.00, 1, 3, 0, 0, 0, 0, 1553045972, 0, 1, 1, 0, 0.00, '', '');
-INSERT INTO `ns_order` VALUES (13, '2019032009540001', '155304688553281000', 1, 0, 1, '3', 1, 'admin', '125.84.94.255', '', '', '13508303885', 22, 234, 2020, '重庆市&nbsp;重庆市&nbsp;璧山县&nbsp;大路街道大堂村6组60号', '', '陈定清', 0, 'Niushop开源商城', 0, '', 0, 0.01, 0.02, 0, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.01, 0.02, 0.00, 0.00, 0, 0.00, 5, 0, 0, 0, 0, 0, 0.00, 1, 3, 0, 0, 0, 0, 1553046885, 0, 1, 1, 0, 0.00, '', '');
-INSERT INTO `ns_order` VALUES (14, '2019032010210001', '155314680166601000', 1, 10, 1, '3', 1, 'admin', '125.84.94.255', '', '', '13508303885', 22, 234, 2020, '重庆市&nbsp;重庆市&nbsp;璧山县&nbsp;大路街道大堂村6组60号', '', '陈定清', 0, 'Niushop开源商城', 0, '', 0, 0.01, 0.02, 0, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.01, 0.02, 0.00, 0.00, 0, 0.00, 3, 2, 2, 0, 0, 0, 0.00, 1, 3, 1553146801, 0, 1553146869, 1553146819, 1553048508, 0, 0, 0, 0, 0.00, '', '');
-INSERT INTO `ns_order` VALUES (15, '2019032112320001', '155314790810171000', 1, 0, 1, '3', 1, 'admin', '125.84.94.255', '', '', '13508303885', 22, 234, 2020, '重庆市&nbsp;重庆市&nbsp;璧山县&nbsp;大路街道大堂村6组60号', '', '陈定清', 0, 'Niushop开源商城', 0, '', 0, 0.01, 0.02, 0, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.01, 0.02, 0.00, 0.00, 0, 0.00, 5, 0, 0, 0, 0, 0, 0.00, 1, 3, 0, 0, 0, 0, 1553142749, 0, 1, 2, 1, 0.00, '', '');
-INSERT INTO `ns_order` VALUES (16, '2019032114000001', '155314972863221000', 1, 0, 1, '3', 1, 'admin', '125.84.94.255', '', '', '13508303885', 22, 234, 2020, '重庆市&nbsp;重庆市&nbsp;璧山县&nbsp;大路街道大堂村6组60号', '', '陈定清', 0, 'Niushop开源商城', 0, '', 0, 0.01, 0.02, 0, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.01, 0.02, 0.00, 0.00, 0, 0.00, 0, 0, 0, 0, 0, 0, 0.00, 1, 3, 0, 0, 0, 0, 1553148022, 0, 0, 0, 0, 0.00, '', '');
+INSERT INTO `ns_order` VALUES (4, '2019031809060001', '155287239127111000', 1, 0, 1, '3', 1, 'admin', '127.0.0.1', '', '', '13508303885', 22, 234, 2020, '重庆市&nbsp;重庆市&nbsp;璧山县&nbsp;大路街道大堂村6组60号', '', '陈定清', 0, 'Niushop开源商城', 0, '', 0, 0.01, 0.01, 0, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.00, 0.01, 0.00, 0.00, 0, 0.00, 0, 0, 0, 0, 0, 0, 0.00, 1, 3, 0, 0, 0, 0, 1552871189, 0, 0, 0, 0, 0.00, '', '');
 
 -- ----------------------------
 -- Table structure for ns_order_action
@@ -1550,7 +1520,7 @@ CREATE TABLE `ns_order_action`  (
   `order_status_text` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '订单状态名称',
   `action_time` int(11) NULL DEFAULT 0 COMMENT '操作时间',
   PRIMARY KEY (`action_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 38 AVG_ROW_LENGTH = 1706 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '订单操作表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 AVG_ROW_LENGTH = 1706 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '订单操作表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of ns_order_action
@@ -1562,36 +1532,6 @@ INSERT INTO `ns_order_action` VALUES (4, 2, '交易关闭', 0, 'system', 5, '已
 INSERT INTO `ns_order_action` VALUES (5, 3, '创建订单', 1, 'admin', 0, '待付款', 1552747161);
 INSERT INTO `ns_order_action` VALUES (6, 3, '交易关闭', 1, 'admin', 5, '已关闭', 1552749217);
 INSERT INTO `ns_order_action` VALUES (7, 4, '创建订单', 1, 'admin', 0, '待付款', 1552871189);
-INSERT INTO `ns_order_action` VALUES (8, 4, '交易关闭', 0, 'system', 5, '已关闭', 1552887071);
-INSERT INTO `ns_order_action` VALUES (9, 5, '创建订单', 1, 'admin', 0, '待付款', 1552890311);
-INSERT INTO `ns_order_action` VALUES (10, 5, '交易关闭', 0, 'system', 5, '已关闭', 1552896144);
-INSERT INTO `ns_order_action` VALUES (11, 6, '创建订单', 1, 'admin', 0, '待付款', 1552896257);
-INSERT INTO `ns_order_action` VALUES (12, 6, '交易关闭', 0, 'system', 5, '已关闭', 1552900451);
-INSERT INTO `ns_order_action` VALUES (13, 7, '创建订单', 1, 'admin', 0, '待付款', 1552900546);
-INSERT INTO `ns_order_action` VALUES (14, 7, '订单支付', 1, 'admin', 1, '待发货', 1552901986);
-INSERT INTO `ns_order_action` VALUES (15, 8, '创建订单', 1, 'admin', 0, '待付款', 1552902810);
-INSERT INTO `ns_order_action` VALUES (16, 8, '订单支付', 1, 'admin', 1, '待发货', 1552903712);
-INSERT INTO `ns_order_action` VALUES (17, 9, '创建订单', 1, 'admin', 0, '待付款', 1552967835);
-INSERT INTO `ns_order_action` VALUES (18, 9, '交易关闭', 0, 'system', 5, '已关闭', 1552972009);
-INSERT INTO `ns_order_action` VALUES (19, 10, '创建订单', 1, 'admin', 0, '待付款', 1552972293);
-INSERT INTO `ns_order_action` VALUES (20, 10, '交易关闭', 0, 'system', 5, '已关闭', 1552976188);
-INSERT INTO `ns_order_action` VALUES (21, 11, '创建订单', 4, '13715402', 0, '待付款', 1552977919);
-INSERT INTO `ns_order_action` VALUES (22, 11, '交易关闭', 0, 'system', 5, '已关闭', 1552981563);
-INSERT INTO `ns_order_action` VALUES (23, 12, '创建订单', 1, 'admin', 0, '待付款', 1553045972);
-INSERT INTO `ns_order_action` VALUES (24, 13, '创建订单', 1, 'admin', 0, '待付款', 1553046885);
-INSERT INTO `ns_order_action` VALUES (25, 13, '交易关闭', 1, 'admin', 5, '已关闭', 1553048472);
-INSERT INTO `ns_order_action` VALUES (26, 12, '交易关闭', 1, 'admin', 5, '已关闭', 1553048476);
-INSERT INTO `ns_order_action` VALUES (27, 14, '创建订单', 1, 'admin', 0, '待付款', 1553048508);
-INSERT INTO `ns_order_action` VALUES (28, 7, '订单发货', 1, 'admin', 2, '已发货', 1553076502);
-INSERT INTO `ns_order_action` VALUES (29, 7, '订单收货', 1, 'admin', 3, '已收货', 1553142572);
-INSERT INTO `ns_order_action` VALUES (30, 15, '创建订单', 1, 'admin', 0, '待付款', 1553142749);
-INSERT INTO `ns_order_action` VALUES (31, 8, '订单发货', 1, 'admin', 2, '已发货', 1553142778);
-INSERT INTO `ns_order_action` VALUES (32, 14, '线下支付', 1, 'admin', 1, '待发货', 1553146801);
-INSERT INTO `ns_order_action` VALUES (33, 14, '订单发货', 1, 'admin', 2, '已发货', 1553146819);
-INSERT INTO `ns_order_action` VALUES (34, 14, '订单收货', 1, 'admin', 3, '已收货', 1553146869);
-INSERT INTO `ns_order_action` VALUES (35, 15, '交易关闭', 1, 'admin', 5, '已关闭', 1553147915);
-INSERT INTO `ns_order_action` VALUES (36, 8, '订单收货', 1, 'admin', 3, '已收货', 1553147992);
-INSERT INTO `ns_order_action` VALUES (37, 16, '创建订单', 1, 'admin', 0, '待付款', 1553148022);
 
 -- ----------------------------
 -- Table structure for ns_order_customer_account_records
@@ -1657,7 +1597,7 @@ CREATE TABLE `ns_order_goods`  (
   INDEX `UK_ns_order_goods_order_id`(`order_id`) USING BTREE,
   INDEX `UK_ns_order_goods_promotion_id`(`promotion_id`) USING BTREE,
   INDEX `UK_ns_order_goods_sku_id`(`sku_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 AVG_ROW_LENGTH = 289 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '订单商品表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 AVG_ROW_LENGTH = 289 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '订单商品表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of ns_order_goods
@@ -1666,18 +1606,6 @@ INSERT INTO `ns_order_goods` VALUES (1, 1, 1, '利群', 3, '', 0.01, 0.00, '1', 
 INSERT INTO `ns_order_goods` VALUES (2, 2, 1, '利群', 3, '', 0.01, 0.00, '1', 0.00, 0.01, 1, 0, 1, 0, '1', 0, 0, 1, 0, 0, 0, 1, 0.00, '', '', '0', 0.00, 0, '', 0, 0, 0.00, '', 0, '', 0);
 INSERT INTO `ns_order_goods` VALUES (3, 3, 1, '利群', 5, '', 0.01, 0.00, '1', 0.00, 0.01, 1, 0, 1, 0, '1', 0, 0, 1, 0, 0, 0, 1, 0.00, '', '', '0', 0.00, 0, '', 0, 0, 0.00, '', 0, '', 0);
 INSERT INTO `ns_order_goods` VALUES (4, 4, 1, '利群', 5, '', 0.01, 0.00, '1', 0.00, 0.01, 1, 0, 1, 0, '1', 0, 0, 1, 0, 0, 0, 1, 0.00, '', '', '0', 0.00, 0, '', 0, 0, 0.00, '', 0, '', 0);
-INSERT INTO `ns_order_goods` VALUES (5, 5, 1, '利群', 7, '', 0.01, 0.00, '1', 0.00, 0.01, 1, 0, 1, 0, '1', 0, 0, 1, 0, 0, 0, 1, 0.00, '', '', '0', 0.00, 0, '', 0, 0, 0.00, '', 0, '', 0);
-INSERT INTO `ns_order_goods` VALUES (6, 6, 1, '利群', 7, '', 0.01, 0.00, '1', 0.00, 0.01, 1, 0, 1, 0, '1', 0, 0, 1, 0, 0, 0, 1, 0.00, '', '', '0', 0.00, 0, '', 0, 0, 0.00, '', 0, '', 0);
-INSERT INTO `ns_order_goods` VALUES (7, 7, 1, '利群', 7, '', 0.01, 0.00, '1', 0.00, 0.01, 1, 0, 1, 0, '1', 0, 0, 1, 0, 0, 1, 1, 0.00, '', '', '0', 0.00, 0, '', 0, 0, 0.00, '', 0, '', 0);
-INSERT INTO `ns_order_goods` VALUES (8, 8, 1, '利群', 7, '', 0.01, 0.00, '1', 0.00, 0.01, 1, 0, 1, 0, '1', 0, 0, 1, 0, 0, 1, 1, 0.00, '', '', '0', 0.00, 0, '', 0, 0, 0.00, '', 0, '', 0);
-INSERT INTO `ns_order_goods` VALUES (9, 9, 1, '利群', 7, '', 0.01, 0.00, '1', 0.00, 0.01, 1, 0, 1, 0, '1', 0, 0, 1, 0, 0, 0, 1, 0.00, '', '', '0', 0.00, 0, '', 0, 0, 0.00, '', 0, '', 0);
-INSERT INTO `ns_order_goods` VALUES (10, 10, 1, '利群', 7, '', 0.01, 0.00, '1', 0.00, 0.01, 1, 0, 1, 0, '1', 0, 0, 1, 0, 0, 0, 1, 0.00, '', '', '0', 0.00, 0, '', 0, 0, 0.00, '', 0, '', 0);
-INSERT INTO `ns_order_goods` VALUES (11, 11, 1, '利群', 7, '', 0.01, 0.00, '1', 0.00, 0.01, 1, 0, 4, 0, '1', 0, 0, 1, 0, 0, 0, 1, 0.00, '', '', '0', 0.00, 0, '', 0, 0, 0.00, '', 0, '', 0);
-INSERT INTO `ns_order_goods` VALUES (12, 12, 1, '利群', 7, '', 0.01, 0.00, '1', 0.00, 0.01, 1, 0, 1, 0, '1', 0, 0, 1, 0, 0, 0, 1, 0.00, '', '', '0', 0.00, 0, '', 0, 0, 0.00, '', 0, '', 0);
-INSERT INTO `ns_order_goods` VALUES (13, 13, 1, '利群', 7, '', 0.01, 0.00, '1', 0.00, 0.01, 1, 0, 1, 0, '1', 0, 0, 1, 0, 0, 0, 1, 0.00, '', '', '0', 0.00, 0, '', 0, 0, 0.00, '', 0, '', 0);
-INSERT INTO `ns_order_goods` VALUES (14, 14, 1, '利群', 7, '', 0.01, 0.00, '1', 0.00, 0.01, 1, 0, 1, 0, '1', 0, 0, 1, 0, 0, 1, 1, 0.00, '', '', '0', 0.00, 0, '', 0, 0, 0.00, '', 0, '', 0);
-INSERT INTO `ns_order_goods` VALUES (15, 15, 3, '利群 红', 9, '', 0.01, 0.01, '1', 0.00, 0.01, 3, 0, 1, 0, '1', 0, 0, 1, 0, 0, 0, 1, 0.00, '', '', '0', 0.00, 0, '', 0, 0, 0.00, '', 0, '', 0);
-INSERT INTO `ns_order_goods` VALUES (16, 16, 3, '利群 红', 9, '', 0.01, 0.01, '1', 0.00, 0.01, 3, 0, 1, 0, '1', 0, 0, 1, 0, 0, 0, 1, 0.00, '', '', '0', 0.00, 0, '', 0, 0, 0.00, '', 0, '', 0);
 
 -- ----------------------------
 -- Table structure for ns_order_goods_express
@@ -1700,13 +1628,7 @@ CREATE TABLE `ns_order_goods_express`  (
   INDEX `UK_ns_order_goods_express_order_goods_id_array`(`order_goods_id_array`) USING BTREE,
   INDEX `UK_ns_order_goods_express_order_id`(`order_id`) USING BTREE,
   INDEX `UK_ns_order_goods_express_uid`(`uid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 AVG_ROW_LENGTH = 606 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商品订单物流信息表（多次发货）' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of ns_order_goods_express
--- ----------------------------
-INSERT INTO `ns_order_goods_express` VALUES (1, 7, '7', '邮政', 1, 1, '邮政', '121212112121212', 1, 'admin', '', 1553076502);
-INSERT INTO `ns_order_goods_express` VALUES (2, 14, '14', '邮政', 1, 1, '邮政', '13213213131313', 1, 'admin', '', 1553146819);
+) ENGINE = InnoDB AUTO_INCREMENT = 1 AVG_ROW_LENGTH = 606 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商品订单物流信息表（多次发货）' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for ns_order_goods_promotion_details
@@ -1760,18 +1682,6 @@ INSERT INTO `ns_order_payment` VALUES ('155273663567331000', 0, 1, 2, 'Niushop�
 INSERT INTO `ns_order_payment` VALUES ('155274716031501000', 0, 1, 3, 'Niushop开源商城-利群', 'Niushop开源商城订单', 0.01, 0, 2, 1552747161, 0, '', 0.01, 0.00);
 INSERT INTO `ns_order_payment` VALUES ('155287239127111000', 0, 1, 4, 'Niushop开源商城-利群', 'Niushop开源商城订单', 0.01, 0, 1, 1552871189, 0, '', 0.01, 0.00);
 INSERT INTO `ns_order_payment` VALUES ('155287241776531001', 0, 4, 1, '余额充值', '用户通知余额', 100.00, 0, 1, 1552872427, 0, '', 100.00, 0.00);
-INSERT INTO `ns_order_payment` VALUES ('155289053071721000', 0, 1, 5, 'Niushop开源商城-利群', 'Niushop开源商城订单', 0.02, 0, 2, 1552890311, 0, '', 0.02, 0.00);
-INSERT INTO `ns_order_payment` VALUES ('155290045234011000', 0, 1, 6, 'Niushop开源商城-利群', 'Niushop开源商城订单', 0.02, 0, 2, 1552896257, 0, '', 0.02, 0.00);
-INSERT INTO `ns_order_payment` VALUES ('155290193874641000', 0, 1, 7, 'Niushop开源商城-利群', 'Niushop开源商城订单', 0.02, 1, 2, 1552900546, 1552901986, '2019031822001429181024039167', 0.02, 0.00);
-INSERT INTO `ns_order_payment` VALUES ('155290280913711000', 0, 1, 8, 'Niushop开源商城-利群', 'Niushop开源商城订单', 0.02, 1, 2, 1552902810, 1552903712, '2019031822001429181024242233', 0.02, 0.00);
-INSERT INTO `ns_order_payment` VALUES ('155297102275401000', 0, 1, 9, 'Niushop开源商城-利群', 'Niushop开源商城订单', 0.02, 0, 1, 1552967835, 0, '', 0.02, 0.00);
-INSERT INTO `ns_order_payment` VALUES ('155297265330951000', 0, 1, 10, 'Niushop开源商城-利群', 'Niushop开源商城订单', 0.02, 0, 1, 1552972293, 0, '', 0.02, 0.00);
-INSERT INTO `ns_order_payment` VALUES ('155297791944641000', 0, 1, 11, 'Niushop开源商城-利群', 'Niushop开源商城订单', 0.02, 0, 2, 1552977919, 0, '', 0.02, 0.00);
-INSERT INTO `ns_order_payment` VALUES ('155304685198831000', 0, 1, 12, 'Niushop开源商城-利群', 'Niushop开源商城订单', 0.02, 0, 1, 1553045972, 0, '', 0.02, 0.00);
-INSERT INTO `ns_order_payment` VALUES ('155304688553281000', 0, 1, 13, 'Niushop开源商城-利群', 'Niushop开源商城订单', 0.02, 0, 1, 1553046885, 0, '', 0.02, 0.00);
-INSERT INTO `ns_order_payment` VALUES ('155314680166601000', 0, 1, 14, 'Niushop开源商城-利群', 'Niushop开源商城订单', 0.02, 1, 10, 1553048508, 1553146802, '', 0.02, 0.00);
-INSERT INTO `ns_order_payment` VALUES ('155314790810171000', 0, 1, 15, 'Niushop开源商城-利群 红', 'Niushop开源商城订单', 0.02, 0, 1, 1553142749, 0, '', 0.02, 0.00);
-INSERT INTO `ns_order_payment` VALUES ('155314972863221000', 0, 1, 16, 'Niushop开源商城-利群 红', 'Niushop开源商城订单', 0.02, 0, 1, 1553148022, 0, '', 0.02, 0.00);
 
 -- ----------------------------
 -- Table structure for ns_order_pickup
@@ -1914,12 +1824,7 @@ CREATE TABLE `ns_order_shipping_fee`  (
   `update_time` int(11) NULL DEFAULT 0 COMMENT '最后更新时间',
   `district_id_array` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '区县ID组',
   PRIMARY KEY (`shipping_fee_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 AVG_ROW_LENGTH = 16384 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '运费模板' ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of ns_order_shipping_fee
--- ----------------------------
-INSERT INTO `ns_order_shipping_fee` VALUES (1, '运费', 1, 1, 0, '', '', 1, 0.00, 0.00, 0.00, 0.00, 1, 0.00, 0.00, 0.00, 0.00, 1, 0, 0.00, 0, 0.01, 1552890300, 0, '');
+) ENGINE = InnoDB AUTO_INCREMENT = 1 AVG_ROW_LENGTH = 16384 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '运费模板' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for ns_order_shop_return
@@ -3041,14 +2946,12 @@ CREATE TABLE `sys_album_picture`  (
   `domain` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '图片外链',
   `bucket` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '存储空间名称',
   PRIMARY KEY (`pic_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 AVG_ROW_LENGTH = 204 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '相册图片表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 AVG_ROW_LENGTH = 204 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '相册图片表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sys_album_picture
 -- ----------------------------
 INSERT INTO `sys_album_picture` VALUES (1, 0, 30, 0, '国烟', '国烟', 'upload/goods/20190316/5b7def0ef8f5168a735de3a3594a6950.png', '257,415', '257,415', 'upload/goods/20190316/9ac4ea8adb9d0e045ae13e38a68b81581.png', '700,700', '700,700', 'upload/goods/20190316/9ac4ea8adb9d0e045ae13e38a68b81582.png', '360,360', '360,360', 'upload/goods/20190316/9ac4ea8adb9d0e045ae13e38a68b81583.png', '240,240', '240,240', 'upload/goods/20190316/9ac4ea8adb9d0e045ae13e38a68b81584.png', '60,60', '60,60', 1552735572, 1, '', '');
-INSERT INTO `sys_album_picture` VALUES (2, 0, 30, 0, '0001158_-_415', '0001158_-_415', 'upload/goods/20190321/a511f89523043be98d0ba0b97283a6fe.jpeg', '260,415', '260,415', 'upload/goods/20190321/f2336432af5e574e51a062ca2aa4f65a1.jpeg', '700,700', '700,700', 'upload/goods/20190321/f2336432af5e574e51a062ca2aa4f65a2.jpeg', '360,360', '360,360', 'upload/goods/20190321/f2336432af5e574e51a062ca2aa4f65a3.jpeg', '240,240', '240,240', 'upload/goods/20190321/f2336432af5e574e51a062ca2aa4f65a4.jpeg', '60,60', '60,60', 1553131288, 1, '', '');
-INSERT INTO `sys_album_picture` VALUES (3, 0, 30, 0, '0001021_-_415', '0001021_-_415', 'upload/goods/20190321/81524c547119fa9edc1134c12cea3c08.jpeg', '262,415', '262,415', 'upload/goods/20190321/2bc94da5c859cf3c6f349cc525e5881a1.jpeg', '700,700', '700,700', 'upload/goods/20190321/2bc94da5c859cf3c6f349cc525e5881a2.jpeg', '360,360', '360,360', 'upload/goods/20190321/2bc94da5c859cf3c6f349cc525e5881a3.jpeg', '240,240', '240,240', 'upload/goods/20190321/2bc94da5c859cf3c6f349cc525e5881a4.jpeg', '60,60', '60,60', 1553131593, 1, '', '');
 
 -- ----------------------------
 -- Table structure for sys_applet_custom_template
@@ -3466,7 +3369,7 @@ CREATE TABLE `sys_config`  (
   `create_time` int(11) NULL DEFAULT 0 COMMENT '创建时间',
   `modify_time` int(11) NULL DEFAULT 0 COMMENT '修改时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 166 AVG_ROW_LENGTH = 963 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '第三方配置表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 155 AVG_ROW_LENGTH = 963 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '第三方配置表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sys_config
@@ -3474,45 +3377,45 @@ CREATE TABLE `sys_config`  (
 INSERT INTO `sys_config` VALUES (12, 0, 'USERNOTICE', '', '', 1, 1487830081, 1497102938);
 INSERT INTO `sys_config` VALUES (13, 0, 'HOTKEY', '', '', 1, 1487831749, 1497105229);
 INSERT INTO `sys_config` VALUES (14, 0, 'DEFAULTKEY', '', '', 1, 1487831788, 1497105235);
-INSERT INTO `sys_config` VALUES (17, 0, 'QQLOGIN', '{\"APP_KEY\":\"\",\"APP_SECRET\":\"\",\"AUTHORIZE\":\"http:\\/\\/test.chendingqing.cn\",\"CALLBACK\":\"http:\\/\\/test.chendingqing.cn\\/index.php?s=\\/wap\\/login\\/callback\"}', 'qq', 1, 1488350925, 1552892702);
-INSERT INTO `sys_config` VALUES (18, 0, 'WCHAT', '{\"APP_KEY\":\"\",\"APP_SECRET\":\"\",\"AUTHORIZE\":\"http:\\/\\/test.chendingqing.cn\",\"CALLBACK\":\"http:\\/\\/test.chendingqing.cn\\/index.php?s=\\/wap\\/login\\/callback\"}', '微信', 1, 1488350947, 1552892746);
-INSERT INTO `sys_config` VALUES (21, 0, 'ALIPAY', '{\"ali_partnerid\":\"2088201436595090\",\"ali_seller\":\"ecward.co.ltd@163.com\",\"ali_key\":\"bx0ge66ktzdk8ntb0lg7zzruks1ho8mr\"}', '', 1, 1488442697, 1552899433);
-INSERT INTO `sys_config` VALUES (22, 0, 'EMAILMESSAGE', '{\"email_host\":\"smtp.163.com\",\"email_port\":\"465\",\"email_addr\":\"\",\"email_id\":\"\",\"email_pass\":\"\"}', '', 0, 1488524450, 1552892773);
+INSERT INTO `sys_config` VALUES (17, 0, 'QQLOGIN', '{\"APP_KEY\":\"\",\"APP_SECRET\":\"\",\"AUTHORIZE\":\"http:\\/\\/b2c1.01.niushop.com.cn\",\"CALLBACK\":\"http:\\/\\/b2c1.01.niushop.com.cn\\/wap\\/login\\/callback\"}', 'qq', 0, 1488350925, 1497105447);
+INSERT INTO `sys_config` VALUES (18, 0, 'WCHAT', '{\"APP_KEY\":\"\",\"APP_SECRET\":\"\",\"AUTHORIZE\":\"http:\\/\\/b2c1.01.niushop.com.cn\",\"CALLBACK\":\"http:\\/\\/b2c1.01.niushop.com.cn\\/wap\\/Login\\/callback\"}', '微信', 0, 1488350947, 1497105440);
+INSERT INTO `sys_config` VALUES (21, 0, 'ALIPAY', '{\"ali_partnerid\":\"2088812580429182\",\"ali_seller\":\"13508303885\",\"ali_key\":\"bfvrn7oqiao89kkbc6ubea6alfha034y\"}', '', 1, 1488442697, 1552735621);
+INSERT INTO `sys_config` VALUES (22, 0, 'EMAILMESSAGE', '{\"email_host\":\"smtp.163.com\",\"email_port\":\"465\",\"email_addr\":\"\",\"email_id\":\"\",\"email_pass\":\"\"}', '', 0, 1488524450, 1498907460);
 INSERT INTO `sys_config` VALUES (27, 0, 'WXOPENPLATFORM', '', '', 1, 1490845979, 1496903672);
 INSERT INTO `sys_config` VALUES (28, 0, 'LOGINVERIFYCODE', '', '', 1, 1491014899, 1498736286);
 INSERT INTO `sys_config` VALUES (31, 0, 'COIN_CONFIG', '', '购物币现金转化关系', 1, 1492396593, 1496903672);
-INSERT INTO `sys_config` VALUES (38, 0, 'ORDER_BUY_CLOSE_TIME', '0', '订单自动关闭时间', 0, 1499391774, 1553046456);
-INSERT INTO `sys_config` VALUES (39, 0, 'ORDER_DELIVERY_COMPLETE_TIME', '7', '收货后多长时间自动完成', 1, 1499391779, 1553046456);
-INSERT INTO `sys_config` VALUES (40, 0, 'ORDER_AUTO_DELIVERY', '14', '订单多长时间自动完成', 1, 1499391781, 1553046456);
-INSERT INTO `sys_config` VALUES (41, 0, 'ORDER_BALANCE_PAY', '0', '是否开启余额支付', 1, 1499391784, 1553046456);
-INSERT INTO `sys_config` VALUES (42, 0, 'ORDER_INVOICE_TAX', '0', '发票税率', 1, 1499391786, 1553046456);
-INSERT INTO `sys_config` VALUES (43, 0, 'ORDER_INVOICE_CONTENT', '', '发票内容', 1, 1499391789, 1553046456);
-INSERT INTO `sys_config` VALUES (44, 0, 'ORDER_SHOW_BUY_RECORD', '0', '是否显示购买记录', 1, 1499391791, 1553046456);
+INSERT INTO `sys_config` VALUES (38, 0, 'ORDER_BUY_CLOSE_TIME', '60', '订单自动关闭时间', 1, 1499391774, 1498904013);
+INSERT INTO `sys_config` VALUES (39, 0, 'ORDER_DELIVERY_COMPLETE_TIME', '7', '收货后多长时间自动完成', 1, 1499391779, 1498904013);
+INSERT INTO `sys_config` VALUES (40, 0, 'ORDER_AUTO_DELIVERY', '14', '订单多长时间自动完成', 1, 1499391781, 1498904013);
+INSERT INTO `sys_config` VALUES (41, 0, 'ORDER_BALANCE_PAY', '0', '是否开启余额支付', 1, 1499391784, 1498904013);
+INSERT INTO `sys_config` VALUES (42, 0, 'ORDER_INVOICE_TAX', '0', '发票税率', 1, 1499391786, 1498904013);
+INSERT INTO `sys_config` VALUES (43, 0, 'ORDER_INVOICE_CONTENT', '', '发票内容', 1, 1499391789, 1498904013);
+INSERT INTO `sys_config` VALUES (44, 0, 'ORDER_SHOW_BUY_RECORD', '0', '是否显示购买记录', 1, 1499391791, 1498904013);
 INSERT INTO `sys_config` VALUES (45, 0, 'SEO_TITLE', '', '标题附加字', 1, 1496751194, 1497090304);
 INSERT INTO `sys_config` VALUES (46, 0, 'SEO_META', '', '商城关键词', 1, 1496751194, 1497090304);
 INSERT INTO `sys_config` VALUES (47, 0, 'SEO_DESC', '', '关键词描述', 1, 1496751194, 1497090304);
 INSERT INTO `sys_config` VALUES (48, 0, 'SEO_OTHER', '', '其他页头信息', 1, 1496751194, 1497090304);
-INSERT INTO `sys_config` VALUES (107, 0, 'ORDER_DELIVERY_PAY', '0', '是否开启货到付款', 1, 1496825466, 1553046456);
+INSERT INTO `sys_config` VALUES (107, 0, 'ORDER_DELIVERY_PAY', '', '是否开启货到付款', 1, 1496825466, 1498904013);
 INSERT INTO `sys_config` VALUES (109, 0, 'REGISTER_INTEGRAL', '0', '注册送积分', 1, 1496981877, 1498739145);
 INSERT INTO `sys_config` VALUES (111, 0, 'SHARE_INTEGRAL', '0', '分享送积分', 1, 1496981877, 1498739145);
 INSERT INTO `sys_config` VALUES (112, 0, 'SIGN_INTEGRAL', '0', '签到送积分', 1, 1496983370, 1498739145);
 INSERT INTO `sys_config` VALUES (116, 0, 'LOGINVERIFYCODE', '', '', 1, 1497085371, 1498736286);
 INSERT INTO `sys_config` VALUES (122, 0, 'HOTKEY', '', '', 1, 1497087566, 1497105229);
 INSERT INTO `sys_config` VALUES (123, 0, 'DEFAULTKEY', '', '', 1, 1497087582, 1497105235);
-INSERT INTO `sys_config` VALUES (125, 0, 'WPAY', '{\"appid\":\"\",\"appkey\":\"\",\"mch_id\":\"\",\"mch_key\":\"\"}', '', 1, 1497087123, 1552965473);
+INSERT INTO `sys_config` VALUES (125, 0, 'WPAY', '{\"appid\":\"\",\"appkey\":\"\",\"mch_id\":\"\",\"mch_key\":\"\"}', '', 0, 1497087123, 1498882635);
 INSERT INTO `sys_config` VALUES (127, 0, 'SHOPWCHAT', '{\"appid\":\"\",\"appsecret\":\"\"}', '', 1, 1497088090, 1498736290);
-INSERT INTO `sys_config` VALUES (128, 0, 'BUYER_SELF_LIFTING', '0', '是否开启买家自提', 1, 1498730475, 1553046456);
-INSERT INTO `sys_config` VALUES (129, 0, 'ORDER_SELLER_DISPATCHING', '1', '是否开启商家配送', 1, 1498730475, 1553046456);
-INSERT INTO `sys_config` VALUES (130, 0, 'SHOPPING_BACK_POINTS', '3', '购物返积分设置', 1, 1498730475, 1553046456);
-INSERT INTO `sys_config` VALUES (136, 0, 'MOBILEMESSAGE', '', '', 0, 1498894954, 1552892772);
+INSERT INTO `sys_config` VALUES (128, 0, 'BUYER_SELF_LIFTING', '0', '是否开启买家自提', 1, 1498730475, 1498904013);
+INSERT INTO `sys_config` VALUES (129, 0, 'ORDER_SELLER_DISPATCHING', '1', '是否开启商家配送', 1, 1498730475, 1498904013);
+INSERT INTO `sys_config` VALUES (130, 0, 'SHOPPING_BACK_POINTS', '3', '购物返积分设置', 1, 1498730475, 1498904013);
+INSERT INTO `sys_config` VALUES (136, 0, 'MOBILEMESSAGE', '', '', 0, 1498894954, 1498909195);
 INSERT INTO `sys_config` VALUES (137, 0, 'REGISTERANDVISIT', '{\"is_register\":\"1\",\"register_info\":\"plain\",\"name_keyword\":\"\",\"pwd_len\":\"5\",\"pwd_complexity\":\"\",\"terms_of_service\":\"\"}', '', 1, 1499310581, 1499391801);
 INSERT INTO `sys_config` VALUES (138, 0, 'DEFAULT_IMAGE', '{\"default_goods_img\":\"upload/web_common/3b22fee90512e91bfc1586e016a7d8ea_360_360.png\",\"default_headimg\":\"upload/web_common/419b57e5802bd1f3b8fdedb81fdb5fce_360_360.png\"}', '默认图片', 1, 0, 0);
-INSERT INTO `sys_config` VALUES (139, 0, 'UNIONPAY', '{\"merchant_number\":\"\",\"sign_cert_pwd\":\"\",\"certs_path\":\"\",\"log_path\":\"\",\"service_charge\":\"\"}', '银联卡支付', 1, 1522756926, 1552972029);
+INSERT INTO `sys_config` VALUES (139, 0, 'UNIONPAY', '', '银联卡支付', 0, 1522756926, 0);
 INSERT INTO `sys_config` VALUES (140, 0, 'UPLOAD_TYPE', '1', '上传方式 1 本地  2 七牛', 1, 1552735469, 0);
 INSERT INTO `sys_config` VALUES (141, 0, 'IMG_THUMB', '{\"thumb_type\":\"2\",\"upload_size\":\"0\",\"upload_ext\":\"gif,jpg,jpeg,bmp,png\"}', 'thumb_type(缩略)  3 居中裁剪 2 缩放后填充 4 左上角裁剪 5 右下角裁剪 6 固定尺寸缩放', 1, 1552735469, 0);
 INSERT INTO `sys_config` VALUES (142, 0, 'WATER_CONFIG', '{\"watermark\":\"\",\"transparency\":\"100\",\"waterPosition\":\"9\",\"imgWatermark\":\"\"}', '图片水印参数配置', 1, 1552735469, 0);
-INSERT INTO `sys_config` VALUES (143, 0, 'ORIGINAL_ROAD_REFUND_SETTING_ALIPAY', '{\"is_use\":0}', '', 1, 1552735621, 1552899433);
-INSERT INTO `sys_config` VALUES (144, 0, 'TRANSFER_ACCOUNTS_SETTING_ALIPAY', '{\"is_use\":0}', '', 1, 1552735621, 1552899433);
+INSERT INTO `sys_config` VALUES (143, 0, 'ORIGINAL_ROAD_REFUND_SETTING_ALIPAY', '{\"is_use\":0}', '', 1, 1552735621, 0);
+INSERT INTO `sys_config` VALUES (144, 0, 'TRANSFER_ACCOUNTS_SETTING_ALIPAY', '{\"is_use\":0}', '', 1, 1552735621, 0);
 INSERT INTO `sys_config` VALUES (145, 0, 'USE_PC_TEMPLATE', 'blue', '当前使用的PC端模板文件夹', 1, 1552736852, 1552736852);
 INSERT INTO `sys_config` VALUES (146, 0, 'USE_WAP_TEMPLATE', 'default_new', '当前使用的手机端模板文件夹', 1, 1552736857, 1552736858);
 INSERT INTO `sys_config` VALUES (147, 0, 'IS_RECOMMEND', '{\"is_recommend\":\"\"}', '首页商城促销版块显示设置', 0, 1552736858, 0);
@@ -3523,17 +3426,6 @@ INSERT INTO `sys_config` VALUES (151, 0, 'COPYRIGHT_LINK', '', '版权链接', 1
 INSERT INTO `sys_config` VALUES (152, 0, 'COPYRIGHT_DESC', '', '版权信息', 1, 1552749392, 0);
 INSERT INTO `sys_config` VALUES (153, 0, 'COPYRIGHT_COMPANYNAME', '', '公司名称', 1, 1552749392, 0);
 INSERT INTO `sys_config` VALUES (154, 0, 'QINIU_CONFIG', '{\"Accesskey\":\"\",\"Secretkey\":\"\",\"Bucket\":\"\",\"QiniuUrl\":\"\"}', '七牛云存储参数配置', 1, 1552749401, 0);
-INSERT INTO `sys_config` VALUES (155, 0, 'ORIGINAL_ROAD_REFUND_SETTING_WECHAT', '{\"is_use\":0,\"apiclient_cert\":\"\",\"apiclient_key\":\"\"}', '', 1, 1552961106, 0);
-INSERT INTO `sys_config` VALUES (156, 0, 'TRANSFER_ACCOUNTS_SETTING_WECHAT', '{\"is_use\":0}', '', 1, 1552961106, 0);
-INSERT INTO `sys_config` VALUES (157, 0, 'WITHDRAW_BALANCE', '{\"withdraw_cash_min\":0,\"withdraw_multiple\":0,\"withdraw_poundage\":0,\"withdraw_message\":\"\",\"withdraw_account\":[{\"id\":\"bank_card\",\"name\":\"\\u94f6\\u884c\\u5361\",\"value\":1,\"is_checked\":1},{\"id\":\"wechat\",\"name\":\"\\u5fae\\u4fe1\",\"value\":2,\"is_checked\":0},{\"id\":\"alipay\",\"name\":\"\\u652f\\u4ed8\\u5b9d\",\"value\":3,\"is_checked\":0}]}', '会员余额提现设置', 0, 1552967647, 0);
-INSERT INTO `sys_config` VALUES (158, 0, 'ORIGINAL_ROAD_REFUND_SETTING_UNIONPAY', '{\"is_use\":0}', '', 1, 1552972029, 0);
-INSERT INTO `sys_config` VALUES (159, 0, 'ORDER_IS_LOGISTICS', '0', '是否允许选择物流', 1, 1553045841, 1553046456);
-INSERT INTO `sys_config` VALUES (160, 0, 'IS_OPEN_VIRTUAL_GOODS', '0', '是否开启虚拟商品', 1, 1553045841, 1553046456);
-INSERT INTO `sys_config` VALUES (161, 0, 'IS_OPEN_ORDER_DESIGNATED_DELIVERY_TIME', '0', '是否开启订单指定配送时间', 1, 1553045841, 1553046456);
-INSERT INTO `sys_config` VALUES (162, 0, 'IS_OPEN_O2O', '0', '是否开启本地配送', 1, 1553045841, 1553046456);
-INSERT INTO `sys_config` VALUES (163, 0, 'DISTRIBUTION_TIME_SLOT', '[]', '配送时间时间段', 1, 1553045841, 1553046456);
-INSERT INTO `sys_config` VALUES (164, 0, 'SYSTEM_DEFAULT_EVALUATE', '{\"day\":\"\",\"evaluate\":\"\"}', '系统默认评价', 1, 1553045841, 1553046456);
-INSERT INTO `sys_config` VALUES (165, 0, 'SHOPHOU_DAY_NUMBER', '', '可以售后的时间段', 1, 1553045841, 1553046456);
 
 -- ----------------------------
 -- Table structure for sys_custom_template
@@ -6546,7 +6438,7 @@ CREATE TABLE `sys_module`  (
   `create_time` int(11) NULL DEFAULT 0 COMMENT '创建时间',
   `modify_time` int(11) NULL DEFAULT 0,
   PRIMARY KEY (`module_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10141 AVG_ROW_LENGTH = 606 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统模块表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 10140 AVG_ROW_LENGTH = 606 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统模块表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sys_module
@@ -6783,7 +6675,6 @@ INSERT INTO `sys_module` VALUES (10135, '订单详情', 'admin', 'Orderpresell',
 INSERT INTO `sys_module` VALUES (10137, '核销人员', 'admin', 'Verification', 'index', 10136, 3, 'Verification/index', 1, 0, 1, '', '', '', 1, 1522756927, 0);
 INSERT INTO `sys_module` VALUES (10138, '核销记录', 'admin', 'Verification', 'virtualGoodsVerificationList', 10136, 3, 'Verification/virtualGoodsVerificationList', 1, 0, 2, '', '', '', 1, 1522756927, 0);
 INSERT INTO `sys_module` VALUES (10139, '虚拟商品管理', 'admin', 'goods', 'virtualGoodsList', 150, 3, 'goods/virtualGoodsList', 1, 0, 1, '虚拟商品管理', '', '', 1, 1523617082, 0);
-INSERT INTO `sys_module` VALUES (10140, '信用卡订单', 'admin', 'order', 'creditcardlist', 184, 2, 'order/creditcardlist', 1, 0, 1, '行用卡订单', '', '', 1, 1552981204, 1552981315);
 
 -- ----------------------------
 -- Table structure for sys_notice
@@ -6963,12 +6854,7 @@ CREATE TABLE `sys_shortcut_menu`  (
   `sort` int(11) NOT NULL DEFAULT 0,
   `module_id` int(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '模块id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '快捷菜单' ROW_FORMAT = Fixed;
-
--- ----------------------------
--- Records of sys_shortcut_menu
--- ----------------------------
-INSERT INTO `sys_shortcut_menu` VALUES (1, 1, 0, 0, 0);
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '快捷菜单' ROW_FORMAT = Fixed;
 
 -- ----------------------------
 -- Table structure for sys_url_route
@@ -7044,14 +6930,12 @@ CREATE TABLE `sys_user`  (
   INDEX `IDX_sys_user_user_tel`(`user_tel`) USING BTREE,
   INDEX `IDX_sys_user_wx_openid`(`wx_openid`) USING BTREE,
   INDEX `IDX_sys_user_wx_unionid`(`wx_unionid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 AVG_ROW_LENGTH = 372 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统用户表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 AVG_ROW_LENGTH = 372 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统用户表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 0, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 1, 'upload/avator/e6cabbf6c7695f0d40f9646964d3c62d_120_120.jpg', 1, 1, '13508303885', 0, '', '', '', '24952325564@qq.com', 0, NULL, 0, NULL, NULL, '125.84.92.171', 1, '125.84.94.255', 1, 65, '陈定清', 2, '', 'admin', '', 0, 0, 0, 2019, 1553151078, 1553149227, -2147483648);
-INSERT INTO `sys_user` VALUES (3, 0, 'root', 'e10adc3949ba59abbe56e057f20f883e', 1, '', 0, 1, '', 0, '', '', '', 'user@qq.com', 0, '', 0, '', '', '120.92.72.88', 1, '125.84.93.137', 1, 4, '', 0, '', 'root', '', 0, 0, 0, 1552961979, 1552977778, 1552962065, 0);
-INSERT INTO `sys_user` VALUES (4, 0, '13715402', 'e10adc3949ba59abbe56e057f20f883e', 1, '', 0, 1, '', 0, '', '', '', '13715402@qq.com', 0, '', 0, '', '', '125.84.94.255', 1, '', 0, 1, '', 0, '', '13715402', '', 0, 0, 0, 1552977841, 1552977842, 0, 0);
+INSERT INTO `sys_user` VALUES (1, 0, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 1, '', 1, 1, '', 0, '', '', '', '', 0, NULL, 0, NULL, NULL, '127.0.0.1', 1, '127.0.0.1', 1, 8, '', 0, '', 'admin', '', 0, 0, 0, 2019, 1552872046, 1552871167, 0);
 
 -- ----------------------------
 -- Table structure for sys_user_admin
@@ -7110,7 +6994,7 @@ CREATE TABLE `sys_user_log`  (
   `ip` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'ip地址',
   `create_time` int(11) NULL DEFAULT 0 COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 43 AVG_ROW_LENGTH = 82 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户操作日志' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 AVG_ROW_LENGTH = 82 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户操作日志' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sys_user_log
@@ -7129,34 +7013,6 @@ INSERT INTO `sys_user_log` VALUES (11, 1, 'admin', 1, 'http://www.shop.com/index
 INSERT INTO `sys_user_log` VALUES (12, 1, 'admin', 1, 'http://www.shop.com/index.php?s=/admin/login/login', '用户', '用户登录', '', '127.0.0.1', 1552872046);
 INSERT INTO `sys_user_log` VALUES (13, 1, 'admin', 1, 'http://www.shop.com/index.php?s=/admin/goods/GoodsCreateOrUpdate', '商品', '修改商品', '修改商品:利群', '127.0.0.1', 1552872143);
 INSERT INTO `sys_user_log` VALUES (14, 1, 'admin', 1, 'http://www.shop.com/index.php?s=/admin/goods/GoodsCreateOrUpdate', '商品', '修改商品', '修改商品:利群', '127.0.0.1', 1552872207);
-INSERT INTO `sys_user_log` VALUES (15, 1, 'admin', 1, 'http://s2.pickown.com/index.php?s=/admin/login/login', '用户', '用户登录', '', '173.245.48.78', 1552887153);
-INSERT INTO `sys_user_log` VALUES (16, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/login/login', '用户', '用户登录', '', '125.84.93.137', 1552890202);
-INSERT INTO `sys_user_log` VALUES (17, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/login/login', '用户', '用户登录', '', '125.84.93.137', 1552892629);
-INSERT INTO `sys_user_log` VALUES (18, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/login/login', '用户', '用户登录', '', '125.84.93.137', 1552961027);
-INSERT INTO `sys_user_log` VALUES (19, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/login/login', '用户', '用户登录', '', '125.84.93.137', 1552961558);
-INSERT INTO `sys_user_log` VALUES (20, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/login/login', '用户', '用户登录', '', '125.84.93.137', 1552972007);
-INSERT INTO `sys_user_log` VALUES (21, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/login/login', '用户', '用户登录', '', '125.84.94.255', 1552978820);
-INSERT INTO `sys_user_log` VALUES (22, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/login/login', '用户', '用户登录', '', '125.84.94.255', 1552981777);
-INSERT INTO `sys_user_log` VALUES (23, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/login/login', '用户', '用户登录', '', '125.84.94.255', 1552981816);
-INSERT INTO `sys_user_log` VALUES (24, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/login/login', '用户', '用户登录', '', '125.84.94.255', 1553044751);
-INSERT INTO `sys_user_log` VALUES (25, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/login/login', '用户', '用户登录', '', '125.84.94.255', 1553044751);
-INSERT INTO `sys_user_log` VALUES (26, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/login/login', '用户', '用户登录', '', '125.84.94.255', 1553044752);
-INSERT INTO `sys_user_log` VALUES (27, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/login/login', '用户', '用户登录', '', '125.84.94.255', 1553044752);
-INSERT INTO `sys_user_log` VALUES (28, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/login/login', '用户', '用户登录', '', '125.84.94.255', 1553044752);
-INSERT INTO `sys_user_log` VALUES (29, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/login/login', '用户', '用户登录', '', '125.84.94.255', 1553044752);
-INSERT INTO `sys_user_log` VALUES (30, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/login/login', '用户', '用户登录', '', '125.84.94.255', 1553053303);
-INSERT INTO `sys_user_log` VALUES (31, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/login/login', '用户', '用户登录', '', '125.84.94.255', 1553060648);
-INSERT INTO `sys_user_log` VALUES (32, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/login/login', '用户', '用户登录', '', '125.84.94.255', 1553060789);
-INSERT INTO `sys_user_log` VALUES (33, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/login/login', '用户', '用户登录', '', '125.84.94.255', 1553079787);
-INSERT INTO `sys_user_log` VALUES (34, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/login/login', '用户', '用户登录', '', '125.84.94.255', 1553130851);
-INSERT INTO `sys_user_log` VALUES (35, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/goods/addgoodscategory', '商品', '添加商品分类', '添加商品分类:南京', '125.84.94.255', 1553131120);
-INSERT INTO `sys_user_log` VALUES (36, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/goods/GoodsCreateOrUpdate', '商品', '添加商品', '添加商品:南京 红 硬', '125.84.94.255', 1553131307);
-INSERT INTO `sys_user_log` VALUES (37, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/goods/GoodsCreateOrUpdate', '商品', '添加商品', '添加商品:利群 红', '125.84.94.255', 1553131607);
-INSERT INTO `sys_user_log` VALUES (38, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/login/login', '用户', '用户登录', '', '183.69.202.145', 1553132462);
-INSERT INTO `sys_user_log` VALUES (39, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/login/login', '用户', '用户登录', '', '125.84.94.255', 1553139607);
-INSERT INTO `sys_user_log` VALUES (40, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/login/login', '用户', '用户登录', '', '125.84.94.255', 1553139614);
-INSERT INTO `sys_user_log` VALUES (41, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/goods/GoodsCreateOrUpdate', '商品', '修改商品', '修改商品:红塔山', '125.84.94.255', 1553144795);
-INSERT INTO `sys_user_log` VALUES (42, 1, 'admin', 1, 'http://test.chendingqing.cn/index.php?s=/admin/login/login', '用户', '用户登录', '', '125.84.92.171', 1553151078);
 
 -- ----------------------------
 -- Table structure for sys_version_devolution

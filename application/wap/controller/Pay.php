@@ -13,7 +13,6 @@
  * @date : 2015.1.17
  * @version : v1.0.0.0
  */
-
 namespace app\wap\controller;
 
 use data\service\Config;
@@ -28,14 +27,13 @@ use data\service\Member;
 use data\model\NsMemberRechargeModel;
 use data\model\NsOrderModel;
 use data\model\NsTuangouGroupModel;
-
 \think\Loader::addNamespace('data', 'data/');
 
 /**
  * 支付控制器
  *
  * @author Administrator
- *
+ *        
  */
 class Pay extends Controller
 {
@@ -53,17 +51,17 @@ class Pay extends Controller
         $this->assign("web_info", $web_info);
         $this->assign("shopname", $web_info['title']);
         $this->assign("title", $web_info['title']);
-
+        
         // 使用那个手机模板
         $use_wap_template = $config->getUseWapTemplate(0);
         if (empty($use_wap_template)) {
             $use_wap_template['value'] = 'default_new';
         }
         // 检查模版是否存在
-        if (!checkTemplateIsExists("wap", $use_wap_template['value'])) {
+        if (! checkTemplateIsExists("wap", $use_wap_template['value'])) {
             $this->error("模板配置有误，请联系商城管理员");
         }
-
+        
         $this->style = "wap/" . $use_wap_template['value'] . "/";
         $this->assign("style", "wap/" . $use_wap_template['value']);
         $seoConfig = $config->getSeoConfig(0);
@@ -86,7 +84,7 @@ class Pay extends Controller
         $this->assign("unpaid_goback", $unpaid_goback); // 返回到订单
         $this->assign('member_info', $member_info);
     }
-
+    
     /* 演示版本 */
     public function demoVersion()
     {
@@ -102,37 +100,37 @@ class Pay extends Controller
         if (empty($out_trade_no)) {
             $this->error("没有获取到支付信息");
         }
-
+        
         $order_model = new NsOrderModel();
-
+        
         //拼团付款限制
         $is_support_pintuan = IS_SUPPORT_PINTUAN;
-        if ($is_support_pintuan == 1) {
-            $order_info = $order_model->getInfo(['out_trade_no' => $out_trade_no], "tuangou_group_id");
-            if ($order_info['tuangou_group_id'] > 0) {
-                $tuangou_group = new NsTuangouGroupModel();
-                $pingtuan_info = $tuangou_group->getInfo(['group_id' => $order_info['tuangou_group_id']], "tuangou_num, status");
-
-                $condition_1['order_status'] = ["in", "1,2,3,4"];
-                $condition_1['tuangou_group_id'] = $order_info['tuangou_group_id'];
-
-                $order_list_count = $order_model->getCount($condition_1);
-
-                if ($pingtuan_info['tuangou_num'] <= $order_list_count || !in_array($pingtuan_info['status'], [0, 1])) {
-                    $this->error("该拼团已完成或已关闭");
-                    return;
-                }
+        if($is_support_pintuan == 1){
+            $order_info = $order_model->getInfo(['out_trade_no'=>$out_trade_no], "tuangou_group_id");
+            if($order_info['tuangou_group_id'] > 0){       
+            	$tuangou_group = new NsTuangouGroupModel();
+            	$pingtuan_info = $tuangou_group->getInfo(['group_id'=>$order_info['tuangou_group_id']], "tuangou_num, status");
+            
+            	$condition_1['order_status'] = ["in","1,2,3,4"];
+            	$condition_1['tuangou_group_id'] = $order_info['tuangou_group_id'];
+            
+            	$order_list_count = $order_model->getCount($condition_1);
+            
+            	if($pingtuan_info['tuangou_num'] <= $order_list_count || !in_array($pingtuan_info['status'], [0, 1])){      		 
+            		$this->error("该拼团已完成或已关闭");
+            		return;
+            	}
             }
         }
         $pay = new UnifyPay();
         $pay_config = $pay->getPayConfig();
         $this->assign("pay_config", $pay_config);
         $pay_value = $pay->getPayInfo($out_trade_no);
-
+        
         if (empty($pay_value)) {
             $this->error("订单主体信息已发生变动!", __URL(__URL__ . "wap/member/index"));
         }
-
+        
         if ($pay_value['pay_status'] != 0) {
             // 订单已经支付
             $this->error("订单已经支付或者订单价格为0.00，无需再次支付!", __URL(__URL__ . "wap/member/index"));
@@ -145,18 +143,22 @@ class Pay extends Controller
                 $this->error("订单已关闭", __URL(__URL__ . "wap/member/index"));
             }
         }
-
-
-        $this->assign('pay_value', $pay_value);
-        if (request()->isMobile()) {
-            $this->user = new Member();
-            $this->shop_name = $this->user->getInstanceName();
-            $this->assign("platform_shopname", $this->shop_name); // 平台店铺名称
-            return view($this->style . 'Pay/getPayValue'); // 手机端
+        
+        $zero1 = time(); // 当前时间 ,注意H 是24小时 h是12小时
+        $zero2 = $pay_value['create_time'];
+        if ($zero1 > ($zero2 + ($this->shop_config['order_buy_close_time'] * 60))) {
+            $this->error("订单已关闭");
         } else {
-            return view($this->style . 'Pay/pcOptionPaymentMethod'); // PC端
+            $this->assign('pay_value', $pay_value);
+            if (request()->isMobile()) {
+            	$this->user = new Member();
+            	$this->shop_name = $this->user->getInstanceName();
+            	$this->assign("platform_shopname", $this->shop_name); // 平台店铺名称
+                return view($this->style . 'Pay/getPayValue'); // 手机端
+            } else {
+                return view($this->style . 'Pay/pcOptionPaymentMethod'); // PC端
+            }
         }
-
     }
 
     /**
@@ -186,17 +188,17 @@ class Pay extends Controller
     public function wchatPay()
     {
         $out_trade_no = request()->get('no', '');
-
-        if (!is_numeric($out_trade_no)) {
+        
+        if (! is_numeric($out_trade_no)) {
             $this->error("没有获取到支付信息");
         }
-
+        
         $red_url = str_replace("/index.php", "", __URL__);
         $red_url = str_replace("index.php", "", $red_url);
         $red_url = $red_url . "/weixinpay.php";
         $pay = new UnifyPay();
-
-        if (!isWeixin()) {
+        
+        if (! isWeixin()) {
             // 扫码支付
             if (request()->isMobile()) {
                 $res = $pay->wchatPay($out_trade_no, 'MWEB', $red_url);
@@ -204,7 +206,7 @@ class Pay extends Controller
                     $this->error($res['return_msg']);
                     die();
                 }
-
+                
                 $this->redirect($res["mweb_url"]);
             } else {
                 $res = $pay->wchatPay($out_trade_no, 'NATIVE', $red_url);
@@ -214,8 +216,8 @@ class Pay extends Controller
                     } else {
                         $code_url = $res['code_url'];
                     }
-                    if (!empty($res["err_code"]) && $res["err_code"] == "ORDERPAID" && $res["err_code_des"] == "该订单已支付") {
-                        $this->error($res["err_code_des"], __URL(__URL__ . "/member/index"));
+                    if (! empty($res["err_code"]) && $res["err_code"] == "ORDERPAID" && $res["err_code_des"] == "该订单已支付") {
+                        $this->error($res["err_code_des"],__URL(__URL__ . "/member/index"));
                     }
                 } else {
                     $code_url = "生成支付二维码失败!";
@@ -229,8 +231,8 @@ class Pay extends Controller
         } else {
             // jsapi支付
             $res = $pay->wchatPay($out_trade_no, 'JSAPI', $red_url);
-            if (!empty($res["return_code"]) && $res["return_code"] == "FAIL" && $res["return_msg"] == "JSAPI支付必须传openid") {
-                $this->error($res['return_msg'], __URL(__URL__ . "/wap/member/index"));
+            if (! empty($res["return_code"]) && $res["return_code"] == "FAIL" && $res["return_msg"] == "JSAPI支付必须传openid") {
+                $this->error($res['return_msg'],__URL(__URL__ . "/wap/member/index"));
             } else {
                 $retval = $pay->getWxJsApi($res);
                 $this->assign("out_trade_no", $out_trade_no);
@@ -246,13 +248,13 @@ class Pay extends Controller
     public function wchatUrlBack()
     {
         $postStr = file_get_contents('php://input');
-        if (!empty($postStr)) {
+        if (! empty($postStr)) {
             libxml_disable_entity_loader(true);
             $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
             $pay = new UnifyPay();
             $check_sign = $pay->checkSign($postObj, $postObj->sign);
             if ($postObj->result_code == 'SUCCESS' && $check_sign == 1) {
-
+                
                 $retval = $pay->onlinePay($postObj->out_trade_no, 1, '');
                 $xml = "<xml>
                     <return_code><![CDATA[SUCCESS]]></return_code>
@@ -278,7 +280,7 @@ class Pay extends Controller
         $msg = request()->get('msg', '');
         $this->assign("status", $msg);
         $order_no = $this->getOrderNoByOutTradeNo($out_trade_no);
-
+       
         $this->assign("order_no", $order_no);
         if (request()->isMobile()) {
             return view($this->style . "Pay/payCallback");
@@ -311,10 +313,10 @@ class Pay extends Controller
     public function aliPay()
     {
         $out_trade_no = request()->get('no', '');
-        if (!is_numeric($out_trade_no)) {
+        if (! is_numeric($out_trade_no)) {
             $this->error("没有获取到支付信息");
         }
-        if (!isWeixin()) {
+        if (! isWeixin()) {
             $notify_url = str_replace("/index.php", '', __URL__);
             $notify_url = str_replace("index.php", '', $notify_url);
             $notify_url = $notify_url . "/alipay.php";
@@ -326,7 +328,7 @@ class Pay extends Controller
             echo "<meta charset='UTF-8'><script>window.location.href='" . $res . "'</script>";
         } else {
             // echo "点击右上方在浏览器中打开";
-            $this->assign("status", -1);
+            $this->assign("status", - 1);
             $order_no = $this->getOrderNoByOutTradeNo($out_trade_no);
             $this->assign("order_no", $order_no);
             if (request()->isMobile()) {
@@ -349,10 +351,10 @@ class Pay extends Controller
             $out_trade_no = request()->post('out_trade_no', '');
             // 支付宝交易号
             $trade_no = request()->post('trade_no', '');
-
+            
             // 交易状态
             $trade_status = request()->post('trade_status', '');
-
+            
             Log::write("支付宝------------------------------------交易状态：" . $trade_status);
             if ($trade_status == 'TRADE_FINISHED') {
                 // 判断该笔订单是否在商户网站中已经做过处理
@@ -360,18 +362,18 @@ class Pay extends Controller
                 // 如果有做过处理，不执行商户的业务程序
                 // 注意：
                 // 退款日期超过可退款期限后（如三个月可退款），支付宝系统发送该交易状态通知
-
+                
                 // 调试用，写文本函数记录程序运行情况是否正常
                 // logResult("这里写入想要调试的代码变量值，或其他运行的结果记录");
                 $retval = $pay->onlinePay($out_trade_no, 2, $trade_no);
                 Log::write("支付宝------------------------------------retval：" . $retval);
                 // $res = $order->orderOnLinePay($out_trade_no, 2);
-            } else
+            } else 
                 if ($trade_status == 'TRADE_SUCCESS') {
                     // 判断该笔订单是否在商户网站中已经做过处理
                     // 如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
                     // 如果有做过处理，不执行商户的业务程序
-
+                    
                     // 注意：
                     // 付款完成后，支付宝系统发送该交易状态通知
                     $retval = $pay->onlinePay($out_trade_no, 2, $trade_no);
@@ -380,20 +382,20 @@ class Pay extends Controller
                     // 调试用，写文本函数记录程序运行情况是否正常
                     // logResult("这里写入想要调试的代码变量值，或其他运行的结果记录");
                 }
-
+            
             // ——请根据您的业务逻辑来编写程序（以上代码仅作参考）——
-
+            
             echo "success"; // 请不要修改或删除
-
+                                
             // $this->assign("status", 1);
-            // $this->assign("out_trade_no", $out_trade_no);
-            // return view($this->style . "Pay/payCallback");
-
+                                // $this->assign("out_trade_no", $out_trade_no);
+                                // return view($this->style . "Pay/payCallback");
+                                
             // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         } else {
             // 验证失败
             echo "fail";
-
+            
             // $this->assign("status", 2);
             // $this->assign("out_trade_no", $out_trade_no);
             // return view($this->style . "Pay/payCallback");
@@ -407,7 +409,7 @@ class Pay extends Controller
     public function aliPayReturn()
     {
         $out_trade_no = request()->get('out_trade_no', '');
-
+        
         $order_no = $this->getOrderNoByOutTradeNo($out_trade_no);
         $this->assign("order_no", $order_no);
         $pay = new UnifyPay();
@@ -415,7 +417,7 @@ class Pay extends Controller
         if ($verify_result) {
             $trade_no = request()->get('trade_no', '');
             $trade_status = request()->get('trade_status', '');
-
+            
             if ($trade_no == 'TRADE_FINISHED' || $trade_status == 'TRADE_SUCCESS') {
                 // return view($this->style . 'Pay/pay_success');
                 // echo "<h1>支付成功</h1>";
@@ -448,7 +450,7 @@ class Pay extends Controller
      * 根据流水号查询订单编号，
      * 创建时间：2017年10月9日 18:36:54
      *
-     * @param unknown $out_trade_no
+     * @param unknown $out_trade_no            
      * @return string
      */
     public function getOrderNoByOutTradeNo($out_trade_no)
@@ -456,24 +458,24 @@ class Pay extends Controller
         $pay = new UnifyPay();
         $order = new Order();
         $member_pay_model = new NsMemberRechargeModel();
-
+        
         $pay_value = $pay->getPayInfo($out_trade_no);
         $order_no = "";
-        if ($pay_value['type'] == 1) {
+        if ($pay_value['type'] == 1) {       	
             // 订单
             $list = $order->getOrderNoByOutTradeNo($out_trade_no);
-            if (!empty($list)) {
+            if (! empty($list)) {
                 foreach ($list as $v) {
                     $order_no .= $v['order_no'];
                 }
             }
         } elseif ($pay_value['type'] == 4) {
-            /* $order_no = [];
+        	/* $order_no = [];
             $pay_info = $member_pay_model->getInfo(["out_trade_no"=>$out_trade_no]);
             if($pay_info){
-                $order_no['out_trade_no'] = $out_trade_no;
-                $order_no['uid'] = $pay_info['uid'];
-                $order_no['shop_id'] = $pay_value['shop_id'];
+            	$order_no['out_trade_no'] = $out_trade_no;
+            	$order_no['uid'] = $pay_info['uid'];
+            	$order_no['shop_id'] = $pay_value['shop_id'];
             } */
         }
         return $order_no;
@@ -483,14 +485,14 @@ class Pay extends Controller
      * 根据外部交易号查询订单状态，订单关闭状态下是不能继续支付的
      * 创建时间：2017年10月13日 14:35:59 王永杰
      *
-     * @param unknown $out_trade_no
+     * @param unknown $out_trade_no            
      * @return number
      */
     public function getOrderStatusByOutTradeNo($out_trade_no)
     {
         $order = new Order();
         $order_status = $order->getOrderStatusByOutTradeNo($out_trade_no);
-        if (!empty($order_status)) {
+        if (! empty($order_status)) {
             return $order_status['order_status'];
         }
         return 0;
@@ -502,17 +504,17 @@ class Pay extends Controller
     public function unionpay()
     {
         $out_trade_no = request()->get('no', '');
-        if (!is_numeric($out_trade_no)) {
+        if (! is_numeric($out_trade_no)) {
             $this->error("没有获取到支付信息");
         }
-
+        
         $pay = new UnifyPay();
         $pay_info = $pay->getPayInfo($out_trade_no);
-
+        
         $unionpay = new UnionPay();
         $txnTime = date('YmdHis', $pay_info['create_time']);
         $unionpay->frontConsume($out_trade_no, $txnTime, $pay_info['pay_money']);
-
+        
         // $unionpay->backReceive();
     }
 
@@ -524,11 +526,11 @@ class Pay extends Controller
         $orderId = $_POST['orderId']; // 其他字段也可用类似方式获取
         $queryId = $_POST['queryId'];
         $txnTime = $_POST['txnTime'];
-
+        
         $respCode = $_POST['respCode'];
         // 判断respCode=00、A6后，对涉及资金类的交易，请再发起查询接口查询，确定交易成功后更新数据库。
         if ($respCode == 00 || $respCode == 'A6') {
-
+            
             $pay = new UnifyPay();
             $result = $pay->backReceive($orderId, $txnTime, $queryId);
         } else {
@@ -547,13 +549,13 @@ class Pay extends Controller
         // 判断respCode=00、A6后，对涉及资金类的交易，请再发起查询接口查询，确定交易成功后更新数据库。
         $result = 0;
         if ($respCode == 00 || $respCode == 'A6') {
-
+            
             $pay = new UnifyPay();
             $result = $pay->frontReceive($orderId, $txnTime);
         } else {
             // echo '交易失败';
         }
-
+        
         $out_trade_no = $orderId; // 流水号
         $msg = request()->get('msg', ''); // 测试，-1：在其他浏览器中打开，1：成功，2：失败
         $this->assign("status", $result);
@@ -565,136 +567,102 @@ class Pay extends Controller
             return view($this->style . "Pay/payCallbackPc");
         }
     }
-
+    
     // public function unionpayRefund(){
     // $unionpay = new unionpay();
     // $txnTime = date('YmdHis', time());
     // $unionpay->refund(time(), '777290058156992', '721802281909022013068', $txnTime, 1000);
     // }
-
+    
     /**
      * 余额支付选择界面
      */
-    public function pay()
-    {
+    public function pay(){
         // 实例化类
         $member = new Member();
         $pay = new UnifyPay();
         $config = new Config();
         $uid = $member->getCurrUserId();
-
-        if (request()->isAjax()) {
+        
+        if(request() -> isAjax()){
             $out_trade_no = request()->post("out_trade_no", 0);
-
-            $order_model = new NsOrderModel();
-            //拼团支付阻断
-            $is_support_pintuan = IS_SUPPORT_PINTUAN;
-            if ($is_support_pintuan == 1) {
-                $order_info = $order_model->getInfo(['out_trade_no' => $out_trade_no], "tuangou_group_id");
-                if ($order_info['tuangou_group_id'] > 0) {
-                    $tuangou_group = new NsTuangouGroupModel();
-                    $pingtuan_info = $tuangou_group->getInfo(['group_id' => $order_info['tuangou_group_id']], "tuangou_num, status");
-
-                    $condition_1['order_status'] = ["in", "1,2,3,4"];
-                    $condition_1['tuangou_group_id'] = $order_info['tuangou_group_id'];
-
-                    $order_list_count = $order_model->getCount($condition_1);
-                    if ($pingtuan_info['tuangou_num'] <= $order_list_count || !in_array($pingtuan_info['status'], [0, 1])) {
-                        $res = [
-                            'code' => -1,
-                            'message' => "该拼团已完成或已关闭"
-                        ];
-                        return $res;
-                    }
-                }
-            }
-
+            
+          	 $order_model = new NsOrderModel();
+          	 //拼团支付阻断
+          	 $is_support_pintuan = IS_SUPPORT_PINTUAN;
+          	 if($is_support_pintuan == 1){
+                 $order_info = $order_model->getInfo(['out_trade_no'=>$out_trade_no], "tuangou_group_id");
+                 if($order_info['tuangou_group_id'] > 0){
+                 $tuangou_group = new NsTuangouGroupModel();
+                 $pingtuan_info = $tuangou_group->getInfo(['group_id'=>$order_info['tuangou_group_id']], "tuangou_num, status");
+                
+                 $condition_1['order_status'] = ["in","1,2,3,4"];
+                 $condition_1['tuangou_group_id'] = $order_info['tuangou_group_id'];
+                
+                 $order_list_count = $order_model->getCount($condition_1);
+    	             if($pingtuan_info['tuangou_num'] <= $order_list_count || !in_array($pingtuan_info['status'], [0, 1])){	            
+        	             $res = [
+                            'code'=> -1,
+                     		'message'=>"该拼团已完成或已关闭"
+        	             ];
+        	             return $res;
+    	             }
+                 }
+          	}
+          	 
             $is_use_balance = request()->post("is_use_balance", 0);
-            $res = $pay->orderPaymentUserBalance($out_trade_no, $is_use_balance, $uid);
+            $res = $pay -> orderPaymentUserBalance($out_trade_no, $is_use_balance, $uid);
             return $res;
-        } else {
-            $out_trade_no = request()->get("out_trade_no", 0);
+        }else{
+            $out_trade_no = request()->get("out_trade_no", 0); 
             // 支付信息
             $pay_value = $pay->getPayInfo($out_trade_no);
 
             $this->assign("pay_value", $pay_value);
-
+            
             if (empty($out_trade_no) || !is_numeric($out_trade_no) || empty($pay_value)) {
                 $this->error("没有获取到支付信息");
             }
-            if (empty($uid)) {
+            if(empty($uid)){
                 $this->error("没有获取到用户信息");
             }
-
+            
             // 此次交易最大可用余额
             $member_balance = $pay->getMaxAvailableBalance($out_trade_no, $uid);
             $this->assign("member_balance", $member_balance);
-
+            
             $shop_id = 0;
             $shop_config = $config->getConfig($shop_id, "ORDER_BALANCE_PAY");
             // 如果商家未开启余额支付或余额未0 直接跳转到支付界面
-            if ($shop_config['value'] == 0 || $member_balance == 0) {
-                $this->redirect(__URL(__URL__ . "wap/pay/getPayValue?out_trade_no=" . $out_trade_no));
+            if($shop_config['value'] == 0 || $member_balance == 0){
+                $this->redirect(__URL(__URL__ . "wap/pay/getPayValue?out_trade_no=".$out_trade_no));
             }
-
+            
             // 支付方式配置
             $pay_config = $pay->getPayConfig();
             $this->assign("pay_config", $pay_config);
-
+           
             $order_status = $this->getOrderStatusByOutTradeNo($out_trade_no);
             // 订单关闭状态下是不能继续支付的
             if ($order_status == 5) {
                 $this->error("订单已关闭");
             }
-
+            
             // 还需支付的金额
             $need_pay_money = round($pay_value['pay_money'], 2) - round($member_balance, 2);
             $this->assign("need_pay_money", sprintf("%.2f", $need_pay_money));
-
-            /*$zero1 = time(); // 当前时间 ,注意H 是24小时 h是12小时
+            
+            $zero1 = time(); // 当前时间 ,注意H 是24小时 h是12小时
             $zero2 = $pay_value['create_time'];
             if ($zero1 > ($zero2 + ($this->shop_config['order_buy_close_time'] * 60))) {
                 $this->error("订单已关闭");
-            }else{*/
-            if (request()->isMobile()) {
-                return view($this->style . 'Pay/wapPay');
-            } else {
-                return view($this->style . "Pay/pcPay");
+            }else{
+                if (request()->isMobile()) {
+                    return view($this->style . 'Pay/wapPay');
+                }else{
+                    return view($this->style . "Pay/pcPay");
+                } 
             }
-//            }
         }
-    }
-
-    /**
-     * 信用卡支付页面
-     */
-    public function credit()
-    {
-        $member = new Member();
-        $pay = new UnifyPay();
-        $config = new Config();
-        $uid = $member->getCurrUserId();
-        $res = $member->getCredit($uid);
-        //如果没绑定信用卡就跳转 绑定页面
-        if (empty($res['card_number'])) {
-            $this->redirect(__URL(__URL__ . "/member/usersecurity&atc=user_credit"));
-        } else {
-
-            $out_trade_no = request()->get("out_trade_no", 0);
-            //获取信用卡支付信息
-            $pay_value = $pay->getPayInfo($out_trade_no);//$shop_id, $out_trade_no, $pay_body, $pay_detail, $pay_money, $type, $type_alis_i
-
-            $payment_type = 7;
-            $res = $pay->updateCreditstatus($out_trade_no,$payment_type);
-
-            if (!$res==1) {
-                return view($this->style . "Pay/payCallback");
-            } else {
-                return view($this->style . "Pay/payCallbackPc");
-            }
-
-
-        }
-
     }
 }

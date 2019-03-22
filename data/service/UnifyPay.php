@@ -268,7 +268,6 @@ class UnifyPay extends BaseService implements IUnifyPay
         return $retval;
     }
     /**
-     * //TODO
      * 关闭第三方接口
      * @param unknown $out_trade_no
      */
@@ -674,25 +673,5 @@ class UnifyPay extends BaseService implements IUnifyPay
                 "message" => ""
             );
         }
-    }
-
-    /**
-     * 修改信用卡支付状态
-     * @param $out_trade_no
-     * @param $pay_type
-     * @param $payment_type
-     * @return bool
-     */
-    public function updateCreditstatus($out_trade_no,$payment_type)
-    {
-        $order=new NsOrderModel();
-        $data=array(
-            'pay_status'     => 2,
-            'payment_type'       =>$payment_type,
-            'pay_time'       => time(),
-            'order_status'       => 1,
-        );
-        $res=$order->save($data,['out_trade_no'=>$out_trade_no]);
-        return $res;
     }
 }

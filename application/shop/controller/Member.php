@@ -2437,7 +2437,6 @@ class Member extends BaseController
         }
     }
 
-
     /**
      * 修改用户支付密码
      */
@@ -2452,26 +2451,6 @@ class Member extends BaseController
             return AjaxReturn($res);
         }
     }
-
-    /**
-     * 设置用户信用卡
-     */
-    public function setCredit()
-    {
-        if (request()->isAjax()) {
-            $uid = $this->uid;
-            $credit_card_type = request()->post("credit_card_type", '');
-            $credit_name = request()->post("credit_name", '');
-            $card_number = request()->post("card_number", '');
-            $overdue_time = request()->post("overdue_time", '');
-            $card_code = request()->post("card_code", '');
-
-            $member = new MemberService();
-            $res = $member->setUserCredit($uid, $credit_card_type,$credit_name,$card_number,$overdue_time,$card_code);
-            return AjaxReturn($res);
-        }
-    }
-
 
     /**
      * 验证码

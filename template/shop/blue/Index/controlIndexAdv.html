@@ -1,7 +1,7 @@
 {niu:adv name="indexadv" id="[ap_id]"}
 	{notempty name="indexadv['adv_list']"}
 	<div class="w1210 ad-groups ad-groups5">
-		<div class="ad-groups5-layout">
+		<!-- <div class="ad-groups5-layout">
 			<div class="ad-groups5-list">
 				{foreach name="indexadv['adv_list']" key="k" item="v"}
 					{notempty name="$v['adv_image']"}
@@ -13,6 +13,11 @@
 					{/notempty}
 				{/foreach}
 			</div>
+		</div> -->
+		<div class="ad-groups5-layout">
+			<a href="{$v['adv_url']}" target="_blank">
+				<img src="{:__IMG($v['adv_image'])}">
+			</a>
 		</div>
 	</div>
 	{/notempty}

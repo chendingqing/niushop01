@@ -14,13 +14,11 @@
  * @date : 2015.1.17
  * @version : v1.0.0.0
  */
-
 namespace data\service;
 
 /**
  * 前台会员服务层
  */
-
 use data\api\IMember as IMember;
 use data\model\AlbumPictureModel;
 use data\model\NsCouponModel;
@@ -63,19 +61,19 @@ class Member extends User implements IMember
     {
         parent::__construct();
     }
-
+    
     /*
      * 前台添加会员(non-PHPdoc)
      * @see \data\api\IMember::registerMember()
      */
-    public function registerMember($user_name, $password, $email, $mobile, $user_qq_id, $qq_info, $wx_openid, $wx_info, $wx_unionid)
+public function registerMember($user_name, $password, $email, $mobile, $user_qq_id, $qq_info, $wx_openid, $wx_info, $wx_unionid)
     {
         // if (! empty($user_name)) {
         // if (! preg_match("/^(?!\d+$)[\da-zA-Z]*$/i", $user_name)) {
         // return USER_WORDS_ERROR;
         // }
         // }
-        if (!empty($user_qq_id) || !empty($wx_openid) || !empty($wx_unionid)) {
+        if (! empty($user_qq_id) || ! empty($wx_openid) || ! empty($wx_unionid)) {
             $is_false = true;
         } else {
             if (trim($user_name) != "") {
@@ -94,7 +92,7 @@ class Member extends User implements IMember
                 }
             }
         }
-        if (!$is_false) {
+        if (! $is_false) {
             return $error_info[1];
         }
         $res = parent::add($user_name, $password, $email, $mobile, 0, $user_qq_id, $qq_info, $wx_openid, $wx_info, $wx_unionid, 1);
@@ -122,7 +120,7 @@ class Member extends User implements IMember
                 case NS_VER_B2C:
                     break;
                 case NS_VER_B2C_FX:
-                    if (!empty($_SESSION['source_uid'])) {
+                    if (! empty($_SESSION['source_uid'])) {
                         // 判断当前版本
                         $nfx_user = new NfxUser();
                         $nfx_user->userAssociateShop($res, 0, $_SESSION['source_uid']);
@@ -133,10 +131,10 @@ class Member extends User implements IMember
                         $nfx_user->userAssociateShop($res, 0, 0);
                         $shop_config = new NfxShopConfig();
                         $shop_config_info = $shop_config->getShopConfigDetail($this->instance_id);
-                        if ($shop_config_info['is_distribution_start'] == 0) {
+                        if($shop_config_info['is_distribution_start']==0){
                             Session::set("tag_promoter", 1);
                         }
-
+                       
                     }
                     break;
             }
@@ -147,17 +145,17 @@ class Member extends User implements IMember
             $params['user_id'] = $res;
             runhook('Notify', 'registAfter', $params);
             // 直接登录
-            if (!empty($user_name)) {
+            if (! empty($user_name)) {
                 $this->login($user_name, $password);
-            } elseif (!empty($mobile)) {
+            } elseif (! empty($mobile)) {
                 $this->login($mobile, $password);
-            } elseif (!empty($email)) {
+            } elseif (! empty($email)) {
                 $this->login($email, $password);
-            } elseif (!empty($user_qq_id)) {
+            } elseif (! empty($user_qq_id)) {
                 $this->qqLogin($user_qq_id);
-            } elseif (!empty($wx_openid)) {
+            } elseif (! empty($wx_openid)) {
                 $this->wchatLogin($wx_openid);
-            } elseif (!empty($wx_unionid)) {
+            } elseif (! empty($wx_unionid)) {
                 $this->wchatUnionLogin($wx_unionid);
             }
         }
@@ -207,8 +205,8 @@ class Member extends User implements IMember
     /**
      * 通过用户id更新用户的昵称
      *
-     * @param unknown $uid
-     * @param unknown $nickName
+     * @param unknown $uid            
+     * @param unknown $nickName            
      */
     public function updateNickNameByUid($uid, $nickName)
     {
@@ -221,7 +219,7 @@ class Member extends User implements IMember
         ]);
         return $result;
     }
-
+    
     /*
      * (non-PHPdoc)
      * @see \data\api\IMember::deleteMember()
@@ -288,11 +286,11 @@ class Member extends User implements IMember
     /**
      * 会员列表
      *
-     * @param number $page_index
-     * @param number $page_size
-     * @param string $condition
-     * @param string $order
-     * @param string $field
+     * @param number $page_index            
+     * @param number $page_size            
+     * @param string $condition            
+     * @param string $order            
+     * @param string $field            
      */
     public function getMemberList($page_index = 1, $page_size = 0, $condition = '', $order = '', $field = '*')
     {
@@ -304,7 +302,7 @@ class Member extends User implements IMember
             $result['data'][$k]['balance'] = $member_account->getMemberBalance($v['uid']);
             $result['data'][$k]['coin'] = $member_account->getMemberCoin($v['uid']);
 
-            if (NS_VERSION == NS_VER_B2C_FX) {
+            if(NS_VERSION == NS_VER_B2C_FX){
                 $promoter = new NfxPromoter();
                 $result['data'][$k]['member_promoter'] = $promoter->getShopMemberAssociation($v['uid']);
             }
@@ -315,24 +313,24 @@ class Member extends User implements IMember
     /**
      * 获取积分列表
      *
-     * @param unknown $page_index
-     * @param unknown $page_size
-     * @param unknown $condition
-     * @param string $order
-     * @param string $field
+     * @param unknown $page_index            
+     * @param unknown $page_size            
+     * @param unknown $condition            
+     * @param string $order            
+     * @param string $field            
      * @return multitype:number unknown
      */
     public function getPointList($page_index, $page_size, $condition, $order = '', $field = '*')
     {
         $member_account = new NsMemberAccountRecordsViewModel();
         $list = $member_account->getViewList($page_index, $page_size, $condition, 'nmar.create_time desc');
-        if (!empty($list['data'])) {
+        if (! empty($list['data'])) {
             foreach ($list['data'] as $k => $v) {
                 $list['data'][$k]['type_name'] = MemberAccount::getMemberAccountRecordsName($v['from_type']);
-                if ($list['data'][$k]['account_type'] == 1 && ($list['data'][$k]['from_type'] == 1 || $list['data'][$k]['from_type'] == 2)) {
+                if($list['data'][$k]['account_type'] == 1 && ($list['data'][$k]['from_type']==1 || $list['data'][$k]['from_type'] ==2)){
                     $ns_order = new NsOrderModel();
                     $data_content = array();
-                    $data_content = $ns_order->getInfo(["order_id" => $list['data'][$k]['data_id']], "order_id,order_no");
+                    $data_content = $ns_order -> getInfo(["order_id"=>$list['data'][$k]['data_id']],"order_id,order_no");
                     $list['data'][$k]['data_content'] = $data_content;
                 }
             }
@@ -343,25 +341,25 @@ class Member extends User implements IMember
     /**
      * 获取
      *
-     * @param unknown $page_index
-     * @param unknown $page_size
-     * @param unknown $condition
-     * @param string $order
-     * @param string $field
+     * @param unknown $page_index            
+     * @param unknown $page_size            
+     * @param unknown $condition            
+     * @param string $order            
+     * @param string $field            
      * @return multitype:number unknown
      */
     public function getAccountList($page_index, $page_size, $condition, $order = '', $field = '*')
     {
         $member_account = new NsMemberAccountRecordsViewModel();
         $list = $member_account->getViewList($page_index, $page_size, $condition, 'nmar.create_time desc');
-        if (!empty($list['data'])) {
+        if (! empty($list['data'])) {
             foreach ($list['data'] as $k => $v) {
                 $list['data'][$k]['type_name'] = MemberAccount::getMemberAccountRecordsName($v['from_type']);
                 $list['data'][$k]['account_type_name'] = MemberAccount::getMemberAccountRecordsTypeName($v['account_type']);
-                if ($list['data'][$k]['account_type'] == 2 && ($list['data'][$k]['from_type'] == 1 || $list['data'][$k]['from_type'] == 2)) {
+                if($list['data'][$k]['account_type'] == 2 && ($list['data'][$k]['from_type']==1 || $list['data'][$k]['from_type'] ==2)){
                     $ns_order = new NsOrderModel();
                     $data_content = array();
-                    $data_content = $ns_order->getInfo(["order_id" => $list['data'][$k]['data_id']], "order_id,order_no");
+                    $data_content = $ns_order -> getInfo(["order_id"=>$list['data'][$k]['data_id']],"order_id,order_no");
                     $list['data'][$k]['data_content'] = $data_content;
                 }
             }
@@ -382,12 +380,12 @@ class Member extends User implements IMember
             'is_default' => 1
         ], '*');
         // 处理地址信息
-        if (!empty($data)) {
+        if (! empty($data)) {
             $address = new Address();
             $address_info = $address->getAddress($data['province'], $data['city'], $data['district']);
             $data['address_info'] = $address_info;
         }
-
+        
         return $data;
     }
 
@@ -399,12 +397,12 @@ class Member extends User implements IMember
     public function getMemberInfo($uid = '')
     {
         // 获取ID
-        if (empty($uid)) {
+        if(empty($uid)){
             $uid = $this->uid;
         }
         // 获取当前会员积分数
         $member = new NsMemberModel();
-        if (!empty($this->uid)) {
+        if (! empty($this->uid)) {
             $data = $member->getInfo([
                 'uid' => $uid
             ], '*');
@@ -420,14 +418,14 @@ class Member extends User implements IMember
      * @see \data\api\IMember::getMemberDetail()
      */
     public function getMemberDetail($shop_id = '', $uid = '')
-    {
+    {   
         //获取会员ID
-        if (empty($uid)) {
+        if(empty($uid)){
             $uid = $this->uid;
         }
-
+        
         // 获取基础信息
-        if (!empty($uid)) {
+        if (! empty($uid)) {
             $member_info = $this->getMemberInfo($uid);
             if (empty($member_info)) {
                 $member_info = array(
@@ -435,10 +433,10 @@ class Member extends User implements IMember
                 );
             }
             // 获取user信息
-
+            
             $user_info = $this->getUserDetail($uid);
             $member_info['user_info'] = $user_info;
-
+            
             // 获取优惠券信息
             $member_account = new MemberAccount();
             $member_info['point'] = $member_account->getMemberPoint($uid, $shop_id);
@@ -453,7 +451,7 @@ class Member extends User implements IMember
         } else {
             $member_info = '';
         }
-
+        
         return $member_info;
     }
 
@@ -464,8 +462,8 @@ class Member extends User implements IMember
      */
     public function getUserTelephone()
     {
-        if (!empty($this->uid)) {
-
+        if (! empty($this->uid)) {
+            
             $user = new UserModel();
             $res = $user->getInfo([
                 'uid' => $this->uid
@@ -487,12 +485,12 @@ class Member extends User implements IMember
         $user_info = $user_model->getInfo([
             'uid' => $uid
         ], '*');
-        if (!empty($user_info['user_headimg'])) {
+        if (! empty($user_info['user_headimg'])) {
             $member_img = $user_info['user_headimg'];
-        } elseif (!empty($user_info['qq_openid'])) {
+        } elseif (! empty($user_info['qq_openid'])) {
             $qq_info_array = json_decode($user_info['qq_info'], true);
             $member_img = $qq_info_array['figureurl_qq_1'];
-        } elseif (!empty($user_info['wx_openid'])) {
+        } elseif (! empty($user_info['wx_openid'])) {
             $member_img = '0';
         } else {
             $member_img = '0';
@@ -510,7 +508,7 @@ class Member extends User implements IMember
         $useruser = new UserModel();
         $birthday = empty($birthday) ? '0000-00-00' : $birthday;
         $data = array(
-
+            
             // 2017/2/22修改为nick_name 昵称
             "nick_name" => $user_name,
             "user_qq" => $user_qq,
@@ -587,9 +585,9 @@ class Member extends User implements IMember
         $retval = $express_address->save($data, [
             'id' => $id
         ]);
-
+        
         $retval = $this->updateAddressDefault($id);
-
+        
         return $retval;
     }
 
@@ -605,7 +603,7 @@ class Member extends User implements IMember
             'uid' => $this->uid
         ], 'id desc', '*');
         // 处理地址信息
-        if (!empty($data)) {
+        if (! empty($data)) {
             foreach ($data['data'] as $key => $val) {
                 $address = new Address();
                 $address_info = $address->getAddress($val['province'], $val['city'], $val['district']);
@@ -649,9 +647,9 @@ class Member extends User implements IMember
                 'id' => $id,
                 'uid' => $this->uid
             ]);
-
+            
             $res = $express_address->destroy($id);
-
+            
             if ($express_address_info['is_default'] == 1) {
                 $express_address_info = $express_address->where(array(
                     "uid" => $this->uid
@@ -661,7 +659,7 @@ class Member extends User implements IMember
                     ->select();
                 $res = $this->updateAddressDefault($express_address_info[0]['id']);
             }
-
+            
             return $res;
         }
     }
@@ -738,9 +736,9 @@ class Member extends User implements IMember
             'uid' => $this->uid,
             'account_type' => 1,
             'shop_id' => $shop_id
-            /*     'create_time' =>array('EGT', $start_time),
-                'create_time' =>array('ELT', $end_time) */
-
+        /*     'create_time' =>array('EGT', $start_time),
+            'create_time' =>array('ELT', $end_time) */
+        
         );
         $list = $member_account->pageQuery($page_index, $page_size, $condition, 'create_time desc', 'sign,number,from_type,data_id,text,create_time');
         return $list;
@@ -784,8 +782,7 @@ class Member extends User implements IMember
             'shop_id' => $shop_id
         );
         $list = $member_account->pageQuery($page_index, $page_size, $condition, 'create_time desc', 'sign,number,from_type,data_id,text,create_time');
-        if (!empty($list['data'])) {
-        }
+        if (! empty($list['data'])) {}
         return $list;
     }
 
@@ -835,8 +832,7 @@ class Member extends User implements IMember
             'shop_id' => $shop_id
         );
         $list = $member_account->pageQuery($page_index, $page_size, $condition, 'create_time desc', 'sign,number,from_type,data_id,text,create_time');
-        if (!empty($list['data'])) {
-        }
+        if (! empty($list['data'])) {}
         return $list;
     }
 
@@ -1053,7 +1049,7 @@ class Member extends User implements IMember
          * }
          * return $retval;
          */
-        if (!empty($this->uid)) {
+        if (! empty($this->uid)) {
             if ($fav_type == 'goods') {
                 // 收藏商品
                 $goods = new NsGoodsModel();
@@ -1067,7 +1063,7 @@ class Member extends User implements IMember
                 );
                 $retval = $member_favorites->destroy($condition);
                 $collect = empty($goods_info["collects"]) ? 0 : $goods_info["collects"];
-                $collect--;
+                $collect --;
                 if ($collect < 0) {
                     $collect = 0;
                 }
@@ -1089,7 +1085,7 @@ class Member extends User implements IMember
                 );
                 $retval = $member_favorites->destroy($condition);
                 $shop_collect = empty($shop_info["shop_collect"]) ? 0 : $shop_info["shop_collect"];
-                $shop_collect--;
+                $shop_collect --;
                 if ($shop_collect < 0) {
                     $shop_collect = 0;
                 }
@@ -1152,8 +1148,7 @@ class Member extends User implements IMember
      * @see \data\api\IMember::getMemberAllViewHistory()
      */
     public function getMemberAllViewHistory($uid, $start_time, $end_time)
-    {
-    }
+    {}
 
     /**
      * (non-PHPdoc)
@@ -1200,11 +1195,11 @@ class Member extends User implements IMember
             $apply = $shop_apply->get([
                 'uid' => $uid
             ]);
-            if (!empty($apply)) {
-                if ($apply['apply_state'] == -1) {
+            if (! empty($apply)) {
+                if ($apply['apply_state'] == - 1) {
                     // 已被拒绝
                     return 'refuse_apply';
-                } else
+                } else 
                     if ($apply['apply_state'] == 2) {
                         // 已同意
                         return 'is_system';
@@ -1227,7 +1222,7 @@ class Member extends User implements IMember
     public function getGuessMemberLikes()
     {
         $history = Cookie::has('goodshistory') ? Cookie::get('goodshistory') : Session::get('goodshistory');
-        if (!empty($history)) {
+        if (! empty($history)) {
             $history_array = explode(",", $history);
             $goods_id = $history_array[count($history_array) - 1];
             $goods_model = new NsGoodsModel();
@@ -1238,12 +1233,12 @@ class Member extends User implements IMember
             $category_id['category_id'] = 0;
         }
         $goods = new Goods();
-
+        
         $goods_list = $goods->getGoodsQueryLimit([
             'ng.category_id' => $category_id['category_id'],
             'ng.state' => 1
         ], "ng.goods_id,ng.goods_name,ng_sap.pic_cover_mid,ng.price,ng.point_exchange_type,ng.point_exchange,ng.promotion_price", PAGESIZE);
-
+        
         return $goods_list;
     }
 
@@ -1294,7 +1289,7 @@ class Member extends User implements IMember
                 } else {
                     $member_account = new MemberAccount();
                     $exchange_balance = $member_account->pointToBalance($point, $shop_id);
-                    $retval = $member_account->addMemberAccountData($shop_id, 1, $uid, 0, $point * (-1), 3, 0, '积分兑换余额');
+                    $retval = $member_account->addMemberAccountData($shop_id, 1, $uid, 0, $point * (- 1), 3, 0, '积分兑换余额');
                     if ($retval < 0) {
                         $member_account_model->rollback();
                         return $retval;
@@ -1343,7 +1338,7 @@ class Member extends User implements IMember
         ], 'balance')['balance'];
         return $balance_count;
     }
-
+    
     /*
      * (non-PHPdoc)
      * @see \data\api\IMember::getMemberAll()
@@ -1355,7 +1350,7 @@ class Member extends User implements IMember
         $user_data = $user->all($condition);
         return $user_data;
     }
-
+    
     /*
      * (non-PHPdoc)
      * @see \data\api\IMember::getMemberCount()
@@ -1367,7 +1362,7 @@ class Member extends User implements IMember
         $user_sum = $user->where($condition)->count();
         return $user_sum;
     }
-
+    
     /*
      * (non-PHPdoc)
      * @see \data\api\IMember::getMemberMonthCount()
@@ -1392,7 +1387,7 @@ class Member extends User implements IMember
         $user_list = $user->all($condition);
         $begintime = strtotime($begin_date);
         $endtime = strtotime($end_date);
-
+        
         $list = array();
         for ($start = $begintime; $start <= $endtime; $start += 24 * 3600) {
             $list[date("Y-m-d", $start)] = array();
@@ -1595,7 +1590,7 @@ class Member extends User implements IMember
     /**
      * 查询会员的等级下是否有会员
      *
-     * @param unknown $level_id
+     * @param unknown $level_id            
      */
     private function getMemberLevelUserCount($level_id)
     {
@@ -1653,13 +1648,13 @@ class Member extends User implements IMember
         $member_recharge_model = new NsMemberRechargeModel();
         $pay = new UnifyPay();
         $pay_info = $pay->getPayInfo($out_trade_no);
-        if (!empty($pay_info)) {
+        if (! empty($pay_info)) {
             $type_alis_id = $pay_info["type_alis_id"];
             $pay_status = $pay_info["pay_status"];
             if ($pay_status == 1) {
                 // 支付成功
                 $racharge_obj = $member_recharge_model->get($type_alis_id);
-                if (!empty($racharge_obj)) {
+                if (! empty($racharge_obj)) {
                     $data = array(
                         "is_pay" => 1,
                         "status" => 1
@@ -1706,7 +1701,7 @@ class Member extends User implements IMember
         $member_bank_account = new NsMemberBankAccountModel();
         $uid = $this->uid;
         $bank_account_list = '';
-        if (!empty($uid)) {
+        if (! empty($uid)) {
             if (empty($is_default)) {
                 $bank_account_list = $member_bank_account->getQuery([
                     'uid' => $uid
@@ -1718,7 +1713,7 @@ class Member extends User implements IMember
                 ], '*', '');
             }
         }
-
+        
         return $bank_account_list;
     }
 
@@ -1743,7 +1738,7 @@ class Member extends User implements IMember
                 'create_date' => time(),
                 'modify_date' => time()
             );
-
+            
             $member_bank_account->save($data);
             $account_id = $member_bank_account->id;
             $retval = $this->setMemberBankAccountDefault($uid, $account_id);
@@ -1765,7 +1760,7 @@ class Member extends User implements IMember
         $member_bank_account = new NsMemberBankAccountModel();
         $member_bank_account->startTrans();
         try {
-
+            
             $data = array(
                 'account_type' => $account_type,
                 'account_type_name' => $account_type_name,
@@ -1850,7 +1845,7 @@ class Member extends User implements IMember
     {
         $member_balance_withdraw = new NsMemberBalanceWithdrawModel();
         $list = $member_balance_withdraw->pageQuery($page_index, $page_size, $condition, $order, '*');
-        if (!empty($list['data'])) {
+        if (! empty($list['data'])) {
             foreach ($list['data'] as $k => $v) {
                 $user = new UserModel();
                 $userinfo = $user->getInfo([
@@ -1917,12 +1912,12 @@ class Member extends User implements IMember
             'id' => $bank_account_id
         ], '*');
         $brank_name = $bank_account_info['branch_bank_name'];
-
+        
         // 提现方式如果不是银行卡，则显示账户类型名称
         if ($bank_account_info['account_type'] != 1) {
             $brank_name = $bank_account_info['account_type_name'];
         }
-
+        
         // 添加提现记录
         $balance_withdraw = new NsMemberBalanceWithdrawModel();
         $data = array(
@@ -1940,7 +1935,7 @@ class Member extends User implements IMember
         );
         $balance_withdraw->save($data);
         // 添加账户流水
-        $member_account->addMemberAccountData($shop_id, 2, $uid, 0, -$cash, 8, $balance_withdraw->id, "会员余额提现");
+        $member_account->addMemberAccountData($shop_id, 2, $uid, 0, - $cash, 8, $balance_withdraw->id, "会员余额提现");
         if ($balance_withdraw->id) {
             $params['id'] = $balance_withdraw->id;
             $params['type'] = 'balance';
@@ -1948,14 +1943,14 @@ class Member extends User implements IMember
         }
         return $balance_withdraw->id;
     }
-
+    
     /*
      * (non-PHPdoc)
      * @see \data\api\niufenxiao\INfxUser::MemberBalanceWithdrawAudit()
      */
     public function MemberBalanceWithdrawAudit($shop_id, $id, $status, $transfer_type, $transfer_name, $transfer_money, $transfer_remark, $transfer_no, $transfer_account_no, $type_id)
     {
-
+        
         // TODO Auto-generated method stub
         // 查询转账的信息
         $member_balance_withdraw = new NsMemberBalanceWithdrawModel();
@@ -1964,7 +1959,7 @@ class Member extends User implements IMember
         ], '*');
         $transfer_status = 0;
         $transfer_result = "";
-        if ($member_balance_withdraw_info["transfer_status"] != 1 && $member_balance_withdraw_info["status"] != 1 && $status != -1) {
+        if ($member_balance_withdraw_info["transfer_status"] != 1 && $member_balance_withdraw_info["status"] != 1 && $status != - 1) {
             if ($transfer_type == 1) {
                 /**
                  * 线下转账
@@ -1988,7 +1983,7 @@ class Member extends User implements IMember
                     if ($wechat_retval["is_success"] > 0) {
                         $transfer_status = 1;
                     } else {
-                        $transfer_status = -1;
+                        $transfer_status = - 1;
                     }
                 } else {
                     // 线上支付包转账
@@ -1999,13 +1994,13 @@ class Member extends User implements IMember
                         $transfer_result = "支付宝线上转账成功!";
                         $transfer_no = $alipay_retval["order_id"];
                     } elseif ($alipay_retval["result_code"] == "FAIL") {
-                        $transfer_status = -1;
+                        $transfer_status = - 1;
                         $transfer_result = $alipay_retval["error_msg"] . "," . $alipay_retval["error_code"];
                     }
                 }
             }
         }
-        if ($transfer_status != -1) {
+        if ($transfer_status != - 1) {
             $member_balance_withdraw = new NsMemberBalanceWithdrawModel();
             $member_account = new MemberAccount();
             $retval = $member_balance_withdraw->where(array(
@@ -2022,7 +2017,7 @@ class Member extends User implements IMember
                 "transfer_account_no" => $transfer_account_no,
                 "transfer_no" => $transfer_no
             ));
-            if ($retval > 0 && $status == -1) {
+            if ($retval > 0 && $status == - 1) {
                 $member_account->addMemberAccountData($shop_id, 2, $member_balance_withdraw_info['uid'], 1, $member_balance_withdraw_info["cash"], 9, $id, "会员余额提现退回");
             }
             if ($retval > 0 && $status == 1) {
@@ -2042,7 +2037,7 @@ class Member extends User implements IMember
             );
         }
     }
-
+    
     /*
      * (non-PHPdoc)
      * @see \data\api\niufenxiao\INfxUser::MemberBalanceWithdrawRefuse()
@@ -2063,7 +2058,7 @@ class Member extends User implements IMember
         $member_balance_withdraw_info = $member_balance_withdraw->getInfo([
             'id' => $id
         ], '*');
-        if ($retval > 0 && $status == -1) {
+        if ($retval > 0 && $status == - 1) {
             $member_account->addMemberAccountData($shop_id, 2, $member_balance_withdraw_info['uid'], 1, $member_balance_withdraw_info["cash"], 9, $id, "会员余额提现退回");
         }
         return $retval;
@@ -2080,7 +2075,7 @@ class Member extends User implements IMember
         $retval = $member_balance_withdraw->getInfo([
             'id' => $id
         ], '*');
-        if (!empty($retval)) {
+        if (! empty($retval)) {
             $user = new UserModel();
             $userinfo = $user->getInfo([
                 'uid' => $retval['uid']
@@ -2093,9 +2088,9 @@ class Member extends User implements IMember
     /**
      * 会员获取优惠券
      *
-     * @param unknown $uid
-     * @param unknown $coupon_type_id
-     * @param unknown $get_type
+     * @param unknown $uid            
+     * @param unknown $coupon_type_id            
+     * @param unknown $get_type            
      */
     public function memberGetCoupon($uid, $coupon_type_id, $get_type)
     {
@@ -2113,7 +2108,7 @@ class Member extends User implements IMember
                 return 0;
             }
             $time = time();
-            if ($coupon_type_info['term_of_validity_type'] == 0) {
+            if($coupon_type_info['term_of_validity_type'] == 0){
                 if ($time < $coupon_type_info["start_time"] || $time > $coupon_type_info["end_time"]) {
                     return 0;
                 }
@@ -2134,7 +2129,7 @@ class Member extends User implements IMember
     /**
      * 获取会员下面的优惠券列表
      *
-     * @param unknown $uid
+     * @param unknown $uid            
      */
     public function getMemberCouponTypeList($shop_id, $uid)
     {
@@ -2154,12 +2149,12 @@ class Member extends User implements IMember
             'term_of_validity_type' => 0
         );
         $coupon_type_list = $coupon_type_model->getQuery($condition, '*', 'start_time desc');
-        $coupon_type_list_two = $coupon_type_model->getQuery(['is_show' => 1, 'shop_id' => $shop_id, 'term_of_validity_type' => 1], '*', 'create_time desc');
+        $coupon_type_list_two = $coupon_type_model->getQuery(['is_show'=>1, 'shop_id'=>$shop_id, 'term_of_validity_type'=> 1], '*', 'create_time desc');
         $coupon_type_list = array_merge($coupon_type_list, $coupon_type_list_two);
-
-        if (!empty($uid)) {
+        
+        if (! empty($uid)) {
             $list = array();
-            if (!empty($coupon_type_list)) {
+            if (! empty($coupon_type_list)) {
                 foreach ($coupon_type_list as $k => $v) {
                     if ($v['max_fetch'] == 0) {
                         // 不限领
@@ -2242,24 +2237,6 @@ class Member extends User implements IMember
     }
 
     /**
-     * 设置用户信用卡信息
-     */
-    public function setUserCredit($uid, $credit_card_type, $credit_name, $card_number, $overdue_time, $card_code)
-    {
-        $user = new UserModel();
-        $retval = $user->save([
-            'credit_card_type' => $credit_card_type,
-            'credit_name' => $credit_name,
-            'card_number' => $card_number,
-            'overdue_time' => $overdue_time,
-            'card_code' => $card_code,
-        ], [
-            'uid' => $uid
-        ]);
-        return $retval;
-    }
-
-    /**
      * 修改用户支付密码
      */
     public function updateUserPaymentPassword($uid, $old_payment_password, $new_payment_password)
@@ -2279,17 +2256,17 @@ class Member extends User implements IMember
                 "uid" => $uid
             ]);
         } else {
-            return -1;
+            return - 1;
         }
     }
-
+    
     // 验证账号密码
     private function verifyValue($user_name, $password, $reg_type = "plain")
     {
         $instanceid = 0;
         $config = new Config();
         $reg_config_info = $config->getRegisterAndVisit($this->instance_id);
-
+        
         // 验证注册
         $reg_config = json_decode($reg_config_info["value"], true);
         if ($reg_config["is_register"] != 1) {
@@ -2305,7 +2282,7 @@ class Member extends User implements IMember
                     REGISTER_MOBILE_CONFIG_OFF
                 );
             }
-        } else
+        } else 
             if ($reg_type == "email") {
                 if (stristr($reg_config["register_info"], "email") === false) {
                     return array(
@@ -2326,7 +2303,7 @@ class Member extends User implements IMember
                         REGISTER_USERNAME_ERROR
                     );
                 }
-
+                
                 if (preg_match("/^[\x{4e00}-\x{9fa5}]+$/u", $user_name)) {
                     return array(
                         false,
@@ -2385,7 +2362,7 @@ class Member extends User implements IMember
         // 验证密码内容
         if (trim($reg_config['pwd_complexity']) != "") {
             if (stristr($reg_config['pwd_complexity'], "number") !== false) {
-                if (!preg_match("/[0-9]/", $password)) {
+                if (! preg_match("/[0-9]/", $password)) {
                     return array(
                         false,
                         REGISTER_PASSWORD_ERROR
@@ -2393,7 +2370,7 @@ class Member extends User implements IMember
                 }
             }
             if (stristr($reg_config['pwd_complexity'], "letter") !== false) {
-                if (!preg_match("/[a-z]/", $password)) {
+                if (! preg_match("/[a-z]/", $password)) {
                     return array(
                         false,
                         REGISTER_PASSWORD_ERROR
@@ -2401,7 +2378,7 @@ class Member extends User implements IMember
                 }
             }
             if (stristr($reg_config['pwd_complexity'], "upper_case") !== false) {
-                if (!preg_match("/[A-Z]/", $password)) {
+                if (! preg_match("/[A-Z]/", $password)) {
                     return array(
                         false,
                         REGISTER_PASSWORD_ERROR
@@ -2409,7 +2386,7 @@ class Member extends User implements IMember
                 }
             }
             if (stristr($reg_config['pwd_complexity'], "symbol") !== false) {
-                if (!preg_match("/[^A-Za-z0-9]/", $password)) {
+                if (! preg_match("/[^A-Za-z0-9]/", $password)) {
                     return array(
                         false,
                         REGISTER_PASSWORD_ERROR
@@ -2442,44 +2419,24 @@ class Member extends User implements IMember
             return false;
         }
     }
-
-    /**
-     * 获取用户id
-     * @return mixed
-     */
-    public function getCurrUserId()
-    {
+    
+    public function getCurrUserId(){
         return $this->uid;
     }
-
+    
     /**
      * 账号密码获取用户ID  --Applet
      */
-    public function getUidWidthApplet($user_name, $password)
-    {
+    public function getUidWidthApplet($user_name, $password) {
         $user = new UserModel();
         $res = $user->getInfo([
             "user_name" => $user_name,
             "user_password" => md5($password)
-        ], 'uid');
+        ],'uid');
         if (!empty($res) && !empty($res['uid'])) {
             return $res['uid'];
         } else {
             return null;
         }
     }
-
-    public function getCredit($uid)
-    {
-        $user = new UserModel();
-        $res = $user->getInfo([
-            "uid" => $uid,
-        ], 'credit_card_type,credit_name,card_number,overdue_time,card_code');
-        if (!empty($res)) {
-            return $res;
-        } else {
-            return null;
-        }
-    }
-
 }
