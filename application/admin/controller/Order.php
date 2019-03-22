@@ -51,6 +51,7 @@ class Order extends BaseController
         // 获取物流公司
         $express = new ExpressService();
         $expressList = $express->expressCompanyQuery();
+
         $this->assign('expressList', $expressList);
        
         $action = Cache::get("orderAction");
@@ -153,9 +154,11 @@ class Order extends BaseController
             $order_service = new OrderService();
             $list = $order_service->getOrderList($page_index, $page_size, $condition, 'create_time desc');
             $list['action'] = $action;
+
             return $list;
         } else {
             $status = request()->get('status', '');
+
             $this->assign("status", $status);
             $all_status = OrderStatus::getOrderCommonStatus();
             $child_menu_list = array();

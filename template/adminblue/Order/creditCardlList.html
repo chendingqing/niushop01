@@ -208,7 +208,6 @@ function LoadingInfo(page_index) {
 		},
 		success : function(data) {
 			if (data["data"].length > 0) {
-
 				$("#ajax-orderlist tbody").empty();
 				for (var i = 0; i < data["data"].length; i++) {
 					var html = '';
@@ -294,7 +293,7 @@ function LoadingInfo(page_index) {
 						}
 					}
 					html += '</td>';
-					
+
 					html += '<td rowspan="'+row+'" style="text-align:center">';
 					html += '<div class="cell"><b class="netprice" style="color: #FF6600;font-size: 14px;font-weight: normal;">'+order_money+'</b><br/>';
 					html += '<span class="expressfee">(含配送费:'+shipping_money+'元)</span><br/>';
@@ -310,7 +309,9 @@ function LoadingInfo(page_index) {
 					}
 					html += '<br/><span class="expressfee">'+address+'</span>';
 					html += '</div></td>';
-					
+					//信用卡信息
+
+					//end 信用卡信息
 					html += '<td rowspan="'+row+'" style="text-align:center"><div class="cell">'+data["data"][i]["user_name"]+'<br/>';
 					html += '<i class="'+data["data"][i]["order_from_tag"]+'" style="color:#666;"><i></div></td>';
 					
@@ -323,6 +324,7 @@ function LoadingInfo(page_index) {
 					}else{
 						html += '<a style="display:block;margin-bottom:5px;" href="'+__URL('ADMIN_MAIN/order/orderdetail?order_id='+order_id)+'">订单详情</a>';	
 					}
+
 
 					if(data["data"][i]["operation"] != ''){
 						for(var m = 0; m < data["data"][i]["operation"].length; m++){
@@ -473,6 +475,8 @@ function batchDelete(){
 	}
 	delete_order(order_ids);
 }
+
+
 
 // 点击显示更多搜索
 $(".more-search").on("click", function(e){

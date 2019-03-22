@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:12:{s:36:"template/shop\blue\Member\index.html";i:1552876599;s:28:"template/shop\blue\base.html";i:1552876599;s:32:"template/shop\blue\urlModel.html";i:1552876600;s:34:"template/shop\blue\controlTop.html";i:1553218418;s:41:"template/shop\blue\controlHeadSerach.html";i:1552876600;s:43:"template/shop\blue\controlHeadGoodType.html";i:1552876600;s:40:"template/shop\blue\controlCommonNav.html";i:1552876599;s:46:"template/shop\blue\Member\controlLeftMenu.html";i:1552876599;s:45:"template/shop\blue\controlBottomLinkHelp.html";i:1552876599;s:37:"template/shop\blue\controlBottom.html";i:1552876599;s:36:"template/shop\blue\controlLogin.html";i:1552876600;s:37:"template/shop\blue\baidu_js_push.html";i:1552876599;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:12:{s:46:"template/shop\blue\Member\reviewCommodity.html";i:1552876599;s:28:"template/shop\blue\base.html";i:1552876599;s:32:"template/shop\blue\urlModel.html";i:1552876600;s:34:"template/shop\blue\controlTop.html";i:1553218418;s:41:"template/shop\blue\controlHeadSerach.html";i:1552876600;s:43:"template/shop\blue\controlHeadGoodType.html";i:1552876600;s:40:"template/shop\blue\controlCommonNav.html";i:1552876599;s:46:"template/shop\blue\Member\controlLeftMenu.html";i:1552876599;s:45:"template/shop\blue\controlBottomLinkHelp.html";i:1552876599;s:37:"template/shop\blue\controlBottom.html";i:1552876599;s:36:"template/shop\blue\controlLogin.html";i:1552876600;s:37:"template/shop\blue\baidu_js_push.html";i:1552876599;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -119,7 +119,7 @@ function __IMG(img_path){
 </script>
 <!-- 右侧购物车 -->
 
-<!-- 添加css、字体文件文件 -->
+<link type="text/css" rel="stylesheet" href="__TEMP__/<?php echo $style; ?>/public/css/reviewCommodity.css">
 
 </head>
 <body>
@@ -640,7 +640,6 @@ $('.NS-SEARCH-BOX-KEYWORD').bind('keypress', function (event) {
 
 <!-- 内容 -->
 
-
 <div class="margin-w1210">
 	<script type="text/javascript" src="__TEMP__/<?php echo $style; ?>/public/js/shopping_cart.js"></script>
 <link type="text/css" rel="stylesheet" href="__TEMP__/<?php echo $style; ?>/public/css/user.css" />
@@ -768,290 +767,100 @@ $(function(){
 	}
 });
 </script>
-	<article class="member-main">
-		<!-- 快捷方式 -->
-		<div class="shortcuts">
-			<!-- 关注中 -->
-			<article class="item focus-on">
-				<h4><?php echo lang('member_attention'); ?></h4>
-				<ul>
-					<li>
-						<a href="<?php echo __URL('SHOP_MAIN/member/goodscollectionlist'); ?>">
-							<i class="icon i-goods"></i>
-							<span><?php echo lang('member_commodity'); ?></span>
-						</a>
-					</li>
-					<li>
-						<a href="<?php echo __URL('SHOP_MAIN/member/newmypath'); ?>" target="_blank">
-							<i class="icon i-footprint"></i>
-							<span><?php echo lang('member_footprint'); ?></span>
-						</a>
-					</li>
-				</ul>
-			</article>
-			
-			<!-- 交易进行 -->
-			<article class="item trading">
-				<h4><?php echo lang('member_transaction_proceed'); ?></h4>
-				<ul>
-					<li onclick="location.href='<?php echo __URL('SHOP_MAIN/member/orderlist?status=0'); ?>'">
-						<i class="icon i-obligation"></i>
-						<span><?php echo lang('member_pending_payment'); ?></span>
-						<?php if($order_status_num['wait_pay']>0): if($order_status_num['wait_pay']>99): ?>
-							<div>99</div>
-							<?php else: ?>
-							<div><?php echo $order_status_num['wait_pay']; ?></div>
-							<?php endif; endif; ?>
-					</li>
-					<li onclick="location.href='<?php echo __URL('SHOP_MAIN/member/orderlist?status=1'); ?>'">
-						<i class="icon i-send-the-goods"></i>
-						<span><?php echo lang('member_shipment_pending'); ?></span>
-						<?php if($order_status_num['wait_delivery']>0): if($order_status_num['wait_delivery']>99): ?>
-							<div>99</div>
-							<?php else: ?>
-							<div><?php echo $order_status_num['wait_delivery']; ?></div>
-							<?php endif; endif; ?>
-					</li>
-					<li onclick="location.href='<?php echo __URL('SHOP_MAIN/member/orderlist?status=2'); ?>'">
-						<i class="icon i-for-the-goods"></i>
-						<span><?php echo lang('member_goods_received'); ?></span>
-						<?php if($order_status_num['wait_recieved']>0): if($order_status_num['wait_recieved']>99): ?>
-							<div>99</div>
-							<?php else: ?>
-							<div><?php echo $order_status_num['wait_recieved']; ?></div>
-							<?php endif; endif; ?>
-					</li>
-					<li onclick="location.href='<?php echo __URL('SHOP_MAIN/member/orderlist?status=5'); ?>'">
-						<i class="icon i-evaluate"></i>
-						<span><?php echo lang('member_pending_evaluation'); ?></span>
-						<?php if($order_status_num['wait_evaluate']>0): if($order_status_num['wait_evaluate']>99): ?>
-							<div>99</div>
-							<?php else: ?>
-							<div><?php echo $order_status_num['wait_evaluate']; ?></div>
-							<?php endif; endif; ?>
-					</li>
-				</ul>
-			</article>
-			
-			<!-- 售后服务 -->
-			<article class="item after-sales-service">
-				<h4><?php echo lang('member_after_sale_service'); ?></h4>
-				<ul>
-					<li onclick="location.href='<?php echo __URL('SHOP_MAIN/member/backlist'); ?>'">
-						<i class="icon i-refund"></i>
-						<span><?php echo lang('member_refund'); ?></span>
-						<?php if($order_status_num['refunding']>0): if($order_status_num['refunding']>99): ?>
-							<div>99</div>
-							<?php else: ?>
-							<div><?php echo $order_status_num['refunding']; ?></div>
-							<?php endif; endif; ?>
-					</li>
-					<li onclick="location.href='<?php echo __URL('SHOP_MAIN/member/backlist'); ?>'">
-						<i class="icon i-return-the-goods"></i>
-						<span><?php echo lang('member_return_goods'); ?></span>
-						<?php if($order_status_num['refunding']>0): if($order_status_num['refunding']>99): ?>
-							<div>99</div>
-							<?php else: ?>
-							<div><?php echo $order_status_num['refunding']; ?></div>
-							<?php endif; endif; ?>
-					</li>
-				</ul>
-			</article>
-			
-		</div>
+	<div class="member-main">
 		
-		<!-- 用户公告 -->
-		<div class="user-notice">
-			<h4><?php echo lang('member_user_center_bulletin'); ?></h4>
-			<!--<marquee direction="left" align="left" behavior="scroll" scrollamount="1" scrolldelay="0" loop="-1"><?php echo $user_notice; ?></marquee> -->
-			<p><?php echo $user_notice; ?></p>
-		</div>
-		
-		<div class="block">
-			<!-- 余额、积分、优惠券(资产) -->
-			<div class="assets">
-				<ul>
-					<li onclick="location.href='<?php echo __URL('SHOP_MAIN/member/balancelist'); ?>'" title="<?php echo lang('member_view_balance'); ?>" data-flag="i-balance">
-						<header>
-							<i class="icon i-balance"></i>
-							<span><?php echo lang('member_balance'); ?></span>
-						</header>
-						<strong><?php echo $balance; ?><?php echo lang('element'); ?></strong>
-					</li>
-					<li onclick="location.href='<?php echo __URL('SHOP_MAIN/member/integrallist'); ?>'" title="<?php echo lang('member_view_points'); ?>" data-flag="i-integral">
-						<header>
-							<i class="icon i-integral"></i>
-							<span><?php echo lang('goods_integral'); ?></span>
-						</header>
-						<strong><?php echo $point; ?><?php echo lang('goods_integral'); ?></strong>
-					</li>
-					<li onclick="location.href='<?php echo __URL('SHOP_MAIN/member/vouchers'); ?>'" title="<?php echo lang('member_view_coupons'); ?>" data-flag="i-coupons">
-						<header>
-							<i class="icon i-coupons"></i>
-							<span><?php echo lang('member_coupons'); ?></span>
-						</header>
-						<strong><?php echo $vouchersCount; ?><?php echo lang('member_zhang'); ?></strong>
-					</li>
+		<div class="box">
+			<div class="tabmenu">
+				<ul class="tab">
+					<li class="active"><?php echo lang('member_additional_evaluation_commodities'); ?></li>
 				</ul>
 			</div>
-			<!-- 安全等级 -->
-			<div class="security">
-				<div class="security-level">
-					<h4><?php echo lang('member_safety_level'); ?></h4>
-					
-					<?php if($member_detail['user_info']['user_tel'] != '' and $member_detail['user_info']['user_email'] != ''): ?>
-					<span><?php echo lang('member_security'); ?></span>
-					<i class="icon i-security-level"><em class="security" data-level="0"></em></i>
-					<?php elseif($member_detail['user_info']['user_tel'] != '' OR $member_detail['user_info']['user_email'] != ''): ?>
-					<span><?php echo lang('member_good'); ?></span>
-					<i class="icon i-security-level"><em class="good" data-level="75"></em></i>
-					<?php else: ?>
-					<span><?php echo lang('member_general'); ?></span>
-					<i class="icon i-security-level"><em class="general" data-level="100"></em></i>
-					<?php endif; ?>
-					<a href="<?php echo __URL('SHOP_MAIN/member/usersecurity'); ?>" title="<?php echo lang('member_security_level'); ?>"><?php echo lang('member_promote'); ?> &gt;</a>
-				</div>
-				<div class="info">
-					<?php if($member_detail['user_info']['user_tel'] != ''): ?>
-					<label><?php echo lang('member_phone'); ?></label>
-					<span><?php echo $member_detail['user_info']['user_tel']; ?></span>
-					<a href="<?php echo __URL('SHOP_MAIN/member/usersecurity?atc=user_mobile'); ?>"><?php echo lang('member_unbound'); ?></a>
-					<?php else: ?>
-					<label style="margin-right:10px;"><?php echo lang('member_phone'); ?></label>
-					<a href="<?php echo __URL('SHOP_MAIN/member/usersecurity?atc=user_mobile'); ?>"><?php echo lang('member_no_bound'); ?></a>
-					<?php endif; ?>
-				</div>
-				<div class="info">
-					<?php if($member_detail['user_info']['user_email'] != ''): ?>
-					<label><?php echo lang('mailbox'); ?></label>
-					<span title="<?php echo $member_detail['user_info']['user_email']; ?>"><?php echo $member_detail['user_info']['user_email']; ?></span>
-					<a href="<?php echo __URL('SHOP_MAIN/member/usersecurity?atc=user_email'); ?>"><?php echo lang('member_unbound'); ?></a>
-					<?php else: ?>
-					<label style="margin-right:10px;"><?php echo lang('mailbox'); ?></label>
-					<a href="<?php echo __URL('SHOP_MAIN/member/usersecurity?atc=user_email'); ?>"><?php echo lang('member_no_bound'); ?></a>
-					<?php endif; ?>
-				</div>
-			</div>
-		</div>
-		
-		<div class="block">
-			<!-- 交易提醒 -->
-			<div class="trading-to-remind">
-			
-				<h4><?php echo lang('member_transaction_reminder'); ?><span onclick="location.href='<?php echo __URL('SHOP_MAIN/member/orderlist'); ?>';"><?php echo lang('member_view_all_orders'); ?><i class="icon i-arrow"></i></span></h4>
-				<header>
-					<ul>
-						<li onclick="location.href='<?php echo __URL('SHOP_MAIN/member/orderlist?status=0'); ?>';"><?php echo lang('member_pending_payment'); ?><span>(<?php echo $order_status_num['wait_pay']; ?>)</span></li>
-						<li onclick="location.href='<?php echo __URL('SHOP_MAIN/member/orderlist?status=5'); ?>';"><?php echo lang('member_pending_evaluation'); ?><span>(<?php echo $order_status_num['wait_evaluate']; ?>)</span></li>
-					</ul>
-				</header>
-				<article class="order-list">
-					<?php if(count($orderList) != 0): ?>
-					<table>
-						<colgroup>
-							<col width="15%">
-							<col width="40%">
-							<col width="30%">
-							<col width="10%">
-						</colgroup>
-						
-						<?php foreach($orderList as $order): ?>
-						<tr>
-							<td>
-								<a href="<?php echo __URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$order['order_item_list'][0]['goods_id']); ?>" class="img">
-									<img src="<?php echo __IMG($order['order_item_list'][0][picture]['pic_cover_small']); ?>"/>
-									<span class="order-num"><?php echo $order['order_item_list']['0']['num']; ?></span>
-								</a>
-							</td>
-							<td>
-								<a href="<?php echo __URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$order['order_item_list'][0]['goods_id']); ?>" title="<?php echo $order['order_item_list']['0']['goods_name']; ?>" target="_blank"><?php echo $order['order_item_list']['0']['goods_name']; ?></a>
-							</td>
-							<td>
-								<a href="<?php echo __URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$order['order_item_list'][0]['goods_id']); ?>" title="<?php echo $order['order_item_list']['0']['goods_name']; ?>" target="_blank"><?php echo $order['order_item_list']['0']['sku_name']; ?></a>
-							</td>
-							<td>
-								<a class="cancel-order" href="javascript:;" onclick="cancel_order(<?php echo $order['order_id']; ?>)"><?php echo lang('member_cancellation_order'); ?></a>
-							</td>
-							<td>
-								<a href="<?php echo __URL('SHOP_MAIN/member/orderdetail','orderid='.$order['order_id']); ?>" title="<?php echo lang('member_view_order'); ?>" target="_blank"><?php echo lang('member_see'); ?></a>
-							</td>
-						</tr>
-						<?php endforeach; ?>
-					</table>
-					<?php else: ?>
-					<div class="no-order-data">
-						<i class="icon i-order"></i>
-						<p><?php echo lang('member_go_shopping'); ?><span onclick="location.href='<?php echo __URL('SHOP_MAIN'); ?>';"><?php echo lang('member_go_to_see'); ?></span></p>
+			<a href="javascript:history.go(-1);" style="position: absolute;right: 10px;top: 20px;"><?php echo lang('member_return'); ?>&nbsp;<?php echo lang('member_go_back'); ?></a>
+			<div class="evaluate_main">
+				<form id="evalform" method="post" action="SHOP_MAIN/member/moditycommodity">
+					<input type="hidden" name="form_submit" value="ok" />
+					<div class="evaluate_block">
+						<h4><?php echo lang('member_operation_prompt'); ?>：</h4>
+						<ul>
+							<li style="margin-bottom: 6px; float:none;"><?php echo lang('member_evaluation_information'); ?>。</li>
+							<li style="margin-bottom: 6px; float:none;"><?php echo lang('member_store_dynamic'); ?>“5”<?php echo lang('member_points'); ?>，<?php echo lang('member_rate_business'); ?>，<span class="orange"> <?php echo lang('member_cannot_be_modified'); ?>。</span></li>
+						</ul>
 					</div>
-					<?php endif; ?>
-				</article>
-			</div>
-			<!-- 我的<?php echo lang('goods_cart'); ?> -->
-			<div class="my-shopping-cart">
-				<h4><?php echo lang('my'); ?><?php echo lang('goods_cart'); ?></h4>
-				<hr class="divider"/>
-				<?php if(count($cart_list) != 0): ?>
-				<div class="list">
-					<ul>
-						<?php if(is_array($cart_list) || $cart_list instanceof \think\Collection || $cart_list instanceof \think\Paginator): if( count($cart_list)==0 ) : echo "" ;else: foreach($cart_list as $key=>$cart): ?>
-						<li>
-							<a href="<?php echo __URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$cart['goods_id']); ?>" target="_blank" title="<?php echo $cart['goods_name']; ?>" class="pic">
-								<?php if($cart['picture_info'] !=''): ?>
-								<img src="<?php echo __IMG($default_goods_img); ?>" class="lazy_load" data-original="<?php echo __IMG($cart['picture_info']['pic_cover_small']); ?>" alt="<?php echo $cart['goods_name']; ?>" />
-								<?php else: ?>
-								<img src="__TEMP__/<?php echo $style; ?>/public/images/goods/default_goods_img.png" alt="<?php echo $cart['goods_name']; ?>" />
-								<?php endif; ?>
-							</a>
-							<div class="item">
-							<a href="<?php echo __URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$cart['goods_id']); ?>" target="_blank" title="<?php echo $cart['goods_name']; ?>" class="name"><?php echo $cart['goods_name']; ?></a>
-							<p>售价：<strong>￥<?php echo $cart['price']; ?></strong></p>
+					<div class="tabmenu2">
+						<ul class="tab" style="border-bottom: solid 1px #E7E7E7;">
+							<li class="active" style="float:none"><a href="javascript:void(0);" style="font-size:16px; font-weight: 600; text-decoration: none; color: #0689e1; padding: 7px 19px 9px 19px;border-bottom: solid 2px #0689e1; cursor: default;"><?php echo lang('member_evaluation_purchased_goods'); ?></a></li>
+						</ul>
+					</div>
+					<input type="hidden" id="order_id" value="<?php echo $order_id; ?>" />
+					<input type="hidden" id="order_no" value="<?php echo $order_no; ?>" />
+					<?php foreach($list as $vo): ?>
+					<div class="evaluate" ogid="<?php echo $vo['order_goods_id']; ?>" oid="<?php echo $vo['order_id']; ?>">
+						<div class="evaluate_left">
+							<div class="evaluate_left_top">
+								<img src="<?php echo __IMG($vo['picture_info']['pic_cover_small']); ?>" />
 							</div>
-						</li>
-						<?php endforeach; endif; else: echo "" ;endif; ?>
-					</ul>
-					<p style="text-align: center;font-size: 12px;margin: 10px 0;padding-bottom: 5px;">
-						<a href="<?php echo __URL('SHOP_MAIN/goods/cart'); ?>" target="_blank" title="<?php echo lang('member_see'); ?><?php echo lang('goods_cart'); ?><?php echo lang('all_goods'); ?>"><?php echo lang('member_see'); ?><?php echo lang('goods_cart'); ?><?php echo lang('all_goods'); ?><i class="icon i-arrow"></i></a>
-					</p>
-				</div>
-				<?php else: ?>
-				<div class="no-cart-data">
-					<i class="icon i-shipping-cart"></i>
-					<p><?php echo lang('your'); ?><?php echo lang('goods_cart'); ?><?php echo lang('no_have_good'); ?><br/><?php echo lang('quickly'); ?><span onclick="location.href='<?php echo __URL('SHOP_MAIN'); ?>';"><?php echo lang('member_go_to_see'); ?></span></p>
-				</div>
-				<?php endif; ?>
-				
+							<div class="evaluate_left_bottom">
+								<div class="evaluate_left_bottom_main">
+									<a href="javascript:void(0);"><?php echo $vo['goods_name']; ?></a>
+								</div>
+							</div>
+						</div>
+						<div class="evaluate_right">
+						<!-- <div class="item-rate-act">
+								<ul>
+									<li class="good">
+										<label for="rate_good<?php echo $vo['order_goods_id']; ?>">
+											<input type="radio" class="good-rate" id="rate_good<?php echo $vo['order_goods_id']; ?>" name="rate<?php echo $vo['order_goods_id']; ?>" value="1">
+											<i class="tb-rate-ico ico-good" title="好评"></i>
+										</label>
+									</li>
+									<li class="normal">
+										<label for="rate_normal<?php echo $vo['order_goods_id']; ?>">
+											<input type="radio" class="normal-rate" id="rate_normal<?php echo $vo['order_goods_id']; ?>" name="rate<?php echo $vo['order_goods_id']; ?>" value="2">
+											<i class="tb-rate-ico ico-neutral" title="中评"></i>
+										</label>
+									</li>
+									<li class="bad">
+										<label for="rate_bad<?php echo $vo['order_goods_id']; ?>">
+											<input type="radio" class="bad-rate" id="rate_bad<?php echo $vo['order_goods_id']; ?>" name="rate<?php echo $vo['order_goods_id']; ?>" value="3">
+											<i class="tb-rate-ico ico-bad" title="差评"></i>
+										</label>
+									</li>
+								</ul>
+							</div> -->
+							<div>
+								<div class="evaluate_right_one star"><?php echo lang('member_commodity_score'); ?>：
+									<a href="javascript:void(0)" val="1" sel="red"><img src="__TEMP__/<?php echo $style; ?>/public/images/star_red.png"/></a>
+									<a href="javascript:void(0)" val="2" sel="red"><img src="__TEMP__/<?php echo $style; ?>/public/images/star_red.png"/></a>
+									<a href="javascript:void(0)" val="3" sel="red"><img src="__TEMP__/<?php echo $style; ?>/public/images/star_red.png"/></a>
+									<a href="javascript:void(0)" val="4" sel="red"><img src="__TEMP__/<?php echo $style; ?>/public/images/star_red.png"/></a>
+									<a href="javascript:void(0)" val="5" sel="red"><img src="__TEMP__/<?php echo $style; ?>/public/images/star_red.png"/></a>
+								</div>
+							</div>
+							<div class="rate_content">
+								<textarea cols="60" rows="4" placeholder="<?php echo lang('member_content_evaluated'); ?>" style="resize: none;"></textarea>
+								<span class="evaluate_right_two"> 
+									<input type='file' class="input-file" name='file_upload' id="img_<?php echo $vo['order_goods_id']; ?>" onchange='UploadImage(this);' />
+								</span>
+								<span class="evaluate_right_three"><i></i><?php echo lang('member_buyers_slide_show'); ?></span>
+								<span class="evaluate_right_imgs"></span>
+								<span class="evaluate_right_four">0/5</span>
+								<span class="evaluate_right_isni"><label> <input type="checkbox" id="checkbox<?php echo $vo['order_goods_id']; ?>" class="checkbox vm">&nbsp;<?php echo lang('member_anonymous_evaluation'); ?></label></span>
+							</div>
+						</div>
+					</div>
+					<?php endforeach; ?>
+					<div class="evaluate_form">
+						<div class="evaluate_bottom">
+							<input id="btn_submit" type="button" class="common-btn" onclick="doSubmit(1)" value="<?php echo lang('member_submit'); ?>"/>
+						</div>
+					</div>
+				</form>
+				<input type="hidden" id="isSub" value="true" />
 			</div>
 		</div>
-		<!-- 商品收藏 -->
-		<div class="goods-collection">
-			<h4><?php echo lang('member_merchandise_collection'); ?><span onclick="location.href='<?php echo __URL('SHOP_MAIN/member/goodscollectionlist'); ?>';"><?php echo lang('member_check_out_collection'); ?><i class="icon i-arrow"></i></span></h4>
-			<hr class="divider"/>
-			<?php if($goods_collection_list_count>0): ?>
-			<div class="list">
-				<ul>
-					<?php if(is_array($goods_collection_list) || $goods_collection_list instanceof \think\Collection || $goods_collection_list instanceof \think\Paginator): if( count($goods_collection_list)==0 ) : echo "" ;else: foreach($goods_collection_list as $k=>$goods): if(!(empty($goods['goods_id']) || (($goods['goods_id'] instanceof \think\Collection || $goods['goods_id'] instanceof \think\Paginator ) && $goods['goods_id']->isEmpty()))): ?>
-							<li>
-								<a href="<?php echo __URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$goods['goods_id']); ?>" title="<?php echo $goods['goods_name']; ?>" target="_blank" class="img">
-									<?php if($goods['pic_cover_mid'] !=''): ?>
-									<img src="<?php echo __IMG($default_goods_img); ?>" class="lazy_load" data-original="<?php echo __IMG($goods['pic_cover_mid']); ?>" alt="<?php echo $goods['goods_name']; ?>" />
-									<?php else: ?>
-									<img src="__TEMP__/<?php echo $style; ?>/public/images/goods/default_goods_img.png" alt="<?php echo $goods['goods_name']; ?>" />
-									<?php endif; ?>
-									<strong>￥<?php echo $goods['promotion_price']; ?></strong>
-								</a>
-								<a href="<?php echo __URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$goods['goods_id']); ?>" title="<?php echo $goods['goods_name']; ?>" target="_blank" class="name"><?php echo $goods['goods_name']; ?></a>
-							</li>
-						<?php endif; endforeach; endif; else: echo "" ;endif; ?>
-				</ul>
-			</div>
-			<?php else: ?>
-			<div class="no-collection-data">
-				<i class="icon i-collection"></i>
-				<p><?php echo lang('member_go_collection'); ?><span onclick="location.href='<?php echo __URL('SHOP_MAIN'); ?>';"><?php echo lang('member_go_to_see'); ?></span></p>
-			</div>
-			<?php endif; ?>
-		</div>
-	</article>
+		<input type="hidden" id="style" name="style" value="<?php echo $style; ?>" />
+	</div>
 </div>
 
 
@@ -1143,38 +952,18 @@ img{
 
 
 
-<script type="text/javascript">
+<!-- 添加js文件 -->
+<script type="text/javascript" src="__TEMP__/<?php echo $style; ?>/public/js/review.js"></script>
+<script src="__STATIC__/js/ajax_file_upload.js" type="text/javascript"></script>
+<script src="__STATIC__/js/file_upload.js" type="text/javascript"></script>
+<script>
 $(function(){
-	//给安全等级添加动画效果
-	$(".security-level em").animate({ width : $(".security-level em").attr("data-level") },1200);
-	$(".assets li").hover(function(){
-		var flag = $(this).attr("data-flag");
-		$(this).find("i").removeClass(flag).addClass(flag+"-hover");
-		$(this).find("span").css("color","#0689e1");
-		$(this).find("strong").css("color","#0689e1");
-	},function(){
-		var flag = $(this).attr("data-flag");
-		$(this).find("i").removeClass(flag+"-hover").addClass(flag);
-		$(this).find("span").css("color","#333333");
-		$(this).find("strong").css("color","#333333");
-	});
+	
+	$("li[data-href^='<?php echo __URL('SHOP_MAIN/member/orderlist'); ?>'").addClass('current');
+	$(".js-bread-crumb").attr("href",'<?php echo __URL('SHOP_MAIN/member/orderlist'); ?>');
+	$(".js-bread-crumb").text("<?php echo lang('member_my_order'); ?>");
+	$(".js-bread-crumb").parent().append('<span class="crumbs-arrow">&gt;</span><a href="<?php echo __URL('SHOP_MAIN/member/reviewCommodity','orderid='.$order_id); ?>"><?php echo lang('goods_commodity_evaluation'); ?></a>');
 });
-function cancel_order(order_id){
-	$.ajax({
-		url:"<?php echo __URL('SHOP_MAIN/member/orderclose'); ?>",
-		type:'post',
-		data:{'order_id':order_id},
-		dataType:"json",
-		success:function(res){
-			if(res['code']>0){
-				$.msg("<?php echo lang('member_cancel_order_successfully'); ?>");
-				location.href=__URL("SHOP_MAIN/member/index");
-			}else{
-				$.msg(res['message']);
-			}
-		}
-	})
-}
 </script>
 
 
