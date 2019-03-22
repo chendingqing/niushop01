@@ -6,7 +6,7 @@ html, body, td, input, textarea, select, button, ul, ol, li, dl, dt, dd,
 }
 
 body {
-	background: #ffffff;
+	background: #ffffff !important;
 	color: #666;
 	margin: 0 auto;
 	width: auto;
@@ -857,7 +857,7 @@ ul .mobile i, .header-box ul .menu-hd b, .header .logo-right .city .city-select 
 	color: #fff;
 	overflow: hidden;
 	padding: 0px 8px 0px 12px;
-	background: #0689e1;
+	background: #ab010e;
 }
 
 @

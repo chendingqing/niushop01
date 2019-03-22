@@ -47,11 +47,10 @@
 -->
 {if condition="count($discount_list) >0"}
 <link type="text/css" rel="stylesheet" href="__TEMP__/{$style}/public/css/ns_style.css">
-<div class="floor"></div>
+<!-- <div class="floor"></div>
 <div class="channel-content" ectype="channel">
 	<div class="seckill-channel" id="h-seckill">
 		<div class="clearfix"  style="padding-top:10px;padding-bottom:10px;">
-			<!-- <i class="box-hd-icon"></i> -->
 			<span style="height:30px;line-height:30px;font-size:17px;display:inline-block;border-left:5px  solid #0689e1;padding-left:10px;">限时秒杀</span>
 			<div class="sk-more">
 				<a href="{:__URL('SHOP_MAIN/index/discount')}" target="_blank">{:lang('more_spike')}</a>
@@ -76,15 +75,10 @@
 							<a href="{:__URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$vo['goods_id'])}" target="_blank" title="{$vo.goods_name}">{$vo.goods_name}</a>
 						</div>
 						<div class="" style="padding:0 13px;width:90%;">
-<!-- 							<div class="p-info"> -->
 								<div class="p-price">
 									<span class="shop-price">{$vo.display_price}</span>									
 									<span class="original-price"><em>¥</em>{$vo.price}</span>
 								</div>
-<!-- 							</div> -->
-<!-- 							<div class="p-btn"> -->
-<!-- 								<a href="{:__URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$vo['goods_id'])}" target="_blank">{:lang('snap_up')}</a> -->
-<!-- 							</div> -->
 						</div>
 					</li>
 					
@@ -95,7 +89,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 <script>
 $(function() {
 	countDown();

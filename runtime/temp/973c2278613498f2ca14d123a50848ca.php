@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:13:{s:40:"template/shop\blue\Helpcenter\index.html";i:1553151902;s:28:"template/shop\blue\base.html";i:1553151902;s:32:"template/shop\blue\urlModel.html";i:1553151902;s:34:"template/shop\blue\controlTop.html";i:1553151902;s:41:"template/shop\blue\controlHeadSerach.html";i:1553151902;s:43:"template/shop\blue\controlHeadGoodType.html";i:1553151902;s:40:"template/shop\blue\controlCommonNav.html";i:1553151902;s:43:"template/shop\blue\controlRightSidebar.html";i:1553151902;s:50:"template/shop\blue\Helpcenter\controlLeftMenu.html";i:1553151902;s:45:"template/shop\blue\controlBottomLinkHelp.html";i:1553151902;s:37:"template/shop\blue\controlBottom.html";i:1553151902;s:36:"template/shop\blue\controlLogin.html";i:1553151902;s:37:"template/shop\blue\baidu_js_push.html";i:1553151902;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:13:{s:40:"template/shop\blue\Helpcenter\index.html";i:1553151902;s:28:"template/shop\blue\base.html";i:1553151902;s:32:"template/shop\blue\urlModel.html";i:1553151902;s:34:"template/shop\blue\controlTop.html";i:1553157362;s:41:"template/shop\blue\controlHeadSerach.html";i:1553151902;s:43:"template/shop\blue\controlHeadGoodType.html";i:1553151902;s:40:"template/shop\blue\controlCommonNav.html";i:1553151902;s:43:"template/shop\blue\controlRightSidebar.html";i:1553151902;s:50:"template/shop\blue\Helpcenter\controlLeftMenu.html";i:1553151902;s:45:"template/shop\blue\controlBottomLinkHelp.html";i:1553151902;s:37:"template/shop\blue\controlBottom.html";i:1553151902;s:36:"template/shop\blue\controlLogin.html";i:1553151902;s:37:"template/shop\blue\baidu_js_push.html";i:1553151902;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -138,10 +138,22 @@ function __IMG(img_path){
 <style>
 #menu-login{text-align:center;}
 #menu-login .register{margin-right:10px;}
+.header-box{text-align: center;}
+.top-choose{display: inline-block;margin: 10px auto;}
+.top-choose select{min-width: 90px;}
+.top-choose select:first-of-type{margin-right: 20px;}
 </style>
 <div class="header-top">
 	<div class="header-box">
-		<font id="login-info" class="login-info"></font>
+		<font id="login-info" class="login-info">您好！欢迎访问我要买烟网</font>
+		<div class="top-choose">
+			<select name="" id="choosemoney">
+				<option value="1">人民币</option>
+			</select>
+			<select name="" id="chooselang">
+				<option value="1">中文</option>
+			</select>
+		</div>
 		<ul>
 <!-- 			<li><a class="menu-hd home" href="<?php echo __URL('SHOP_MAIN'); ?>" target="_top"><i></i><?php echo lang('shop_index'); ?></a></li> -->
 			<li class="menu-item">
@@ -164,16 +176,16 @@ function __IMG(img_path){
 				</div>
 			</li>
 			<!-- <li class="menu-item cartbox"><a class="menu-hd cart" href="<?php echo __URL('SHOP_MAIN/goods/cart'); ?>" target="_top"><i></i>&nbsp;<?php echo lang('goods_cart'); ?></a></li> -->
-			<li class="menu-item">
+			<!-- <li class="menu-item">
 				<div class="menu">
-					<a class="menu-hd we-chat" href="javascript:;" target="_top"><!-- <i></i> --><?php echo lang('attention_mall'); ?><b></b>
+					<a class="menu-hd we-chat" href="javascript:;" target="_top"><?php echo lang('attention_mall'); ?><b></b>
 					</a>
 					<div id="menu-5" class="menu-bd we-chat-qrcode">
 						<span class="menu-bd-mask"></span> <a target="_top"> <img src="<?php echo __IMG($web_info['web_qrcode']); ?>" alt="<?php echo lang('official_wechat'); ?>"></a>
 						<p class="font-14"><?php echo lang('concerned_official_wechat'); ?></p>
 					</div>
 				</div>
-			</li>
+			</li> -->
 <!-- 			<li class="menu-item"> -->
 <!-- 				<div class="menu"> -->
 <!-- 					<a href="<?php echo __URL('SHOP_MAIN/helpcenter/index'); ?>" class="menu-hd site-nav" target="_blank"> 商家支持 <b></b></a> -->
@@ -190,8 +202,11 @@ function __IMG(img_path){
 <!-- 					</div> -->
 <!-- 				</div> -->
 <!-- 			</li> -->
-			<li class="menu-item"><a  href="<?php echo __URL('APP_MAIN'); ?>" class="menu-hd wap-nav" ><!-- <i></i> --><?php echo lang('mobile_terminal'); ?></a></li>
-			<li class="menu-item"><a href="<?php echo __URL('SHOP_MAIN/helpcenter/index'); ?>" class="menu-hd site-nav" target="_blank"><?php echo lang('shop_help_center'); ?></a></li>
+			<li class="menu-item"><a  href="<?php echo __URL('SHOP_MAIN/member/goodscollectionlist'); ?>" class="menu-hd wap-nav" >收藏夹（0）</a></li>
+			<li class="menu-item"><a href="<?php echo __URL('SHOP_MAIN/helpcenter/index'); ?>" class="menu-hd site-nav" target="_blank">联系我们</a></li>
+			<!-- 手机端，帮助中心 -->
+			<!-- <li class="menu-item"><a  href="<?php echo __URL('APP_MAIN'); ?>" class="menu-hd wap-nav" ><i></i><?php echo lang('mobile_terminal'); ?></a></li>
+			<li class="menu-item"><a href="<?php echo __URL('SHOP_MAIN/helpcenter/index'); ?>" class="menu-hd site-nav" target="_blank"><?php echo lang('shop_help_center'); ?></a></li> -->
 		</ul>
 	</div>
 </div>

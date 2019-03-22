@@ -5,18 +5,19 @@
 .floor-layout .floor-content-goods .floor-middle .floor-banner ul {height: 426px;}
 .floor-layout .floor-content-goods .floor-middle .floor-banner ul li {height: 426px;line-height: 0px;}
 .floor-layout .floor-content-goods .floor-middle .floor-banner ul li a{display: block;text-align: center;height: 300px;width: 100%;line-height: 290px;}
-.goods-list-padding-block{width:100%;margin:10px auto;position: relative;}
-.goods-list-padding-block>div:nth-child(1){height:130px;text-align:center;}
-.goods-list-padding-block>div:nth-child(1) img{max-height:100%;max-width:100%;}
-.goods-list-padding-block>div:nth-child(2){text-align:left;padding: 5px 10px;font-size:13px;height: 32px;width: 90%;margin:0 auto;display: -webkit-box; /** 将对象作为伸缩盒子模型显示 **/-webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/-webkit-line-clamp: 2; /** 显示的行数 **/overflow: hidden;  /** 隐藏超出的内容 **/}
-.goods-list-padding-block>div:nth-child(3){text-align:left;padding: 5px 10px;color:red;width: 90%;margin:0 auto;font-size:15px;}
+.goods-list-padding-block{padding:11px 0 12px 0;width:100%;margin:0px auto;position: relative;}
+.goods-list-padding-block .goods_img{height:177px;text-align:center;}
+.goods-list-padding-block .goods_img img{max-height:100%;max-width:100%;}
+.goods-list-padding-block .goods_name{line-height: 20px;color: #a02b2b;text-align:center;padding: 5px 10px;font-size:20px;height: 42px;width: 90%;margin:0 auto;display: -webkit-box; /** 将对象作为伸缩盒子模型显示 **/-webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/-webkit-line-clamp: 2; /** 显示的行数 **/overflow: hidden;  /** 隐藏超出的内容 **/}
+.goods-list-padding-block .goods_price{text-align:left;padding: 5px 10px 5px 35px;color:#a02b2b;width: 90%;margin:0 auto;font-size:20px;}
 .bland-list li {border-bottom:1px solid #eee;width:49.5%;float:left;height:106px;text-align:center;}
 .bland-list li a {height:106px;line-height:106px;}
 .bland-list li a img{display: inline-block !important;vertical-align: middle !important;max-width: 100% !important;max-height: 100% !important;height: auto !important;}
 .bland-list li:nth-child(odd){border-right:1px solid #eee;border-left:1px solid #eee;}
 .bland-list li:nth-child(7),.bland-list li:nth-child(8){border-bottom:none;}
 .goods-list-ul{overflow:hidden;}
-.goods-list-ul li{width: 33%;height: 213px;float:left;text-align: center;border-left: 1px solid #eee;border-bottom: 1px solid #eee;}
+.goods-list-ul li{margin-bottom: 16px;margin-right: 26px;width: 279px;float:left;text-align: center;border-left: 1px solid #eee;border-bottom: 1px solid #eee;}
+.goods-list-ul li:nth-of-type(4n+4){margin-right: 0px;}
 .goods-block{float:left;overflow:hidden;}
 .goodslist{border-left: 1px solid #eee;}
 .li-hover:hover{color:#0d84d4;}
@@ -26,6 +27,62 @@
 .floor-layout .floor-content-goods{height:auto;}
 .floor-layout .floor-content{height:auto;}
 .recommend{position: absolute;z-index: 10;top:-10px;left: 10px;width: 40px;}
+.goods_itemstar{text-align: left;padding-left: 35px;}
+.goods_itemstar i{display: inline-block;width: 15px;height: 15px;}
+.goods_itemstar .gold{background: url(/template/shop/blue/public/images/star1.png);background-size: 100%;}
+.goods_itemstar .silver{background: url(/template/shop/blue/public/images/star2.png);background-size: 100%;}
+.goods_add{font-size: 0;text-align: left;padding-left: 35px;}
+.goods_add button{outline: none;border: none;height: 30px;padding: 0;cursor: pointer;vertical-align: bottom;}
+.goods_add .addcar{width: 122px;background-color: #a02b2b;font-size: 14px;color: #ffffff;}
+.goods_add .addcar:hover{background: #000000;color: #ffffff;}
+.goods_add .compare{width: 30px;background: #d9d9d9 url(/template/shop/blue/public/images/compare.png) no-repeat center;}
+.goods_add .addcollection{width: 30px;background: #d9d9d9 url(/template/shop/blue/public/images/addcollection.png) no-repeat center;}
+.floor-list:first-of-type{background: red;}
+.newgoods .floor-con{
+	background: #ffffff;
+}
+.newgoods .goodslist:first-of-type{
+	width: 526px !important;
+	height: 656px !important;
+	border-radius: 10px;
+	border: solid 1px #e60012 !important;
+}
+.newgoods .goodslist:first-of-type .goods_img{
+	height: 359px;
+	margin-top: 10px;
+	margin-bottom: 26px;
+}
+.newgoods .goodslist:first-of-type .goods_name{
+	height: 64px;
+}
+.newgoods .goodslist:first-of-type .goods_price{
+	margin: 20px 0 10px 0;
+}
+.newgoods .goodslist:first-of-type .goods_name,
+.newgoods .goodslist:first-of-type .goods_price{
+	font-size: 30px;
+	line-height: 30px;
+}
+.newgoods .goodslist:first-of-type .goods_itemstar,
+.newgoods .goodslist:first-of-type .goods_add,
+.newgoods .goodslist:first-of-type .goods_price{
+	padding-left: 78px;
+}
+.newgoods .goodslist:first-of-type .goods_itemstar i{
+	width: 28px;
+	height: 28px;
+}
+.newgoods .goodslist:first-of-type .goods_add button{
+	height: 44px;
+}
+.newgoods .goodslist:first-of-type .goods_add .addcar{
+	width: 204px;
+	font-size: 22px;
+}
+.newgoods .goodslist:first-of-type .goods_add .compare,
+.newgoods .goodslist:first-of-type .goods_add .addcollection{
+	width: 40px;
+}
 </style>
 <!-- 首页楼层开始 -->
 <script>
@@ -43,7 +100,7 @@ function levelGoodsList(obj){
 </script>
 {volist name="block_list" id="vo"}
 {if condition ="!empty($vo['goods_list'])"}
-<div class="w1210 floor-list" onmouseleave ="levelGoodsList(this)">
+<div class="w1210 floor-list newgoods" onmouseleave ="levelGoodsList(this)">
 	<div class="floor">
 		<div class="floor-layout">
 			<div class="floor-con floor-con5">
@@ -55,7 +112,7 @@ function levelGoodsList(obj){
 						<input type="hidden" class="NS-SHORT-NAME" value="{if !empty($vo['short_name'])}{$vo['short_name']}{elseif !empty($vo['category_alias'])}{php} echo mb_substr($vo['category_alias'],0,4,'utf-8'); {/php}{else}{php} echo mb_substr($vo['category_name'],0,4,'utf-8'); {/php}{/if}"/>
 					</h2>
 					<!--推荐类型-->
-					<ul class="floor-tabs-nav" style="width:82%;overflow:hidden;">
+					<!-- <ul class="floor-tabs-nav" style="width:82%;overflow:hidden;">
 						<li style="float:right;">
 							
 							<h3 style="padding:0 10px;">
@@ -63,7 +120,6 @@ function levelGoodsList(obj){
 							</h3>
 							
 						</li>
-						<!-- 如果多图广告位不为空 -->
 						{if condition="!empty($vo['child_category'])"}
 							{volist name="vo['child_category']" id="v"}
 								{if condition="!empty($v['goods_list'])"}
@@ -71,7 +127,7 @@ function levelGoodsList(obj){
 								{/if}
 							{/volist}
 						{/if}
-					</ul>
+					</ul> -->
 				</div>
 				<!-- 楼层顶部内容结束 -->
 				<hr style="border:0;border-bottom:1px solid #F5F5F5;-webkit-margin-before: 0.5em; -webkit-margin-after: 0em;" />
@@ -79,11 +135,10 @@ function levelGoodsList(obj){
 				
 				<div class="floor-content floor-content-goods" style="border:none;">
 				<!-- 楼层左侧广告位开始 -->
-				{if condition = "$vo['ad_picture'] neq ''"}
+				<!-- {if condition = "$vo['ad_picture'] neq ''"}
 					<div class="floor-middle" style="width: 20%;float:left;">
 						<div class="floor-banner" style="width:100%;">
 								<ul class="hiSlider">
-									<!-- 幻灯片循环 -->
 									<li class="hiSlider-item" style="width:100%;">
 										<a href="{$vo['ad_list']['url']}" target="_blank">
 											<img class="lazy" src="{:__IMG($vo['ad_list']['picture'])}">
@@ -93,21 +148,60 @@ function levelGoodsList(obj){
 								</ul>
 						</div>
 					</div>
-				{/if}
+				{/if} -->
 					<!-- 左侧广告位结束 -->
 					<!--中间商品图开始 -->
-					<div class="floor-tabs-panel goods-block" style="width:{$vo['block_width']}%;margin-right:-1px;">
+					<div class="floor-tabs-panel goods-block" style="margin-right:-1px;">
 						<ul class="goods-list-ul goods-list-ul-index">
 						{foreach $vo['goods_list'] as $k=>$v}
 						{if condition="$k < $vo['goods_num']"}
 							{if condition="$k == (count($vo['goods_list'])-1) && ($k+1) != $vo['goods_num'] && ($k+1) != ($vo['goods_num']/2)"}
 								
-									<li class="goodslist" style="width:{$vo['goods_block_width']}%;border-right: 1px solid #eee;{if condition='($k+1) eq 1  or ($k+1) eq ($vo.goods_num/2+1)'}border-left:none;{/if}{if condition='($k+1) > ($vo.goods_num/2)'}border-bottom:none;{/if}">
+									<li class="goodslist" style="width:279px;border-right: 1px solid #eee;{if condition='($k+1) eq 1  or ($k+1) eq ($vo.goods_num/2+1)'}border-left:none;{/if}{if condition='($k+1) > ($vo.goods_num/2)'}border-bottom:none;{/if}">
 								
 							{else/}
-									<li class="goodslist" style="width:{$vo['goods_block_width']}%; {if condition='($k+1) eq 1  or ($k+1) eq ($vo.goods_num/2+1)'}border-left:none;{/if}{if condition='($k+1) > ($vo.goods_num/2)'}border-bottom:none;{/if}">
+									<li class="goodslist" style="width:279px; {if condition='($k+1) eq 1  or ($k+1) eq ($vo.goods_num/2+1)'}border-left:none;{/if}{if condition='($k+1) > ($vo.goods_num/2)'}border-bottom:none;{/if}">
 							{/if}
+							<div class="goods-list-padding-block">
 								<a href="{:__URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$v['goods_id'])}" target="_blank">
+									<div class="goods_img"><img src="{:__IMG($default_goods_img)}" class="lazy_load" data-original="{:__IMG($v['pic_cover_mid'])}" /></div>
+								</a>
+								<a href="{:__URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$v['goods_id'])}" target="_blank">
+									<div class="goods_name">{$v['goods_name']}</div>
+								</a>
+								<div class="goods_itemstar">
+									<i class="gold"></i>
+									<i class="gold"></i>
+									<i class="gold"></i>
+									<i class="silver"></i>
+									<i class="silver"></i>
+								</div>
+								{in name="$v.point_exchange_type" value="0,2"}
+									<div class="goods_price">¥{$v['promotion_price']}</div>
+								{else/}
+									{if $v['point_exchange_type'] == 1 && $v['promotion_price'] > 0}
+										<div>￥{$v.promotion_price}+{$v.point_exchange}积分</div>
+									{else/}
+										<div>{$v.point_exchange}积分</div>
+									{/if}
+								{/in}
+								<div class="goods_add">
+									<button class="addcar">加入购物车</button>
+									<button class="compare"></button>
+									<button class="addcollection"></button>
+								</div>
+								<!-- 左上角图标 -->
+								<!-- {if condition="$v['is_hot'] eq 1"}
+									<img src="__TEMP__/{$style}/public/images/hot.png" alt="" class="recommend">
+								{/if}
+								{if condition="$v['is_recommend'] eq 1"}
+									<img src="__TEMP__/{$style}/public/images/recommend.png" alt="" class="recommend">
+								{/if}
+								{if condition="$v['is_new'] eq 1"}
+									<img src="__TEMP__/{$style}/public/images/new.png" alt="" class="recommend">
+								{/if} -->
+							</div>
+								<!-- <a href="{:__URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$v['goods_id'])}" target="_blank">
 									<div class="goods-list-padding-block">
 										<div><img src="{:__IMG($default_goods_img)}" class="lazy_load" data-original="{:__IMG($v['pic_cover_mid'])}" /></div>
 										<div>{$v['goods_name']}</div>
@@ -130,7 +224,7 @@ function levelGoodsList(obj){
 											<img src="__TEMP__/{$style}/public/images/new.png" alt="" class="recommend">
 										{/if}
 									</div>
-								</a>
+								</a> -->
 							</li>
 							
 						{/if}
@@ -183,7 +277,7 @@ function levelGoodsList(obj){
 					
 					<!-- 中间商品图结束 -->
 					<!-- 右侧商品品牌 -->
-				{if condition="!empty($vo['brand_list'])  and $vo['is_show_brand'] eq 1"}
+				<!-- {if condition="!empty($vo['brand_list'])  and $vo['is_show_brand'] eq 1"}
 					<div class="floor-tabs-panel" style="width:20%;height:426px;float:left;">
 						<ul  class="bland-list" style="height:426px;">
 						{volist name="vo['brand_list']" id="brandlist" key<8}
@@ -195,7 +289,7 @@ function levelGoodsList(obj){
 						{/volist}
 						</ul>
 					</div>
-				{/if}
+				{/if} -->
 				<!-- 右侧商品品牌 -->
 				</div>
 			<!-- 楼层main -->
