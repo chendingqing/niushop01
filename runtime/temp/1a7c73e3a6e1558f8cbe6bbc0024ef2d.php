@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:18:{s:39:"template/shop\blue\Goods\goodsList.html";i:1553151902;s:28:"template/shop\blue\base.html";i:1553151902;s:32:"template/shop\blue\urlModel.html";i:1553151902;s:34:"template/shop\blue\controlTop.html";i:1553157362;s:41:"template/shop\blue\controlHeadSerach.html";i:1553151902;s:43:"template/shop\blue\controlHeadGoodType.html";i:1553151902;s:40:"template/shop\blue\controlCommonNav.html";i:1553151902;s:43:"template/shop\blue\controlRightSidebar.html";i:1553151902;s:60:"template/shop\blue\Goods\controlGoodsCategoryConditions.html";i:1553151902;s:46:"template/shop\blue\Goods\controlGoodsLeft.html";i:1553151902;s:45:"template/shop\blue\Goods\controlGoodList.html";i:1553151902;s:59:"template/shop\blue\Goods\controlPopUpGoodsSkuAttribute.html";i:1553151902;s:41:"template/shop\blue\controlCommonPage.html";i:1553151902;s:44:"template/shop\blue\controlLoveOrHistory.html";i:1553151902;s:45:"template/shop\blue\controlBottomLinkHelp.html";i:1553151902;s:37:"template/shop\blue\controlBottom.html";i:1553151902;s:36:"template/shop\blue\controlLogin.html";i:1553151902;s:37:"template/shop\blue\baidu_js_push.html";i:1553151902;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:18:{s:39:"template/shop\blue\Goods\goodsList.html";i:1552876599;s:28:"template/shop\blue\base.html";i:1552876599;s:32:"template/shop\blue\urlModel.html";i:1552876600;s:34:"template/shop\blue\controlTop.html";i:1553162305;s:41:"template/shop\blue\controlHeadSerach.html";i:1552876600;s:43:"template/shop\blue\controlHeadGoodType.html";i:1552876600;s:40:"template/shop\blue\controlCommonNav.html";i:1552876599;s:43:"template/shop\blue\controlRightSidebar.html";i:1552876600;s:60:"template/shop\blue\Goods\controlGoodsCategoryConditions.html";i:1552876599;s:46:"template/shop\blue\Goods\controlGoodsLeft.html";i:1552876599;s:45:"template/shop\blue\Goods\controlGoodList.html";i:1552876599;s:59:"template/shop\blue\Goods\controlPopUpGoodsSkuAttribute.html";i:1552876599;s:41:"template/shop\blue\controlCommonPage.html";i:1552876599;s:44:"template/shop\blue\controlLoveOrHistory.html";i:1552876600;s:45:"template/shop\blue\controlBottomLinkHelp.html";i:1552876599;s:37:"template/shop\blue\controlBottom.html";i:1552876599;s:36:"template/shop\blue\controlLogin.html";i:1552876600;s:37:"template/shop\blue\baidu_js_push.html";i:1552876599;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -1440,25 +1440,25 @@ function showLoginLayer(){
 			<!-- 分页页码显示计算 -->
 			
 			<!-- 总页数小于总页码时就都显示 -->
-			<?php if($page_count <= $page_num): $__FOR_START_2229__=1;$__FOR_END_2229__=$page_count+1;for($i=$__FOR_START_2229__;$i < $__FOR_END_2229__;$i+=1){ if($i == $page): ?>
+			<?php if($page_count <= $page_num): $__FOR_START_24648__=1;$__FOR_END_24648__=$page_count+1;for($i=$__FOR_START_24648__;$i < $__FOR_END_24648__;$i+=1){ if($i == $page): ?>
 						<span class="num curr"><a href="javascript:;" data-cur-page="<?php echo $i; ?>"><?php echo $i; ?></a></span>
 					<?php else: ?>
 						<span class="num"><a href="<?php echo __URL('SHOP_MAIN/'.$path_info.'?page='.$i.$query_string); ?>" data-cur-page="<?php echo $i; ?>"><?php echo $i; ?></a></span>
 					<?php endif; } ?>
 			<!-- 当前页小于页码的页码的平均两面的值时显示 -->
-			<?php elseif($page <= ($page_num-1)/2): $__FOR_START_15596__=1;$__FOR_END_15596__=$page_num+1;for($i=$__FOR_START_15596__;$i < $__FOR_END_15596__;$i+=1){ if($i == $page): ?>
+			<?php elseif($page <= ($page_num-1)/2): $__FOR_START_15083__=1;$__FOR_END_15083__=$page_num+1;for($i=$__FOR_START_15083__;$i < $__FOR_END_15083__;$i+=1){ if($i == $page): ?>
 						<span class="num curr"><a href="javascript:;" data-cur-page="<?php echo $i; ?>"><?php echo $i; ?></a></span>
 					<?php else: ?>
 						<span class="num"><a href="<?php echo __URL('SHOP_MAIN/'.$path_info.'?page='.$i.$query_string); ?>" data-cur-page="<?php echo $i; ?>"><?php echo $i; ?></a></span>
 					<?php endif; } ?>
 			<!-- 如果总页数等于当前页 或者 总页数小于当前页加上页码总数平均值显示 -->
-			<?php elseif($page_count == $page or $page_count <= $page+($page_num-1)/2): $__FOR_START_21407__=$page_count-$page_num+1;$__FOR_END_21407__=$page_count+1;for($i=$__FOR_START_21407__;$i < $__FOR_END_21407__;$i+=1){ if($i == $page): ?>
+			<?php elseif($page_count == $page or $page_count <= $page+($page_num-1)/2): $__FOR_START_7738__=$page_count-$page_num+1;$__FOR_END_7738__=$page_count+1;for($i=$__FOR_START_7738__;$i < $__FOR_END_7738__;$i+=1){ if($i == $page): ?>
 						<span class="num curr"><a href="javascript:;" data-cur-page="<?php echo $i; ?>"><?php echo $i; ?></a></span>
 					<?php else: ?>
 						<span class="num"><a href="<?php echo __URL('SHOP_MAIN/'.$path_info.'?page='.$i.$query_string); ?>" data-cur-page="<?php echo $i; ?>"><?php echo $i; ?></a></span>
 					<?php endif; } ?>
 			<!-- 否则就正常显示 -->
-			<?php else: $__FOR_START_6462__=$page-($page_num-1)/2;$__FOR_END_6462__=$page+($page_num-1)/2+1;for($i=$__FOR_START_6462__;$i < $__FOR_END_6462__;$i+=1){ if($i == $page): ?>
+			<?php else: $__FOR_START_20837__=$page-($page_num-1)/2;$__FOR_END_20837__=$page+($page_num-1)/2+1;for($i=$__FOR_START_20837__;$i < $__FOR_END_20837__;$i+=1){ if($i == $page): ?>
 						<span class="num curr"><a href="javascript:;" data-cur-page="<?php echo $i; ?>"><?php echo $i; ?></a></span>
 					<?php else: ?>
 						<span class="num"><a href="<?php echo __URL('SHOP_MAIN/'.$path_info.'?page='.$i.$query_string); ?>" data-cur-page="<?php echo $i; ?>"><?php echo $i; ?></a></span>

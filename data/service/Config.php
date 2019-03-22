@@ -2137,7 +2137,7 @@ class Config extends BaseService implements IConfig
             'key' => 'ORDER_BUY_CLOSE_TIME',
             'value' => $order_buy_close_time,
             'desc' => '订单自动关闭时间',
-            'is_use' => 1
+            'is_use' => 0
         );
         $array[8] = array(
             'instance_id' => $this->instance_id,

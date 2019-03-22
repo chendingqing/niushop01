@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:20:{s:35:"template/shop\blue\Index\index.html";i:1553151902;s:28:"template/shop\blue\base.html";i:1553151902;s:32:"template/shop\blue\urlModel.html";i:1553151902;s:43:"template/shop\blue\Index\controlHeadAd.html";i:1553151902;s:34:"template/shop\blue\controlTop.html";i:1553157362;s:41:"template/shop\blue\controlHeadSerach.html";i:1553151902;s:43:"template/shop\blue\controlHeadGoodType.html";i:1553151902;s:40:"template/shop\blue\controlCommonNav.html";i:1553151902;s:44:"template/shop\blue\Index\controlHeadNav.html";i:1553160225;s:49:"template/shop\blue\Index\controlHeadNavRight.html";i:1553161284;s:43:"template/shop\blue\controlRightSidebar.html";i:1553151902;s:45:"template/shop\blue\Index\controlIndexAdv.html";i:1553151902;s:56:"template/shop\blue\Index\controlLimitedTimeDiscount.html";i:1553151902;s:49:"template/shop\blue\Index\controlCommendBlock.html";i:1553151902;s:45:"template/shop\blue\Index\controlRecFloor.html";i:1553151902;s:51:"template/shop\blue\Index\controlFriendshipLink.html";i:1553151902;s:45:"template/shop\blue\controlBottomLinkHelp.html";i:1553151902;s:37:"template/shop\blue\controlBottom.html";i:1553151902;s:36:"template/shop\blue\controlLogin.html";i:1553151902;s:37:"template/shop\blue\baidu_js_push.html";i:1553151902;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:20:{s:35:"template/shop\blue\Index\index.html";i:1552876599;s:28:"template/shop\blue\base.html";i:1552876599;s:32:"template/shop\blue\urlModel.html";i:1552876600;s:43:"template/shop\blue\Index\controlHeadAd.html";i:1552876599;s:34:"template/shop\blue\controlTop.html";i:1553217991;s:41:"template/shop\blue\controlHeadSerach.html";i:1552876600;s:43:"template/shop\blue\controlHeadGoodType.html";i:1552876600;s:40:"template/shop\blue\controlCommonNav.html";i:1552876599;s:44:"template/shop\blue\Index\controlHeadNav.html";i:1553217991;s:49:"template/shop\blue\Index\controlHeadNavRight.html";i:1553217991;s:43:"template/shop\blue\controlRightSidebar.html";i:1552876600;s:45:"template/shop\blue\Index\controlIndexAdv.html";i:1552876599;s:56:"template/shop\blue\Index\controlLimitedTimeDiscount.html";i:1552876599;s:49:"template/shop\blue\Index\controlCommendBlock.html";i:1552876599;s:45:"template/shop\blue\Index\controlRecFloor.html";i:1552876599;s:51:"template/shop\blue\Index\controlFriendshipLink.html";i:1552876599;s:45:"template/shop\blue\controlBottomLinkHelp.html";i:1552876599;s:37:"template/shop\blue\controlBottom.html";i:1552876599;s:36:"template/shop\blue\controlLogin.html";i:1552876600;s:37:"template/shop\blue\baidu_js_push.html";i:1552876599;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -217,7 +217,7 @@ if($.cookie("1051_close")!=null){
 			<select name="" id="choosemoney">
 				<option value="1">人民币</option>
 			</select>
-			<select name="" id="chooselang">
+			<select name="" id="chooselang">   
 				<option value="1">中文</option>
 			</select>
 		</div>
@@ -763,6 +763,7 @@ $('.NS-SEARCH-BOX-KEYWORD').bind('keypress', function (event) {
 // });
 </script>
 <div class="right-sidebar NS-TEMPLATE-NAV-CONTAINER">
+	
 	<!-- 个人信息 -->
 	<!-- <div class="right-login-message">
 		<div style="text-align:center;">

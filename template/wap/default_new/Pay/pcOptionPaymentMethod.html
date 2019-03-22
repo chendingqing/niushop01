@@ -170,7 +170,7 @@
 							break;
 						case "unionpay":
 							//跳转到银联卡
-							url = '{:__URL('APP_MAIN/pay/credit')}';
+							url = '{:__URL('APP_MAIN/pay/credit?out_trade_no='.$pay_value['out_trade_no'])}';
 							break;
 						}
 						window.open(url);

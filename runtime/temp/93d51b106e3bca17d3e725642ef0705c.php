@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:35:"template/shop\blue\Login\login.html";i:1553151902;s:32:"template/shop\blue\urlModel.html";i:1553151902;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:35:"template/shop\blue\Login\login.html";i:1553217991;s:32:"template/shop\blue\urlModel.html";i:1552876600;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -106,7 +106,7 @@ function __IMG(img_path){
 	<div class="banner" >
 		<ul class="full-screen-slides" id="fullScreenSlides">
 			<?php $service = new data\service\Platform;$list = $service->getPlatformAdvPositionDetail("1103", "*");$list = json_encode($list);$list = json_decode($list, ture); if(!(empty($list) || (($list instanceof \think\Collection || $list instanceof \think\Paginator ) && $list->isEmpty()))): if($list['adv_list'][0]['adv_image'] ==''): ?>
-						<li style="display: list-item;background: url(__TEMP__/<?php echo $style; ?>/public/images/blue_login_banner.png) no-repeat center;background-size: auto">
+						<li style="display: list-item;background: url(__TEMP__/<?php echo $style; ?>/public/images/blue_login_banner.png) no-repeat center;background-size: auto;">
 							<a href="javascript:;" target="_blank">&nbsp;</a>
 						</li>
 					<?php else: if(is_array($list['adv_list']) || $list['adv_list'] instanceof \think\Collection || $list['adv_list'] instanceof \think\Paginator): if( count($list['adv_list'])==0 ) : echo "" ;else: foreach($list['adv_list'] as $key=>$vo): if($vo['adv_image'] != ''): if($k == 0): ?>

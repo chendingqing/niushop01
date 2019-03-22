@@ -87,13 +87,13 @@
                 {if condition="$member_detail['user_info']['card_number'] neq ''"}
                 <div class="fore1">
                     <s class="fore1_3"></s>
-                    <strong>{:lang('member_bind_mobile')}</strong>
+                    <strong>信用卡</strong>
                 </div>
                 <div class="fore2">
-                    <span class="ftx-03">{:lang('member_phone_bound')}：{$member_detail['user_info']['user_tel']}</span>
+                    <span class="ftx-03">信用卡已绑定，可以使用信用卡支付</span>
                 </div>
                 <div class="fore3">
-                    <input type="button" value="{:lang('member_modify')}" onclick="location.href='{:__URL('SHOP_MAIN/member/usersecurity?atc=user_mobile')}'" class="main-btn common-btn" />
+                    <input type="button" value="{:lang('member_modify')}" onclick="location.href='{:__URL('SHOP_MAIN/member/usersecurity?atc=user_credit')}'" class="main-btn common-btn" />
                 </div>
                 {else/}
                 <div class="fore1">
@@ -456,122 +456,6 @@ function bindingEmail(){
 }
 </script>
 
-    {elseif condition="$atc eq 'user_email'"/}
-    <!-- 邮箱绑定 -->
-    <div class="member-main" id="user_email">
-        <div class="box">
-            <h5 title="{:lang('member_mailbox_binding')}" class="user-title user-title-t usersecurityTitle"><span>{:lang('member_mailbox_binding')}</span></h5>
-            <div class="blank"></div>
-            <div id="find_pw3">
-                <div class="find_con">
-                    <div id="sflex04" class="stepflex stepflex_te">
-                        <dl class="normal doing">
-                            <dt class="s-num">1</dt>
-                            <dd class="s-text"> {:lang('member_mailbox_binding')} <s></s> <b></b> </dd>
-                        </dl>
-                        <dl class="last">
-                            <dt class="s-num">&nbsp;</dt>
-                            <dd class="s-text"> {:lang('member_complete')} <s></s> <b></b> </dd>
-                        </dl>
-                    </div>
-                    <div id="find-box" class="uc_box">
-                        <div id="error_container"></div>
-                        <div class="item">
-                            <label class="con_un">{:lang('member_your_email_address')}：</label>
-                            <input name="email" id="email" type="text" tabindex="1" placeholder="{:lang('member_enter_email_address')}" class="text" />
-                            <span class="error">{:lang('member_must_not_be_empty')}!</span>
-                        </div>
-                        {if condition = "$login_verify_code['pc'] == 1"}
-                        <div class="item">
-                            <label class="con_un">{:lang('member_verification_code')}：</label>
-                            <input type="text" id="captcha" name="captcha" tabindex="2" placeholder="{:lang('please_enter_verification_code')}" autocomplete="off" class="text text-te" />
-                            <label class="img" style="margin-left: 5px">
-                                <img class="verifyimg" src="{:__URL('SHOP_MAIN/captcha')}"  onclick="this.src='{:__URL('SHOP_MAIN/captcha?tag=1')}'+'&send='+Math.random()" alt="captcha" style="vertical-align: middle; cursor: pointer; height: 35px;" />
-                            </label>
-                            <span id="vertify"></span>
-                        </div>
-                        {/if}
-                        {if condition="$notice['noticeEmail'] eq 1"}
-                        <div class="item">
-                            <label class="con_un">{:lang('member_mailbox_authentication_code')}：</label>
-                            <input name="email_code" id="email_code" type="text" tabindex="2" placeholder="{:lang('member_enter_mailbox_verification_code')}" class="text text_te" />
-                            <input id="sendOutCode" name="code_email" type="button" value="{:lang('member_gets_mailbox_validation_codet')}" class="code" />
-                            <span class="error">{:lang('member_must_not_be_empty')}!</span>
-                        </div>
-                        {/if}
-                        <div class="item">
-                            <label class="con_un">&nbsp;</label>
-                            <input type="hidden" name="act" value="email_binding_success" />
-                            <input type="button" id="btn_submit" name="btn_submit" class="main-btn common-btn" value="{:lang('member_submit')}" onclick="bindingEmail()" style="margin-left: 150px;" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script type="text/javascript">
-        //邮箱绑定
-        function bindingEmail(){
-            var email=$('#email').val();
-            var email_code=$('#email_code').val();
-            var vertification = $("#captcha").val();
-            if(email==''){
-                $('#email').parent().children('.error').show();
-                return false;
-            }
-            $('#email').parent().children('.error').hide();
-            {if condition = "$login_verify_code['pc'] == 1"}
-            if(vertification == ''){
-                $("#captcha").trigger("focus");
-                $("#vertify").addClass("error").text("{:lang('please_enter_verification_code')}").show();
-                return false;
-            }
-            $("#vertify").hide();
-            {if condition="$notice['noticeEmail'] neq 1"}
-            var result = '';
-            $.ajax({
-                type : "post",
-                url : "{:__URL('SHOP_MAIN/member/vertify')}",
-                data : { "vertification" : vertification },
-                async : false,
-                dataType:'json',
-                success : function(res){
-                    if(res['code']== 1){
-                        result = true;
-                    }else{
-                        $("#vertify").addClass("error").text("{:lang('member_verification_code_incorrect')}").show();
-                        result = false;
-                    }
-                    return result;
-                }
-            });
-            if(!result){
-                return false;
-            }
-            {/if}
-                {/if}
-                    if(email_code==''){
-                        $('#email_code').parent().children('.error').show();
-                        return false;
-                    }
-                    $('#email_code').parent().children('.error').hide()
-                    $.ajax({
-                        url: "{:__URL('SHOP_MAIN/member/modifyemail')}",
-                        data: { "email": email,'email_code':email_code },
-                        type: "post",
-                        success: function (res) {
-                            if (res["code"]== 1) {
-                                $('#user_email #find-box').html('<div class="find_box_end"><p> <i></i> {:lang('member_mailbox_binding_successful')}！ </p><p class="on_go"> <a href="SHOP_MAIN/member/usersecurity" title="{:lang('member_instant_shopping')}" class="back">{:lang('member_return_account_security_center')}&gt;&gt;</a> </p></div>');
-                                $('#user_email #sflex04 .normal').removeClass('doing');
-                                $('#user_email #sflex04 .normal').removeClass('done');
-                                $('#user_email #sflex04 .last').addClass('doing');
-                            } else {
-                                $.msg(res["message"]);
-                            }
-                        }
-                    });
-                }
-    </script>
 
 
 
@@ -580,14 +464,14 @@ function bindingEmail(){
     {elseif condition="$atc eq 'user_credit'"/}
 <div class="member-main" id='user_credit'>
 	<div class="box">
-		<h5 title="{:lang('member_set_payment_password')}" class="user-title user-title-t"><span>{:lang('member_set_payment_password')}</span></h5>
+		<h5 title="{:lang('添加信用卡')}" class="user-title user-title-t"><span>{:lang('添加信用卡')}</span></h5>
 		<div class="blank"></div>
 		<div id="find_pw3">
 			<div class="find_con">
 				<div id="sflex04" class="stepflex stepflex_te">
 					<dl class="normal doing">
 						<dt class="s-num">1</dt>
-						<dd class="s-text">  {:lang('member_payment_password_settings')}<s></s> <b></b> </dd>
+						<dd class="s-text">  {:lang('添加信用卡基本信息')}<s></s> <b></b> </dd>
 					</dl>
 					<dl class="last">
 						<dt class="s-num">&nbsp;</dt>
@@ -597,19 +481,40 @@ function bindingEmail(){
 				<div id="find-box" class="uc_box">
 					<div id="error_container"></div>
 					<div class="item">
-						<label class="con_un">{:lang('member_payment_password')}:</label>
-						<input name="paymentPassword" id="paymentPassword" type="password" tabindex="1" placeholder="{:lang('please_input_password')}" class="text" />
-						<span class="error">{:lang('member_must_not_be_empty')}!</span>
+						<label class="con_un">{:lang('信用卡类型')}:</label>
+						<select class="dropdownlists valid" id="CreditCardType" name="CreditCardType">
+							<option value="visa">Visa</option>
+							<option value="MasterCard">Master card</option>
+							<option value="Discover">Discover</option>
+							<option value="Amex">Amex</option>
+						</select>
 					</div>
 					<div class="item">
-						<label class="con_un">{:lang('member_confirm_payment_password')}:</label>
-						<input name="againPaymentPassword" id="againPaymentPassword" type="password" tabindex="2" placeholder="{:lang('member_confirm_password_again')}" class="text" />
-						<span class="error">{:lang('member_must_not_be_empty')}!</span>
-						<span class="error">{:lang('member_password_inconsistent')}!</span>
+						<label class="con_un">{:lang('持卡人姓名')}:</label>
+						<input type="text" placeholder="持卡人姓名" id="creditName" name="CordName"/>
+						<span class="error">{:lang('持卡人姓名不能为空')}!</span>
 					</div>
+					<div class="item">
+						<label class="con_un">{:lang('信用卡卡号')}:</label>
+						<input type="text" placeholder="请输入卡号" id="CardNumber" name="CardNumber"/>
+						<span class="error">{:lang('信用卡卡号不能为空')}!</span>
+					</div>
+					<div class="item">
+						<label class="con_un">{:lang('过期时间')}:</label>
+						<input type="date" placeholder="" id="overdueTime" name="overdueTime"/>
+					</div>
+					<div class="item">
+						<label class="con_un">{:lang('安全码')}:</label>
+						<input type="text" placeholder="安全码" id="CardCode" name="CardCode"/>
+						<span class="error">{:lang('安全码不能为空')}!</span>
+					</div>
+
+
+
+
 					<div class="item">
 						<label class="con_un">&nbsp;</label>
-						<input type="button" id="btn_submit" name="btn_submit" class="main-btn common-btn" value="{:lang('member_submit')}" onclick="setPayPwd()"/>
+						<input type="button" id="btn_submit" name="btn_submit" class="main-btn common-btn" value="{:lang('member_submit')}" onclick="addCredit()"/>
 					</div>
 				</div>
 			</div>
@@ -618,37 +523,49 @@ function bindingEmail(){
 </div>
 <script>
     // 信用卡
-function setPayPwd(){
-	var paymentPassword = $("#paymentPassword").val();
-	var againPaymentPassword = $("#againPaymentPassword").val();
-	if(paymentPassword.length == 0){
-		$("#paymentPassword").next(".error").show();
+function addCredit(){
+
+
+	var CreditCardType = $("#CreditCardType").val();
+	var creditName = $("#creditName").val();
+	var CardNumber = $("#CardNumber").val();
+	var overdueTime = $("#overdueTime").val();
+	var CardCode = $("#CardCode").val();
+
+
+	if(creditName == ""){
+
+
+		$("#creditName").next(".error").show();
+		console.log(33333);
 		return false;
-	}else{
-		$("#paymentPassword").next(".error").hide();
 	}
-	if(againPaymentPassword.length == 0){
-		$("#againPaymentPassword").next(".error").show();
+	if(CardNumber == ''){
+		$("#CardNumber").next(".error").show();
 		return false;
-	}else{
-		$("#againPaymentPassword").next(".error").hide();
 	}
-	if(againPaymentPassword != paymentPassword){
-		$("#againPaymentPassword").next().next(".error").show();
+
+	if( CardCode == ''){
+		$("#CardCode").next(".error").show();
 		return false;
-	}else{
-		$("#againPaymentPassword").next().next(".error").hide();
 	}
+
 	$.ajax({
 		type :"post",
-		url : "{:__URL('SHOP_MAIN/member/setuserpaymentpassword')}",
-		data : {"payment_password" : paymentPassword},
+		url : "{:__URL('SHOP_MAIN/member/setCredit')}",
+		data : {
+			"credit_card_type" : CreditCardType,
+			"credit_name":creditName,
+			"card_number":CardNumber,
+			"overdue_time":overdueTime,
+			"card_code":CardCode,
+		},
 		success : function(res){
 			if (res['code']> 0) {
-				$('#user_pay_pwd #find-box').html('<div class="find_box_end"><p> <i></i> {:lang('member_password_settings_successful')}！ </p><p class="on_go"> <a href="SHOP_MAIN/member/usersecurity" title="{:lang('member_instant_shopping')}" class="back">{:lang('member_return_account_security_center')}&gt;&gt;</a> </p></div>');
-				$('#user_pay_pwd #sflex04 .normal').removeClass('doing');
-				$('#user_pay_pwd #sflex04 .normal').removeClass('done');
-				$('#user_pay_pwd #sflex04 .last').addClass('doing');
+				$('#user_credit #find-box').html('<div class="find_box_end"><p> <i></i> {:lang('信用卡添加成功')}！ </p><p class="on_go"> <a href="SHOP_MAIN/member/usersecurity" title="{:lang('member_instant_shopping')}" class="back">{:lang('member_return_account_security_center')}&gt;&gt;</a> </p></div>');
+				$('#user_credit #sflex04 .normal').removeClass('doing');
+				$('#user_credit #sflex04 .normal').removeClass('done');
+				$('#user_credit #sflex04 .last').addClass('doing');
 			} else {
 				$.msg(res["message"]);
 			}
