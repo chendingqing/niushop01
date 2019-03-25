@@ -16,9 +16,9 @@
 .bland-list li:nth-child(odd){border-right:1px solid #eee;border-left:1px solid #eee;}
 .bland-list li:nth-child(7),.bland-list li:nth-child(8){border-bottom:none;}
 .goods-list-ul{overflow:hidden;}
-.goods-list-ul li{margin-bottom: 16px;margin-right: 26px;width: 279px;float:left;text-align: center;border-left: 1px solid #eee;border-bottom: 1px solid #eee;}
+.goods-list-ul li{background-color: #ffffff;margin-bottom: 16px;margin-right: 28px;width: 279px;float:left;text-align: center;border-left: 1px solid #eee;border-bottom: 1px solid #eee;}
 .goods-list-ul li:nth-of-type(4n+4){margin-right: 0px;}
-.goods-block{float:left;overflow:hidden;}
+.goods-block{float:left;overflow:hidden;width: 100%}
 .goodslist{border-left: 1px solid #eee;}
 .li-hover:hover{color:#0d84d4;}
 .category-block-h2{font-size:17px;}
@@ -37,51 +37,54 @@
 .goods_add .addcar:hover{background: #000000;color: #ffffff;}
 .goods_add .compare{width: 30px;background: #d9d9d9 url(/template/shop/blue/public/images/compare.png) no-repeat center;}
 .goods_add .addcollection{width: 30px;background: #d9d9d9 url(/template/shop/blue/public/images/addcollection.png) no-repeat center;}
+.goods_add .addcollection.active{width: 30px;background: #d9d9d9 url(/template/shop/blue/public/images/addcollection_active.png) no-repeat center;}
 .floor-list:first-of-type{background: red;}
-.newgoods .floor-con{
-	background: #ffffff;
-}
-.newgoods .goodslist:first-of-type{
-	width: 526px !important;
-	height: 656px !important;
-	border-radius: 10px;
-	border: solid 1px #e60012 !important;
-}
-.newgoods .goodslist:first-of-type .goods_img{
-	height: 359px;
-	margin-top: 10px;
-	margin-bottom: 26px;
-}
-.newgoods .goodslist:first-of-type .goods_name{
-	height: 64px;
-}
-.newgoods .goodslist:first-of-type .goods_price{
-	margin: 20px 0 10px 0;
-}
+.floor-con hr{border:0;border-bottom:5px solid #e5e5e5;-webkit-margin-before: 0.5em; -webkit-margin-after: 0em;}
+.newgoods .floor-con{background: #ffffff;}
+.newgoods .goods-list-ul li{background: none;}
+.newgoods .goodslist:first-of-type{width: 526px !important;height: 688px !important;border-radius: 10px;border: solid 1px #e60012 !important;}
+.newgoods .goodslist:first-of-type .goods_img{height: 359px;margin-top: 10px;margin-bottom: 26px;}
+.newgoods .goodslist:first-of-type .goods_name{height: 64px;}
+.newgoods .goodslist:first-of-type .goods_price{margin: 20px 0 10px 0;}
 .newgoods .goodslist:first-of-type .goods_name,
-.newgoods .goodslist:first-of-type .goods_price{
-	font-size: 30px;
-	line-height: 30px;
-}
+.newgoods .goodslist:first-of-type .goods_price{font-size: 30px;line-height: 30px;}
 .newgoods .goodslist:first-of-type .goods_itemstar,
 .newgoods .goodslist:first-of-type .goods_add,
-.newgoods .goodslist:first-of-type .goods_price{
-	padding-left: 78px;
-}
-.newgoods .goodslist:first-of-type .goods_itemstar i{
-	width: 28px;
-	height: 28px;
-}
-.newgoods .goodslist:first-of-type .goods_add button{
-	height: 44px;
-}
-.newgoods .goodslist:first-of-type .goods_add .addcar{
-	width: 204px;
-	font-size: 22px;
-}
+.newgoods .goodslist:first-of-type .goods_price{padding-left: 78px;}
+.newgoods .goodslist:first-of-type .goods_itemstar i{width: 28px;height: 28px;}
+.newgoods .goodslist:first-of-type .goods_add button{height: 44px;}
+.newgoods .goodslist:first-of-type .goods_add .addcar{width: 204px;font-size: 22px;}
 .newgoods .goodslist:first-of-type .goods_add .compare,
-.newgoods .goodslist:first-of-type .goods_add .addcollection{
-	width: 40px;
+.newgoods .goodslist:first-of-type .goods_add .addcollection{width: 40px;}
+.selectgoods .floor-con{background: #ffffff;}
+.selectgoods .floor-con hr{display: none;}
+.selectgoods .goodslist{
+	width: 302px !important;
+	margin-right: 0px;
+	border: none !important;
+	position: relative;
+}
+.selectgoods .goodslist::after{
+	position: absolute;
+	top: 5%;
+	right: 0px;
+	content: '';
+	height: 90%;
+	width: 4px;
+	background: #e5e5e5;
+}
+.selectgoods .goodslist:nth-of-type(4n+1)::before{
+	position: absolute;
+	top: 0;
+	left: 0;
+	content: '';
+	width: 400%;
+	border-top: 5px solid #e5e5e5;
+	z-index: 1;
+}
+.selectgoods .goodslist:nth-of-type(4n+4)::after,
+.selectgoods .goodslist:last-of-type::after{
+	display: none;
 }
 </style>
 <!-- 首页楼层开始 -->
@@ -100,7 +103,8 @@ function levelGoodsList(obj){
 </script>
 {volist name="block_list" id="vo"}
 {if condition ="!empty($vo['goods_list'])"}
-<div class="w1210 floor-list newgoods" onmouseleave ="levelGoodsList(this)">
+<!-- 新品：newgoods -->
+<div class="w1210 floor-list selectgoods" onmouseleave ="levelGoodsList(this)">
 	<div class="floor">
 		<div class="floor-layout">
 			<div class="floor-con floor-con5">
@@ -130,7 +134,7 @@ function levelGoodsList(obj){
 					</ul> -->
 				</div>
 				<!-- 楼层顶部内容结束 -->
-				<hr style="border:0;border-bottom:1px solid #F5F5F5;-webkit-margin-before: 0.5em; -webkit-margin-after: 0em;" />
+				<hr />
 				<!-- 楼层main -->
 				
 				<div class="floor-content floor-content-goods" style="border:none;">

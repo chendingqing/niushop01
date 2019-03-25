@@ -1440,25 +1440,25 @@ function showLoginLayer(){
 			<!-- 分页页码显示计算 -->
 			
 			<!-- 总页数小于总页码时就都显示 -->
-			<?php if($page_count <= $page_num): $__FOR_START_26140__=1;$__FOR_END_26140__=$page_count+1;for($i=$__FOR_START_26140__;$i < $__FOR_END_26140__;$i+=1){ if($i == $page): ?>
+			<?php if($page_count <= $page_num): $__FOR_START_1768__=1;$__FOR_END_1768__=$page_count+1;for($i=$__FOR_START_1768__;$i < $__FOR_END_1768__;$i+=1){ if($i == $page): ?>
 						<span class="num curr"><a href="javascript:;" data-cur-page="<?php echo $i; ?>"><?php echo $i; ?></a></span>
 					<?php else: ?>
 						<span class="num"><a href="<?php echo __URL('SHOP_MAIN/'.$path_info.'?page='.$i.$query_string); ?>" data-cur-page="<?php echo $i; ?>"><?php echo $i; ?></a></span>
 					<?php endif; } ?>
 			<!-- 当前页小于页码的页码的平均两面的值时显示 -->
-			<?php elseif($page <= ($page_num-1)/2): $__FOR_START_9103__=1;$__FOR_END_9103__=$page_num+1;for($i=$__FOR_START_9103__;$i < $__FOR_END_9103__;$i+=1){ if($i == $page): ?>
+			<?php elseif($page <= ($page_num-1)/2): $__FOR_START_22539__=1;$__FOR_END_22539__=$page_num+1;for($i=$__FOR_START_22539__;$i < $__FOR_END_22539__;$i+=1){ if($i == $page): ?>
 						<span class="num curr"><a href="javascript:;" data-cur-page="<?php echo $i; ?>"><?php echo $i; ?></a></span>
 					<?php else: ?>
 						<span class="num"><a href="<?php echo __URL('SHOP_MAIN/'.$path_info.'?page='.$i.$query_string); ?>" data-cur-page="<?php echo $i; ?>"><?php echo $i; ?></a></span>
 					<?php endif; } ?>
 			<!-- 如果总页数等于当前页 或者 总页数小于当前页加上页码总数平均值显示 -->
-			<?php elseif($page_count == $page or $page_count <= $page+($page_num-1)/2): $__FOR_START_29422__=$page_count-$page_num+1;$__FOR_END_29422__=$page_count+1;for($i=$__FOR_START_29422__;$i < $__FOR_END_29422__;$i+=1){ if($i == $page): ?>
+			<?php elseif($page_count == $page or $page_count <= $page+($page_num-1)/2): $__FOR_START_31706__=$page_count-$page_num+1;$__FOR_END_31706__=$page_count+1;for($i=$__FOR_START_31706__;$i < $__FOR_END_31706__;$i+=1){ if($i == $page): ?>
 						<span class="num curr"><a href="javascript:;" data-cur-page="<?php echo $i; ?>"><?php echo $i; ?></a></span>
 					<?php else: ?>
 						<span class="num"><a href="<?php echo __URL('SHOP_MAIN/'.$path_info.'?page='.$i.$query_string); ?>" data-cur-page="<?php echo $i; ?>"><?php echo $i; ?></a></span>
 					<?php endif; } ?>
 			<!-- 否则就正常显示 -->
-			<?php else: $__FOR_START_30825__=$page-($page_num-1)/2;$__FOR_END_30825__=$page+($page_num-1)/2+1;for($i=$__FOR_START_30825__;$i < $__FOR_END_30825__;$i+=1){ if($i == $page): ?>
+			<?php else: $__FOR_START_8581__=$page-($page_num-1)/2;$__FOR_END_8581__=$page+($page_num-1)/2+1;for($i=$__FOR_START_8581__;$i < $__FOR_END_8581__;$i+=1){ if($i == $page): ?>
 						<span class="num curr"><a href="javascript:;" data-cur-page="<?php echo $i; ?>"><?php echo $i; ?></a></span>
 					<?php else: ?>
 						<span class="num"><a href="<?php echo __URL('SHOP_MAIN/'.$path_info.'?page='.$i.$query_string); ?>" data-cur-page="<?php echo $i; ?>"><?php echo $i; ?></a></span>

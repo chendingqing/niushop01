@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:20:{s:35:"template/shop\blue\Index\index.html";i:1553237609;s:28:"template/shop\blue\base.html";i:1553151902;s:32:"template/shop\blue\urlModel.html";i:1553151902;s:43:"template/shop\blue\Index\controlHeadAd.html";i:1553151902;s:34:"template/shop\blue\controlTop.html";i:1553157362;s:41:"template/shop\blue\controlHeadSerach.html";i:1553151902;s:43:"template/shop\blue\controlHeadGoodType.html";i:1553151902;s:40:"template/shop\blue\controlCommonNav.html";i:1553151902;s:44:"template/shop\blue\Index\controlHeadNav.html";i:1553160225;s:49:"template/shop\blue\Index\controlHeadNavRight.html";i:1553477385;s:43:"template/shop\blue\controlRightSidebar.html";i:1553151902;s:45:"template/shop\blue\Index\controlIndexAdv.html";i:1553236106;s:56:"template/shop\blue\Index\controlLimitedTimeDiscount.html";i:1553237674;s:49:"template/shop\blue\Index\controlCommendBlock.html";i:1553151902;s:45:"template/shop\blue\Index\controlRecFloor.html";i:1553483159;s:51:"template/shop\blue\Index\controlFriendshipLink.html";i:1553151902;s:45:"template/shop\blue\controlBottomLinkHelp.html";i:1553151902;s:37:"template/shop\blue\controlBottom.html";i:1553151902;s:36:"template/shop\blue\controlLogin.html";i:1553151902;s:37:"template/shop\blue\baidu_js_push.html";i:1553151902;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:13:{s:43:"template/shop\blue\Member\paymentOrder.html";i:1553151902;s:28:"template/shop\blue\base.html";i:1553151902;s:32:"template/shop\blue\urlModel.html";i:1553151902;s:34:"template/shop\blue\controlTop.html";i:1553157362;s:41:"template/shop\blue\controlHeadSerach.html";i:1553151902;s:43:"template/shop\blue\controlHeadGoodType.html";i:1553151902;s:40:"template/shop\blue\controlCommonNav.html";i:1553151902;s:43:"template/shop\blue\controlRightSidebar.html";i:1553151902;s:44:"template/shop\blue\controlSelectAddress.html";i:1553151902;s:45:"template/shop\blue\controlBottomLinkHelp.html";i:1553151902;s:37:"template/shop\blue\controlBottom.html";i:1553151902;s:36:"template/shop\blue\controlLogin.html";i:1553151902;s:37:"template/shop\blue\baidu_js_push.html";i:1553151902;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -119,50 +119,84 @@ function __IMG(img_path){
 </script>
 <!-- 右侧购物车 -->
 
-<!-- 添加css、字体文件文件 -->
-<link type="text/css" rel="stylesheet" href="__TEMP__/<?php echo $style; ?>/public/css/ns_default.css">
-
+<link type="text/css" rel="stylesheet" href="__TEMP__/<?php echo $style; ?>/public/css/payment_orders/payment_orders.css" />
+<link type="text/css" rel="stylesheet" href="__TEMP__/<?php echo $style; ?>/public/css/payment_orders/payment_orders_common.css" />
 <style>
-body{
-	background: #F5F5F5;
+.result-box .yue,.result-box .point{margin-top:20px;margin-left: 20px;position: relative;}
+.result-box .yue input[type=text],.result-box .point input[type=number] {width: 100px;height: 28px;border: 1px solid #ddd;margin-left: 10px;padding: 0 10px;display: inline-block;color: #999;}
+.edit-address ul li label {width: 85px;}
+#delivery-time{padding:20px 0;}
+#delivery-time .item>span{font-weight: bold;color: #ff4000;padding:0 10px;letter-spacing: 1px;}
+#delivery-time .item>a{color:#0689e1;margin-right:5px;}
+#delivery-time .item>.delete-delivery-time{display: none;}
+.mask-layer-delivery-time{display:none;z-index:100000;position: fixed;top:50%;background: #ffffff;width: 660px;outline: 5px solid rgba(0,0,0,.1);left:50%;margin-left:-330px;}
+.mask-layer-delivery-time header{background: #f3f3f3;padding:10px;font-size: 14px;}
+.mask-layer-delivery-time header>a{float: right;font-size: 16px;line-height: 17px;}
+.mask-layer-delivery-time ul{margin:0;padding:10px;}
+.mask-layer-delivery-time ul li{float: left;border: 1px solid #ebebeb;height: 43px;text-align: center;width: 70px;line-height: 20px;cursor: pointer;padding:5px 10px;margin:-1px 0 0 -1px;transition: all .3s;}
+.mask-layer-delivery-time ul li:hover{background: #dbf1ff;color: #0689e1;border-color: #dbf1ff;}
+.mask-layer-delivery-time ul li.selected{background: #0689e1;color: #fff;border-color: #0689e1;}
+.mask-layer-delivery-time ul li span.data{display: block;}
+.mask-layer-delivery-time .distribution-time-out{padding:5px 10px;}
+.mask-layer-delivery-time .distribution-time-out .tit{font-size: 14px;padding: 0 0 10px 0;}
+.mask-layer-delivery-time .distribution-time-out .time-out-list span{float: left;border: 1px solid #ebebeb;height: 23px;text-align: center;width: 70px;line-height: 23px;cursor: pointer;padding:5px 10px;margin:-1px 0 0 -1px;transition: all .3s;}
+.mask-layer-delivery-time .distribution-time-out .time-out-list span:hover{background: #dbf1ff;color: #0689e1;border-color: #dbf1ff;}
+.mask-layer-delivery-time .distribution-time-out .time-out-list span.selected{background: #0689e1;color: #fff;border-color: #0689e1;}
+.mask-layer-delivery-time footer{padding: 10px;color:#999;}
+.mask-layer-delivery-time footer .operation{padding:15px 0 5px;text-align: right;}
+.mask-layer-delivery-time footer .operation .btn-confirm,.mask-layer-delivery-time footer .operation .btn-cancle{border: 0;padding: 5px 15px;cursor: pointer;transition:all .3s;height:20px;margin-left:5px;}
+.mask-layer-delivery-time footer .operation .btn-confirm{background: #0689e1;color: #ffffff;}
+.mask-layer-delivery-time footer .operation .btn-confirm:hover{background: #0D84D4;}
+.mask-layer-delivery-time footer .operation .btn-cancle{background: #ddd;color:#333333;}
+.mask-layer-delivery-time footer .operation .btn-cancle:hover{background: #d2d2d2;}
+
+/*账号信息 虚拟订单*/
+.account-number-info ul{border: 1px solid #e0e0e0;background-color: #fff;padding: 0 0 0px;}
+.account-number-info ul li{padding:10px 20px;}
+.account-number-info ul li label{vertical-align: middle;}
+.account-number-info ul li input{width: 100px;height: 25px;border: 1px solid #ddd;padding: 0 10px;vertical-align: middle;}
+.account-number-info p.tip{padding: 10px 0 0;color: #A9A9A9;}
+.result-box ul li.first p.full_money_sil{
+	text-align:left;
+	margin-left: 15px;
+    margin-top: 3px;
 }
-.category-layer .list .categorys {
-    background: #eeeeee;
+.full_money{
+	width:300px;
+	margin-right:0;
+	float: left;
+    text-align: right;
+}
+.grey_full_money{
+    float: right;
+    text-align: right;
+	line-height:30px;
+    margin-left: 18px;
+	cursor: pointer;
+	display: inline-block;
+}
+.grey_full_money label{cursor: pointer;}
+input[type="radio"] {
+  -webkit-appearance: none;  /*清除复选框默认样式*/
+  background:url(__TEMP__/<?php echo $style; ?>/public/images/nochecked.png);   /*复选框的背景图，就是上图*/
+  height: 16px;   /*高度*/
+  vertical-align: middle;
+  width: 16px;
+  background-size:100%;
+	margin:3px;
 }
 
-.category-layer .list .categorys .item-left {
-    width: 100%;
+input[type="radio"]:checked {
+  -webkit-appearance: none;  /*清除复选框默认样式*/
+  background:url(__TEMP__/<?php echo $style; ?>/public/images/checked.png);   /*复选框的背景图，就是上图*/
+  height: 16px;   /*高度*/
+  vertical-align: middle;
+  width: 16px;
+  background-size:100%;
+	margin:3px;
 }
-.category-layer .list .categorys .subitems {
-    width: 100%;
-}
-.category-layer .list .categorys .subitems dl {
-    width: 95%;
-}
-.category-layer-bg {
-    background: rgba(6, 137, 225, 0.42);
-}
-.category-layer .list .cat .cat-name a {
-    color: #fff;
-}
-.category-layer .list .categorys {
-    background: rgba(238, 238, 238, 0.91);
-}
-.category-layer .list .cat:hover {
-    background: rgba(238, 238, 238, 0.91);
-}
-.proclamation1 .mall-news{
-	height:auto;
-}
-.proclamation1 .mall-news a{
-	border-bottom: 1px solid #ccc;
-}
-.proclamation1 .mall-news a:last-child{
-	border-bottom:none;
-}
-.category-layer .list .cat i.right-arrow{
-	color: #ffffff;
-}
+
+</style>
 </style>
 
 </head>
@@ -170,30 +204,6 @@ body{
 <input type="hidden" id="hidden_uid" value="<?php echo $uid; ?>" />
 <!-- 头部广告 -->
 
-<!--
-	创建人：王永杰
-	创建时间：2017年2月7日 12:02:25
-	功能描述： 首页顶部广告图，可以关闭。此广告只在网站首页展示 
--->
-<?php $service = new data\service\Platform;$headadv = $service->getPlatformAdvPositionDetail("1051", "*");$headadv = json_encode($headadv);$headadv = json_decode($headadv, ture); if(!(empty($headadv) || (($headadv instanceof \think\Collection || $headadv instanceof \think\Paginator ) && $headadv->isEmpty()))): if(empty($headadv['adv_list'][0]['adv_image']) || (($headadv['adv_list'][0]['adv_image'] instanceof \think\Collection || $headadv['adv_list'][0]['adv_image'] instanceof \think\Paginator ) && $headadv['adv_list'][0]['adv_image']->isEmpty())): ?>
-			<div class="top-active" style="background-color:#0287E1">
-				<div class="top-active-wrap">
-					<a href="javascript:;" target="_blank"><img src="__TEMP__/<?php echo $style; ?>/public/images/style_blue_head_adv.png"></a><a href="javascript:void(0);" title="<?php echo lang('goods_close'); ?>" class="top-active-close"></a>
-				</div>
-			</div>
-		<?php else: ?>
-			<div class="top-active" style="background-color:<?php echo $headadv['adv_list'][0]["background"]; ?>">
-				<div class="top-active-wrap">
-					<a href="<?php echo __URL($headadv['adv_list'][0]['adv_url']); ?>" target="_blank"><img src="<?php echo __IMG($headadv['adv_list'][0]['adv_image']); ?>"></a><a href="javascript:void(0);" title="<?php echo lang('goods_close'); ?>" class="top-active-close"></a>
-				</div>
-			</div>
-		<?php endif; endif; ?>
-
-<script type="text/javascript">
-if($.cookie("1051_close")!=null){
-	$(".top-active").hide();
-}
-</script>
 
 
 <!-- 公共的顶部（部分界面不用，例如，商家入驻） -->
@@ -617,7 +627,7 @@ $('.NS-SEARCH-BOX-KEYWORD').bind('keypress', function (event) {
 
 <!--头部商品分类 start-->
 
-<!--
+	<!--
 	创建人：李志伟
 	创建时间：2017年2月7日 12:22:28
 	功能描述：导航栏、菜单栏 、商品分类（与首页的样式不同，没有轮播图）
@@ -699,133 +709,6 @@ $('.NS-SEARCH-BOX-KEYWORD').bind('keypress', function (event) {
 		<span style="left: 15px;"></span>
 	</div>
 </div>
-	</div>
-</div>
-<!-- 滚动图片广告位 -->
-<div class="template-one">
-	<div class="banner">
-		<!--
-	创建人：王永杰
-	创建时间：2017年2月7日 12:05:24
-	功能描述： 首页导航栏、 菜单栏、、商品分类、轮播图（目前只有首页才拥有这个组件）
--->
-<?php $service = new data\service\Platform;$list = $service->getPlatformAdvPositionDetail("1053", "*");$list = json_encode($list);$list = json_decode($list, ture); if(!(empty($list) || (($list instanceof \think\Collection || $list instanceof \think\Paginator ) && $list->isEmpty()))): ?>
-	<ul id="fullScreenSlides" class="full-screen-slides">
-		<?php if(is_array($list['adv_list']) || $list['adv_list'] instanceof \think\Collection || $list['adv_list'] instanceof \think\Paginator): if( count($list['adv_list'])==0 ) : echo "" ;else: foreach($list['adv_list'] as $k=>$vo): if($vo['adv_image'] == ''): ?>
-				<li style="display: list-item;background: url(__TEMP__/<?php echo $style; ?>/public/images/style_blue_banner.png) no-repeat center;background-size: auto"><a href="javascript:;" target="_blank">&nbsp;</a> </li>
-			<?php else: if($k == 0): ?>
-					<li style="display: list-item;background: url(<?php echo __IMG($vo['adv_image']); ?>) no-repeat center;background-color:<?php echo $vo['background']; ?>;background-size: auto 100%;"><a href="<?php echo __URL($vo['adv_url']); ?>" target="_blank" >&nbsp;</a> </li>
-				<?php else: ?>
-					<li style="display: none;background: url(<?php echo __IMG($vo['adv_image']); ?>) no-repeat center;background-color:<?php echo $vo['background']; ?>;background-size: auto"><a href="<?php echo __URL($vo['adv_url']); ?>" target="_blank" >&nbsp;</a> </li>
-				<?php endif; endif; endforeach; endif; else: echo "" ;endif; ?>
-	</ul>
-	<ul class="full-screen-slides-pagination">
-		<?php if(is_array($list['adv_list']) || $list['adv_list'] instanceof \think\Collection || $list['adv_list'] instanceof \think\Paginator): $k = 0; $__LIST__ = $list['adv_list'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($k % 2 );++$k;if($k == 1): ?>
-				<li class="current"><a href="javascript:void(0);"><?php echo $k; ?></a></li>
-			<?php else: ?>
-				<li><a href="javascript:void(0);"><?php echo $k; ?></a></li>
-			<?php endif; endforeach; endif; else: echo "" ;endif; ?>
-	</ul>
-	<?php endif; ?>
-
-  <!--滚动图-->
-		<!--滚动图右侧公告及其小菜单
-	2017年2月14日12:28:00
--->
-<script type="text/javascript">
-$.ajax({
-	type:"post",
-	url:"<?php echo __URL('SHOP_MAIN/components/getlogininfo'); ?>",
-	success:function(data){
-		var login_info_html='';
-		if(data != null && data !=""){
-			if(data["user_info"]["nick_name"]!=null && data["user_info"]["nick_name"] != ""){
-				if(data["user_info"]["user_headimg"]==""){
-					login_info_html+='<div class="login_img"><img src="<?php echo __IMG($default_headimg); ?>" alt="<?php echo lang('default_avatar'); ?>" /></div>';
-				}else{
-					login_info_html+='<div class="login_img"><img src="<?php echo __IMG($default_headimg); ?>" data-original="'+__IMG(data["user_info"]["user_headimg"])+'" alt="<?php echo lang('default_avatar'); ?>" /></div>';
-				}
-				login_info_html+='<div class="login-message"><p class="message-title">Hi,<?php echo lang('i_am'); ?><a href="<?php echo __URL('SHOP_MAIN/member/index'); ?>" class="member_name" title="'+data["user_info"]["nick_name"]+'">'+data["user_info"]["nick_name"]+'</a></p><p class="message-operation"><a href="javascript:logout();" class="logout" ><?php echo lang('safe_exit'); ?></a></p></div>';
-			}
-		}else{
-			login_info_html += '<div class="login_img">';
-			login_info_html += '<img src="<?php echo __IMG($default_headimg); ?>" alt="<?php echo lang('default_avatar'); ?>" />';
-			login_info_html += '</div>';
-			login_info_html += '<div class="login-message">';
-			login_info_html += '<p class="message-title" data-temp="<?php echo $title; ?>">Hi,<?php echo lang('welcome_login'); ?></p>';
-			login_info_html += '<p class="message-operation">';
-			login_info_html += '<a href="javascript:;" class="login ajax-login" onclick="showLoginLayer();"><?php echo lang('login'); ?></a>';
-			login_info_html += '<a href="'+__URL('SHOP_MAIN/login/registerbox')+'" class="register"><?php echo lang('register'); ?></a>';
-			login_info_html += '</p></div>';
-		}
-		$('.right-login-message').html(login_info_html);
-	}
-});
-</script>
-<div class="right-sidebar NS-TEMPLATE-NAV-CONTAINER">
-	
-	<!-- 个人信息 -->
-	<div class="right-login-message">
-		<div style="text-align:center;">
-			<img src="__TEMP__/<?php echo $style; ?>/public/images/load_login.gif"/>
-			<p style="margin-top:10px;"><?php echo lang('in_load'); ?></p>
-		</div>
-	</div>
-	
-
-	<!-- 公告 -->
-	<?php if(count($notice) != 0 || count($article_list) != 0): ?>
-	<div class="noticeAndArticle">
-		<ul>
-			<?php if(count($notice) != 0 && count($article_list) != 0): ?>
-			<li style="width: 85px;border-right: 1px solid rgba(204,204,204,0.8);" class="acrive" type="notice">公告</li>
-			<li style="width: 86px" type="article"><a href="<?php echo __URL('SHOP_MAIN/cms/articleList'); ?>">最新资讯</a></li>
-			<?php else: if(!(empty($notice) || (($notice instanceof \think\Collection || $notice instanceof \think\Paginator ) && $notice->isEmpty()))): ?>
-					<li style="width: 178px;" class="acrive" type="notice">公告</li>
-				<?php endif; if(!(empty($article_list) || (($article_list instanceof \think\Collection || $article_list instanceof \think\Paginator ) && $article_list->isEmpty()))): ?>
-					<li style="width: 178px" class="acrive" type="article"><a href="<?php echo __URL('SHOP_MAIN/cms/articleList'); ?>">最新资讯</a></li>
-				<?php endif; endif; ?>
-		</ul>
-	</div>
-	<?php endif; if(!(empty($notice) || (($notice instanceof \think\Collection || $notice instanceof \think\Paginator ) && $notice->isEmpty()))): ?>
-		<div class="noticeAndArticleContent proclamation1" data-type="notice"> 
-			<ul class="mall-news">
-			<?php if(is_array($notice) || $notice instanceof \think\Collection || $notice instanceof \think\Paginator): if( count($notice)==0 ) : echo "" ;else: foreach($notice as $key=>$v): ?>
-				<li><a href="<?php echo __URL('SHOP_MAIN/notice/detail', 'id='.$v['id']); ?>" title="<?php echo $v["notice_title"]; ?>"><?php echo $v["notice_title"]; ?></a></li>
-			<?php endforeach; endif; else: echo "" ;endif; ?>
-			</ul>
-		</div>		
-	<?php endif; if(!(empty($article_list) || (($article_list instanceof \think\Collection || $article_list instanceof \think\Paginator ) && $article_list->isEmpty()))): ?>
-		<div class="noticeAndArticleContent proclamation1" data-type="article" <?php if(count($notice) != 0): ?>style="display: none;"<?php endif; ?>> 
-			<ul class="mall-news">
-			<?php if(is_array($article_list) || $article_list instanceof \think\Collection || $article_list instanceof \think\Paginator): if( count($article_list)==0 ) : echo "" ;else: foreach($article_list as $key=>$v): ?>
-				<li><a href="<?php echo __URL('SHOP_MAIN/cms/articleclassinfo', 'article_id='.$v['article_id']); ?>"><?php echo $v["title"]; ?></a></li>
-			<?php endforeach; endif; else: echo "" ;endif; ?>
-			</ul>
-		</div>
-	<?php endif; ?>
-
-	<!-- banner右侧资讯_end -->
-	<p class="right_title" style="display:none;"><span>&nbsp;</span>管理</p>
-	<div class="shortcut-menu" style="display:none;">
-		<a href="ADMIN_MAIN" title="<?php echo lang('login'); ?>商家管理中心" class="store-join-btn" target="_blank"><?php echo lang('login'); ?>管理中心</a>
-	</div>
-</div>
-<script>
-	$(".noticeAndArticle ul li").mouseover(function(){
-		$(".noticeAndArticle ul li").removeClass("acrive");
-		$(this).addClass("acrive");
-		var type = $(this).attr('type');
-		if(type == "notice"){
-			$('[data-type="notice"]').show();
-			$('[data-type="article"]').hide();
-		}else if(type == "article"){
-			$('[data-type="article"]').show();
-			$('[data-type="notice"]').hide();
-
-		}
-	})
-</script>  <!--滚动图右侧公告-->
 	</div>
 </div>
 
@@ -970,561 +853,759 @@ function showLoginLayer(){
 
 <!-- 内容 -->
 
-	
-<div class="floor"></div>
-
-	<!-- 广告位 -->
-	<?php $service = new data\service\Platform;$indexadv = $service->getPlatformAdvPositionDetail("1054", "*");$indexadv = json_encode($indexadv);$indexadv = json_decode($indexadv, ture); if(!(empty($indexadv['adv_list']) || (($indexadv['adv_list'] instanceof \think\Collection || $indexadv['adv_list'] instanceof \think\Paginator ) && $indexadv['adv_list']->isEmpty()))): ?>
-	<div class="w1210 ad-groups ad-groups5">
-		<!-- <div class="ad-groups5-layout">
-			<div class="ad-groups5-list">
-				<?php if(is_array($indexadv['adv_list']) || $indexadv['adv_list'] instanceof \think\Collection || $indexadv['adv_list'] instanceof \think\Paginator): if( count($indexadv['adv_list'])==0 ) : echo "" ;else: foreach($indexadv['adv_list'] as $k=>$v): if(!(empty($v['adv_image']) || (($v['adv_image'] instanceof \think\Collection || $v['adv_image'] instanceof \think\Paginator ) && $v['adv_image']->isEmpty()))): ?>
-					<div class="item" style="width:<?php echo $indexadv['ap_width']; ?>px;height:<?php echo $indexadv['ap_height']; ?>px;line-height:<?php echo $indexadv['ap_height']; ?>px;">
-						<a href="<?php echo $v['adv_url']; ?>" target="_blank">
-							<img src="<?php echo __IMG($v['adv_image']); ?>">
-						</a>
-					</div>
-					<?php endif; endforeach; endif; else: echo "" ;endif; ?>
-			</div>
-		</div> -->
-		<div class="ad-groups5-layout">
-			<a href="<?php echo $v['adv_url']; ?>" target="_blank">
-				<img src="<?php echo __IMG($v['adv_image']); ?>">
-			</a>
-		</div>
-	</div>
-	<?php endif; ?>
-
-
-
-	
-	
-	<!--限时折扣-->
-	<style>
- .box-bd .tempWrap ul li{
-	float: left;
-    width: 242px;
- 	padding: 10px 0;
- 	border-right:1px solid #eee;
- 	margin-right:-2px;
- }
- .box-bd .tempWrap ul li:last-child{
-	border-right:0;
- }
-.box-bd{
-	border:1px solid #eee;
-}
-
-.seckill-channel .box-bd .p-img .brand-time{
-	margin-left:12px;
-	width:90%;
-}
-.seckill-channel .box-bd .p-name a{
-	font-size:13px;
-}
-.seckill-channel .box-bd{
-	height:auto;
-	margin-top:0px;
-}
-.seckill-channel .box-bd .p-over{
-	height:auto;
-}
-.box-bd .clearfix{
-	height:auto;
-}
-.brand-time{
-	width:90%;
-}
-#h-seckill{
-	margin-top:0;padding-top:0;
-}
-.p-price .shop-price{
-	font-size:15px;
-}
-</style>
-<!--
-	创建人：王永杰
-	创建时间：2017年2月7日 11:59:16
-	功能描述：限时折扣
--->
-<?php if(count($discount_list) >0): ?>
-<link type="text/css" rel="stylesheet" href="__TEMP__/<?php echo $style; ?>/public/css/ns_style.css">
-<!-- <div class="floor"></div>
-<div class="channel-content" ectype="channel">
-	<div class="seckill-channel" id="h-seckill">
-		<div class="clearfix"  style="padding-top:10px;padding-bottom:10px;">
-			<span style="height:30px;line-height:30px;font-size:17px;display:inline-block;border-left:5px  solid #0689e1;padding-left:10px;">限时秒杀</span>
-			<div class="sk-more">
-				<a href="<?php echo __URL('SHOP_MAIN/index/discount'); ?>" target="_blank"><?php echo lang('more_spike'); ?></a>
-			</div>
-		</div>
-		<div class="box-bd clearfix" style="height:auto;margin-top:0;border-left:0;border-right:0;">
-			<div class="tempWrap" >
-				<ul>
-					<?php if(is_array($discount_list) || $discount_list instanceof \think\Collection || $discount_list instanceof \think\Paginator): $i = 0; $__LIST__ = $discount_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-					<li class="opacity_img clone" >
-						<div class="p-img" style="width:90%;padding:0 13px;">
-							<a href="<?php echo __URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$vo['goods_id']); ?>" target="_blank">
-								<img src="<?php echo __IMG($default_goods_img); ?>" class="lazy_load" data-original="<?php echo __IMG($vo['picture']['pic_cover_mid']); ?>" class="img-lazyload lazy_load">
-								<div class="brand-time" style="width:90%;">
-									<em class="time">
-										<span class="settime" starttime="<?php echo getTimeStampTurnTime($vo['start_time'] ); ?>" endtime="<?php echo getTimeStampTurnTime($vo['end_time'] ); ?>"></span>
-									</em>
-								</div>
-							</a>
-						</div>
-						<div class="p-name" style="padding:0 13px;width:90%;">
-							<a href="<?php echo __URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$vo['goods_id']); ?>" target="_blank" title="<?php echo $vo['goods_name']; ?>"><?php echo $vo['goods_name']; ?></a>
-						</div>
-						<div class="" style="padding:0 13px;width:90%;">
-								<div class="p-price">
-									<span class="shop-price"><?php echo $vo['display_price']; ?></span>									
-									<span class="original-price"><em>¥</em><?php echo $vo['price']; ?></span>
-								</div>
-						</div>
-					</li>
-					
-				<?php endforeach; endif; else: echo "" ;endif; ?>
-				
-				</ul>
-				<input type="hidden" id="ms_time" value="<?php echo $ms_time; ?>"/>
-			</div>
-		</div>
-	</div>
-</div> -->
-<script>
-$(function() {
-	countDown();
-});
-
-function countDown(){
-	$(".settime").each(function(i) {
-		var self = $(this);
-		var end_date = this.getAttribute("endTime"); //结束时间字符串
-		if(end_date != undefined && end_date != ''){
-			var end_time = new Date(end_date.replace(/-/g,'/')).getTime();//月份是实际月份-1
-			var sys_second = (end_time-$("#ms_time").val())/1000;
-			if(sys_second>1){
-				sys_second -= 1;
-				var day = Math.floor((sys_second / 3600) / 24);
-				var hour = Math.floor((sys_second / 3600) % 24);
-				var minute = Math.floor((sys_second / 60) % 60);
-				var second = Math.floor(sys_second % 60);
-				self.html(day + "<?php echo lang('days'); ?>" + ( hour<10 ? "0" + hour : hour ) + "<?php echo lang('hours'); ?>" + (minute<10?"0"+minute:minute) + "<?php echo lang('minutes'); ?>" + (second<10?"0"+second:second) + "<?php echo lang('second'); ?>");
-			}
-			var timer = setInterval(function(){
-				if (sys_second > 1) {
-					sys_second -= 1;
-					var day = Math.floor((sys_second / 3600) / 24);
-					var hour = Math.floor((sys_second / 3600) % 24);
-					var minute = Math.floor((sys_second / 60) % 60);
-					var second = Math.floor(sys_second % 60);
-					self.html(day + "<?php echo lang('days'); ?>" + (hour<10?"0"+hour:hour) + "<?php echo lang('hours'); ?>" + (minute<10?"0"+minute:minute) + "<?php echo lang('minutes'); ?>" + (second<10?"0"+second:second) + "<?php echo lang('second'); ?>"); 
-				} else { 
-					self.html("<?php echo lang('activity_over'); ?>！");
-					clearInterval(timer);
-				}
-			}, 1000);
-		}
-	});
-}
-</script>
-<?php endif; ?>
-	<!--限时折扣-->
-	
-	<!-- 推荐广告位开始 -->
-	<style>
-.recommend-style{background-color:#FFF;margin-top:10px;}
-.recommend-style-nav{padding-top:10px;padding-bottom:10px;border-bottom:1px solid #eee;}
-.recommend-style-nav h2{font-weight:normal;border-left:5px  solid #0689e1;height:29px;line-height:29px;padding-left:10px;display: inline-block;}
-.recommend-style-nav a.more{float: right;margin: 5px 10px;}
-.focus-img{width:99%;position: relative;height:260px;}
-.focus-img-con{position: relative;overflow:hidden;margin: 0 auto;height:260px;}
-.focus-img-con ul{position:absolute;top:0;width:2420px;}
-.focus-img-con ul li{float:left;width:241px;height:260px;}
-.focus-img-con ul li{border-right:1px solid #eee;}
-.focus-img-con ul li:last-child{}
-.focus-img-con ul li>div>div:nth-child(1){height:160px;text-align:center;margin:30px 0 5px 0;}
-.focus-img-con ul li>div>div:nth-child(1) img{max-height:100%;max-width:100%;}
-.focus-img-con ul li>div>div:nth-child(2){overflow:hidden;}
-.goods-name-css span{float:left;text-align:left;font-size:13px;height: 32px;margin-left:10px;line-height:32px;/* 	overflow: hidden;white-space: nowrap;text-overflow: ellipsis; */max-width:91%;display: -webkit-box; /** 将对象作为伸缩盒子模型显示 **/-webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/-webkit-line-clamp: 1; /** 显示的行数 **/overflow: hidden;  /** 隐藏超出的内容 **/}
-.group-name-css{float:left;}
-.group-name-css span{display:inline-block;margin-top:6px;margin-bottom:6px;padding:2px 5px;background-color:red;color:#FFF;font-size:12px;max-width:80px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;border-radius:3px;}
-.focus-img-con ul li>div>div:nth-child(3){text-align:left;padding: 0 10px;color:red;font-size:15px;}
-.change-bnt{padding:5px 10px;border:1px solid #eee;background-color:#FFF;position:absolute;top:-40px;text-align:center;}
-.change-bnt img{height:10px;width:5px;}
-.prev-bnt{right:32px;border-right:none;/* background:url(__STATIC__/lory/left.png); */}
-.next-bnt{right:0;/* background:url(__STATIC__/lory/right.png); */}
-.bnt-ico{}
-.focus-img-con ul li>div{margin:10px auto;}
-.tag-small-block{position:absolute;z-index:100;width:82px !important;/*height:29px;*/line-height:29px;/*background:url(__TEMP__/<?php echo $style; ?>/public/images/merchandising_label.png);*/background-repeat:no-repeat;top:-10px;color:#FFF;font-size:12px;/*transform: rotate(314.8deg);-ms-transform: rotate314.8deg);-webkit-transform: rotate(314.8deg);left: -22px;*/}
-.tag-small-block span{display:block;text-align: center;position: absolute;top: 5px;width:91%;left:-16px;transform: rotate(314.8deg);-ms-transform: rotate314.8deg);-webkit-transform: rotate(314.8deg);}
-</style>
-
-<script src="__STATIC__/lory/changeImg.js"></script>
-<script type="text/javascript">
-$(function(){
-	$("#focus-img").changeImg({
-		'boxWidth':1210,
-		'changeLen':5,
-		'changeSpend':3000,
-		'autoChange':true,
-		'changeHandle':true
-	}); 
-	//$(".prev-bnt").append("<img class='bnt-ico'src='__STATIC__/lory/left.png'/>");
-	//$(".next-bnt").append("<img class='bnt-ico'src='__STATIC__/lory/right.png'/>");
-	$(".prev-bnt").hide();
-	$(".next-bnt").hide();
-});
-</script>
-<?php if(!empty($recommend_goods_list)): ?>
-<div class="w1210 recommend-style">
-	<div class="recommend-style-nav">
-		<h2>商品促销</h2>
-		<a href="<?php echo __URL('SHOP_MAIN/goods/promotionZone'); ?>" class="more">更多</a>
-	</div>
-	<div class="focus-img" id="focus-img">
-		
-		<div class="focus-img-con" id="focus-img-con">
+<form>
+<div class="cart-box">
+	<div class="nb">
+		<div class="cart-step">
 			<ul>
-				<?php foreach($recommend_goods_list as $k=>$v): ?>
-				<li style="position:relative;overflow: hidden;">
-					<div>
-						<div><a href="<?php echo __URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$v['goods_id']); ?>" target="_blank">
-							<img src="<?php echo __IMG($default_goods_img); ?>" class="lazy_load" data-original="<?php echo __IMG($v['pic_cover_mid']); ?>"/></a></div>
-						<div>
-							<div class="group-name-css">
-								<!-- <span><?php echo $v['group_name']; ?></span> -->
-							</div>
-							<div class="goods-name-css">
-								<a href="<?php echo __URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$v['goods_id']); ?>" target="_blank"><span><?php echo $v['goods_name']; ?></span></a>
-							</div>
-						</div>
-						<div>¥<?php echo $v['promotion_price']; ?></div>
-					</div>
-					<div class="tag-small-block" style="overflow: hidden;">
-						<?php if($v['pic_cover']!=''): ?>
-						<img src="<?php echo __IMG($v['pic_cover']); ?>"/>
-<!-- 						<span><?php echo mb_substr($v['group_name'],0,4,'utf-8'); ?></span> -->
-						<?php else: ?>
-						<img src="__TEMP__/<?php echo $style; ?>/public/images/merchandising_label.png"/>
-						<span><?php echo mb_substr($v['group_name'],0,4,'utf-8'); ?></span>
-						<?php endif; ?>
-					</div>
-				</li>
-				<?php endforeach; ?>
-				
+				<?php if($order_tag == 'cart'): ?>
+				<li class="cart1"><i></i><?php echo lang('goods_cart'); ?></li>
+				<?php else: ?>
+				<li class="cart1"><i></i><?php echo lang('goods_buy_now'); ?></li>
+				<?php endif; ?>
+				<li class="cart2 oncart2"><i></i><?php echo lang('goods_confirm_order'); ?></li>
+				<li class="cart3"><i></i><?php echo lang('goods_payment'); ?></li>
+				<li class="cart4"><i></i><?php echo lang('goods_successful_payment'); ?></li>
 			</ul>
 		</div>
-	</div>
-</div>
-<?php endif; ?>
-	<!-- 推荐广告位结束 -->
-	
-	<!--推荐商品楼层分类 start-->
-	<style>
-.floor-layout .floor-content-goods {height: 426px;}
-.floor-layout .floor-content-goods .floor-middle {height: 426px;border-right:1px solid #eee;}
-.floor-layout .floor-content-goods .floor-middle .floor-banner {height: 426px;}
-.floor-layout .floor-content-goods .floor-middle .floor-banner ul {height: 426px;}
-.floor-layout .floor-content-goods .floor-middle .floor-banner ul li {height: 426px;line-height: 0px;}
-.floor-layout .floor-content-goods .floor-middle .floor-banner ul li a{display: block;text-align: center;height: 300px;width: 100%;line-height: 290px;}
-.goods-list-padding-block{padding:11px 0 12px 0;width:100%;margin:0px auto;position: relative;}
-.goods-list-padding-block .goods_img{height:177px;text-align:center;}
-.goods-list-padding-block .goods_img img{max-height:100%;max-width:100%;}
-.goods-list-padding-block .goods_name{line-height: 20px;color: #a02b2b;text-align:center;padding: 5px 10px;font-size:20px;height: 42px;width: 90%;margin:0 auto;display: -webkit-box; /** 将对象作为伸缩盒子模型显示 **/-webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/-webkit-line-clamp: 2; /** 显示的行数 **/overflow: hidden;  /** 隐藏超出的内容 **/}
-.goods-list-padding-block .goods_price{text-align:left;padding: 5px 10px 5px 35px;color:#a02b2b;width: 90%;margin:0 auto;font-size:20px;}
-.bland-list li {border-bottom:1px solid #eee;width:49.5%;float:left;height:106px;text-align:center;}
-.bland-list li a {height:106px;line-height:106px;}
-.bland-list li a img{display: inline-block !important;vertical-align: middle !important;max-width: 100% !important;max-height: 100% !important;height: auto !important;}
-.bland-list li:nth-child(odd){border-right:1px solid #eee;border-left:1px solid #eee;}
-.bland-list li:nth-child(7),.bland-list li:nth-child(8){border-bottom:none;}
-.goods-list-ul{overflow:hidden;}
-.goods-list-ul li{background-color: #ffffff;margin-bottom: 16px;margin-right: 28px;width: 279px;float:left;text-align: center;border-left: 1px solid #eee;border-bottom: 1px solid #eee;}
-.goods-list-ul li:nth-of-type(4n+4){margin-right: 0px;}
-.goods-block{float:left;overflow:hidden;width: 100%}
-.goodslist{border-left: 1px solid #eee;}
-.li-hover:hover{color:#0d84d4;}
-.category-block-h2{font-size:17px;}
-.ad-title{height:50px;line-height:70px;font-size:16px;text-align:center;}
-.ad-subtitle{height:50px;line-height:20px;font-size:13px;text-align:center;}
-.floor-layout .floor-content-goods{height:auto;}
-.floor-layout .floor-content{height:auto;}
-.recommend{position: absolute;z-index: 10;top:-10px;left: 10px;width: 40px;}
-.goods_itemstar{text-align: left;padding-left: 35px;}
-.goods_itemstar i{display: inline-block;width: 15px;height: 15px;}
-.goods_itemstar .gold{background: url(/template/shop/blue/public/images/star1.png);background-size: 100%;}
-.goods_itemstar .silver{background: url(/template/shop/blue/public/images/star2.png);background-size: 100%;}
-.goods_add{font-size: 0;text-align: left;padding-left: 35px;}
-.goods_add button{outline: none;border: none;height: 30px;padding: 0;cursor: pointer;vertical-align: bottom;}
-.goods_add .addcar{width: 122px;background-color: #a02b2b;font-size: 14px;color: #ffffff;}
-.goods_add .addcar:hover{background: #000000;color: #ffffff;}
-.goods_add .compare{width: 30px;background: #d9d9d9 url(/template/shop/blue/public/images/compare.png) no-repeat center;}
-.goods_add .addcollection{width: 30px;background: #d9d9d9 url(/template/shop/blue/public/images/addcollection.png) no-repeat center;}
-.goods_add .addcollection.active{width: 30px;background: #d9d9d9 url(/template/shop/blue/public/images/addcollection_active.png) no-repeat center;}
-.floor-list:first-of-type{background: red;}
-.floor-con hr{border:0;border-bottom:5px solid #e5e5e5;-webkit-margin-before: 0.5em; -webkit-margin-after: 0em;}
-.newgoods .floor-con{background: #ffffff;}
-.newgoods .goods-list-ul li{background: none;}
-.newgoods .goodslist:first-of-type{width: 526px !important;height: 688px !important;border-radius: 10px;border: solid 1px #e60012 !important;}
-.newgoods .goodslist:first-of-type .goods_img{height: 359px;margin-top: 10px;margin-bottom: 26px;}
-.newgoods .goodslist:first-of-type .goods_name{height: 64px;}
-.newgoods .goodslist:first-of-type .goods_price{margin: 20px 0 10px 0;}
-.newgoods .goodslist:first-of-type .goods_name,
-.newgoods .goodslist:first-of-type .goods_price{font-size: 30px;line-height: 30px;}
-.newgoods .goodslist:first-of-type .goods_itemstar,
-.newgoods .goodslist:first-of-type .goods_add,
-.newgoods .goodslist:first-of-type .goods_price{padding-left: 78px;}
-.newgoods .goodslist:first-of-type .goods_itemstar i{width: 28px;height: 28px;}
-.newgoods .goodslist:first-of-type .goods_add button{height: 44px;}
-.newgoods .goodslist:first-of-type .goods_add .addcar{width: 204px;font-size: 22px;}
-.newgoods .goodslist:first-of-type .goods_add .compare,
-.newgoods .goodslist:first-of-type .goods_add .addcollection{width: 40px;}
-.selectgoods .floor-con{background: #ffffff;}
-.selectgoods .floor-con hr{display: none;}
-.selectgoods .goodslist{
-	width: 302px !important;
-	margin-right: 0px;
-	border: none !important;
-	position: relative;
-}
-.selectgoods .goodslist::after{
-	position: absolute;
-	top: 5%;
-	right: 0px;
-	content: '';
-	height: 90%;
-	width: 4px;
-	background: #e5e5e5;
-}
-.selectgoods .goodslist:nth-of-type(4n+1)::before{
-	position: absolute;
-	top: 0;
-	left: 0;
-	content: '';
-	width: 400%;
-	border-top: 5px solid #e5e5e5;
-	z-index: 1;
-}
-.selectgoods .goodslist:nth-of-type(4n+4)::after,
-.selectgoods .goodslist:last-of-type::after{
-	display: none;
-}
-</style>
-<!-- 首页楼层开始 -->
-<script>
-//移入事件
-function hoverGoodsList(obj,id){
-	var parend_obj = $(obj).parent().parent().parent().parent();
-	parend_obj.find(".goods-list-ul").hide();
-	parend_obj.find(".goods-list-ul-"+id).show();
-}
-//移除事件
-function levelGoodsList(obj){
-	$(obj).find(".goods-list-ul").hide();
-	$(obj).find(".goods-list-ul-index").show();
-} 
-</script>
-<?php if(is_array($block_list) || $block_list instanceof \think\Collection || $block_list instanceof \think\Paginator): $i = 0; $__LIST__ = $block_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;if(!empty($vo['goods_list'])): ?>
-<!-- 新品：newgoods -->
-<div class="w1210 floor-list selectgoods" onmouseleave ="levelGoodsList(this)">
-	<div class="floor">
-		<div class="floor-layout">
-			<div class="floor-con floor-con5">
-				<!-- 楼层顶部内容开始 -->
-				<div class="floor-title">
-					<!--推荐名称-->
-					<h2 class="category-block-h2" style="<?php if($vo['color'] == '#ffffff'): ?>border-left:5px solid #0689e1;<?php else: ?>border-left:5px solid <?php echo $vo['color']; ?>;<?php endif; ?>height:29px;line-height:29px;">
-						<a href=javascript:;" target="_blank" ><?php echo $vo['category_alias']; ?></a>
-						<input type="hidden" class="NS-SHORT-NAME" value="<?php if(!empty($vo['short_name'])): ?><?php echo $vo['short_name']; elseif(!empty($vo['category_alias'])):  echo mb_substr($vo['category_alias'],0,4,'utf-8');  else:  echo mb_substr($vo['category_name'],0,4,'utf-8');  endif; ?>"/>
-					</h2>
-					<!--推荐类型-->
-					<!-- <ul class="floor-tabs-nav" style="width:82%;overflow:hidden;">
-						<li style="float:right;">
-							
-							<h3 style="padding:0 10px;">
-								<a href="<?php echo __URL('SHOP_MAIN/goods/goodslist','category_id='.$vo['category_id']); ?>"><?php echo lang('floor_more'); ?></a>
-							</h3>
-							
-						</li>
-						<?php if(!empty($vo['child_category'])): if(is_array($vo['child_category']) || $vo['child_category'] instanceof \think\Collection || $vo['child_category'] instanceof \think\Paginator): $i = 0; $__LIST__ = $vo['child_category'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;if(!empty($v['goods_list'])): ?>
-								<li class="floor-tabs-selected li-hover" style="float:right;" onmouseenter ="hoverGoodsList(this,<?php echo $v['category_id']; ?>);"><a href="<?php echo __URL('SHOP_MAIN/goods/goodslist','category_id='.$v['category_id']); ?>"><h3 style="padding:0 10px;"><?php echo $v['category_name']; ?></h3></a></li>
-								<?php endif; endforeach; endif; else: echo "" ;endif; endif; ?>
-					</ul> -->
+
+		<!-- 创建订单：选择收货地址 虚拟商品不需要选择 -->
+		
+		<?php if($order_goods_type == 1): ?>
+			<div class="add-deliver">
+				<div class="cart-title">
+					<h3>
+						<span><?php echo lang('member_consignee'); ?></span>
+					</h3>
 				</div>
-				<!-- 楼层顶部内容结束 -->
-				<hr />
-				<!-- 楼层main -->
-				
-				<div class="floor-content floor-content-goods" style="border:none;">
-				<!-- 楼层左侧广告位开始 -->
-				<!-- <?php if($vo['ad_picture'] != ''): ?>
-					<div class="floor-middle" style="width: 20%;float:left;">
-						<div class="floor-banner" style="width:100%;">
-								<ul class="hiSlider">
-									<li class="hiSlider-item" style="width:100%;">
-										<a href="<?php echo $vo['ad_list']['url']; ?>" target="_blank">
-											<img class="lazy" src="<?php echo __IMG($vo['ad_list']['picture']); ?>">
-										</a>
-										<div style="height:100px;color:#fff;font-size:15px;<?php if($vo['ad_list']['background'] == '#ffffff'): ?>background:#0689e1;<?php else: ?>background:<?php echo $vo['ad_list']['background']; ?>;<?php endif; ?>"><p  class="ad-title"><?php echo $vo['ad_list']['title']; ?></p><p class="ad-subtitle"><?php echo $vo['ad_list']['subtitle']; ?></p></div>
-									</li>
-								</ul>
-						</div>
-					</div>
-				<?php endif; ?> -->
-					<!-- 左侧广告位结束 -->
-					<!--中间商品图开始 -->
-					<div class="floor-tabs-panel goods-block" style="margin-right:-1px;">
-						<ul class="goods-list-ul goods-list-ul-index">
-						<?php foreach($vo['goods_list'] as $k=>$v): if($k < $vo['goods_num']): if($k == (count($vo['goods_list'])-1) && ($k+1) != $vo['goods_num'] && ($k+1) != ($vo['goods_num']/2)): ?>
-								
-									<li class="goodslist" style="width:279px;border-right: 1px solid #eee;<?php if(($k+1) == 1  or ($k+1) == ($vo['goods_num']/2+1)): ?>border-left:none;<?php endif; if(($k+1) > ($vo['goods_num']/2)): ?>border-bottom:none;<?php endif; ?>">
-								
-							<?php else: ?>
-									<li class="goodslist" style="width:279px; <?php if(($k+1) == 1  or ($k+1) == ($vo['goods_num']/2+1)): ?>border-left:none;<?php endif; if(($k+1) > ($vo['goods_num']/2)): ?>border-bottom:none;<?php endif; ?>">
-							<?php endif; ?>
-							<div class="goods-list-padding-block">
-								<a href="<?php echo __URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$v['goods_id']); ?>" target="_blank">
-									<div class="goods_img"><img src="<?php echo __IMG($default_goods_img); ?>" class="lazy_load" data-original="<?php echo __IMG($v['pic_cover_mid']); ?>" /></div>
-								</a>
-								<a href="<?php echo __URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$v['goods_id']); ?>" target="_blank">
-									<div class="goods_name"><?php echo $v['goods_name']; ?></div>
-								</a>
-								<div class="goods_itemstar">
-									<i class="gold"></i>
-									<i class="gold"></i>
-									<i class="gold"></i>
-									<i class="silver"></i>
-									<i class="silver"></i>
+				<div class="sh-address js-shipping-address">
+					<ul>
+						<?php if(is_array($address_list) || $address_list instanceof \think\Collection || $address_list instanceof \think\Paginator): if( count($address_list)==0 ) : echo "" ;else: foreach($address_list as $k=>$info): ?>
+						<li class="other-add <?php if($info['is_default']==1): ?>default-add<?php endif; ?>" data-id="<?php echo $info['id']; ?>" data-province-id="<?php echo $info['province']; ?>" data-city-id="<?php echo $info['city']; ?>">
+							<div class="add-box">
+								<span class="remove vivi-blue js-shipping-address-remove" data-id="<?php echo $info['id']; ?>">X</span>
+								<div class="name-add">
+									<span class="name" <?php if($info['is_default']==1): ?>style="color:#0689e1;"<?php endif; ?>><?php echo $info['consigner']; ?></span>
+									<span class="add-rside"></span>
 								</div>
-								<?php if(in_array(($v['point_exchange_type']), explode(',',"0,2"))): ?>
-									<div class="goods_price">¥<?php echo $v['promotion_price']; ?></div>
-								<?php else: if($v['point_exchange_type'] == 1 && $v['promotion_price'] > 0): ?>
-										<div>￥<?php echo $v['promotion_price']; ?>+<?php echo $v['point_exchange']; ?>积分</div>
-									<?php else: ?>
-										<div><?php echo $v['point_exchange']; ?>积分</div>
-									<?php endif; endif; ?>
-								<div class="goods_add">
-									<button class="addcar">加入购物车</button>
-									<button class="compare"></button>
-									<button class="addcollection"></button>
+								<div class="elli add-detail">
+									<p title="<?php echo $info['address']; ?>" <?php if($info['is_default']==1): ?>style="color:#0689e1;"<?php endif; ?>><?php echo $info['address_info']; ?> <?php echo $info['address']; ?></p>
 								</div>
-								<!-- 左上角图标 -->
-								<!-- <?php if($v['is_hot'] == 1): ?>
-									<img src="__TEMP__/<?php echo $style; ?>/public/images/hot.png" alt="" class="recommend">
-								<?php endif; if($v['is_recommend'] == 1): ?>
-									<img src="__TEMP__/<?php echo $style; ?>/public/images/recommend.png" alt="" class="recommend">
-								<?php endif; if($v['is_new'] == 1): ?>
-									<img src="__TEMP__/<?php echo $style; ?>/public/images/new.png" alt="" class="recommend">
-								<?php endif; ?> -->
+								<div>
+									<span class="moblie"<?php if($info['is_default']==1): ?>style="color:#0689e1;"<?php endif; ?>><?php echo $info['mobile']; ?></span>
+									<a href="javascript:void(0);" class="chang-default change vivi-blue js-update-shipping-address" data-id="<?php echo $info['id']; ?>"><?php echo lang('member_modify_address'); ?></a>
+								</div>
 							</div>
-								<!-- <a href="<?php echo __URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$v['goods_id']); ?>" target="_blank">
-									<div class="goods-list-padding-block">
-										<div><img src="<?php echo __IMG($default_goods_img); ?>" class="lazy_load" data-original="<?php echo __IMG($v['pic_cover_mid']); ?>" /></div>
-										<div><?php echo $v['goods_name']; ?></div>
-										<?php if(in_array(($v['point_exchange_type']), explode(',',"0,2"))): ?>
-											<div>¥<?php echo $v['promotion_price']; ?></div>
-										<?php else: if($v['point_exchange_type'] == 1 && $v['promotion_price'] > 0): ?>
-												<div>￥<?php echo $v['promotion_price']; ?>+<?php echo $v['point_exchange']; ?>积分</div>
-											<?php else: ?>
-												<div><?php echo $v['point_exchange']; ?>积分</div>
-											<?php endif; endif; if($v['is_hot'] == 1): ?>
-											<img src="__TEMP__/<?php echo $style; ?>/public/images/hot.png" alt="" class="recommend">
-										<?php endif; if($v['is_recommend'] == 1): ?>
-											<img src="__TEMP__/<?php echo $style; ?>/public/images/recommend.png" alt="" class="recommend">
-										<?php endif; if($v['is_new'] == 1): ?>
-											<img src="__TEMP__/<?php echo $style; ?>/public/images/new.png" alt="" class="recommend">
-										<?php endif; ?>
-									</div>
-								</a> -->
-							</li>
-							
-						<?php endif; endforeach; ?>
-						</ul>
-						
-						<?php if(!empty($vo['child_category'])): if(is_array($vo['child_category']) || $vo['child_category'] instanceof \think\Collection || $vo['child_category'] instanceof \think\Paginator): $i = 0; $__LIST__ = $vo['child_category'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$goods): $mod = ($i % 2 );++$i;if(!empty($goods['goods_list'])): ?>
-								<ul class="goods-list-ul goods-list-ul-<?php echo $goods['category_id']; ?>" style="display:none;margin-left: -1px;">
-									<?php foreach($goods['goods_list'] as $ck=>$list): if($ck < $vo['goods_num']): if($ck == (count($goods['goods_list'])-1) && ($ck+1) != $vo['goods_num'] && ($ck+1) != ($vo['goods_num']/2)): ?>
-											<li class="goodslist" style="width:<?php echo $vo['goods_block_width']; ?>%;border-right: 1px solid #eee;<?php if(($ck+1) == 1  or ($ck+1) == ($vo['goods_num']/2+1)): ?>border-left:none;<?php endif; if(($ck+1) > ($vo['goods_num']/2)): ?>border-bottom:none;<?php endif; ?>">
-											<?php else: ?>
-											<li class="goodslist" style="width:<?php echo $vo['goods_block_width']; ?>%;<?php if(($ck+1) == 1  or ($ck+1) == ($vo['goods_num']/2+1)): ?>border-left:none;<?php endif; if(($ck+1) > ($vo['goods_num']/2)): ?>border-bottom:none;<?php endif; ?>">
-											<?php endif; ?>
-												<a href="<?php echo __URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$list['goods_id']); ?>" target="_blank">
-													<div class="goods-list-padding-block">
-														<div><img src="<?php echo __IMG($default_goods_img); ?>" class="lazy_load" data-original="<?php echo __IMG($list['pic_cover_mid']); ?>" /></div>
-														<div><?php echo $list['goods_name']; ?></div>
-														<?php if(in_array(($list['point_exchange_type']), explode(',',"0,2"))): ?>
-															<div>¥<?php echo $list['promotion_price']; ?></div>
-														<?php else: if($list['point_exchange_type'] == 1 && $list['promotion_price'] > 0): ?>
-																<div>￥<?php echo $list['promotion_price']; ?>+<?php echo $list['point_exchange']; ?>积分</div>
-															<?php else: ?>
-																<div><?php echo $list['point_exchange']; ?>积分</div>
-															<?php endif; endif; if($list['is_hot'] == 1): ?>
-														<img src="__TEMP__/<?php echo $style; ?>/public/images/hot.png" alt="" class="recommend">
-														<?php endif; if($list['is_recommend'] == 1): ?>
-														<img src="__TEMP__/<?php echo $style; ?>/public/images/recommend.png" alt="" class="recommend">
-														<?php endif; if($list['is_new'] == 1): ?>
-															<img src="__TEMP__/<?php echo $style; ?>/public/images/new.png" alt="" class="recommend">
-														<?php endif; ?>
-													</div>
-												</a>
-											</li>
-										<?php endif; endforeach; ?>
-								</ul>
-								<?php endif; endforeach; endif; else: echo "" ;endif; endif; ?>
+							<i class="icon-check"></i>
+						</li>
+						<?php endforeach; endif; else: echo "" ;endif; ?>
+						<li class="add-add">
+							<div class="add-box add-box-center js-add-shipping-address">
+								<a href="javascript:;"><i class="icon-add-add"></i><?php echo lang('member_add_new_address'); ?></a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		<?php endif; ?>
+		
+		<!-- 创建订单：账号信息 只有虚拟订单需要 -->
+		<?php if($order_goods_type == 0): ?>
+			<div class="account-number-info">
+				<div class="cart-title">
+					<h3>
+						<span>账号信息</span>
+					</h3>
+				</div>
+				
+				<ul>
+					<li>
+						<label>手机号码：</label>
+						<input type="text" value="<?php echo $user_telephone; ?>" id="user_telephone" />
+						<p class="tip">
+							<span>注意：<b style="font-weight:normal;color: #FF6633;"><?php echo lang('virtual_goods_orders_are_consumed_by_virtual_code'); ?></b></span>
+						</p>
+						<p class="tip">
+							<span>说明：<b style="font-weight:normal;color: #FF6633;"><?php echo lang('order_user_phone_instruction'); ?></b></span>
+						</p>
+					</li>
+				</ul>
+			</div>
+		<?php endif; ?>
+		
+		<!-- 创建订单：商品信息  立即购买和购物车商品信息一致 只有这两种方式有赠品 -->
+
+		<?php if(in_array(($order_tag), explode(',',"buy_now,cart,group_buy,virtual_goods,js_point_exchange,presell_buy"))): if(in_array(($order_tag), explode(',',"buy_now,cart,group_buy,virtual_goods,presell_buy"))): ?>
+			<div class="goods-infor">
+				<div class="cart-title">
+					<h3>
+						<span><?php echo lang('goods_commodity_information'); ?></span>
+						<?php if($order_tag == 'cart'): ?><a href="javascript:;" class="vivi-blue js-goback-cart"><?php echo lang('back'); ?><?php echo lang('goods_cart'); ?><?php echo lang('edit'); ?></a><?php endif; ?>
+					</h3>
+				</div>
+				<div class="goods-table">
+					<div class="goods-thead">
+						<div class="col col1"><?php echo lang('member_commodity'); ?></div>
+						<div class="col col3"><?php echo lang('member_unit_price'); ?></div>
+						<div class="col col4"><?php echo lang('goods_number'); ?></div>
+						<div class="col col5"><?php echo lang('goods_subtotal'); ?></div>
+					</div>
+					<div class="goods-tbody">
+						<?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): if( count($list)==0 ) : echo "" ;else: foreach($list as $k=>$cart_info): ?>
+						<div class="goodinfo" data-goods-id="<?php echo $cart_info['goods_id']; ?>" data-goods-name="<?php echo $cart_info['goods_name']; ?>" data-sku-name="<?php echo $cart_info['sku_name']; ?>" data-sku-id="<?php echo $cart_info['sku_id']; ?>" data-price="<?php echo $cart_info['price']; ?>" data-img-id="<?php echo $cart_info['picture_info']['pic_id']; ?>">
+							<div class="col col1 goods-title-pic">
+								<a href="<?php echo __URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$cart_info['goods_id']); ?>" target="_blank">
+									<img src="<?php echo __IMG($cart_info['picture_info']['pic_cover_small']); ?>" width="60" height="60">
+								</a>
+								<div class="goods-describ elli">
+									<p style="word-break: break-all; word-wrap:break-word;">
+										<a href="<?php echo __URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$cart_info['goods_id']); ?>" target="_blank"><?php echo $cart_info['goods_name']; ?>&nbsp;&nbsp;<?php echo $cart_info['sku_name']; ?></a>
+									</p>
+	<!-- 								<p></p> -->
+								</div>
+							</div>
+							<div class="col col3 goods-price">￥<?php echo $cart_info['price']; ?></div>
+							<div class="col col4 good-num"><?php echo $cart_info['num']; ?></div>
+							<div class="col col5 orange-bold xiaoji" data-subtotal="<?php echo $cart_info['subtotal']; ?>" style="border-bottom-style: none;">￥<?php echo $cart_info['subtotal']; ?></div>
+						</div>
+						<?php endforeach; endif; else: echo "" ;endif; ?>
 					</div>
 					
-					<!-- 中间商品图结束 -->
-					<!-- 右侧商品品牌 -->
-				<!-- <?php if(!empty($vo['brand_list'])  and $vo['is_show_brand'] == 1): ?>
-					<div class="floor-tabs-panel" style="width:20%;height:426px;float:left;">
-						<ul  class="bland-list" style="height:426px;">
-						<?php if(is_array($vo['brand_list']) || $vo['brand_list'] instanceof \think\Collection || $vo['brand_list'] instanceof \think\Paginator): $i = 0; $__LIST__ = $vo['brand_list'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$brandlist): $mod = ($i % 2 );++$i;?>
-							<li>
-								<a href="<?php echo __URL('SHOP_MAIN/goods/goodslist','brand_id='.$brandlist['brand_id']); ?>">
-									<img src="<?php echo __IMG($default_goods_img); ?>" class="lazy_load" data-original="<?php echo $brandlist['brand_pic']; ?>" style="max-width:100%;max-height:100%;vertical-align: middle;" title="<?php echo $brandlist['brand_name']; ?>"/>
-								</a>
-							</li>
+				</div>
+			</div>
+			<?php endif; ?>
+			
+			<!-- 积分兑换 -->
+			<?php if($order_tag == "js_point_exchange"): ?>
+				<div class="goods-infor">
+					<div class="cart-title">
+						<h3>
+							<span><?php echo lang('goods_commodity_information'); ?></span>
+							<?php if($order_tag == 'cart'): ?><a href="javascript:;" class="vivi-blue js-goback-cart"><?php echo lang('back'); ?><?php echo lang('goods_cart'); ?><?php echo lang('edit'); ?></a><?php endif; ?>
+						</h3>
+					</div>
+					<div class="goods-table">
+						<div class="goods-thead">
+							<div class="col col1"><?php echo lang('member_commodity'); ?></div>
+							<div class="col col3"><?php echo lang('member_unit_price'); ?></div>
+							<div class="col col4"><?php echo lang('goods_number'); ?></div>
+							<div class="col col5"><?php echo lang('goods_subtotal'); ?></div>
+						</div>
+						<div class="goods-tbody">
+							<?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): if( count($list)==0 ) : echo "" ;else: foreach($list as $k=>$cart_info): ?>
+							<div class="goodinfo" data-goods-id="<?php echo $cart_info['goods_id']; ?>" data-goods-name="<?php echo $cart_info['goods_name']; ?>" data-sku-name="<?php echo $cart_info['sku_name']; ?>" data-sku-id="<?php echo $cart_info['sku_id']; ?>" data-price="<?php echo $cart_info['price']; ?>" data-img-id="<?php echo $cart_info['picture_info']['pic_id']; ?>">
+								<div class="col col1 goods-title-pic">
+									<a href="<?php echo __URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$cart_info['goods_id']); ?>" target="_blank">
+										<img src="<?php echo __IMG($cart_info['picture_info']['pic_cover_small']); ?>" width="60" height="60">
+									</a>
+									<div class="goods-describ elli">
+										<p style="word-break: break-all; word-wrap:break-word;">
+											<a href="<?php echo __URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$cart_info['goods_id']); ?>" target="_blank"><?php echo $cart_info['goods_name']; ?>&nbsp;&nbsp;<?php echo $cart_info['sku_name']; ?></a>
+										</p>
+									</div>
+								</div>
+								<?php if($point_exchange_type == 1): ?>
+								<div class="col col3 goods-price"><?php if($cart_info['price'] > 0): ?>￥<?php echo $cart_info['price']; ?>+<?php endif; ?><?php echo $cart_info['point_exchange']; ?>积分</div>
+								<div class="col col4 good-num"><?php echo $cart_info['num']; ?></div>
+								<div class="col col5 orange-bold xiaoji" data-subtotal="<?php echo $cart_info['subtotal']; ?>" style="border-bottom-style: none;"><?php if($cart_info['subtotal'] > 0): ?>￥<?php echo $cart_info['subtotal']; ?>+<?php endif; ?><?php echo $cart_info['total_point']; ?>积分</div>
+								<?php else: ?>
+								<div class="col col3 goods-price"><?php echo $cart_info['point_exchange']; ?>积分</div>
+								<div class="col col4 good-num"><?php echo $cart_info['num']; ?></div>
+								<div class="col col5 orange-bold xiaoji" data-subtotal="<?php echo $cart_info['subtotal']; ?>" style="border-bottom-style: none;"><?php echo $cart_info['total_point']; ?>积分</div>
+								<?php endif; ?>
+							</div>
+							<?php endforeach; endif; else: echo "" ;endif; ?>
+						</div>
+					</div>
+				</div>
+			<?php endif; ?>
+
+			<!-- 赠品 -->
+			<?php if(in_array(($order_tag), explode(',',"buy_now,cart,js_point_exchange"))): if(count($goods_mansong_gifts) > 0): ?>
+				<div class="goods-table" style="margin-top: 10px;">
+					<div class="goods-thead">
+						<div class="col col1"><?php echo lang('member_gift'); ?></div>
+						<div class="col col3"><?php echo lang('member_unit_price'); ?></div>
+						<div class="col col4"><?php echo lang('goods_number'); ?></div>
+						<div class="col col5"><?php echo lang('goods_subtotal'); ?></div>
+					</div>
+					<div class="goods-tbody">
+						<?php if(is_array($goods_mansong_gifts) || $goods_mansong_gifts instanceof \think\Collection || $goods_mansong_gifts instanceof \think\Paginator): if( count($goods_mansong_gifts)==0 ) : echo "" ;else: foreach($goods_mansong_gifts as $k=>$gift_info): ?>
+							<div class="goodinfo" data-gift-goods-id="<?php echo $gift_info['gift_goods']['goods_id']; ?>" data-goods-name="<?php echo $gift_info['gift_goods']['goods_name']; ?>" data-img-id="<?php echo $gift_info['gift_goods']['picture_info']['pic_id']; ?>">
+								<div class="col col1 goods-title-pic">
+									<a href="<?php echo __URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$gift_info['gift_goods']['goods_id']); ?>" target="_blank">
+										<img src="<?php echo __IMG($gift_info['gift_goods']['picture_info']['pic_cover_small']); ?>" width="60" height="60">
+									</a>
+									<div class="goods-describ elli">
+										<p style="word-break: break-all; word-wrap:break-word;">
+											<a href="<?php echo __URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$gift_info['gift_goods']['goods_id']); ?>" target="_blank"><?php echo $gift_info['gift_goods']['goods_name']; ?>&nbsp;&nbsp;</a>
+										</p>
+									</div>
+								</div>
+								<div class="col col3 goods-price"><s>￥<?php echo $gift_info['gift_goods']['price']; ?></s></div>
+								<div class="col col4 good-num"><?php echo $gift_info['count']; ?></div>
+								<div class="col col5 orange-bold xiaoji" style="border-bottom-style: none;">￥0</div>
+							</div>
 						<?php endforeach; endif; else: echo "" ;endif; ?>
+					</div>
+				</div>
+				<?php endif; endif; endif; ?>
+
+		<!-- 创建订单：商品信息  组合商品 -->
+		<?php if($order_tag == 'combination_packages'): ?>
+			<div class="goods-infor">
+				<div class="cart-title">
+					<h3>
+						<span><?php echo lang('goods_commodity_information'); ?></span>
+					</h3>
+				</div>
+				<div class="goods-table">
+					<div class="goods-thead">
+						<div class="col col1"><?php echo lang('member_commodity'); ?></div>
+						<div class="col col3"><?php echo lang('member_unit_price'); ?></div>
+						<div class="col col4"><?php echo lang('goods_number'); ?></div>
+						<div class="col col5"><?php echo lang('goods_subtotal'); ?></div>
+					</div>
+					<div class="goods-tbody">
+						<?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): if( count($list)==0 ) : echo "" ;else: foreach($list as $k=>$cart_info): ?>
+						<div class="goodinfo" data-goods-id="<?php echo $cart_info['goods_id']; ?>" data-goods-name="<?php echo $cart_info['goods_name']; ?>" data-sku-name="<?php echo $cart_info['sku_name']; ?>" data-sku-id="<?php echo $cart_info['sku_id']; ?>" data-price="<?php echo $cart_info['price']; ?>" data-img-id="<?php echo $cart_info['picture_info']['pic_id']; ?>">
+							<div class="col col1 goods-title-pic">
+								<a href="<?php echo __URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$cart_info['goods_id']); ?>" target="_blank">
+									<img src="<?php echo __IMG($cart_info['picture_info']['pic_cover_small']); ?>" width="60" height="60">
+								</a>
+								<div class="goods-describ elli">
+									<p style="word-break: break-all; word-wrap:break-word;">
+										<a href="<?php echo __URL('SHOP_MAIN/goods/goodsinfo','goodsid='.$cart_info['goods_id']); ?>" target="_blank"><?php echo $cart_info['goods_name']; ?>&nbsp;&nbsp;<?php echo $cart_info['sku_name']; ?></a>
+									</p>
+	<!-- 								<p></p> -->
+								</div>
+							</div>
+							<div class="col col3 goods-price">￥<?php echo $cart_info['price']; ?></div>
+							<div class="col col4 good-num"><?php echo $cart_info['num']; ?></div>
+							<div class="col col5 orange-bold xiaoji" data-subtotal="<?php echo $cart_info['subtotal']; ?>" style="border-bottom-style: none;">￥<?php echo $cart_info['subtotal']; ?></div>
+						</div>
+						<?php endforeach; endif; else: echo "" ;endif; ?>
+				
+						<div style="border-top: 1px solid #e4e4e4;">
+							<div class="col col1 goods-title-pic combo_package_detail">
+								<a href="javascript:;"></a>
+								<div class="goods-describ elli combo_package_detail">
+									<p style="word-break: break-all; word-wrap:break-word;">
+										<a href="<?php echo __URL('SHOP_MAIN/goods/comboPackagePromotionSelected','combo_id='.$combo_detail['id']); ?>" target="_blank">套餐：<?php echo $combo_detail['combo_package_name']; ?></a>
+									</p>
+								</div>
+							</div>
+							<div class="col col3 goods-price combo_package_detail">￥<?php echo $combo_detail['combo_package_price']; ?></div>
+							<div class="col col4 good-num combo_package_detail"><?php echo $combo_buy_num; ?></div>
+							<div class="col col5 orange-bold combo_package_detail" style="border-bottom-style: none;">￥<?php echo $combo_detail['combo_package_price'] * $combo_buy_num; ?></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<?php endif; ?>
+
+		<!-- 创建订单：支付方式 -->
+		<div class="style-zhifu">
+			<div class="cart-title">
+				<h3>
+					<span><?php echo lang('member_payment_method'); ?></span>
+				</h3>
+			</div>
+			<!-- 优惠券 -->
+			<?php if(count($coupon_list)): ?>
+			<div class="zhifu-box">
+				<?php if(count($coupon_list)): ?>
+				<div class="yue">
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo lang('member_coupons'); ?></span>
+					<select style="margin-left: 12px;padding: 0 10px;width: 250px;height: 25px;border:1px solid #ddd;" id="coupon">
+						<option value="0"><?php echo lang('member_no_coupons'); ?></option>
+						<?php if(is_array($coupon_list) || $coupon_list instanceof \think\Collection || $coupon_list instanceof \think\Paginator): if( count($coupon_list)==0 ) : echo "" ;else: foreach($coupon_list as $k=>$coupon): ?>
+							<option data-money="<?php echo $coupon['money']; ?>" value="<?php echo $coupon['coupon_id']; ?>" <?php if($k==0): ?>selected="selected"<?php endif; ?>><?php echo lang('member_full'); ?><?php echo $coupon['at_least']; ?><?php echo lang('member_reduce'); ?><?php echo $coupon['money']; ?><?php echo lang('element'); ?>&nbsp;-&nbsp;<?php echo $coupon['coupon_name']; ?></option>
+						<?php endforeach; endif; else: echo "" ;endif; ?>
+					</select>
+				</div>
+				<?php endif; ?>
+			</div>
+			<?php endif; ?>
+			
+			<div class="zhifu-box">
+				<ul class="zfb" id="paylist">
+					<!-- 线上支付 -->
+					<li>
+						<i class="icon-check-zf" style="display:block;"></i>
+						<a href="javascript:void(0);" data-select="0" class="selected">
+							<span><?php echo lang('member_online_payment'); ?></span>
+						</a>
+					</li>
+					<!-- 货到付款 为了用户更好的体验和理解，只要开启货到付款就显示，不考虑商家配送、是否有物流公司等 -->
+					<?php if($shop_config['order_delivery_pay'] && $order_goods_type == 1 && $order_tag != 'presell_buy'): ?>
+					<li>
+						<i class="icon-check-zf"></i>
+						<a href="javascript:void(0);" data-select="4">
+							<span><?php echo lang('member_cash_on_delivery'); ?></span>
+						</a>
+					</li>
+					<?php endif; ?>
+				</ul>
+			</div>
+		</div>
+		<!-- 创建订单：配送方式 -->
+		<?php if($order_goods_type == 1): ?>
+			<div class="style-zhifu order-invoice">
+				<div class="cart-title">
+					<h3>
+						<span><?php echo lang('member_delivery_mode'); ?></span>
+					</h3>
+				</div>
+				<div class="zhifu-box" id="shipping_method">
+					<div class="item js-select">
+						<?php if(!$shop_config['seller_dispatching'] && !$shop_config['buyer_self_lifting'] && $is_open_o2o_distribution == 0): ?>
+								<p class="label fl"><?php echo lang('member_not_configure_distribution'); ?></p>
+						<?php else: ?>
+						<div class="label">
+							<ul class="zfb">
+								<!-- 为了用户更好的体验和理解，只要开启商家配送就显示，不考虑物流公司 -->
+								<!-- 商家配送 -->
+								<?php if($shop_config['seller_dispatching']): ?>
+								<li data-code="merchant_distribution">
+									<i class="icon-check-zf"></i>
+									<a href="javascript:void(0);"><?php echo lang('member_merchant_distribution'); ?></a>
+								</li>
+								<?php endif; ?>
+								<!-- 用户自提 -->
+								<?php if($shop_config['buyer_self_lifting']): ?>
+								<li data-code="afhalen">
+									<i class="icon-check-zf"></i>
+									<a href="javascript:void(0);"><?php echo lang('member_stores_from_mentioning'); ?></a>
+								</li>
+								<?php endif; ?>
+								<!-- 本地配送 -->
+								<?php if($is_open_o2o_distribution): ?>
+								<li data-code="o2o_distribution">
+									<i class="icon-check-zf"></i>
+									<a href="javascript:void(0);"><?php echo lang('local_distribution'); ?></a>
+								</li>
+								<?php endif; ?>
+							</ul>
+						</div>
+						<?php endif; ?>
+					</div>
+				
+					<?php if($shop_config['seller_dispatching']): ?>
+						<div id="select_express_company" style="display:none;">
+						
+							<div class="item">
+								<span class="label"><?php echo lang('member_logistics_company'); ?></span>
+								<select id="express_company" style="margin-left: 12px;padding: 0 10px;width: 250px;height: 25px;border: 1px solid #ddd;">
+								<?php if($address_is_have == 1): if($express_company_count == 0): ?>
+									<option value="-1" data-express-fee="0"><?php echo lang('member_not_set_up'); ?></option>
+									<?php elseif(count($express_company_list)): if(is_array($express_company_list) || $express_company_list instanceof \think\Collection || $express_company_list instanceof \think\Paginator): if( count($express_company_list)==0 ) : echo "" ;else: foreach($express_company_list as $key=>$company): ?>
+										<option value="<?php echo $company['co_id']; ?>" data-express-fee="<?php echo $company['express_fee']; ?>"><?php echo $company['company_name']; ?></option>
+										<?php endforeach; endif; else: echo "" ;endif; else: ?>
+										<option value="-2" data-express-fee="0"><?php echo lang('member_not_freight_template'); ?></option>
+									<?php endif; else: ?>
+									<option value="-3" data-express-fee="0"><?php echo lang('fill_or_select_consignee_information'); ?></option>
+								<?php endif; ?>
+								</select>
+							</div>
+						</div>
+					<?php endif; ?>
+					<!-- 配送时间 -->
+					<?php if($shop_config['order_designated_delivery_time']): ?>
+					<div id="delivery-time" style="display:none;">
+						<div class="item">
+							<label class="label"><?php echo lang('delivery_time'); ?></label>
+							<span data-default="<?php echo lang('days_and_holidays_can_be_delivered'); ?>"><?php echo lang('days_and_holidays_can_be_delivered'); ?></span>
+							<a href="javascript:;" class="update-delivery-time"><?php echo lang('modify'); ?></a>
+							<a href="javascript:;" class="delete-delivery-time"><?php echo lang('delete'); ?></a>
+						</div>
+						<div class="mask-layer-delivery-time">
+							<header>
+								<span><?php echo lang('specify_delivery_time'); ?></span>
+								<a href='javascript:;'>x</a>
+							</header>
+							<ul></ul>
+							<?php if(!(empty($distribution_time_out) || (($distribution_time_out instanceof \think\Collection || $distribution_time_out instanceof \think\Paginator ) && $distribution_time_out->isEmpty()))): ?>
+							<div class="distribution-time-out">
+								<div class="tit">选择时间段</div>
+								<div class="time-out-list">
+									<?php if(is_array($distribution_time_out) || $distribution_time_out instanceof \think\Collection || $distribution_time_out instanceof \think\Paginator): if( count($distribution_time_out)==0 ) : echo "" ;else: foreach($distribution_time_out as $k=>$vo): ?>
+										<span <?php if($k == 0): ?>class="selected"<?php endif; ?>><?php echo $vo['start']; ?>:00-<?php echo $vo['end']; ?>:00</span>
+									<?php endforeach; endif; else: echo "" ;endif; ?>
+									<div style="clear: both;"></div>
+								</div>
+							</div>
+							<?php endif; ?>
+							<footer>
+								<span>温馨提示：</span>
+								<p>1、您选择的时间可能会因库存不足等因素导致订单延迟，请您谅解！</p>
+								<p>2、我们会在您选定提货日期的前一天处理您的订单，在此之前您的订单处于暂停状态。</p>
+								<div class="operation">
+									<button class="btn-confirm">确定</button>
+									<button class="btn-cancle">取消</button>
+								</div>
+							</footer>
+						</div>
+					</div>
+					<?php endif; if($shop_config['buyer_self_lifting']): ?>
+					<div class="js-pickup-point-list item" style="margin:0;line-height: 50px;height: 50px;display:none;" data-count="<?php echo $pickup_point_list['total_count']; ?>">
+						<?php if($pickup_point_list['total_count']): ?>
+						<span class="label fl"><?php echo lang('member_select_own_address'); ?>：</span>
+						<div class="fl">
+							<ul class="zfb" style="margin: 0 10px 0 0;">
+								<li style="margin:0;">
+									<select style="padding: 0 10px;width: 500px;height: 25px;border:1px solid #ddd;" id="pickup_address">
+										<?php if(is_array($pickup_point_list['data']) || $pickup_point_list['data'] instanceof \think\Collection || $pickup_point_list['data'] instanceof \think\Paginator): if( count($pickup_point_list['data'])==0 ) : echo "" ;else: foreach($pickup_point_list['data'] as $key=>$pickup): ?>
+										<option value="<?php echo $pickup['id']; ?>"><?php echo $pickup['province_name']; ?>&nbsp;<?php echo $pickup['city_name']; ?>&nbsp;<?php echo $pickup['district_name']; ?>&nbsp;<?php echo $pickup['address']; ?></option>
+										<?php endforeach; endif; else: echo "" ;endif; ?>
+									</select>
+								</li>
+							</ul>
+						</div>
+						<?php else: ?>
+						<p class="label fl"><?php echo lang('member_not_configured'); ?></p>
+						<?php endif; ?>
+					</div>
+					<?php endif; ?>
+					
+					<!-- 本地配送时间 -->
+					<?php if($shop_config['is_open_o2o'] == 1 && $distribution_time != ''): ?>
+					<div class="item" id="distribution_time" style="display:none;">
+						<span class="label">配送时间：</span>
+						<span class="time-desc"><?php echo $distribution_time; ?></span>
+					</div>
+					<?php endif; ?>
+				</div>
+			</div> 
+		<?php endif; if(count($shop_config['order_invoice_content_list'])): ?>
+		<div class="style-zhifu order-invoice">
+			<div class="cart-title">
+				<h3>
+					<span><?php echo lang('member_invoice_information'); ?></span>
+				</h3>
+			</div>
+			<div class="zhifu-box">
+				<div class="item">
+					<div class="label">
+						<ul class="zfb" id="is_invoice">
+							<li>
+								<i class="icon-check-zf" style="display: block;"></i>
+								<a href="javascript:void(0);" data-flag="not-need-invoice" class="selected"><?php echo lang('member_no_invoice_required'); ?></a>
+							</li>
+							<?php if(count($shop_config['order_invoice_content_list'])): ?>
+							<li>
+								<i class="icon-check-zf"></i>
+								<a href="javascript:void(0);" data-flag="need-invoice"><?php echo lang('member_invoice_required'); ?></a>
+							</li>
+							<?php endif; ?>
 						</ul>
 					</div>
-				<?php endif; ?> -->
-				<!-- 右侧商品品牌 -->
 				</div>
-			<!-- 楼层main -->
+				
+				<div id="invoiceinfo" style="display: none;">
+				
+					<div class="item">
+						<span class="label fl" style="line-height: 50px;width:85px;text-align: right;"><?php echo lang('member_invoice_header'); ?>：</span>
+						<div class="fl">
+							<ul class="zfb" id="invoice_tite_list" style="margin: 0 10px 0 0;">
+								<li>
+									<a href="javascript:void(0);">
+										<input type="text" placeholder="<?php echo lang('member_personal_or_company_invoice'); ?>" maxlength="50" id="invoice-title" />
+									</a>
+								</li>
+							</ul>
+						</div>
+						<span style="line-height: 50px;color:#FF9800;font-weight:bold;">(<?php echo lang('member_collect'); ?><?php echo $shop_config['order_invoice_tax']; ?>%<?php echo lang('member_invoice_tax_rate'); ?>)</span>
+					</div>
+					
+					<div class="item">
+						<span class="label fl" style="line-height: 50px;width:85px;text-align: right;"><?php echo lang('member_taxpayer_identification_number'); ?>：</span>
+						<div class="fl">
+							<ul class="zfb" style="margin: 0 10px 0 0;">
+								<li>
+									<a href="javascript:void(0);">
+										<input type="text" placeholder="<?php echo lang('member_taxpayer_identification_number'); ?>" maxlength="50" id="taxpayer-identification-number" />
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					
+					<div class="item">
+						<span class="label fl" style="line-height: 50px;width:85px;text-align: right;"><?php echo lang('member_invoice_content'); ?>：</span>
+						<div class="fl">
+							<ul class="zfb" id="invoice_con">
+								<?php if(is_array($shop_config['order_invoice_content_list']) || $shop_config['order_invoice_content_list'] instanceof \think\Collection || $shop_config['order_invoice_content_list'] instanceof \think\Paginator): if( count($shop_config['order_invoice_content_list'])==0 ) : echo "" ;else: foreach($shop_config['order_invoice_content_list'] as $k=>$invoice): ?>
+								<li>
+									<i class="icon-check-zf"></i>
+									<a href="javascript:void(0);" title="<?php echo $invoice; ?>"><?php echo $invoice; ?></a>
+								</li>
+								<?php endforeach; endif; else: echo "" ;endif; ?>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php endif; ?>
+		
+		<!-- 创建订单：结算信息 -->
+		<div class="fare-result">
+			<div class="cart-title">
+				<h3>
+					<span><?php echo lang('member_settlement_information'); ?></span>
+				</h3>
+			</div>
+			<div class="result-box">
+				<!-- {if1 condition="$shop_config['order_balance_pay']"}
+				<div class="yue">
+					<span><input type="checkbox" id="userbalance" disabled="disabled" style="display:none;">&nbsp;<?php echo lang('member_use_balance'); ?></span>
+					<input type="text" maxlength="9" placeholder="0.00" data-max="<?php echo $member_account['balance']; ?>" id="account_balance" />
+					<span class="yeuse">（<?php echo lang('member_my_balance'); ?>：<b class="orange-bold"><?php echo $member_account['balance']; ?></b><?php echo lang('element'); ?>）</span>。<br>
+				</div>
+				{/if1} -->
+
+				<?php if($point_config["is_open"] == 1): ?>
+					<div class="point">
+						<p>
+							<span>&nbsp;使用积分</span>
+							<input type="number" id="use_point" value="<?php echo $default_use_point; ?>">
+							<span class="yeuse">（我的积分：<b class="orange-bold member-account-point"><?php echo $member_account['point']; ?></b>个）</span>
+						</p>
+					</div>
+				<?php endif; ?>
+				<ul>
+					<li style="float:left;clear:none;">
+						<div style="width: 400px; float: left; font-size: 14px;">
+							<label class="list-name" for="leavemess"><?php echo lang('member_leaving_message'); ?>：</label>
+							<textarea id="leavemessage" maxlength="100" placeholder="<?php echo lang('member_buyer_message'); ?>"></textarea>
+						</div>
+					</li>
+					<li class="first" style="float:right;clear:none;">
+						<div class="calu-box">
+							<!-- 总计 -->
+							<p class="slivergrey">
+								<span><?php echo lang('goods_total'); ?><b class="orange-bold js-goods-num">0</b><?php echo lang('member_kinds_of_goods'); ?> <?php echo lang('member_total'); ?>：</span>
+								<span class="txtmoney">￥<b class="js-total-money">0.00</b></span>
+							</p>
+							<!-- 预售金 -->
+							<?php if($order_tag == 'presell_buy'): ?>	
+							<p class="slivergrey">
+								<span><?php echo lang('goods_presell'); ?>：</span>
+								<span class="txtmoney">￥<b id="presell_money">0.00</b></span>
+							</p>
+							<?php endif; ?>
+							
+							<!-- 运费 -->
+							<?php if($order_goods_type == 1): ?>
+							<p class="slivergrey">
+								<span><?php echo lang('goods_freight'); ?>：</span>
+								<span class="txtmoney">￥<b id="express">0.00</b></span>
+							</p>
+							<?php endif; ?>
+							<!-- 总优惠 -->
+							<p class="slivergrey">
+								<span><?php echo lang('member_total_discount'); ?>：</span>
+								<span class="txtmoney">￥<b id="discount_money">0.00</b></span>
+							</p>
+							<?php if($point_config["is_open"] == 1): ?>
+							<!-- 积分可抵 -->
+							<p class="slivergrey">
+								<span>积分抵现：</span>
+								<span class="txtmoney">￥<b id="point_money"><?php echo $point_money; ?></b></span>
+							</p>
+							<?php endif; ?>
+							<!-- 发票税额 -->
+							<?php if(count($shop_config['order_invoice_content_list'])): ?>
+							<p class="slivergrey">
+								<span><?php echo lang('member_invoice_tax'); ?>：</span>
+								<span class="txtmoney">￥<b id="invoice_tax_money">0.00</b></span>
+							</p>
+							<?php endif; ?>
+							<!-- 余额 -->
+							<!-- <?php if($shop_config['order_balance_pay']): ?>
+							<p class="slivergrey">
+								<span><?php echo lang('member_use_balance'); ?>：</span>
+								<span class="txtmoney">￥<b id="use_balance">0.00</b></span>
+							</p>
+							<?php endif; ?> -->
+							
+						</div>
+					</li>
+					<li style="border: 1px solid #e4e4e4;">
+<!-- 						<div class="lside"> -->
+<!-- 							<p class="save-passw"> -->
+<!-- 								<span class="slivergrey">输入支付密码：</span> -->
+<!-- 								<input type="password" id="cbkpaypwd"> -->
+<!-- 							</p> -->
+<!-- 						</div> -->
+<?php if(in_array(($order_tag), explode(',',"presell_buy"))): ?>
+					<div class="rside">
+						<div class="full_money">
+							
+							<!-- 是否交全款 -->
+		
+							<!-- 全款预定 -->
+							<p class="slivergrey full_money_sil grey_full_money">
+								<label for="is_full_payment"><input type="radio" id="is_full_payment" name="is_full_payment" value="1"/><?php echo lang('whether_to_pay_the_full_money'); ?></label>
+							</p>
+							<!-- 预定金预定 -->
+							<p class="slivergrey full_money_sil grey_full_money">
+								<label for="reservations_payment"><input type="radio" id="reservations_payment" name="is_full_payment" checked="checked" value="0"/><?php echo lang('reservations_money'); ?></label>
+							</p>
+				
+						</div>
+					</div>
+					<?php endif; ?>
+						<div class="rside">
+							<div class="lside">
+							
+								<p>
+									<span class="slivergrey"><?php echo lang('member_amount_payable'); ?>：</span>
+									<span class="orange-bold big">￥<b id="realprice">0.00</b></span>
+									<?php if($order_tag == 'js_point_exchange'): ?>
+										<span class="orange-bold big" id="and"><b>+</b></span>
+										<span class="orange-bold big" id="count-point"><b><?php echo $count_point_exchange; ?><?php echo lang('goods_integral'); ?></b></span>
+									<?php endif; ?>
+								</p>
+								<p class="vivi-blue"><?php echo lang('member_pay_soon'); ?>！</p>
+							</div>
+							<a href="javascript:void(0);" class="btn-jiesuan"><?php echo lang('member_place_order'); ?></a>
+							<input type="hidden" id="hidden_discount_money" value="<?php echo $discount_money; ?>" />
+							<input type="hidden" id="hidden_express" value="<?php echo $express; ?>" />
+							<input type="hidden" id="hidden_count_money" value="<?php echo $count_money; ?>" />
+							<input type="hidden" id="count_point_exchange" value="<?php echo $count_point_exchange; ?>"/>
+							<input type="hidden" id="hidden_full_mail_money" value="<?php echo $promotion_full_mail['full_mail_money']; ?>"/>
+							<input type="hidden" id="hidden_full_mail_is_open" value="<?php echo $promotion_full_mail['is_open']; ?>"/>
+							<input type="hidden" id="goods_sku_list" value="<?php echo $goods_sku_list; ?>" />
+							<input type="hidden" id="hidden_order_invoice_tax" value="<?php echo $shop_config['order_invoice_tax']; ?>"/>
+							<input type="hidden" id="hidden_order_tag" value="<?php echo $order_tag; ?>"/>
+							<input type="hidden" id="hidden_pick_up_money" value="<?php echo $pick_up_money; ?>"/>
+							<input type="hidden" id="hidden_is_logistice" value="<?php echo $shop_config['is_logistics']; ?>" />
+							<input type="hidden" id="hidden_shipping_time" value="0" />
+							<!-- 组合套餐 -->
+							<?php if($order_tag == 'combination_packages'): ?>
+							<input type="hidden" id="hidden_combo_package_id" value="<?php echo $combo_detail['id']; ?>" />
+							<input type="hidden" id="hidden_buy_num" value="<?php echo $combo_buy_num; ?>" />
+							<input type="hidden" id="hidden_combo_package_price" value="<?php echo $combo_package_price; ?>">
+							<?php endif; if($order_tag == 'presell_buy'): ?>
+							<input type="hidden" id="hidden_presell_money" value="<?php echo $presell_money; ?>">
+							<?php endif; ?>
+							<input type="hidden" id="hidden_o2o_distribution" value="<?php echo $o2o_distribution; ?>"/>
+							<!-- 积分抵现 -->
+							<input type="hidden" id="integral_balance_is_open" value="<?php echo $point_config['is_open']; ?>">
+							<?php if($point_config["is_open"] == 1): ?>
+							<!-- 积分抵现比率 -->
+							<input type="hidden" id="point_convert_rate" value="<?php echo $point_config['convert_rate']; ?>">
+							<!-- 最大可用积分 -->
+							<input type="hidden" id="max_use_point" value="<?php echo $max_use_point; ?>">
+							<?php endif; ?>
+							<!-- 积分兑换类型 -->
+							<input type="hidden" id="point_exchange_type" value="<?php echo $point_exchange_type; ?>">
+							<input type="hidden" id='order_goods_type' value="<?php echo $order_goods_type; ?>">
+						</div>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
 </div>
-<?php endif; endforeach; endif; else: echo "" ;endif; ?>
-	<!--推荐商品楼层分类 end -->
+</form>
 
-	<!-- #tpl_region_end -->
-
-	<!-- 左侧楼层定位 _start-->
-	<div class="elevator" style="visibility: hidden;">
-		<div class="elevator-floor" style="transform: scale(1.2); opacity: 0;"></div>
+<div id="mask" style="display: none;"></div>
+<div class="pop-main pop-compare" style="display: none;">
+	<div class="pop-header">
+		<span><?php echo lang('member_reminder'); ?></span>
+		<a class="pop-close" href="javascript:;" title="关闭<?php echo lang('goods_cart'); ?>"></a>
 	</div>
-	<!--友情链接-->
-	<!--
-	创建时间：2017年2月7日 12:24:13
-	功能描述：友情链接
--->
-<!--友情链接-->
-<?php if(!(empty($link_list) || (($link_list instanceof \think\Collection || $link_list instanceof \think\Paginator ) && $link_list->isEmpty()))): ?>
-<div class="links-box w1210">
-	<div class="links-title">
-		<span><?php echo lang('friendship_link'); ?></span>
-	</div>
-	<div class="links-content">
-		<?php if(is_array($link_list) || $link_list instanceof \think\Collection || $link_list instanceof \think\Paginator): if( count($link_list)==0 ) : echo "" ;else: foreach($link_list as $key=>$vo): if($vo['is_blank'] == 1): ?>
-				<a href="<?php echo $vo['link_url']; ?>" title="<?php echo $vo['link_title']; ?>" target="_blank_"><?php echo $vo['link_title']; ?></a>
-			<?php else: ?>
-				<a href="<?php echo $vo['link_url']; ?>" title="<?php echo $vo['link_title']; ?>"><?php echo $vo['link_title']; ?></a>
-			<?php endif; endforeach; endif; else: echo "" ;endif; ?>
+	<div class="pop-con">
+		<i class="pop-icon"></i>
+		<p class="pop-text"><?php echo lang('member_sure_delete'); ?>？</p>
+		<a href="javascript:;" class="pop-sure main-bg-color"><?php echo lang('goods_determine'); ?></a><a href="javascript:;" class="cancel-btn"><?php echo lang('goods_cancel'); ?></a>
 	</div>
 </div>
-<?php endif; ?>
+
+<div class="edit-address modbox" style="display: none;margin-left:-400px;">
+	<div class="edit-box">
+		<h3><?php echo lang('member_new_delivery_address_information'); ?><i class="close-modbox"></i></h3>
+		<div class="edit-form">
+			<ul>
+				<li>
+					<label><i>*</i><?php echo lang('member_consignee'); ?>：</label>
+					<input type="text" id="consigner" maxlength="20" class="s-length">
+				</li>
+				<li>
+					<label><i>*</i><?php echo lang('member_phone_number'); ?>：</label>
+					<input type="text" id="mobile" maxlength="11" class="s-length">
+				</li>
+				<li>
+					<label><?php echo lang('member_fixed_telephone'); ?>：</label>
+					<input type="text" id="phone" maxlength="20" class="s-length">
+				</li>
+				<li style="min-height: 25px;">
+					<label style="float: left;line-height: 26px;margin-right:5px;"><i>*</i><?php echo lang('member_location'); ?>：</label>
+					<div class="deliver" style="float: left;">
+						<div id="store-selector">
+							<script src="__TEMP__/<?php echo $style; ?>/public/js/ns_init_address.js"></script>
+<select name="province" id="selProvinces" onchange="getProvince(this,'#selCities')" class="select_addr">
+	<option value="-1"><?php echo lang('member_select_province'); ?></option>
+</select>
+<select name="city" id="selCities" onchange="getSelCity(this,'#selDistricts')" class="select_addr">
+	<option value="-1"><?php echo lang('member_select_city'); ?></option>
+</select>
+<select name="district" id="selDistricts" class="select_addr">
+	<option value="-1"><?php echo lang('member_selection_area'); ?></option>
+</select>
+<div class="required-notice fl">
+	<i class="notice-icon"></i><span class="notice-text address-notice"></span>
+</div>
+<script>
+initProvince("#selProvinces");
+</script>
+						</div>
+					</div>
+				</li>
+				<li style="clear: both;">
+					<label><i>*</i><?php echo lang('member_detailed_address'); ?>：</label>
+					<input type="text" id="detailed_address" maxlength="30" class="l-length">
+				</li>
+				<li style="clear: both;">
+					<label><?php echo lang('member_zip_code'); ?>：</label>
+					<input type="text" id="zipcode" maxlength="6" class="l-length" onkeyup="this.value=this.value.replace(/\D/g,'')">
+				</li>
+			</ul>
+			<input type="hidden" id="address_id" value="0">
+			<button class="btn-save" id="save_shipping_address"><?php echo lang('member_preservation'); ?></button>
+		</div>
+	</div>
+</div>
+
+<!-- <div id="edit-paypwd" class="modbox" style="display: none;margin-left:-305px;"> -->
+<!-- 	<h3> -->
+<!-- 		设置支付密码<i class="close-modbox"></i> -->
+<!-- 	</h3> -->
+<!-- 	<div> -->
+<!-- 		<p> -->
+<!-- 			<label>手机：</label> -->
+<!-- 			<input type="text" id="mobile" readonly="readonly" style="width: 93px; border: none;"> -->
+<!-- 			<input type="button" value="发送验证码" id="sendcode" data-mobileid="mobile" class="btn" onclick="sendSms(this, 'sms_setpaypwd');"> -->
+<!-- 		</p> -->
+<!-- 		<p> -->
+<!-- 			<label>手机验证码：</label> -->
+<!-- 			<input type="text" id="authcode" maxlength="8" class="input" onkeyup="onlyNum(this);"> -->
+<!-- 		</p> -->
+<!-- 		<p> -->
+<!-- 			<label>设置支付密码：</label> -->
+<!-- 			<input type="password" id="paypwd" maxlength="16" class="input"> -->
+<!-- 			<span class="tip">限数字和字母，6到16个字符</span> -->
+<!-- 		</p> -->
+<!-- 		<p> -->
+<!-- 			<label>再输支付密码：</label> -->
+<!-- 			<input type="password" id="repaypwd" maxlength="16" class="input"> -->
+<!-- 		</p> -->
+<!-- 		<a href="javascript:void(0);" onclick="editPaypwd();" class="btn" style="margin-left: 94px; margin-top: 20px">提交</a> -->
+<!-- 	</div> -->
+<!-- </div> -->
 
 
 <!-- 底部 -->
@@ -1615,34 +1696,12 @@ img{
 
 
 
-<!-- 添加js文件 -->
-<script type="text/javascript" src="__TEMP__/<?php echo $style; ?>/public/js/jquery.cookie.js"></script>
-<script type="text/javascript" src="__TEMP__/<?php echo $style; ?>/public/js/layer.js"></script>
-<script type="text/javascript" src="__TEMP__/<?php echo $style; ?>/public/js/jquery.countdown.js"></script>
-<script type="text/javascript" src="__TEMP__/<?php echo $style; ?>/public/js/bubbleup.js"></script>
-<script type="text/javascript" src="__TEMP__/<?php echo $style; ?>/public/js/ns_index.js"></script>
-<script type="text/javascript" src="__TEMP__/<?php echo $style; ?>/public/js/jquery.lazyload.js"></script>
-<script type="text/javascript" src="__TEMP__/<?php echo $style; ?>/public/js/tabs.js"></script>
-<script type="text/javascript" src="__TEMP__/<?php echo $style; ?>/public/js/jquery.hiSlider.js"></script>
-<script type="text/javascript" src="__TEMP__/<?php echo $style; ?>/public/js/index_tab.js"></script>
-<script type="text/javascript" src="__TEMP__/<?php echo $style; ?>/public/js/tabs.js"></script>
-<script type="text/javascript" src="__TEMP__/<?php echo $style; ?>/public/js/jquery.fly.min.js"></script>
-
-<script type="text/javascript">
-$().ready(function() {
-	$.cartbox.count = "0";
-	// 缓载图片
-	$("img").lazyload({
-		skip_invisible : false,
-		effect : 'fadeIn',
-		failure_limit : 20,
-		threshold : 200
-	});
-});
-</script>
-
-
-<?php if($uid == ''): ?>
+<script src="__TEMP__/<?php echo $style; ?>/public/js/payment_orders/shipping_address.js"></script>
+<?php switch($order_tag): case "buy_now":case "cart": ?><script src="__TEMP__/<?php echo $style; ?>/public/js/payment_orders/payment_orders.js"></script><?php break; case "virtual_goods": ?><script src="__TEMP__/<?php echo $style; ?>/public/js/payment_orders/payment_virtual_orders.js"></script><?php break; case "combination_packages": ?><script src="__TEMP__/<?php echo $style; ?>/public/js/payment_orders/payment_combo_package_orders.js"></script><?php break; case "group_buy": ?><script src="__TEMP__/<?php echo $style; ?>/public/js/payment_orders/payment_orders_group_buy.js"></script><?php break; case "presell_buy": ?><script src="__TEMP__/<?php echo $style; ?>/public/js/payment_orders/payment_presell_orders.js"></script><?php break; case "js_point_exchange": if($order_goods_type == 1): ?>
+		<script src="__TEMP__/<?php echo $style; ?>/public/js/payment_orders/payment_orders_point_exchange.js"></script>
+		<?php else: ?>
+		<script src="__TEMP__/<?php echo $style; ?>/public/js/payment_orders/payment_virtual_orders_point_exchange.js"></script>
+		<?php endif; break; endswitch; if($uid == ''): ?>
 	<style>
 .verification-code{
 	position:relative;
