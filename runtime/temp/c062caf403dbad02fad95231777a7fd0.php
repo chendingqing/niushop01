@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:12:{s:38:"template/shop\blue\Goods\category.html";i:1553151902;s:28:"template/shop\blue\base.html";i:1553151902;s:32:"template/shop\blue\urlModel.html";i:1553151902;s:34:"template/shop\blue\controlTop.html";i:1553157362;s:41:"template/shop\blue\controlHeadSerach.html";i:1553151902;s:43:"template/shop\blue\controlHeadGoodType.html";i:1553151902;s:40:"template/shop\blue\controlCommonNav.html";i:1553151902;s:43:"template/shop\blue\controlRightSidebar.html";i:1553151902;s:45:"template/shop\blue\controlBottomLinkHelp.html";i:1553151902;s:37:"template/shop\blue\controlBottom.html";i:1553151902;s:36:"template/shop\blue\controlLogin.html";i:1553151902;s:37:"template/shop\blue\baidu_js_push.html";i:1553151902;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:12:{s:38:"template/shop\blue\Goods\category.html";i:1553151902;s:28:"template/shop\blue\base.html";i:1553151902;s:32:"template/shop\blue\urlModel.html";i:1553151902;s:34:"template/shop\blue\controlTop.html";i:1553157362;s:41:"template/shop\blue\controlHeadSerach.html";i:1553151902;s:43:"template/shop\blue\controlHeadGoodType.html";i:1553151902;s:40:"template/shop\blue\controlCommonNav.html";i:1553151902;s:43:"template/shop\blue\controlRightSidebar.html";i:1553151902;s:45:"template/shop\blue\controlBottomLinkHelp.html";i:1553507592;s:37:"template/shop\blue\controlBottom.html";i:1553151902;s:36:"template/shop\blue\controlLogin.html";i:1553151902;s:37:"template/shop\blue\baidu_js_push.html";i:1553151902;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -836,8 +836,21 @@ function showLoginLayer(){
 img{
 	    vertical-align: top !important;
 }
+.footer{
+	background: #ffffff;
+}
+.footer-top{
+	max-width: 1210px;
+	margin: 0 auto 40px;
+}
+.dsc-service,.dsc-help{
+	background: #eee;
+}
 </style>
 <div class="footer">
+	<div class="footer-top">
+		<img src="/template/shop/blue/public/images/buy_bg.png" alt="">
+	</div>
 	<div class="dsc-service">
 		<div class="w w1200 relative">
 			<ul class="service-list">

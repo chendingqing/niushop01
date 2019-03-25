@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:20:{s:35:"template/shop\blue\Index\index.html";i:1553237609;s:28:"template/shop\blue\base.html";i:1553151902;s:32:"template/shop\blue\urlModel.html";i:1553151902;s:43:"template/shop\blue\Index\controlHeadAd.html";i:1553151902;s:34:"template/shop\blue\controlTop.html";i:1553157362;s:41:"template/shop\blue\controlHeadSerach.html";i:1553151902;s:43:"template/shop\blue\controlHeadGoodType.html";i:1553151902;s:40:"template/shop\blue\controlCommonNav.html";i:1553151902;s:44:"template/shop\blue\Index\controlHeadNav.html";i:1553160225;s:49:"template/shop\blue\Index\controlHeadNavRight.html";i:1553493891;s:43:"template/shop\blue\controlRightSidebar.html";i:1553151902;s:45:"template/shop\blue\Index\controlIndexAdv.html";i:1553236106;s:56:"template/shop\blue\Index\controlLimitedTimeDiscount.html";i:1553237674;s:49:"template/shop\blue\Index\controlCommendBlock.html";i:1553151902;s:45:"template/shop\blue\Index\controlRecFloor.html";i:1553488511;s:51:"template/shop\blue\Index\controlFriendshipLink.html";i:1553151902;s:45:"template/shop\blue\controlBottomLinkHelp.html";i:1553151902;s:37:"template/shop\blue\controlBottom.html";i:1553151902;s:36:"template/shop\blue\controlLogin.html";i:1553151902;s:37:"template/shop\blue\baidu_js_push.html";i:1553151902;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:20:{s:35:"template/shop\blue\Index\index.html";i:1553237609;s:28:"template/shop\blue\base.html";i:1553151902;s:32:"template/shop\blue\urlModel.html";i:1553151902;s:43:"template/shop\blue\Index\controlHeadAd.html";i:1553151902;s:34:"template/shop\blue\controlTop.html";i:1553157362;s:41:"template/shop\blue\controlHeadSerach.html";i:1553151902;s:43:"template/shop\blue\controlHeadGoodType.html";i:1553151902;s:40:"template/shop\blue\controlCommonNav.html";i:1553151902;s:44:"template/shop\blue\Index\controlHeadNav.html";i:1553160225;s:49:"template/shop\blue\Index\controlHeadNavRight.html";i:1553494900;s:43:"template/shop\blue\controlRightSidebar.html";i:1553151902;s:45:"template/shop\blue\Index\controlIndexAdv.html";i:1553236106;s:56:"template/shop\blue\Index\controlLimitedTimeDiscount.html";i:1553237674;s:49:"template/shop\blue\Index\controlCommendBlock.html";i:1553151902;s:45:"template/shop\blue\Index\controlRecFloor.html";i:1553506868;s:51:"template/shop\blue\Index\controlFriendshipLink.html";i:1553151902;s:45:"template/shop\blue\controlBottomLinkHelp.html";i:1553507592;s:37:"template/shop\blue\controlBottom.html";i:1553151902;s:36:"template/shop\blue\controlLogin.html";i:1553151902;s:37:"template/shop\blue\baidu_js_push.html";i:1553151902;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -1241,7 +1241,7 @@ $(function(){
 	.bland-list li:nth-child(7),.bland-list li:nth-child(8){border-bottom:none;}
 	.goods-list-ul{overflow:hidden;}
 	.goods-list-ul li{background-color: #ffffff;margin-bottom: 16px;margin-right: 28px;width: 279px;float:left;text-align: center;border-left: 1px solid #eee;border-bottom: 1px solid #eee;}
-	.goods-list-ul li:nth-of-type(4n+4){margin-right: 0px;}
+	.goods-list-ul li:nth-of-type(4n+4){margin-right: 0px !important;}
 	.goods-block{float:left;overflow:hidden;width: 100%}
 	.goodslist{border-left: 1px solid #eee;}
 	.li-hover:hover{color:#0d84d4;}
@@ -1308,6 +1308,64 @@ $(function(){
 	}
 	.selectgoods .goodslist:nth-of-type(4n+4)::after,
 	.selectgoods .goodslist:last-of-type::after{
+		display: none;
+	}
+	.selectgoods .goodslist:nth-of-type(9),
+	.selectgoods .goodslist:nth-of-type(10){
+		width: 605px !important;
+		height: 234px;
+		padding-top: 34px;
+		background: #f6f6f6;
+		box-sizing: border-box;
+	}
+	.selectgoods .goodslist:nth-of-type(9) .goods-list-padding-block,
+	.selectgoods .goodslist:nth-of-type(10) .goods-list-padding-block{
+		width: 531px;
+		height: 165px;
+		background: #ffffff url(/template/shop/blue/public/images/item_bg.png) no-repeat 12px 8px;
+		background-size: 58px 58px;
+		box-sizing: border-box;
+		padding: 2px 0 4px;
+	}
+	.selectgoods .goodslist:nth-of-type(9)::after,
+	.selectgoods .goodslist:nth-of-type(10)::after,
+	.selectgoods .goodslist:nth-of-type(9)::before,
+	.selectgoods .goodslist:nth-of-type(10)::before{
+		display: none;
+	}
+	.selectgoods .goodslist:nth-of-type(9) .goods_img,
+	.selectgoods .goodslist:nth-of-type(10) .goods_img{
+		float: left;
+		height: 100%;
+		margin-left: 88px;
+	}
+	.selectgoods .goodslist:nth-of-type(9) .goods_name,
+	.selectgoods .goodslist:nth-of-type(10) .goods_name{
+		margin-top: 7px;
+	}
+	.selectgoods .goodslist:nth-of-type(9) .goods_name,
+	.selectgoods .goodslist:nth-of-type(9) .goods_itemstar,
+	.selectgoods .goodslist:nth-of-type(9) .goods_price,
+	.selectgoods .goodslist:nth-of-type(9) .goods_add,
+	.selectgoods .goodslist:nth-of-type(10) .goods_name,
+	.selectgoods .goodslist:nth-of-type(10) .goods_itemstar,
+	.selectgoods .goodslist:nth-of-type(10) .goods_price,
+	.selectgoods .goodslist:nth-of-type(10) .goods_add{
+		display: inline-block;
+		width: 50%;
+		text-align: left;
+		padding-left: 10px;
+		padding-right: 5px;
+	}
+	.selectgoods .goodslist:nth-of-type(n+11){
+		width: 274px !important;
+		height: 349px;
+		border-radius: 5px;
+		border: solid 2px #eeeeee !important;
+		margin-right: 32px;
+	}
+	.selectgoods .goodslist:nth-of-type(n+11)::after,
+	.selectgoods .goodslist:nth-of-type(n+11)::before{
 		display: none;
 	}
 	</style>
@@ -1537,8 +1595,21 @@ $(function(){
 img{
 	    vertical-align: top !important;
 }
+.footer{
+	background: #ffffff;
+}
+.footer-top{
+	max-width: 1210px;
+	margin: 0 auto 40px;
+}
+.dsc-service,.dsc-help{
+	background: #eee;
+}
 </style>
 <div class="footer">
+	<div class="footer-top">
+		<img src="/template/shop/blue/public/images/buy_bg.png" alt="">
+	</div>
 	<div class="dsc-service">
 		<div class="w w1200 relative">
 			<ul class="service-list">

@@ -17,7 +17,7 @@
 	.bland-list li:nth-child(7),.bland-list li:nth-child(8){border-bottom:none;}
 	.goods-list-ul{overflow:hidden;}
 	.goods-list-ul li{background-color: #ffffff;margin-bottom: 16px;margin-right: 28px;width: 279px;float:left;text-align: center;border-left: 1px solid #eee;border-bottom: 1px solid #eee;}
-	.goods-list-ul li:nth-of-type(4n+4){margin-right: 0px;}
+	.goods-list-ul li:nth-of-type(4n+4){margin-right: 0px !important;}
 	.goods-block{float:left;overflow:hidden;width: 100%}
 	.goodslist{border-left: 1px solid #eee;}
 	.li-hover:hover{color:#0d84d4;}
@@ -58,34 +58,34 @@
 	.newgoods .goodslist:first-of-type .goods_add .addcollection{width: 40px;}
 	.selectgoods .floor-con{background: #ffffff;}
 	.selectgoods .floor-con hr{display: none;}
-	.selectgoods .goodslist{
-		width: 302px !important;
-		margin-right: 0px;
-		border: none !important;
-		position: relative;
-	}
-	.selectgoods .goodslist::after{
-		position: absolute;
-		top: 5%;
-		right: 0px;
-		content: '';
-		height: 90%;
-		width: 4px;
-		background: #e5e5e5;
-	}
-	.selectgoods .goodslist:nth-of-type(4n+1)::before{
-		position: absolute;
-		top: 0;
-		left: 0;
-		content: '';
-		width: 400%;
-		border-top: 5px solid #e5e5e5;
-		z-index: 1;
-	}
+	.selectgoods .goodslist{width: 302px !important;margin-right: 0px;border: none !important;position: relative;}
+	.selectgoods .goodslist::after{position: absolute;top: 5%;right: 0px;content: '';height: 90%;width: 4px;background: #e5e5e5;}
+	.selectgoods .goodslist:nth-of-type(4n+1)::before{position: absolute;top: 0;left: 0;content: '';width: 400%;border-top: 5px solid #e5e5e5;z-index: 1;}
 	.selectgoods .goodslist:nth-of-type(4n+4)::after,
-	.selectgoods .goodslist:last-of-type::after{
-		display: none;
-	}
+	.selectgoods .goodslist:last-of-type::after{display: none;}
+	.selectgoods .goodslist:nth-of-type(9),
+	.selectgoods .goodslist:nth-of-type(10){width: 605px !important;height: 234px;padding-top: 34px;background: #f6f6f6;box-sizing: border-box;}
+	.selectgoods .goodslist:nth-of-type(9) .goods-list-padding-block,
+	.selectgoods .goodslist:nth-of-type(10) .goods-list-padding-block{width: 531px;height: 165px;background: #ffffff url(/template/shop/blue/public/images/item_bg.png) no-repeat 12px 8px;background-size: 58px 58px;box-sizing: border-box;padding: 2px 0 4px;}
+	.selectgoods .goodslist:nth-of-type(9)::after,
+	.selectgoods .goodslist:nth-of-type(10)::after,
+	.selectgoods .goodslist:nth-of-type(9)::before,
+	.selectgoods .goodslist:nth-of-type(10)::before{display: none;}
+	.selectgoods .goodslist:nth-of-type(9) .goods_img,
+	.selectgoods .goodslist:nth-of-type(10) .goods_img{float: left;height: 100%;margin-left: 88px;}
+	.selectgoods .goodslist:nth-of-type(9) .goods_name,
+	.selectgoods .goodslist:nth-of-type(10) .goods_name{margin-top: 7px;}
+	.selectgoods .goodslist:nth-of-type(9) .goods_name,
+	.selectgoods .goodslist:nth-of-type(9) .goods_itemstar,
+	.selectgoods .goodslist:nth-of-type(9) .goods_price,
+	.selectgoods .goodslist:nth-of-type(9) .goods_add,
+	.selectgoods .goodslist:nth-of-type(10) .goods_name,
+	.selectgoods .goodslist:nth-of-type(10) .goods_itemstar,
+	.selectgoods .goodslist:nth-of-type(10) .goods_price,
+	.selectgoods .goodslist:nth-of-type(10) .goods_add{display: inline-block;width: 50%;text-align: left;padding-left: 10px;padding-right: 5px;}
+	.selectgoods .goodslist:nth-of-type(n+11){width: 274px !important;height: 349px;border-radius: 5px;border: solid 2px #eeeeee !important;margin-right: 32px;}
+	.selectgoods .goodslist:nth-of-type(n+11)::after,
+	.selectgoods .goodslist:nth-of-type(n+11)::before{display: none;}
 	</style>
 	<!-- 首页楼层开始 -->
 	<script>
