@@ -2,11 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffb862da-9239-49ed-a28e-6dbfcca9ad2f" name="默认更改列表" comment="">
+      <change afterPath="$PROJECT_DIR$/niushop_20190322_172259.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/admin/controller/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Order.php" afterDir="false" />
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/runtime/cache/0e/2c5f1490db9ace07b47b017ac7c49a.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/cache/0e/2c5f1490db9ace07b47b017ac7c49a.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/cache/33/b85522bdb262ce5d4c8f93090a1066.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/cache/33/b85522bdb262ce5d4c8f93090a1066.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/cache/41/58253ec4a86af0a6b2a4f493e93f6c.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/cache/41/58253ec4a86af0a6b2a4f493e93f6c.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/cache/6b/a7c6c7fa4a7eda3aeaa0f0da3b57d0.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/cache/6b/a7c6c7fa4a7eda3aeaa0f0da3b57d0.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/cache/bf/63484ccf447ac37a78951c0ad1a626.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/cache/bf/63484ccf447ac37a78951c0ad1a626.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/0a540d347097865607fa5cde05be4146.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/0a540d347097865607fa5cde05be4146.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/2c68eaab3827e280ff694c87bf0b8307.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/2c68eaab3827e280ff694c87bf0b8307.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/73acd4d91dd2c5a379f0976e09df385d.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/73acd4d91dd2c5a379f0976e09df385d.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/adminblue/Order/creditCardlList.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/adminblue/Order/creditCardlList.html" afterDir="false" />
+=======
       <change beforePath="$PROJECT_DIR$/data/service/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/data/service/Order.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template/adminblue/Order/orderAction.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/adminblue/Order/orderAction.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template/wap/default_new/public/images/pay/unionpay_card.png" beforeDir="false" afterPath="$PROJECT_DIR$/template/wap/default_new/public/images/pay/unionpay_card.png" afterDir="false" />
+>>>>>>> 9ec4f820da550019605f7bd6dbc8d3dfdcb91494
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,6 +36,58 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
+        <entry file="file://$PROJECT_DIR$/template/adminblue/Order/creditCardlList.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="139">
+              <caret line="224" column="79" selection-start-line="224" selection-start-column="79" selection-end-line="224" selection-end-column="79" />
+              <folding>
+                <element signature="n#style#0;n#!!top" />
+                <element signature="n#table#0;n#div#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#18#24#1" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#p#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#p#0;n#!!top" expanded="true" />
+                <element signature="e#71#77#0" expanded="true" />
+                <element signature="e#77#83#0" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#b#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#p#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#p#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+              </folding>
+=======
         <entry file="file://$PROJECT_DIR$/application/admin/controller/Order.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="586">
@@ -110,11 +175,29 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="6304">
               <caret line="317" column="16" selection-start-line="317" selection-start-column="14" selection-end-line="317" selection-end-column="16" />
+>>>>>>> 9ec4f820da550019605f7bd6dbc8d3dfdcb91494
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+<<<<<<< HEAD
+        <entry file="file://$PROJECT_DIR$/template/shop/blue/Goods/goodsInfo.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3201">
+              <caret line="187" column="48" selection-start-line="187" selection-start-column="48" selection-end-line="187" selection-end-column="48" />
+              <folding>
+                <element signature="n#div#8;n#div#1;n#div#1;n#div#0;n#!!top" />
+                <element signature="n#div#9;n#div#1;n#div#1;n#div#0;n#!!top" />
+                <element signature="n#div#2;n#div#1;n#div#0;n#!!top" />
+                <element signature="n#div#3;n#div#1;n#div#0;n#!!top" />
+                <element signature="n#div#4;n#div#1;n#div#0;n#!!top" />
+                <element signature="n#div#5;n#div#1;n#div#0;n#!!top" />
+                <element signature="n#div#6;n#div#1;n#div#0;n#!!top" />
+                <element signature="n#div#7;n#div#1;n#div#0;n#!!top" />
+                <element signature="n#div#8;n#div#1;n#div#0;n#!!top" />
+                <element signature="n#article#0;n#!!top" />
+=======
         <entry file="file://$PROJECT_DIR$/template/adminblue/Order/orderAction.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1366">
@@ -140,12 +223,56 @@
                 <element signature="e#35298#35731#0" />
                 <element signature="e#17#23#0" expanded="true" />
                 <element signature="e#23#29#0" expanded="true" />
+>>>>>>> 9ec4f820da550019605f7bd6dbc8d3dfdcb91494
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
+        <entry file="file://$PROJECT_DIR$/application/admin/controller/Order.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-430">
+              <caret line="162" column="46" selection-start-line="162" selection-start-column="46" selection-end-line="162" selection-end-column="46" />
+              <folding>
+                <element signature="e#483#508#0#PHP" expanded="true" />
+                <element signature="e#1073#1096#0#PHP" />
+                <element signature="e#6816#7019#0#PHP" />
+                <element signature="e#7065#7429#0#PHP" />
+                <element signature="e#7475#7829#0#PHP" />
+                <element signature="e#7872#8780#0#PHP" />
+                <element signature="e#10399#12151#0#PHP" />
+                <element signature="e#12284#13935#0#PHP" />
+                <element signature="e#14070#14880#0#PHP" />
+                <element signature="e#14916#15962#0#PHP" />
+                <element signature="e#15996#16458#0#PHP" />
+                <element signature="e#16567#16804#0#PHP" />
+                <element signature="e#16810#16833#0#PHP" />
+                <element signature="e#17102#17997#0#PHP" />
+                <element signature="e#18041#18910#0#PHP" />
+                <element signature="e#18944#19749#0#PHP" />
+                <element signature="e#19789#20224#0#PHP" />
+                <element signature="e#20262#20628#0#PHP" />
+                <element signature="e#20664#21152#0#PHP" />
+                <element signature="e#21158#21302#0#PHP" />
+                <element signature="e#21308#23288#0#PHP" />
+                <element signature="e#23441#24213#0#PHP" />
+                <element signature="e#24278#24707#0#PHP" />
+                <element signature="e#24812#25460#0#PHP" />
+                <element signature="e#25529#25968#0#PHP" />
+                <element signature="e#26059#26502#0#PHP" />
+                <element signature="e#26591#27028#0#PHP" />
+                <element signature="e#27115#27822#0#PHP" />
+                <element signature="e#27910#28947#0#PHP" />
+                <element signature="e#28993#29315#0#PHP" />
+                <element signature="e#29353#29572#0#PHP" />
+                <element signature="e#29617#30645#0#PHP" />
+                <element signature="e#30763#31275#0#PHP" />
+                <element signature="e#31313#31577#0#PHP" />
+                <element signature="e#31611#31891#0#PHP" />
+                <element signature="e#31959#32184#0#PHP" />
+=======
         <entry file="file://$PROJECT_DIR$/template/adminblue/Order/orderList.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="149">
@@ -201,6 +328,7 @@
                 <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+>>>>>>> 9ec4f820da550019605f7bd6dbc8d3dfdcb91494
               </folding>
             </state>
           </provider>
@@ -210,6 +338,8 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+<<<<<<< HEAD
+=======
       <find>ajax-orderlist</find>
       <find>备注</find>
       <find>seller_memo</find>
@@ -234,12 +364,40 @@
       <find>修改支付状态</find>
       <find>支付方式</find>
       <find>ADMIN_MAIN</find>
+>>>>>>> 9ec4f820da550019605f7bd6dbc8d3dfdcb91494
       <find>state-action</find>
       <find>修改发货</find>
       <find>getOrderUpdateAddress</find>
       <find>getPayValue</find>
       <find>关闭</find>
       <find>订单</find>
+<<<<<<< HEAD
+      <find>订单关闭时间</find>
+      <find>create_time</find>
+      <find>pay</find>
+      <find>id='pay'</find>
+      <find>user_mobile</find>
+      <find>modifypassword</find>
+      <find>==========</find>
+      <find>setuserpaymentpassword</find>
+      <find>phone</find>
+      <find>绑定手机</find>
+      <find>cred</find>
+      <find>SetShopConfig</find>
+      <find>订单自动关闭时间</find>
+      <find>pay_status</find>
+      <find>unionpay</find>
+      <find>background:#F5F5F5</find>
+      <find>getPayValue</find>
+      <find>save</find>
+      <find>元</find>
+      <find>修改密码</find>
+      <find>orderlist</find>
+      <find>orderDataExcel</find>
+      <find>buyer_id</find>
+      <find>信用卡</find>
+=======
+>>>>>>> 9ec4f820da550019605f7bd6dbc8d3dfdcb91494
     </findStrings>
     <replaceStrings>
       <replace>修改支付方式</replace>
@@ -268,15 +426,38 @@
         <option value="$PROJECT_DIR$/data/service/UnifyPay.php" />
         <option value="$PROJECT_DIR$/application/wap/controller/Pay.php" />
         <option value="$PROJECT_DIR$/application/route.php" />
+<<<<<<< HEAD
+=======
         <option value="$PROJECT_DIR$/template/adminblue/Order/creditCardlList.html" />
         <option value="$PROJECT_DIR$/data/service/Config.php" />
         <option value="$PROJECT_DIR$/template/wap/default_new/Pay/pcOptionPaymentMethod.html" />
+>>>>>>> 9ec4f820da550019605f7bd6dbc8d3dfdcb91494
         <option value="$PROJECT_DIR$/data/service/Events.php" />
         <option value="$PROJECT_DIR$/data/service/Order/OrderStatus.php" />
         <option value="$PROJECT_DIR$/template/adminblue/Order/orderList.html" />
         <option value="$PROJECT_DIR$/data/service/Order.php" />
-        <option value="$PROJECT_DIR$/application/admin/controller/Order.php" />
         <option value="$PROJECT_DIR$/template/adminblue/Order/orderAction.html" />
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/template/adminblue/Order/orderList.html" />
+        <option value="$PROJECT_DIR$/application/database.php" />
+        <option value="$PROJECT_DIR$/template/wap/default_new/Pay/credit.html" />
+        <option value="$PROJECT_DIR$/template/shop/blue/Index/controlHeadNav.html" />
+        <option value="$PROJECT_DIR$/template/shop/blue/Index/controlHeadNavRight.html" />
+        <option value="$PROJECT_DIR$/template/shop/blue/Login/login.html" />
+        <option value="$PROJECT_DIR$/template/shop/blue/controlTop.html" />
+        <option value="$PROJECT_DIR$/application/shop/controller/Member.php" />
+        <option value="$PROJECT_DIR$/template/shop/blue/Member/userSecurity.html" />
+        <option value="$PROJECT_DIR$/data/service/Config.php" />
+        <option value="$PROJECT_DIR$/template/wap/default_new/Pay/getPayValue.html" />
+        <option value="$PROJECT_DIR$/data/service/Member.php" />
+        <option value="$PROJECT_DIR$/template/wap/default_new/Pay/pcOptionPaymentMethod.html" />
+        <option value="$PROJECT_DIR$/application/wap/controller/Pay.php" />
+        <option value="$PROJECT_DIR$/data/service/UnifyPay.php" />
+        <option value="$PROJECT_DIR$/template/wap/default_new/Pay/payCallbackPc.html" />
+        <option value="$PROJECT_DIR$/application/admin/controller/Order.php" />
+        <option value="$PROJECT_DIR$/template/adminblue/Order/creditCardlList.html" />
+=======
+>>>>>>> 9ec4f820da550019605f7bd6dbc8d3dfdcb91494
       </list>
     </option>
   </component>
@@ -311,6 +492,9 @@
               <item name="niushop01" type="b2602c69:ProjectViewProjectNode" />
               <item name="niushop01" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
+              <item name="shop" type="462c0819:PsiDirectoryNode" />
+=======
               <item name="admin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -336,6 +520,7 @@
               <item name="niushop01" type="462c0819:PsiDirectoryNode" />
               <item name="template" type="462c0819:PsiDirectoryNode" />
               <item name="adminblue" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 9ec4f820da550019605f7bd6dbc8d3dfdcb91494
             </path>
             <path>
               <item name="niushop01" type="b2602c69:ProjectViewProjectNode" />
@@ -343,6 +528,32 @@
               <item name="template" type="462c0819:PsiDirectoryNode" />
               <item name="adminblue" type="462c0819:PsiDirectoryNode" />
               <item name="Order" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="niushop01" type="b2602c69:ProjectViewProjectNode" />
+              <item name="niushop01" type="462c0819:PsiDirectoryNode" />
+              <item name="template" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="niushop01" type="b2602c69:ProjectViewProjectNode" />
+              <item name="niushop01" type="462c0819:PsiDirectoryNode" />
+              <item name="template" type="462c0819:PsiDirectoryNode" />
+              <item name="shop" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="niushop01" type="b2602c69:ProjectViewProjectNode" />
+              <item name="niushop01" type="462c0819:PsiDirectoryNode" />
+              <item name="template" type="462c0819:PsiDirectoryNode" />
+              <item name="shop" type="462c0819:PsiDirectoryNode" />
+              <item name="blue" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="niushop01" type="b2602c69:ProjectViewProjectNode" />
+              <item name="niushop01" type="462c0819:PsiDirectoryNode" />
+              <item name="template" type="462c0819:PsiDirectoryNode" />
+              <item name="shop" type="462c0819:PsiDirectoryNode" />
+              <item name="blue" type="462c0819:PsiDirectoryNode" />
+              <item name="Goods" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -355,9 +566,16 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+<<<<<<< HEAD
+      <recent name="F:\web\niushop01" />
+      <recent name="F:\web\niushop01\upload\image_collection" />
+      <recent name="F:\web\niushop01\template\wap\default_new\Pay" />
+=======
+>>>>>>> 9ec4f820da550019605f7bd6dbc8d3dfdcb91494
       <recent name="F:\web\niushop01\template\wap\default_new\public\images\pay" />
       <recent name="F:\web\niushop01\template\adminblue\Order" />
     </key>
@@ -388,11 +606,20 @@
       <workItem from="1552902815884" duration="1713000" />
       <workItem from="1552958448190" duration="23824000" />
       <workItem from="1553044278624" duration="20919000" />
+<<<<<<< HEAD
+      <workItem from="1553162801429" duration="493000" />
+      <workItem from="1553216786905" duration="28582000" />
+=======
+>>>>>>> 9ec4f820da550019605f7bd6dbc8d3dfdcb91494
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="93128000" />
+=======
     <option name="totallyTimeSpent" value="52346000" />
+>>>>>>> 9ec4f820da550019605f7bd6dbc8d3dfdcb91494
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -404,10 +631,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="7" />
     <layout>
+<<<<<<< HEAD
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49865228" visible="true" weight="0.18767908" />
+=======
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49865228" visible="true" weight="0.18194842" />
+>>>>>>> 9ec4f820da550019605f7bd6dbc8d3dfdcb91494
       <window_info id="Structure" order="1" sideWeight="0.5013477" side_tool="true" weight="0.26289397" />
       <window_info id="Favorites" order="2" sideWeight="0.5013477" side_tool="true" weight="0.26289397" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -420,7 +650,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32884097" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32884097" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32884097" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="File Transfer" order="12" weight="0.32884097" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -484,6 +714,21 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/template/wap/default_new/Pay/pcPay.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upload/image_collection/1553159404.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upload/image_collection/1553160405.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/shop/blue/Index/controlHeadAd.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/shop/blue/Index/controlHeadNav.html">
+=======
     <entry file="file://$PROJECT_DIR$/.buildpath">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -602,6 +847,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data/service/Config.php">
+>>>>>>> 9ec4f820da550019605f7bd6dbc8d3dfdcb91494
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="2090" column="25" selection-start-line="2090" selection-start-column="25" selection-end-line="2090" selection-end-column="25" />
@@ -709,6 +955,9 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/data/service/Config.php">
+=======
     <entry file="file://$PROJECT_DIR$/public/admin/js/ueditor/third-party/jquery-1.10.2.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -722,6 +971,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/admin/js/art_dialog.source.js">
+>>>>>>> 9ec4f820da550019605f7bd6dbc8d3dfdcb91494
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-6834">
           <caret line="651" column="25" lean-forward="true" selection-start-line="651" selection-start-column="25" selection-end-line="651" selection-end-column="25" />
@@ -1121,6 +1371,214 @@
             <element signature="e#35298#35731#0" />
             <element signature="e#17#23#0" expanded="true" />
             <element signature="e#23#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/admin/js/ueditor/third-party/jquery-1.10.2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-386">
+          <caret line="6900" column="4" selection-start-line="6900" selection-start-column="4" selection-end-line="6900" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/wap/default_new/public/js/showBox.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="4" column="29" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/wap/default_new/public/js/order.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="75" column="19" lean-forward="true" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/adminblue/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="282" lean-forward="true" selection-start-line="282" selection-end-line="318" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/service/Order.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="341" column="5" selection-start-line="341" selection-start-column="4" selection-end-line="341" selection-end-column="5" />
+          <folding>
+            <element signature="e#2526#7306#0#PHP" />
+            <element signature="e#3094#3433#0#PHP" />
+            <element signature="e#7395#7569#0#PHP" />
+            <element signature="e#7659#14441#0#PHP" />
+            <element signature="e#17520#18535#0#PHP" />
+            <element signature="e#18642#20200#0#PHP" />
+            <element signature="e#29205#31232#0#PHP" />
+            <element signature="e#75942#77460#0#PHP" />
+            <element signature="e#77715#77906#0#PHP" />
+            <element signature="e#78927#79001#0#PHP" />
+            <element signature="e#79006#80328#0#PHP" />
+            <element signature="e#99086#99445#0#PHP" />
+            <element signature="e#99905#100339#0#PHP" />
+            <element signature="e#100344#101140#0#PHP" />
+            <element signature="e#101146#101229#0#PHP" />
+            <element signature="e#101234#101458#0#PHP" />
+            <element signature="e#101464#101609#0#PHP" />
+            <element signature="e#101615#101639#0#PHP" />
+            <element signature="e#101644#102428#0#PHP" />
+            <element signature="e#102434#102555#0#PHP" />
+            <element signature="e#102560#102898#0#PHP" />
+            <element signature="e#136551#136726#0#PHP" />
+            <element signature="e#136761#137057#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/shop/controller/Order.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="319" column="31" selection-start-line="319" selection-start-column="31" selection-end-line="319" selection-end-column="31" />
+          <folding>
+            <element signature="e#891#3200#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/service/Order/OrderStatus.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2102">
+          <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/controller/Order.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-430">
+          <caret line="162" column="46" selection-start-line="162" selection-start-column="46" selection-end-line="162" selection-end-column="46" />
+          <folding>
+            <element signature="e#483#508#0#PHP" expanded="true" />
+            <element signature="e#1073#1096#0#PHP" />
+            <element signature="e#6816#7019#0#PHP" />
+            <element signature="e#7065#7429#0#PHP" />
+            <element signature="e#7475#7829#0#PHP" />
+            <element signature="e#7872#8780#0#PHP" />
+            <element signature="e#10399#12151#0#PHP" />
+            <element signature="e#12284#13935#0#PHP" />
+            <element signature="e#14070#14880#0#PHP" />
+            <element signature="e#14916#15962#0#PHP" />
+            <element signature="e#15996#16458#0#PHP" />
+            <element signature="e#16567#16804#0#PHP" />
+            <element signature="e#16810#16833#0#PHP" />
+            <element signature="e#17102#17997#0#PHP" />
+            <element signature="e#18041#18910#0#PHP" />
+            <element signature="e#18944#19749#0#PHP" />
+            <element signature="e#19789#20224#0#PHP" />
+            <element signature="e#20262#20628#0#PHP" />
+            <element signature="e#20664#21152#0#PHP" />
+            <element signature="e#21158#21302#0#PHP" />
+            <element signature="e#21308#23288#0#PHP" />
+            <element signature="e#23441#24213#0#PHP" />
+            <element signature="e#24278#24707#0#PHP" />
+            <element signature="e#24812#25460#0#PHP" />
+            <element signature="e#25529#25968#0#PHP" />
+            <element signature="e#26059#26502#0#PHP" />
+            <element signature="e#26591#27028#0#PHP" />
+            <element signature="e#27115#27822#0#PHP" />
+            <element signature="e#27910#28947#0#PHP" />
+            <element signature="e#28993#29315#0#PHP" />
+            <element signature="e#29353#29572#0#PHP" />
+            <element signature="e#29617#30645#0#PHP" />
+            <element signature="e#30763#31275#0#PHP" />
+            <element signature="e#31313#31577#0#PHP" />
+            <element signature="e#31611#31891#0#PHP" />
+            <element signature="e#31959#32184#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/niushop_20190322_172259.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/think_exception.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/success_tmpl.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/adminblue/Order/creditCardlList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="224" column="79" selection-start-line="224" selection-start-column="79" selection-end-line="224" selection-end-column="79" />
+          <folding>
+            <element signature="n#style#0;n#!!top" />
+            <element signature="n#table#0;n#div#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#18#24#1" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#0;n#!!top" expanded="true" />
+            <element signature="e#71#77#0" expanded="true" />
+            <element signature="e#77#83#0" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#b#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/shop/blue/Goods/goodsInfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3201">
+          <caret line="187" column="48" selection-start-line="187" selection-start-column="48" selection-end-line="187" selection-end-column="48" />
+          <folding>
+            <element signature="n#div#8;n#div#1;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#div#9;n#div#1;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#div#2;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#div#3;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#div#4;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#div#5;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#div#6;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#div#7;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#div#8;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#article#0;n#!!top" />
           </folding>
         </state>
       </provider>
