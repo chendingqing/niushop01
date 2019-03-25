@@ -1,3 +1,0 @@
-<?php
-//000000000000s:489:"E:\work\niushop01\runtime\cache\c4\acfe03a3f08e55ed4fbccf017a0498.php,E:\work\niushop01\runtime\cache\8a\51b3e83f1c2084511a08f9f1488044.php,E:\work\niushop01\runtime\cache\f2\1ed03bf2756ec86816fcdf031332a5.php,E:\work\niushop01\runtime\cache\0c\de4051b41540ee453e795ca9e2a9fb.php,E:\work\niushop01\runtime\cache\c2\fc6ae3be70b6256146ae549faf340c.php,E:\work\niushop01\runtime\cache\58\08feb35e44adad8738a48eb18f10c0.php,E:\work\niushop01\runtime\cache\f3\6699921051ebd7a6a625860fd988be.php";
-?>
